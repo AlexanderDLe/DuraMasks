@@ -5,6 +5,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
+import Layers from '../../img/Layers.png';
+import Reusable from '../../img/Reusable.png';
+import Comfort from '../../img/Comfort.png';
+
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -41,7 +45,7 @@ function Cards() {
                 <Card className={classes.card}>
                     <CardMedia
                         className={classes.cardMedia}
-                        image="https://source.unsplash.com/random"
+                        image={Layers}
                         title="Image title"
                     />
                     <CardContent className={classes.cardContent}>
@@ -49,9 +53,9 @@ function Cards() {
                             Multi-layered
                         </Typography>
                         <Typography>
-                            These masks are composed of tight-woven cotton,
-                            elastic, and stabilizer cutaway (rylon & polyester)
-                            to ensure thickness.
+                            These masks are composed of tight-woven cotton and
+                            stabilizer cutaway (rylon & polyester) to ensure
+                            thickness.
                         </Typography>
                     </CardContent>
                 </Card>
@@ -60,7 +64,7 @@ function Cards() {
                 <Card className={classes.card}>
                     <CardMedia
                         className={classes.cardMedia}
-                        image="https://source.unsplash.com/random"
+                        image={Reusable}
                         title="Image title"
                     />
                     <CardContent className={classes.cardContent}>
@@ -79,7 +83,7 @@ function Cards() {
                 <Card className={classes.card}>
                     <CardMedia
                         className={classes.cardMedia}
-                        image="https://source.unsplash.com/random"
+                        image={Comfort}
                         title="Image title"
                     />
                     <CardContent className={classes.cardContent}>
@@ -87,8 +91,8 @@ function Cards() {
                             Comfortable
                         </Typography>
                         <Typography>
-                            This is a media card. You can use this section to
-                            describe the content.
+                            Our selection of carefully curated fabrics are soft
+                            and easy to wear for extended periods.
                         </Typography>
                     </CardContent>
                 </Card>
