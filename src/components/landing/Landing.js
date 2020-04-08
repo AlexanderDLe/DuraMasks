@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { Link } from 'react-router-dom';
 
 import Cards from './Cards';
 
@@ -30,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
     cardContent: {
         flexGrow: 1,
     },
+    link: {
+        color: 'white',
+        textDecoration: 'none',
+    },
 }));
 
 export default function Album() {
@@ -37,6 +42,7 @@ export default function Album() {
 
     return (
         <main>
+            <div className="landing-hero"></div>
             <div className={classes.heroContent}>
                 <Container maxWidth="sm">
                     <Typography
@@ -65,12 +71,21 @@ export default function Album() {
                         <Grid container spacing={2} justify="center">
                             <Grid item>
                                 <Button variant="contained" color="primary">
-                                    Buy Facemasks
+                                    <Link to="/order" className={classes.link}>
+                                        Buy Facemasks
+                                    </Link>
                                 </Button>
                             </Grid>
                             <Grid item>
                                 <Button variant="outlined" color="primary">
-                                    Learn More
+                                    <Link
+                                        style={{
+                                            textDecoration: 'none',
+                                            color: '#3f51b5',
+                                        }}
+                                    >
+                                        Learn More
+                                    </Link>
                                 </Button>
                             </Grid>
                         </Grid>

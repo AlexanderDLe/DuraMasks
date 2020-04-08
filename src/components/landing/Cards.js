@@ -46,7 +46,7 @@ function Cards() {
                     <CardMedia
                         className={classes.cardMedia}
                         image={Layers}
-                        title="Image title"
+                        title="Layer Image"
                     />
                     <CardContent className={classes.cardContent}>
                         <Typography gutterBottom variant="h5" component="h2">
@@ -65,7 +65,7 @@ function Cards() {
                     <CardMedia
                         className={classes.cardMedia}
                         image={Reusable}
-                        title="Image title"
+                        title="Reusable Image"
                     />
                     <CardContent className={classes.cardContent}>
                         <Typography gutterBottom variant="h5" component="h2">
@@ -84,7 +84,7 @@ function Cards() {
                     <CardMedia
                         className={classes.cardMedia}
                         image={Comfort}
-                        title="Image title"
+                        title="Comfort Image"
                     />
                     <CardContent className={classes.cardContent}>
                         <Typography gutterBottom variant="h5" component="h2">

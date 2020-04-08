@@ -3,7 +3,7 @@ import '../styles/App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Navbar from './Navbar';
-import Body from './landing/Body';
+import Body from './Body';
 import Footer from './Footer';
 
 function App() {
