@@ -55,11 +55,11 @@ export default function Album() {
                         OC Facemasks
                     </Typography>
                     <Typography
-                        variant="p"
+                        variant="caption"
                         align="center"
                         color="textSecondary"
                         paragraph
-                        style={{ fontSize: '1.2rem' }}
+                        style={{ fontSize: '1.1rem' }}
                     >
                         "CDC recommends wearing cloth face coverings in public
                         settings where other social distancing measures are
@@ -83,6 +83,7 @@ export default function Album() {
                                             textDecoration: 'none',
                                             color: '#3f51b5',
                                         }}
+                                        to="/"
                                     >
                                         Learn More
                                     </Link>

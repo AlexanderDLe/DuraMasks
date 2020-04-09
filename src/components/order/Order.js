@@ -1,25 +1,46 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import { Grid } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+
+import DesignCard from './DesignCard';
+import { MaskDesigns } from '../masks/MaskDesigns';
 
 const useStyles = makeStyles((theme) => ({
+    title: {
+        // textAlign: 'center',
+        paddingBottom: 24,
+    },
     root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        '& > *': {
-            width: '100%',
-            width: '700px',
-            height: theme.spacing(16),
-        },
+        paddingTop: '64px',
     },
 }));
 
-export default function SimplePaper() {
+function Order() {
     const classes = useStyles();
 
+    const renderDesigns = () => {
+        return MaskDesigns.map((design, index) => {
+            return <DesignCard design={design} key={index} />;
+        });
+    };
+
     return (
-        <div className={classes.root}>
-            <Paper elevation={3} />
-        </div>
+        <Container className={classes.root}>
+            <Typography
+                className={classes.title}
+                gutterBottom
+                variant="h4"
+                component="h2"
+            >
+                Select Your Color
+            </Typography>
+            <Grid container spacing={3}>
+                {renderDesigns()}
+            </Grid>
+        </Container>
     );
 }
+
+export default Order;

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -15,6 +16,11 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     link: {
+        color: 'white',
+        textDecoration: 'none',
+    },
+    cartAmount: {
+        marginLeft: '3px',
         color: 'white',
         textDecoration: 'none',
     },
@@ -35,12 +41,23 @@ export default function Album() {
                         <Link
                             to="/order"
                             className={classes.link}
-                            color="inherit"
-                            style={{ marginRight: '15px' }}
+                            style={{ marginRight: '20px' }}
                         >
                             Order Masks
                         </Link>
-                        {/* <Button color="inherit">Learn More</Button> */}
+                        <Link
+                            to="/checkout"
+                            className={classes.link}
+                            style={{ marginRight: '5px' }}
+                        >
+                            Checkout
+                        </Link>
+                        <Link to="/checkout" className={classes.link}>
+                            <ShoppingCartIcon style={{ fontSize: '1.2rem' }} />
+                        </Link>
+                        <Link to="/checkout" className={classes.cartAmount}>
+                            0
+                        </Link>
                     </Toolbar>
                 </Container>
             </AppBar>
