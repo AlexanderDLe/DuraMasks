@@ -26,4 +26,20 @@ export const selection = {
         color: 'Yellow',
         img: 'Mask.jpg',
     },
+    purple: {
+        color: 'Purple',
+        img: 'Mask.jpg',
+    },
+    polkadot: {
+        color: 'Polkadot',
+        img: 'Mask.jpg',
+    },
+    stripes: {
+        color: 'Stripes',
+        img: 'Mask.jpg',
+    },
+    teal: {
+        color: 'Teal',
+        img: 'Mask.jpg',
+    },
 };

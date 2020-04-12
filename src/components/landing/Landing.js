@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -39,6 +39,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Album() {
     const classes = useStyles();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <main>
@@ -46,8 +49,8 @@ export default function Album() {
             <div className={classes.heroContent}>
                 <Container maxWidth="sm">
                     <Typography
-                        component="h1"
-                        variant="h2"
+                        component="h2"
+                        variant="h3"
                         align="center"
                         color="textPrimary"
                         gutterBottom
@@ -78,15 +81,17 @@ export default function Album() {
                             </Grid>
                             <Grid item>
                                 <Button variant="outlined" color="primary">
-                                    <Link
+                                    <a
                                         style={{
                                             textDecoration: 'none',
                                             color: '#3f51b5',
                                         }}
-                                        to="/"
+                                        target="_blank"
+                                        href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/diy-cloth-face-coverings.html"
+                                        rel="noopener noreferrer"
                                     >
                                         Learn More
-                                    </Link>
+                                    </a>
                                 </Button>
                             </Grid>
                         </Grid>

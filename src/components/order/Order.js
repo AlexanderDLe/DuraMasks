@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
 
 function Order() {
     const classes = useStyles();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const renderDesigns = () => {
         return MaskDesigns.map((design, index) => {
@@ -34,7 +37,7 @@ function Order() {
                 variant="h4"
                 component="h2"
             >
-                Select Your Color
+                Select A Design
             </Typography>
             <Grid container spacing={3}>
                 {renderDesigns()}

@@ -26,8 +26,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Album() {
+const Navbar = ({ amount }) => {
     const classes = useStyles();
+
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -56,11 +57,13 @@ export default function Album() {
                             <ShoppingCartIcon style={{ fontSize: '1.2rem' }} />
                         </Link>
                         <Link to="/checkout" className={classes.cartAmount}>
-                            0
+                            {amount}
                         </Link>
                     </Toolbar>
                 </Container>
             </AppBar>
         </div>
     );
-}
+};
+
+export default Navbar;

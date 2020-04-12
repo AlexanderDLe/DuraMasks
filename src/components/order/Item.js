@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -21,15 +21,20 @@ import { selection } from '../masks/MaskDesigns';
 const useStyles = makeStyles({
     root: {
         width: '100%',
-        maxWidth: 550,
+        maxWidth: 450,
         borderBottom: '2px solid #3f51b5',
+        paddingBottom: 8,
     },
     media: {
-        height: 400,
+        height: 280,
     },
     link: {
-        color: '#3f51b5',
         textDecoration: 'none',
+        color: '#3f51b5',
+    },
+    buttonLink: {
+        textDecoration: 'none',
+        color: 'white',
     },
     customizeBox: {
         paddingTop: 26,
@@ -41,9 +46,15 @@ const useStyles = makeStyles({
     },
 });
 
-function Item({ match }) {
+function Item({ match, addOrder }) {
     const classes = useStyles();
     const data = selection[match.params.id];
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    console.log(data);
 
     const [size, setSize] = React.useState('Adult');
     const [amount, setAmount] = React.useState(1);
@@ -115,7 +126,17 @@ function Item({ match }) {
                     />
                     <br />
                     <br />
-                    <Button size="small" color="primary">
+                    <Button
+                        onClick={() =>
+                            addOrder({
+                                color: data.color,
+                                size: size,
+                                amount: amount,
+                            })
+                        }
+                        size="small"
+                        color="primary"
+                    >
                         Add to Cart
                     </Button>
                 </div>
@@ -126,8 +147,8 @@ function Item({ match }) {
                         Back To Selections
                     </Link>
                 </Button>
-                <Button size="small" color="primary">
-                    <Link to="/checkout" className={classes.link}>
+                <Button variant="contained" size="small" color="primary">
+                    <Link to="/checkout" className={classes.buttonLink}>
                         Checkout
                     </Link>
                 </Button>
