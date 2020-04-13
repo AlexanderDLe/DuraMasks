@@ -24,6 +24,10 @@ const useStyles = makeStyles({
         color: '#3f51b5',
         textDecoration: 'none',
     },
+    buttonLink: {
+        color: 'white',
+        textDecoration: 'none',
+    },
     customizeBox: {
         paddingTop: 26,
         display: 'flex',
@@ -42,21 +46,20 @@ const useStyles = makeStyles({
     },
 });
 
-const Checkout = (props) => {
+const Cart = ({ orders, removeOrder }) => {
     const classes = useStyles();
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    let orders = props.orders;
     console.log(orders);
 
     return (
         <Card className={classes.root} elevation={3}>
             <CardContent>
                 <Typography variant="h4" component="h2">
-                    Checkout
+                    Cart
                 </Typography>
             </CardContent>
 
@@ -70,13 +73,13 @@ const Checkout = (props) => {
                     Order Summary
                 </Typography>
 
-                {orders.map((order) => (
-                    <div className={classes.summaryOrder} key={order.color}>
+                {orders.map((order, index) => (
+                    <div className={classes.summaryOrder} key={index}>
                         <div style={{ display: 'flex' }}>
                             <div style={{ paddingRight: 8, paddingTop: 10 }}>
                                 <ClearIcon
                                     style={{ color: 'red', cursor: 'pointer' }}
-                                    onClick={() => console.log('hi')}
+                                    onClick={() => removeOrder(order)}
                                 />
                             </div>
                             <div>
@@ -105,15 +108,17 @@ const Checkout = (props) => {
             <CardActions className={classes.itemActions}>
                 <Button size="small" color="primary">
                     <Link to="/order" className={classes.link}>
-                        Back To Selections
+                        Back to Selections
                     </Link>
                 </Button>
                 <Button variant="contained" size="small" color="primary">
-                    Pay With PayPal
+                    <Link to="/shipping" className={classes.buttonLink}>
+                        Continue To Shipping
+                    </Link>
                 </Button>
             </CardActions>
         </Card>
     );
 };
 
-export default Checkout;
+export default Cart;

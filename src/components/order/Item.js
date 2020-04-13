@@ -148,8 +148,8 @@ function Item({ match, addOrder }) {
                     </Link>
                 </Button>
                 <Button variant="contained" size="small" color="primary">
-                    <Link to="/checkout" className={classes.buttonLink}>
-                        Checkout
+                    <Link to="/cart" className={classes.buttonLink}>
+                        Go To Cart
                     </Link>
                 </Button>
             </CardActions>

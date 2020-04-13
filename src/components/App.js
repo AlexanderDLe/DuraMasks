@@ -7,10 +7,10 @@ import Body from './Body';
 import Footer from './Footer';
 
 const App = () => {
-    const [orders, setOrders] = useState([
-        { color: 'Black', size: 'Adult', amount: 1 },
-    ]);
+    const [orders, setOrders] = useState([]);
     const [amount, setAmount] = useState(0);
+    const [shippingInfo, setShippingInfo] = useState({});
+    console.log(shippingInfo, setShippingInfo);
 
     const addOrder = (data) => {
         const newOrders = [...orders];
@@ -20,18 +20,31 @@ const App = () => {
         let foundIdentical = false;
         for (let order of newOrders) {
             if (order.color === data.color && order.size === data.size) {
-                order.amount += data.amount;
+                order.amount = parseInt(order.amount) + parseInt(data.amount);
                 foundIdentical = true;
             }
         }
         if (!foundIdentical) newOrders.push(data);
 
         setOrders(newOrders);
-        setAmount(amount + data.amount);
+        setAmount(amount + parseInt(data.amount));
     };
 
     const removeOrder = (data) => {
-        console.log('remove order');
+        const newOrders = [];
+
+        for (let order of orders) {
+            if (data.color === order.color && data.size === order.size)
+                continue;
+            newOrders.push(order);
+        }
+
+        setOrders(newOrders);
+        setAmount(amount - parseInt(data.amount));
+    };
+
+    const updateShippingInfo = (data) => {
+        console.log('update shipping info');
     };
 
     console.log(setOrders);
@@ -40,7 +53,12 @@ const App = () => {
         <div>
             <CssBaseline />
             <Navbar amount={amount} />
-            <Body addOrder={addOrder} orders={orders} />
+            <Body
+                addOrder={addOrder}
+                removeOrder={removeOrder}
+                updateShippingInfo={updateShippingInfo}
+                orders={orders}
+            />
             <Footer />
         </div>
     );

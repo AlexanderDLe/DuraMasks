@@ -3,11 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 
 import Landing from './landing/Landing';
 import Order from './order/Order';
-import Checkout from './checkout/Checkout';
 import Item from './order/Item';
+import Cart from './checkout/Cart';
+import Shipping from './checkout/Shipping';
 
 function Body(props) {
-    const { addOrder, orders } = props;
+    const { removeOrder, addOrder, orders, updateShippingInfo } = props;
 
     return (
         <main className="body-class">
@@ -21,12 +22,23 @@ function Body(props) {
                 />
                 <Route
                     exact
-                    path="/checkout"
+                    path="/cart"
                     render={() => (
-                        <Checkout
+                        <Cart
                             {...props}
-                            addOrder={addOrder}
+                            removeOrder={removeOrder}
                             orders={orders}
+                        />
+                    )}
+                />
+                <Route
+                    exact
+                    path="/shipping"
+                    render={() => (
+                        <Shipping
+                            {...props}
+                            removeOrder={removeOrder}
+                            updateShippingInfo={updateShippingInfo}
                         />
                     )}
                 />

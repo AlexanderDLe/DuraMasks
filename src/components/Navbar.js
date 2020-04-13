@@ -47,11 +47,11 @@ const Navbar = ({ amount }) => {
                             Order Masks
                         </Link>
                         <Link
-                            to="/checkout"
+                            to="/cart"
                             className={classes.link}
                             style={{ marginRight: '5px' }}
                         >
-                            Checkout
+                            Cart
                         </Link>
                         <Link to="/checkout" className={classes.link}>
                             <ShoppingCartIcon style={{ fontSize: '1.2rem' }} />
