@@ -53,10 +53,10 @@ const Navbar = ({ amount }) => {
                         >
                             Cart
                         </Link>
-                        <Link to="/checkout" className={classes.link}>
+                        <Link to="/cart" className={classes.link}>
                             <ShoppingCartIcon style={{ fontSize: '1.2rem' }} />
                         </Link>
-                        <Link to="/checkout" className={classes.cartAmount}>
+                        <Link to="/cart" className={classes.cartAmount}>
                             {amount}
                         </Link>
                     </Toolbar>

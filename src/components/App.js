@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 import '../styles/App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import axios from 'axios';
 
 import Navbar from './Navbar';
 import Body from './Body';
 import Footer from './Footer';
 
+const API = 'https://0n6fj67t7l.execute-api.us-west-1.amazonaws.com/dev/mail';
+const header = {
+    'Content-Type': 'application/json',
+};
+
 const App = () => {
     const [orders, setOrders] = useState([]);
     const [amount, setAmount] = useState(0);
-    const [shippingInfo, setShippingInfo] = useState({});
-    console.log(shippingInfo, setShippingInfo);
+    // const [shippingInfo, setShippingInfo] = useState({});
 
     const addOrder = (data) => {
         const newOrders = [...orders];
@@ -44,10 +49,8 @@ const App = () => {
     };
 
     const updateShippingInfo = (data) => {
-        console.log('update shipping info');
+        axios.post(API, data, header);
     };
-
-    console.log(setOrders);
 
     return (
         <div>

@@ -47,13 +47,12 @@ const useStyles = makeStyles({
 });
 
 function Item({ match, addOrder }) {
-    const classes = useStyles();
-    const data = selection[match.params.id];
-
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
+    const classes = useStyles();
+    const data = selection[match.params.id];
     console.log(data);
 
     const [size, setSize] = React.useState('Adult');

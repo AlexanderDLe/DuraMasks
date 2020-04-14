@@ -47,12 +47,11 @@ const useStyles = makeStyles({
 });
 
 const Cart = ({ orders, removeOrder }) => {
-    const classes = useStyles();
-
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
+    const classes = useStyles();
     console.log(orders);
 
     return (
