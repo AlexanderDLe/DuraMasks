@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
 import '../styles/App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import axios from 'axios';
 
 import Navbar from './Navbar';
 import Body from './Body';
 import Footer from './Footer';
 
-const API = 'https://0n6fj67t7l.execute-api.us-west-1.amazonaws.com/dev/mail';
-const header = {
-    'Content-Type': 'application/json',
-};
-
 const App = () => {
     const [orders, setOrders] = useState([]);
     const [amount, setAmount] = useState(0);
-    // const [shippingInfo, setShippingInfo] = useState({});
+    const [shippingInfo, setShippingInfo] = useState({
+        firstName: '',
+        lastName: '',
+        city: '',
+        state: '',
+        country: '',
+        zipcode: '',
+        email: '',
+        street: '',
+    });
 
     const addOrder = (data) => {
         const newOrders = [...orders];
@@ -48,8 +51,15 @@ const App = () => {
         setAmount(amount - parseInt(data.amount));
     };
 
+    const resetOrders = () => {
+        setAmount(0);
+        setOrders([]);
+        setShippingInfo({});
+    };
+
     const updateShippingInfo = (data) => {
-        axios.post(API, data, header);
+        setShippingInfo(data);
+        console.log(shippingInfo);
     };
 
     return (
@@ -57,10 +67,13 @@ const App = () => {
             <CssBaseline />
             <Navbar amount={amount} />
             <Body
+                orders={orders}
                 addOrder={addOrder}
                 removeOrder={removeOrder}
                 updateShippingInfo={updateShippingInfo}
-                orders={orders}
+                shippingInfo={shippingInfo}
+                resetOrders={resetOrders}
+                amount={amount}
             />
             <Footer />
         </div>

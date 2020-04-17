@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Order() {
+function Selection() {
     const classes = useStyles();
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -46,4 +46,4 @@ function Order() {
     );
 }
 
-export default Order;
+export default Selection;

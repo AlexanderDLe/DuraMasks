@@ -36,11 +36,11 @@ const Navbar = ({ amount }) => {
                     <Toolbar>
                         <Typography variant="h6" className={classes.title}>
                             <Link className={classes.link} to="/">
-                                OC Facemasks
+                                CA Facemasks
                             </Link>
                         </Typography>
                         <Link
-                            to="/order"
+                            to="/selection"
                             className={classes.link}
                             style={{ marginRight: '20px' }}
                         >

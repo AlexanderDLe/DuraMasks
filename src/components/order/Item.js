@@ -84,7 +84,7 @@ function Item({ match, addOrder }) {
                 title="Mask Image"
             />
             <CardContent className={classes.customizeBox}>
-                <FormControl style={{ width: '50%' }} component="fieldset">
+                <FormControl style={{ width: '40%' }} component="fieldset">
                     <FormLabel component="legend">Select Size</FormLabel>
                     <RadioGroup
                         aria-label="Mask Size"
@@ -93,23 +93,33 @@ function Item({ match, addOrder }) {
                         onChange={handleChange}
                     >
                         <FormControlLabel
-                            value="Adult"
+                            value="XL"
                             control={<Radio color="primary" />}
-                            label="Adult"
+                            label='XL (10.5" x 7")'
                         />
                         <FormControlLabel
-                            value="Child"
+                            value="L"
                             control={<Radio color="primary" />}
-                            label="Child"
+                            label='L (10" x 6.5")'
                         />
                         <FormControlLabel
-                            value="Other"
+                            value="M"
                             control={<Radio color="primary" />}
-                            label="Other"
+                            label='M (9" x 5.5")'
+                        />
+                        <FormControlLabel
+                            value="S"
+                            control={<Radio color="primary" />}
+                            label='S (8" x 5")'
+                        />
+                        <FormControlLabel
+                            value="XS"
+                            control={<Radio color="primary" />}
+                            label='XS (7" x 4.5")'
                         />
                     </RadioGroup>
                 </FormControl>
-                <div>
+                <div style={{ width: '60%' }}>
                     <FormLabel style={{ paddingLeft: 5 }} component="legend">
                         Amount
                     </FormLabel>
@@ -138,6 +148,15 @@ function Item({ match, addOrder }) {
                     >
                         Add to Cart
                     </Button>
+                    <br />
+                    <br />
+                    <p style={{ color: 'rgba(0,0,0,.5', fontSize: '.85rem' }}>
+                        Dimensions are in Width x Height
+                        <br />
+                        <br />
+                        Measuring tape was used to follow the cloth from one end
+                        to the other.
+                    </p>
                 </div>
             </CardContent>
             <CardActions className={classes.itemActions}>

@@ -55,7 +55,7 @@ export default function Album() {
                         color="textPrimary"
                         gutterBottom
                     >
-                        OC Facemasks
+                        CA Facemasks
                     </Typography>
                     <Typography
                         variant="caption"
@@ -74,7 +74,10 @@ export default function Album() {
                         <Grid container spacing={2} justify="center">
                             <Grid item>
                                 <Button variant="contained" color="primary">
-                                    <Link to="/order" className={classes.link}>
+                                    <Link
+                                        to="/selection"
+                                        className={classes.link}
+                                    >
                                         Buy Facemasks
                                     </Link>
                                 </Button>

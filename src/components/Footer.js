@@ -1,17 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Link from '@material-ui/core/Link';
 
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                OCFacemasks.com
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
+            <div color="inherit" href="https://material-ui.com/">
+                {'Copyright © '}
+                CAFacemasks.com {new Date().getFullYear()} |{' '}
+                <Link
+                    to="/policies"
+                    style={{
+                        color: 'rgba(0, 0, 0, 0.54)',
+                        textDecoration: 'none',
+                    }}
+                >
+                    Refund, Customer Service, & Privacy Policy
+                </Link>
+            </div>{' '}
         </Typography>
     );
 }
@@ -28,14 +35,6 @@ export default function Album() {
 
     return (
         <footer className={classes.footer}>
-            {/* <Typography
-                variant="subtitle1"
-                align="center"
-                color="textSecondary"
-                component="p"
-            >
-                Something here to give the footer a purpose!
-            </Typography> */}
             <Copyright />
         </footer>
     );

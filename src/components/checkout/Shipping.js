@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import TextField from '@material-ui/core/TextField';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -39,11 +38,16 @@ const Shipping = ({ updateShippingInfo }) => {
         window.scrollTo(0, 0);
     }, []);
 
+    const [goToSummary, setGoToSummary] = useState(false);
+
     const classes = useStyles();
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = (data) => {
         updateShippingInfo(data);
+        setGoToSummary(true);
     };
+
+    if (goToSummary === true) return <Redirect to="/checkout" />;
 
     return (
         <Card className={classes.root} elevation={3}>
@@ -190,7 +194,7 @@ const Shipping = ({ updateShippingInfo }) => {
                             color="primary"
                             type="submit"
                         >
-                            Pay With Payal
+                            Checkout
                         </Button>
                     </div>
                 </form>

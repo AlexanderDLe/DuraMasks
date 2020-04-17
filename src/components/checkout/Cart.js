@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 
 import ClearIcon from '@material-ui/icons/Clear';
 
@@ -52,7 +52,16 @@ const Cart = ({ orders, removeOrder }) => {
     }, []);
 
     const classes = useStyles();
-    console.log(orders);
+    const [emptyCartError, setEmptyCartError] = useState(false);
+    const [redirectToShipping, setRedirectToShipping] = useState(false);
+
+    const continueToShipping = () => {
+        console.log(orders.length);
+        if (!orders.length) return setEmptyCartError(true);
+        else return setRedirectToShipping(true);
+    };
+
+    if (redirectToShipping === true) return <Redirect to="/shipping" />;
 
     return (
         <Card className={classes.root} elevation={3}>
@@ -69,7 +78,7 @@ const Cart = ({ orders, removeOrder }) => {
                     component="h2"
                     style={{ paddingBottom: 8 }}
                 >
-                    Order Summary
+                    Order Details
                 </Typography>
 
                 {orders.map((order, index) => (
@@ -86,7 +95,7 @@ const Cart = ({ orders, removeOrder }) => {
                                     {order.amount}x {order.color} Color
                                 </Typography>
                                 <Typography variant="caption" component="h2">
-                                    {order.size} Size
+                                    Size {order.size}
                                 </Typography>
                             </div>
                         </div>
@@ -106,16 +115,32 @@ const Cart = ({ orders, removeOrder }) => {
 
             <CardActions className={classes.itemActions}>
                 <Button size="small" color="primary">
-                    <Link to="/order" className={classes.link}>
+                    <Link to="/selection" className={classes.link}>
                         Back to Selections
                     </Link>
                 </Button>
-                <Button variant="contained" size="small" color="primary">
-                    <Link to="/shipping" className={classes.buttonLink}>
-                        Continue To Shipping
-                    </Link>
+                <Button
+                    onClick={() => continueToShipping()}
+                    variant="contained"
+                    size="small"
+                    color="primary"
+                >
+                    Continue To Shipping
                 </Button>
             </CardActions>
+            {emptyCartError ? (
+                <div
+                    style={{
+                        paddingRight: 8,
+                        textAlign: 'right',
+                        color: 'red',
+                    }}
+                >
+                    Your cart is empty.
+                </div>
+            ) : (
+                ''
+            )}
         </Card>
     );
 };
