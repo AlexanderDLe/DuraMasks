@@ -75,12 +75,12 @@ function Item({ match, addOrder }) {
                     variant="h4"
                     component="h2"
                 >
-                    {data.color} Facemask
+                    {data.color}
                 </Typography>
             </CardContent>
             <CardMedia
                 className={classes.media}
-                image={require(`../../img/${data.img}`)}
+                image={require(`../../img/PostMaskPhotos/${data.img}`)}
                 title="Mask Image"
             />
             <CardContent className={classes.customizeBox}>
@@ -154,14 +154,14 @@ function Item({ match, addOrder }) {
                         Dimensions are in Width x Height
                         <br />
                         <br />
-                        Measuring tape was used to follow the cloth from one end
-                        to the other.
+                        Measuring tape was used to follow the cloth exterior
+                        from one end to the other.
                     </p>
                 </div>
             </CardContent>
             <CardActions className={classes.itemActions}>
                 <Button size="small" color="primary">
-                    <Link to="/order" className={classes.link}>
+                    <Link to="/selection" className={classes.link}>
                         Back To Selections
                     </Link>
                 </Button>

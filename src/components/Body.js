@@ -5,21 +5,11 @@ import Landing from './landing/Landing';
 import Selection from './order/Selection';
 import Item from './order/Item';
 import Cart from './checkout/Cart';
-import Shipping from './checkout/Shipping';
-import Checkout from './checkout/Checkout';
 import Success from './checkout/Success';
 import Policies from './Policies';
 
 function Body(props) {
-    const {
-        removeOrder,
-        addOrder,
-        orders,
-        updateShippingInfo,
-        shippingInfo,
-        resetOrders,
-        amount,
-    } = props;
+    const { removeOrder, addOrder, orders, resetOrders, amount } = props;
 
     return (
         <main className="body-class">
@@ -46,36 +36,11 @@ function Body(props) {
                 />
                 <Route
                     exact
-                    path="/shipping"
-                    render={() => (
-                        <Shipping
-                            {...props}
-                            removeOrder={removeOrder}
-                            updateShippingInfo={updateShippingInfo}
-                        />
-                    )}
-                />
-                <Route
-                    exact
-                    path="/checkout"
-                    render={() => (
-                        <Checkout
-                            {...props}
-                            orders={orders}
-                            shippingInfo={shippingInfo}
-                            resetOrders={resetOrders}
-                            amount={amount}
-                        />
-                    )}
-                />
-                <Route
-                    exact
                     path="/success"
                     render={() => (
                         <Success
                             {...props}
                             orders={orders}
-                            shippingInfo={shippingInfo}
                             resetOrders={resetOrders}
                         />
                     )}

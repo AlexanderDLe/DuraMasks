@@ -47,7 +47,7 @@ function Policies() {
             <h1>Customer Service Policy</h1>
             <p>
                 If you have questions or comments about this policy, you may
-                email us at contact@cafacemasks.com
+                email us at contact@cafacemasks.com.
             </p>
             <h1>Privacy Policy</h1>
             <p>
@@ -56,11 +56,13 @@ function Policies() {
                 information and your right to privacy. If you have any questions
                 or concerns about our notice, or our practices with regards to
                 your personal information, please contact us at
-                AlexanderLeDev@gmail.com. In this privacy notice, we seek to
-                explain to you in the clearest way possible what information we
-                collect. Please read this privacy notice carefully as it will
-                help you make informed decisions about sharing your personal
-                information with us.
+                contact@cafacemasks.com.
+                <br />
+                <br />
+                In this privacy notice, we seek to explain to you in the
+                clearest way possible what information we collect. Please read
+                this privacy notice carefully as it will help you make informed
+                decisions about sharing your personal information with us.
             </p>
             <h3>1. WHAT INFORMATION DO WE COLLECT?</h3>
             <p>
@@ -72,7 +74,7 @@ function Policies() {
             <h3>2. WILL YOUR INFORMATION BE SHARED WITH ANYONE?</h3>
             <p>
                 We only use information with your consent to comply with laws
-                and to provide you with selected products.
+                and to provide you with your ordered products.
             </p>
             <h3>3. HOW LONG DO WE KEEP YOUR INFORMATION?</h3>
             <p>
@@ -85,12 +87,8 @@ function Policies() {
                 We do not knowingly collect data from or market to children
                 under 18 years of age.
             </p>
-            <h3>5. DO WE COLLECT INFORMATION FROM MINORS</h3>
-            <p>
-                We do not knowingly collect data from or market to children
-                under 18 years of age.
-            </p>
-            <h3>6. HOW CAN YOU CONTACT US ABOUT THIS POLICY?</h3>
+
+            <h3>5. HOW CAN YOU CONTACT US ABOUT THIS POLICY?</h3>
             <p>
                 If you have questions or comments about this policy, you may
                 email us at contact@cafacemasks.com

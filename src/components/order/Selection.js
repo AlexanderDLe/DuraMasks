@@ -10,10 +10,10 @@ import { MaskDesigns } from '../masks/MaskDesigns';
 const useStyles = makeStyles((theme) => ({
     title: {
         // textAlign: 'center',
-        paddingBottom: 24,
     },
     root: {
-        paddingTop: '64px',
+        paddingTop: '24px',
+        paddingBottom: '24px',
     },
 }));
 
@@ -31,13 +31,16 @@ function Selection() {
 
     return (
         <Container className={classes.root}>
-            <Typography
-                className={classes.title}
-                gutterBottom
-                variant="h4"
-                component="h2"
-            >
+            <Typography variant="h4" component="h2">
                 Select A Design
+            </Typography>
+            <Typography
+                gutterBottom
+                variant="body1"
+                component="h2"
+                style={{ paddingBottom: 24, color: 'rgba(0,0,0,.6)' }}
+            >
+                More designs coming soon.
             </Typography>
             <Grid container spacing={3}>
                 {renderDesigns()}

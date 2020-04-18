@@ -1,45 +1,75 @@
 export const MaskDesigns = [
-    { color: 'Black', param: 'black', img: 'Mask.jpg' },
-    { color: 'Blue', param: 'blue', img: 'Mask.jpg' },
-    { color: 'Red', param: 'red', img: 'Mask.jpg' },
-    { color: 'Yellow', param: 'yellow', img: 'Mask.jpg' },
-    { color: 'Purple', param: 'purple', img: 'Mask.jpg' },
-    { color: 'Polkadot', param: 'polkadot', img: 'Mask.jpg' },
-    { color: 'Stripes', param: 'stripes', img: 'Mask.jpg' },
-    { color: 'Teal', param: 'teal', img: 'Mask.jpg' },
+    { color: 'Navy Blue', param: 'navy', img: 'NavyBlue.jpg' },
+    { color: 'Grey', param: 'grey', img: 'Grey.jpg' },
+    {
+        color: 'Black Textured',
+        param: 'blacktextured',
+        img: 'BlackTextured.jpg',
+    },
+    { color: 'Bandana', param: 'bandana', img: 'Bandana.jpg' },
+    { color: 'Dotted', param: 'dotted', img: 'Dotted.jpg' },
+    {
+        color: 'Flowery White',
+        param: 'flowerywhite',
+        img: 'FloweryWhite.jpg',
+    },
+    {
+        color: 'Flowery White 2',
+        param: 'flowerywhite2',
+        img: 'FloweryWhite2.jpg',
+    },
+    {
+        color: 'Flowery Purple',
+        param: 'flowerypurple',
+        img: 'FloweryPurple.jpg',
+    },
+    { color: 'Flowery Pink', param: 'flowerypink', img: 'FloweryPink.jpg' },
+    {
+        color: 'Garden Flowers',
+        param: 'gardenflowers',
+        img: 'GardenFlowers.jpg',
+    },
 ];
 
 export const selection = {
-    black: {
-        color: 'Black',
-        img: 'Mask.jpg',
+    navy: {
+        color: 'Navy Blue',
+        img: 'NavyBlue.jpg',
     },
-    blue: {
-        color: 'Blue',
-        img: 'Mask.jpg',
+    grey: {
+        color: 'Grey',
+        img: 'Grey.jpg',
     },
-    red: {
-        color: 'Red',
-        img: 'Mask.jpg',
+    blacktextured: {
+        color: 'Black Textured',
+        img: 'BlackTextured.jpg',
     },
-    yellow: {
-        color: 'Yellow',
-        img: 'Mask.jpg',
+    bandana: {
+        color: 'Bandana',
+        img: 'Bandana.jpg',
     },
-    purple: {
-        color: 'Purple',
-        img: 'Mask.jpg',
+    dotted: {
+        color: 'Dotted',
+        img: 'Dotted.jpg',
     },
-    polkadot: {
-        color: 'Polkadot',
-        img: 'Mask.jpg',
+    flowerywhite: {
+        color: 'Flowery White',
+        img: 'FloweryWhite.jpg',
     },
-    stripes: {
-        color: 'Stripes',
-        img: 'Mask.jpg',
+    flowerywhite2: {
+        color: 'Flowery White 2',
+        img: 'FloweryWhite2.jpg',
     },
-    teal: {
-        color: 'Teal',
-        img: 'Mask.jpg',
+    flowerypurple: {
+        color: 'Flowery Purple',
+        img: 'FloweryPurple.jpg',
+    },
+    flowerypink: {
+        color: 'Flowery Pink',
+        img: 'FloweryPink.jpg',
+    },
+    gardenflowers: {
+        color: 'Garden Flowers',
+        img: 'GardenFlowers.jpg',
     },
 };

@@ -9,16 +9,6 @@ import Footer from './Footer';
 const App = () => {
     const [orders, setOrders] = useState([]);
     const [amount, setAmount] = useState(0);
-    const [shippingInfo, setShippingInfo] = useState({
-        firstName: '',
-        lastName: '',
-        city: '',
-        state: '',
-        country: '',
-        zipcode: '',
-        email: '',
-        street: '',
-    });
 
     const addOrder = (data) => {
         const newOrders = [...orders];
@@ -54,12 +44,6 @@ const App = () => {
     const resetOrders = () => {
         setAmount(0);
         setOrders([]);
-        setShippingInfo({});
-    };
-
-    const updateShippingInfo = (data) => {
-        setShippingInfo(data);
-        console.log(shippingInfo);
     };
 
     return (
@@ -70,8 +54,6 @@ const App = () => {
                 orders={orders}
                 addOrder={addOrder}
                 removeOrder={removeOrder}
-                updateShippingInfo={updateShippingInfo}
-                shippingInfo={shippingInfo}
                 resetOrders={resetOrders}
                 amount={amount}
             />

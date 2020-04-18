@@ -34,7 +34,7 @@ function DesignCard({ design }) {
             <Card className={classes.root}>
                 <CardMedia
                     className={classes.media}
-                    image={require(`../../img/${design.img}`)}
+                    image={require(`../../img/PostMaskPhotos/${design.img}`)}
                     title="Mask Image"
                 />
                 <CardContent className={classes.colorTitle}>
