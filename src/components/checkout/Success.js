@@ -39,7 +39,7 @@ const Success = () => {
             </CardContent>
 
             <CardContent style={{ paddingTop: 0, paddingBottom: 20 }}>
-                Your purchase was successful!
+                Thank you for your purchase.
             </CardContent>
             <CardActions className={classes.itemActions}>
                 <Button

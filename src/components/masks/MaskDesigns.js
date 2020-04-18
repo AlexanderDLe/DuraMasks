@@ -6,7 +6,11 @@ export const MaskDesigns = [
         param: 'blacktextured',
         img: 'BlackTextured.jpg',
     },
-    { color: 'Bandana', param: 'bandana', img: 'Bandana.jpg' },
+    {
+        color: 'Navy Blue Bandana',
+        param: 'navybluebandana',
+        img: 'NavyBlueBandana.jpg',
+    },
     { color: 'Dotted', param: 'dotted', img: 'Dotted.jpg' },
     {
         color: 'Flowery White',
@@ -44,9 +48,9 @@ export const selection = {
         color: 'Black Textured',
         img: 'BlackTextured.jpg',
     },
-    bandana: {
-        color: 'Bandana',
-        img: 'Bandana.jpg',
+    navybluebandana: {
+        color: 'Navy Blue Bandana',
+        img: 'NavyBlueBandana.jpg',
     },
     dotted: {
         color: 'Dotted',

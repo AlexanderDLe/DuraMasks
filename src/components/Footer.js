@@ -6,19 +6,17 @@ import { makeStyles } from '@material-ui/core/styles';
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
-            <div color="inherit" href="https://material-ui.com/">
-                {'Copyright © '}
-                CAFacemasks.com {new Date().getFullYear()} |{' '}
-                <Link
-                    to="/policies"
-                    style={{
-                        color: 'rgba(0, 0, 0, 0.54)',
-                        textDecoration: 'none',
-                    }}
-                >
-                    Refund, Customer Service, & Privacy Policy
-                </Link>
-            </div>{' '}
+            {'Copyright © '}
+            CAFacemasks.com {new Date().getFullYear()} |{' '}
+            <Link
+                to="/policies"
+                style={{
+                    color: 'rgba(0, 0, 0, 0.54)',
+                    textDecoration: 'none',
+                }}
+            >
+                Refund, Customer Service, & Privacy Policy
+            </Link>
         </Typography>
     );
 }

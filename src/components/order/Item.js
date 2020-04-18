@@ -24,6 +24,8 @@ const useStyles = makeStyles({
         maxWidth: 450,
         borderBottom: '2px solid #3f51b5',
         paddingBottom: 8,
+        marginTop: 24,
+        marginBottom: 24,
     },
     media: {
         height: 280,
@@ -53,9 +55,8 @@ function Item({ match, addOrder }) {
 
     const classes = useStyles();
     const data = selection[match.params.id];
-    console.log(data);
 
-    const [size, setSize] = React.useState('Adult');
+    const [size, setSize] = React.useState('L');
     const [amount, setAmount] = React.useState(1);
 
     const handleChange = (event) => {
@@ -100,7 +101,7 @@ function Item({ match, addOrder }) {
                         <FormControlLabel
                             value="L"
                             control={<Radio color="primary" />}
-                            label='L (10" x 6.5")'
+                            label='L (10" x 6")'
                         />
                         <FormControlLabel
                             value="M"

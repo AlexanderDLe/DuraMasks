@@ -54,7 +54,7 @@ function Cards() {
                         </Typography>
                         <Typography>
                             These masks are composed of tight-woven cotton and
-                            stabilizer cutaway (rylon & polyester) to ensure
+                            stabilizer cutaway (rayon & polyester) to ensure
                             thickness.
                         </Typography>
                     </CardContent>

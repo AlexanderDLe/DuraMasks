@@ -40,7 +40,7 @@ function Selection() {
                 component="h2"
                 style={{ paddingBottom: 24, color: 'rgba(0,0,0,.6)' }}
             >
-                More designs coming soon.
+                More coming soon.
             </Typography>
             <Grid container spacing={3}>
                 {renderDesigns()}
