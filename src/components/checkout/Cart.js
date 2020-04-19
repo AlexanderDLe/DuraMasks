@@ -88,9 +88,9 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
         setPaypalError(true);
     };
 
-    let env = 'sandbox';
+    let env = 'production';
     let currency = 'USD';
-    let total = amount * 8;
+    let total = amount * 1;
     const client = {
         sandbox:
             'AUG0EGjB_-KelBfT2WHzsIunv893fV-rOmpXfou5lP1y_-j5EfUXTQa-go5hebKNF3EnUetQn06iB9_V',
@@ -129,7 +129,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
                             </div>
                             <div>
                                 <Typography variant="body1" component="h2">
-                                    {order.amount}x {order.color} Color
+                                    {order.amount}x {order.color} Design
                                 </Typography>
                                 <Typography variant="caption" component="h2">
                                     Size {order.size}
@@ -143,7 +143,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
                     <div>
                         <p style={{ fontWeight: 700 }}>Total</p>
                     </div>
-                    <p style={{ fontWeight: 700 }}>${amount * 8}</p>
+                    <p style={{ fontWeight: 700 }}>${total}</p>
                 </div>
             </CardContent>
 

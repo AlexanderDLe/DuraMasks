@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,6 +15,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import TextField from '@material-ui/core/TextField';
+
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 import { selection } from '../masks/MaskDesigns';
 
@@ -64,7 +68,48 @@ function Item({ match, addOrder }) {
     };
 
     const handleAmountChange = (event) => {
-        setAmount(event.target.value);
+        // Use Math.ceil to round up any decimals
+        setAmount(Math.ceil(event.target.value));
+    };
+
+    const queueRef = useRef([]);
+    const [open, setOpen] = useState(false);
+    const [messageInfo, setMessageInfo] = useState(undefined);
+
+    const processQueue = () => {
+        if (queueRef.current.length > 0) {
+            setMessageInfo(queueRef.current.shift());
+            setOpen(true);
+        }
+    };
+
+    const handleClick = () => () => {
+        addOrder({
+            color: data.color,
+            size: size,
+            amount: amount,
+        });
+        queueRef.current.push({
+            message: `Added ${amount} item(s)`,
+            key: new Date().getTime(),
+        });
+
+        if (open) {
+            setOpen(false);
+        } else {
+            processQueue();
+        }
+    };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpen(false);
+    };
+
+    const handleExited = () => {
+        processQueue();
     };
 
     return (
@@ -136,21 +181,6 @@ function Item({ match, addOrder }) {
                     />
                     <br />
                     <br />
-                    <Button
-                        onClick={() =>
-                            addOrder({
-                                color: data.color,
-                                size: size,
-                                amount: amount,
-                            })
-                        }
-                        size="small"
-                        color="primary"
-                    >
-                        Add to Cart
-                    </Button>
-                    <br />
-                    <br />
                     <p style={{ color: 'rgba(0,0,0,.5', fontSize: '.85rem' }}>
                         Dimensions are in Width x Height
                         <br />
@@ -166,12 +196,39 @@ function Item({ match, addOrder }) {
                         Back To Selections
                     </Link>
                 </Button>
-                <Button variant="contained" size="small" color="primary">
-                    <Link to="/cart" className={classes.buttonLink}>
-                        Go To Cart
-                    </Link>
+                <Button
+                    onClick={handleClick()}
+                    variant="contained"
+                    size="small"
+                    color="primary"
+                >
+                    Add To Cart
                 </Button>
             </CardActions>
+            <Snackbar
+                key={messageInfo ? messageInfo.key : undefined}
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                }}
+                open={open}
+                autoHideDuration={2000}
+                onClose={handleClose}
+                onExited={handleExited}
+                message={messageInfo ? messageInfo.message : undefined}
+                action={
+                    <React.Fragment>
+                        <IconButton
+                            aria-label="close"
+                            color="inherit"
+                            className={classes.close}
+                            onClick={handleClose}
+                        >
+                            <CloseIcon />
+                        </IconButton>
+                    </React.Fragment>
+                }
+            />
         </Card>
     );
 }

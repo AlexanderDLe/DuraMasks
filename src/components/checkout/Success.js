@@ -5,8 +5,8 @@ import CardActions from '@material-ui/core/CardActions';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
     root: {
@@ -22,24 +22,27 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'space-between',
     },
+    close: {
+        padding: 8,
+    },
 });
 
 const Success = () => {
-    const classes = useStyles();
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    const classes = useStyles();
 
     return (
         <Card className={classes.root} elevation={3}>
             <CardContent>
                 <Typography variant="h4" component="h2">
-                    Success!
+                    Thank you for your order
                 </Typography>
             </CardContent>
 
             <CardContent style={{ paddingTop: 0, paddingBottom: 20 }}>
-                Thank you for your purchase.
+                Payment was successful.
             </CardContent>
             <CardActions className={classes.itemActions}>
                 <Button
