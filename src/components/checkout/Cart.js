@@ -3,8 +3,6 @@ import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import PayPalExpressButton from 'react-paypal-express-checkout';
 
-import ClearIcon from '@material-ui/icons/Clear';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -15,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
     root: {
         width: '100%',
-        maxWidth: 500,
+        maxWidth: 450,
         borderBottom: '2px solid #3f51b5',
         paddingBottom: 8,
         marginTop: 24,
@@ -156,13 +154,14 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
                 {orders.map((order, index) => (
                     <div className={classes.summaryOrder} key={index}>
                         <div style={{ display: 'flex' }}>
-                            <div style={{ paddingRight: 8, paddingTop: 10 }}>
-                                <ClearIcon
-                                    style={{ color: 'red', cursor: 'pointer' }}
-                                    onClick={() => removeOrder(order)}
+                            <Link to={`/item/${order.param}`}>
+                                <img
+                                    src={require(`../../img/SmallMaskPhotos/${order.img}`)}
+                                    alt="Facemask"
+                                    style={{ height: 'auto', width: '120px' }}
                                 />
-                            </div>
-                            <div>
+                            </Link>
+                            <div style={{ padding: 9 }}>
                                 <Typography variant="body1" component="h2">
                                     <Link
                                         style={{
@@ -179,7 +178,19 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
                                 </Typography>
                             </div>
                         </div>
-                        <p>${order.amount * maskPrice}</p>
+                        <p style={{ textAlign: 'right' }}>
+                            ${order.amount * maskPrice} <br />{' '}
+                            <span
+                                style={{
+                                    fontSize: '.7rem',
+                                    color: 'red',
+                                    cursor: 'pointer',
+                                }}
+                                onClick={() => removeOrder(order)}
+                            >
+                                Remove
+                            </span>
+                        </p>
                     </div>
                 ))}
                 {renderCartTotals()}

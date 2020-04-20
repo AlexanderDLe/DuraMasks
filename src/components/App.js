@@ -13,6 +13,7 @@ const App = () => {
             size: 'L',
             amount: 1,
             param: 'blacktextured',
+            img: 'BlackTextured.jpg',
         },
     ]);
     const [amount, setAmount] = useState(1);

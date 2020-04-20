@@ -93,6 +93,7 @@ function Item({ match, addOrder }) {
             size: size,
             amount: amount,
             param: data.param,
+            img: data.img,
         });
         queueRef.current.push({
             message: `Added ${amount} item(s) to cart`,
