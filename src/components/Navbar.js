@@ -44,7 +44,7 @@ const Navbar = ({ amount }) => {
                             className={classes.link}
                             style={{ marginRight: '20px' }}
                         >
-                            Order Masks
+                            Mask Selection
                         </Link>
                         <Link
                             to="/cart"

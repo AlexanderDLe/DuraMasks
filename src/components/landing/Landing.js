@@ -12,7 +12,7 @@ import Cards from './Cards';
 const useStyles = makeStyles((theme) => ({
     heroContent: {
         backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(8, 0, 6),
+        padding: theme.spacing(6, 0, 6),
     },
     heroButtons: {
         marginTop: theme.spacing(4),
@@ -51,13 +51,13 @@ export default function Album() {
                 bgImageAlt="Navy Facemask"
                 strength={150}
             >
-                <div style={{ height: '400px' }} />
+                <div style={{ height: '300px' }} />
             </Parallax>
             <div className={classes.heroContent}>
                 <Container maxWidth="sm">
                     <Typography
                         component="h2"
-                        variant="h3"
+                        variant="h4"
                         align="center"
                         color="textPrimary"
                         gutterBottom
@@ -69,7 +69,7 @@ export default function Album() {
                         align="center"
                         color="textSecondary"
                         paragraph
-                        style={{ fontSize: '1.1rem' }}
+                        style={{ fontSize: '1rem' }}
                     >
                         "CDC recommends wearing cloth face coverings in public
                         settings where other social distancing measures are

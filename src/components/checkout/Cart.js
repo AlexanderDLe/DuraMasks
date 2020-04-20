@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
     root: {
         width: '100%',
-        maxWidth: 420,
+        maxWidth: 500,
         borderBottom: '2px solid #3f51b5',
         paddingBottom: 8,
         marginTop: 24,
@@ -37,6 +37,10 @@ const useStyles = makeStyles({
         display: 'flex',
     },
     itemActions: {
+        display: 'flex',
+        justifyContent: 'space-between',
+    },
+    shippingFee: {
         display: 'flex',
         justifyContent: 'space-between',
     },
@@ -67,6 +71,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
     const classes = useStyles();
     const [paypalError, setPaypalError] = useState(false);
     const [checkedOut, setCheckedOut] = useState(false);
+    const [shippingFee] = useState(amount < 5 ? 5 : 0);
 
     const onSuccess = (payment) => {
         console.log('The payment has succeeded!', payment);
@@ -88,9 +93,39 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
         setPaypalError(true);
     };
 
+    const renderCartTotals = () => {
+        if (amount === 0) return <div>Your cart is empty</div>;
+        return (
+            <React.Fragment>
+                <div className={classes.shippingFee}>
+                    <p>
+                        Shipping
+                        <br />
+                        <span
+                            style={{
+                                fontSize: '.7rem',
+                                color: 'rgba(0,0,0,.5)',
+                            }}
+                        >
+                            Free shipping if you order 5 or more items
+                        </span>
+                    </p>
+                    <p>${shippingFee}</p>
+                </div>
+                <div className={classes.summaryOrder}>
+                    <div>
+                        <p style={{ fontWeight: 700 }}>Total</p>
+                    </div>
+                    <p style={{ fontWeight: 700 }}>${total}</p>
+                </div>
+            </React.Fragment>
+        );
+    };
+
+    const maskPrice = 10;
     let env = 'production';
     let currency = 'USD';
-    let total = amount * 1;
+    let total = amount * maskPrice + shippingFee;
     const client = {
         sandbox:
             'AUG0EGjB_-KelBfT2WHzsIunv893fV-rOmpXfou5lP1y_-j5EfUXTQa-go5hebKNF3EnUetQn06iB9_V',
@@ -129,22 +164,25 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
                             </div>
                             <div>
                                 <Typography variant="body1" component="h2">
-                                    {order.amount}x {order.color} Design
+                                    <Link
+                                        style={{
+                                            color: 'black',
+                                            textDecoration: 'none',
+                                        }}
+                                        to={`/item/${order.param}`}
+                                    >
+                                        {order.amount}x {order.color} Design
+                                    </Link>
                                 </Typography>
                                 <Typography variant="caption" component="h2">
                                     Size {order.size}
                                 </Typography>
                             </div>
                         </div>
-                        <p>${order.amount * 8}</p>
+                        <p>${order.amount * maskPrice}</p>
                     </div>
                 ))}
-                <div className={classes.summaryOrder}>
-                    <div>
-                        <p style={{ fontWeight: 700 }}>Total</p>
-                    </div>
-                    <p style={{ fontWeight: 700 }}>${total}</p>
-                </div>
+                {renderCartTotals()}
             </CardContent>
 
             <CardActions className={classes.itemActions}>

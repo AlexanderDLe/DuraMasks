@@ -38,10 +38,18 @@ function Selection() {
                 gutterBottom
                 variant="body1"
                 component="h2"
-                style={{ paddingBottom: 24, color: 'rgba(0,0,0,.6)' }}
+                style={{ color: 'rgba(0,0,0,.6)' }}
             >
-                More coming soon.
+                Free shipping if you order 5 or more items.
+                <br />
+                More designs coming soon.
             </Typography>
+            <Typography
+                gutterBottom
+                variant="body1"
+                component="h2"
+                style={{ paddingBottom: 24, color: 'rgba(0,0,0,.6)' }}
+            ></Typography>
             <Grid container spacing={3}>
                 {renderDesigns()}
             </Grid>

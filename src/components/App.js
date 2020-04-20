@@ -7,8 +7,15 @@ import Body from './Body';
 import Footer from './Footer';
 
 const App = () => {
-    const [orders, setOrders] = useState([]);
-    const [amount, setAmount] = useState(0);
+    const [orders, setOrders] = useState([
+        {
+            color: 'Black Textured',
+            size: 'L',
+            amount: 1,
+            param: 'blacktextured',
+        },
+    ]);
+    const [amount, setAmount] = useState(1);
 
     const addOrder = (data) => {
         const newOrders = [...orders];

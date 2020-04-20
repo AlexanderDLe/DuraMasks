@@ -19,10 +19,11 @@ import TextField from '@material-ui/core/TextField';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import Modal from '@material-ui/core/Modal';
 
 import { selection } from '../masks/MaskDesigns';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
         maxWidth: 450,
@@ -50,7 +51,18 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'space-between',
     },
-});
+    modal: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 'auto',
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: 8,
+    },
+}));
 
 function Item({ match, addOrder }) {
     useEffect(() => {
@@ -62,55 +74,70 @@ function Item({ match, addOrder }) {
 
     const [size, setSize] = React.useState('L');
     const [amount, setAmount] = React.useState(1);
+    const [modalOpen, setModalOpen] = React.useState(false);
+    const queueRef = useRef([]);
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [messageInfo, setMessageInfo] = useState(undefined);
 
+    // Mask Order Configuration
     const handleChange = (event) => {
         setSize(event.target.value);
     };
-
     const handleAmountChange = (event) => {
         // Use Math.ceil to round up any decimals
         setAmount(Math.ceil(event.target.value));
     };
-
-    const queueRef = useRef([]);
-    const [open, setOpen] = useState(false);
-    const [messageInfo, setMessageInfo] = useState(undefined);
-
-    const processQueue = () => {
-        if (queueRef.current.length > 0) {
-            setMessageInfo(queueRef.current.shift());
-            setOpen(true);
-        }
-    };
-
-    const handleClick = () => () => {
+    const handleAddItem = () => () => {
         addOrder({
             color: data.color,
             size: size,
             amount: amount,
+            param: data.param,
         });
         queueRef.current.push({
-            message: `Added ${amount} item(s)`,
+            message: `Added ${amount} item(s) to cart`,
             key: new Date().getTime(),
         });
 
-        if (open) {
-            setOpen(false);
+        if (snackbarOpen) {
+            setSnackbarOpen(false);
         } else {
             processQueue();
         }
     };
 
+    // Snackbar
+    const processQueue = () => {
+        if (queueRef.current.length > 0) {
+            setMessageInfo(queueRef.current.shift());
+            setSnackbarOpen(true);
+        }
+    };
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
             return;
         }
-        setOpen(false);
+        setSnackbarOpen(false);
     };
-
     const handleExited = () => {
         processQueue();
     };
+
+    // Modal
+    const handleModalOpen = () => {
+        setModalOpen(true);
+    };
+    const handleModalClose = () => {
+        setModalOpen(false);
+    };
+    const modalContent = (
+        <div className={classes.modal}>
+            <img
+                src={require(`../../img/PostMaskPhotos/${data.img}`)}
+                alt="Mask"
+            />
+        </div>
+    );
 
     return (
         <Card className={classes.root} elevation={3}>
@@ -128,6 +155,8 @@ function Item({ match, addOrder }) {
                 className={classes.media}
                 image={require(`../../img/PostMaskPhotos/${data.img}`)}
                 title="Mask Image"
+                onClick={handleModalOpen}
+                style={{ cursor: 'pointer' }}
             />
             <CardContent className={classes.customizeBox}>
                 <FormControl style={{ width: '40%' }} component="fieldset">
@@ -197,7 +226,7 @@ function Item({ match, addOrder }) {
                     </Link>
                 </Button>
                 <Button
-                    onClick={handleClick()}
+                    onClick={handleAddItem()}
                     variant="contained"
                     size="small"
                     color="primary"
@@ -205,13 +234,21 @@ function Item({ match, addOrder }) {
                     Add To Cart
                 </Button>
             </CardActions>
+            <Modal
+                open={modalOpen}
+                onClose={handleModalClose}
+                aria-labelledby="Mask Image"
+                aria-describedby="Modal to pop up facemask image."
+            >
+                {modalContent}
+            </Modal>
             <Snackbar
                 key={messageInfo ? messageInfo.key : undefined}
                 anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'left',
                 }}
-                open={open}
+                open={snackbarOpen}
                 autoHideDuration={2000}
                 onClose={handleClose}
                 onExited={handleExited}

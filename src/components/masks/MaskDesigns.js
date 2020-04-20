@@ -1,5 +1,5 @@
 export const MaskDesigns = [
-    { color: 'Navy Blue', param: 'navy', img: 'NavyBlue.jpg' },
+    { color: 'Navy Blue', param: 'navyblue', img: 'NavyBlue.jpg' },
     { color: 'Grey', param: 'grey', img: 'Grey.jpg' },
     {
         color: 'Black Textured',
@@ -36,37 +36,45 @@ export const MaskDesigns = [
 ];
 
 export const selection = {
-    navy: {
+    navyblue: {
         color: 'Navy Blue',
         img: 'NavyBlue.jpg',
+        param: 'navyblue',
     },
     grey: {
         color: 'Grey',
         img: 'Grey.jpg',
+        param: 'grey',
     },
     blacktextured: {
         color: 'Black Textured',
         img: 'BlackTextured.jpg',
+        param: 'blacktextured',
     },
     navybluebandana: {
         color: 'Navy Blue Bandana',
         img: 'NavyBlueBandana.jpg',
+        param: 'navybluebandana',
     },
     dotted: {
         color: 'Dotted',
         img: 'Dotted.jpg',
+        param: 'dotted',
     },
     flowerywhite: {
         color: 'Flowery White',
         img: 'FloweryWhite.jpg',
+        param: 'flowerywhite',
     },
     flowerywhite2: {
         color: 'Flowery White 2',
         img: 'FloweryWhite2.jpg',
+        param: 'flowerywhite2',
     },
     flowerypurple: {
         color: 'Flowery Purple',
         img: 'FloweryPurple.jpg',
+        param: 'flowerypurple',
     },
     flowerypink: {
         color: 'Flowery Pink',
@@ -75,5 +83,6 @@ export const selection = {
     gardenflowers: {
         color: 'Garden Flowers',
         img: 'GardenFlowers.jpg',
+        param: 'gardenflowers',
     },
 };
