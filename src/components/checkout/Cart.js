@@ -65,7 +65,19 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
     const classes = useStyles();
     const [paypalError, setPaypalError] = useState(false);
     const [checkedOut, setCheckedOut] = useState(false);
-    const [shippingFee] = useState(amount < 5 ? 5 : 0);
+    const shippingPrice = 5;
+    const [shippingFee] = useState(amount < 5 ? shippingPrice : 0);
+
+    const maskPrice = 10;
+    let env = 'production';
+    let currency = 'USD';
+    let total = amount * maskPrice + shippingFee;
+    const client = {
+        sandbox:
+            'AUG0EGjB_-KelBfT2WHzsIunv893fV-rOmpXfou5lP1y_-j5EfUXTQa-go5hebKNF3EnUetQn06iB9_V',
+        production:
+            'Aaha3zpLzRiJwzYbxP_IrkxWtN4IrE9nzvYC0JGXJcYxo2BmbtsJhHfNLuTpx2A7XBWlklKTXqXEJGgy',
+    };
 
     const onSuccess = (payment) => {
         console.log('The payment has succeeded!', payment);
@@ -115,17 +127,6 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
                 </div>
             </React.Fragment>
         );
-    };
-
-    const maskPrice = 10;
-    let env = 'sandbox';
-    let currency = 'USD';
-    let total = amount * maskPrice + shippingFee;
-    const client = {
-        sandbox:
-            'AUG0EGjB_-KelBfT2WHzsIunv893fV-rOmpXfou5lP1y_-j5EfUXTQa-go5hebKNF3EnUetQn06iB9_V',
-        production:
-            'Aaha3zpLzRiJwzYbxP_IrkxWtN4IrE9nzvYC0JGXJcYxo2BmbtsJhHfNLuTpx2A7XBWlklKTXqXEJGgy',
     };
 
     if (checkedOut) return <Redirect to="/success" />;
