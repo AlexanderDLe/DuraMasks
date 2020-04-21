@@ -50,10 +50,6 @@ const useStyles = makeStyles({
     total: {
         fontWeight: 700,
     },
-    paypalAUP: {
-        color: 'black !important',
-        textDecoration: 'none',
-    },
 });
 
 const API = 'https://0n6fj67t7l.execute-api.us-west-1.amazonaws.com/dev/mail';
@@ -76,6 +72,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
         const data = {
             orders,
             address: payment.address,
+            email: payment.email,
         };
         axios.post(API, data, header);
         resetOrders();
@@ -105,7 +102,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
                                 color: 'rgba(0,0,0,.5)',
                             }}
                         >
-                            Free shipping if you order 5 or more items
+                            Free shipping for $50+ orders.
                         </span>
                     </p>
                     <p>${shippingFee}</p>
@@ -121,7 +118,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
     };
 
     const maskPrice = 10;
-    let env = 'production';
+    let env = 'sandbox';
     let currency = 'USD';
     let total = amount * maskPrice + shippingFee;
     const client = {
@@ -199,7 +196,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
             <CardActions className={classes.itemActions}>
                 <Button size="small" color="primary">
                     <Link to="/selection" className={classes.link}>
-                        Back to Selections
+                        Back to Selection
                     </Link>
                 </Button>
                 {amount === 0 ? (
@@ -223,14 +220,6 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
             ) : (
                 ''
             )}
-            <div style={{ textAlign: 'right', fontSize: '.7rem', padding: 8 }}>
-                <a
-                    className={classes.paypalAUP}
-                    href="https://www.paypal.com/us/webapps/mpp/ua/acceptableuse-full"
-                >
-                    PayPal Acceptable Use Policy
-                </a>
-            </div>
         </Card>
     );
 };

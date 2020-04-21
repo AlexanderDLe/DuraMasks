@@ -155,7 +155,7 @@ function Item({ match, addOrder }) {
             <CardMedia
                 className={classes.media}
                 image={require(`../../img/PostMaskPhotos/${data.img}`)}
-                title="Mask Image"
+                title={data.color}
                 onClick={handleModalOpen}
                 style={{ cursor: 'pointer' }}
             />

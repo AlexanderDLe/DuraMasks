@@ -17,6 +17,16 @@ function Copyright() {
             >
                 Refund, Customer Service, & Privacy Policy
             </Link>
+            <a
+                // className={classes.paypalAUP}
+                style={{ color: 'rgba(0, 0, 0, 0.54)', textDecoration: 'none' }}
+                href="https://www.paypal.com/us/webapps/mpp/ua/acceptableuse-full"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                {' '}
+                | PayPal Acceptable Use Policy
+            </a>
         </Typography>
     );
 }

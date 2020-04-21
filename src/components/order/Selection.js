@@ -40,7 +40,7 @@ function Selection() {
                 component="h2"
                 style={{ color: 'rgba(0,0,0,.6)' }}
             >
-                Free shipping if you order 5 or more items.
+                Free shipping for $50+ orders.
                 <br />
                 More designs coming soon.
             </Typography>

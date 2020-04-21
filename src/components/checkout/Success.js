@@ -37,12 +37,12 @@ const Success = () => {
         <Card className={classes.root} elevation={3}>
             <CardContent>
                 <Typography variant="h4" component="h2">
-                    Thank you for your order
+                    Thank You
                 </Typography>
             </CardContent>
 
             <CardContent style={{ paddingTop: 0, paddingBottom: 20 }}>
-                Payment was successful.
+                Your order was successful.
             </CardContent>
             <CardActions className={classes.itemActions}>
                 <Button
@@ -51,7 +51,7 @@ const Success = () => {
                     color="primary"
                 >
                     <Link to="/selection" className={classes.link}>
-                        View Selections
+                        View Selection
                     </Link>
                 </Button>
             </CardActions>

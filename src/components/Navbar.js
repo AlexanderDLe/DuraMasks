@@ -3,6 +3,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
+import FacemaskIcon from '../img/FacemaskIcon.png';
 
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -34,6 +35,18 @@ const Navbar = ({ amount }) => {
             <AppBar position="static">
                 <Container>
                     <Toolbar>
+                        <Link className={classes.link} to="/">
+                            <img
+                                style={{
+                                    height: 'auto',
+                                    width: 45,
+                                    marginRight: 4,
+                                    paddingTop: 4,
+                                }}
+                                src={FacemaskIcon}
+                                alt="Facemask Icon"
+                            />
+                        </Link>
                         <Typography variant="h6" className={classes.title}>
                             <Link className={classes.link} to="/">
                                 CA Facemasks

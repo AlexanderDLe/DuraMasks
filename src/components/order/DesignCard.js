@@ -38,6 +38,7 @@ const useStyles = makeStyles({
 
 function DesignCard({ design }) {
     const classes = useStyles();
+
     return (
         <Grid item xs={6} sm={4} md={3}>
             <Link className={classes.designName} to={`/item/${design.param}`}>
@@ -45,7 +46,7 @@ function DesignCard({ design }) {
                     <CardMedia
                         className={classes.media}
                         image={require(`../../img/SmallMaskPhotos/${design.img}`)}
-                        title="Mask Image"
+                        title={design.color}
                     />
                     <CardContent className={classes.colorTitle}>
                         <Typography variant="h6" component="h2">
