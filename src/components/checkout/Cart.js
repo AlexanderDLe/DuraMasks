@@ -68,9 +68,9 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
     const shippingPrice = 5;
     const [shippingFee] = useState(amount < 5 ? shippingPrice : 0);
 
-    const maskPrice = 10;
     let env = 'production';
     let currency = 'USD';
+    const maskPrice = 10;
     let total = amount * maskPrice + shippingFee;
     const client = {
         sandbox:

@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -10,15 +9,17 @@ import { Link } from 'react-router-dom';
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
+        height: 210,
         transform: 'scale(1)',
         transition: 'transform 1s',
         '&:hover': {
             transform: 'scale(1.05)',
             transition: 'transform .5s',
         },
-    },
-    media: {
-        height: 140,
+        display: 'flex',
+        justifyContent: 'center',
+        textAlign: 'center',
+        alignItems: 'center',
     },
     link: {
         textDecoration: 'none',
@@ -34,21 +35,23 @@ const useStyles = makeStyles({
     },
 });
 
-function DesignCard({ design }) {
+function CustomCard() {
     const classes = useStyles();
 
     return (
         <Grid item xs={6} sm={4} md={3}>
-            <Link className={classes.designName} to={`/item/${design.param}`}>
+            <Link className={classes.designName} to={`/custom`}>
                 <Card className={classes.root}>
-                    <CardMedia
-                        className={classes.media}
-                        image={require(`../../img/SmallMaskPhotos/${design.img}`)}
-                        title={design.color}
-                    />
                     <CardContent className={classes.colorTitle}>
-                        <Typography variant="h6" component="h2">
-                            {design.color}
+                        <Typography variant="h4" component="h2">
+                            Custom
+                        </Typography>
+                        <Typography
+                            style={{ color: 'rgba(0,0,0,.65' }}
+                            variant="body1"
+                            component="h2"
+                        >
+                            Use your own designs
                         </Typography>
                     </CardContent>
                 </Card>
@@ -57,4 +60,4 @@ function DesignCard({ design }) {
     );
 }
 
-export default DesignCard;
+export default CustomCard;

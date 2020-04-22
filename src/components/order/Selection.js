@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 
 import DesignCard from './DesignCard';
+import CustomCard from './CustomCard';
 import { MaskDesigns } from '../masks/MaskDesigns';
 
 const useStyles = makeStyles((theme) => ({
@@ -52,6 +53,7 @@ function Selection() {
             ></Typography>
             <Grid container spacing={3}>
                 {renderDesigns()}
+                <CustomCard />
             </Grid>
         </Container>
     );
