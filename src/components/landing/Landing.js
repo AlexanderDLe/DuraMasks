@@ -5,7 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
-import { Parallax } from 'react-parallax';
 
 import Cards from './Cards';
 import Carousel from './Carousel';
@@ -40,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     testimonialSection: {
         backgroundColor: '#fff',
         padding: theme.spacing(6, 0, 6),
+        paddingBottom: 0,
     },
 }));
 
@@ -51,14 +51,7 @@ export default function Album() {
 
     return (
         <main style={{ width: '100%' }}>
-            <Parallax
-                // bgImage={require('../../img/PostMaskPhotos/LandingMask.jpg')}
-                bgImage={require('../../img/WomanWithMask.jpg')}
-                bgImageAlt="Navy Facemask"
-                strength={150}
-            >
-                <div style={{ height: '500px' }} />
-            </Parallax>
+            <div className="landing-image"></div>
             <div className={classes.heroContent}>
                 <Container maxWidth="sm">
                     <Typography
@@ -133,7 +126,7 @@ export default function Album() {
                 <Container
                     className={classes.cardGrid}
                     maxWidth="sm"
-                    style={{ paddingBottom: 0 }}
+                    style={{ padding: 16 }}
                 >
                     <Carousel />
                 </Container>

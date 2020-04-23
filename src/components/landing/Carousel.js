@@ -20,7 +20,7 @@ function Carousel() {
             naturalSlideHeight={25}
             totalSlides={3}
             style={{ textAlign: 'center' }}
-            interval={8000}
+            interval={5000}
             isPlaying={true}
         >
             <Slider>
@@ -33,7 +33,9 @@ function Carousel() {
                         style={{ fontSize: '1rem' }}
                     >
                         "The masks created here are very comfortable and fit
-                        nicely."
+                        very nicely. I love the many designs available. I would
+                        highly recommend these facemasks during this difficult
+                        time to help provide safety."
                     </Typography>
                     <Typography
                         variant="caption"
@@ -54,7 +56,9 @@ function Carousel() {
                         style={{ fontSize: '1rem' }}
                     >
                         "The masks created here are very comfortable and fit
-                        nicely."
+                        very nicely. I love the many designs available. I would
+                        highly recommend these facemasks during this difficult
+                        time to help provide safety."
                     </Typography>
                     <Typography
                         variant="caption"
@@ -75,7 +79,9 @@ function Carousel() {
                         style={{ fontSize: '1rem' }}
                     >
                         "The masks created here are very comfortable and fit
-                        nicely."
+                        very nicely. I love the many designs available. I would
+                        highly recommend these facemasks during this difficult
+                        time to help provide safety."
                     </Typography>
                     <Typography
                         variant="caption"
