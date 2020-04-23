@@ -24,3 +24,4 @@ yarn-error.log*
 
 # unused images
 /src/img/PreMasksPhotos
+/src/img/PreMaskPhotos2

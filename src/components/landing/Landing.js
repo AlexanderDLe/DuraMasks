@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { Parallax } from 'react-parallax';
 
 import Cards from './Cards';
+import Carousel from './Carousel';
 
 const useStyles = makeStyles((theme) => ({
     heroContent: {
@@ -36,6 +37,10 @@ const useStyles = makeStyles((theme) => ({
         color: 'white',
         textDecoration: 'none',
     },
+    testimonialSection: {
+        backgroundColor: '#fff',
+        padding: theme.spacing(6, 0, 6),
+    },
 }));
 
 export default function Album() {
@@ -45,13 +50,14 @@ export default function Album() {
     }, []);
 
     return (
-        <main>
+        <main style={{ width: '100%' }}>
             <Parallax
-                bgImage={require('../../img/PostMaskPhotos/LandingMask.jpg')}
+                // bgImage={require('../../img/PostMaskPhotos/LandingMask.jpg')}
+                bgImage={require('../../img/WomanWithMask.jpg')}
                 bgImageAlt="Navy Facemask"
                 strength={150}
             >
-                <div style={{ height: '300px' }} />
+                <div style={{ height: '500px' }} />
             </Parallax>
             <div className={classes.heroContent}>
                 <Container maxWidth="sm">
@@ -108,9 +114,30 @@ export default function Album() {
                     </div>
                 </Container>
             </div>
-            <Container className={classes.cardGrid} maxWidth="md">
-                <Cards />
-            </Container>
+            <div className="landing-cards-div">
+                <div className="landing-cards-bg-overlay"></div>
+                <Container className={classes.cardGrid} maxWidth="md">
+                    <Cards />
+                </Container>
+            </div>
+            <div className={classes.testimonialSection}>
+                <Typography
+                    component="h2"
+                    variant="h4"
+                    align="center"
+                    color="textPrimary"
+                    gutterBottom
+                >
+                    Testimonials
+                </Typography>
+                <Container
+                    className={classes.cardGrid}
+                    maxWidth="sm"
+                    style={{ paddingBottom: 0 }}
+                >
+                    <Carousel />
+                </Container>
+            </div>
         </main>
     );
 }

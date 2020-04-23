@@ -160,7 +160,7 @@ function Item({ match, addOrder }) {
                 style={{ cursor: 'pointer' }}
             />
             <CardContent className={classes.customizeBox}>
-                <FormControl style={{ width: '40%' }} component="fieldset">
+                <FormControl style={{ width: '50%' }} component="fieldset">
                     <FormLabel component="legend">Select Size</FormLabel>
                     <RadioGroup
                         aria-label="Mask Size"
@@ -171,31 +171,31 @@ function Item({ match, addOrder }) {
                         <FormControlLabel
                             value="XL"
                             control={<Radio color="primary" />}
-                            label='XL (10.5" x 7")'
+                            label='XL Adult (10.5" x 7")'
                         />
                         <FormControlLabel
                             value="L"
                             control={<Radio color="primary" />}
-                            label='L (10" x 6")'
+                            label='L Adult (10" x 6")'
                         />
                         <FormControlLabel
                             value="M"
                             control={<Radio color="primary" />}
-                            label='M (9" x 5.5")'
+                            label='M Teen (9" x 5.5")'
                         />
                         <FormControlLabel
                             value="S"
                             control={<Radio color="primary" />}
-                            label='S (8" x 5")'
+                            label='S Child (8" x 5")'
                         />
                         <FormControlLabel
                             value="XS"
                             control={<Radio color="primary" />}
-                            label='XS (7" x 4.5")'
+                            label='XS Child (7" x 4.5")'
                         />
                     </RadioGroup>
                 </FormControl>
-                <div style={{ width: '60%' }}>
+                <div style={{ width: '50%' }}>
                     <FormLabel style={{ paddingLeft: 5 }} component="legend">
                         Amount
                     </FormLabel>

@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 
 import DesignCard from './DesignCard';
 import CustomCard from './CustomCard';
-import { MaskDesigns } from '../masks/MaskDesigns';
+import { selection } from '../masks/MaskDesigns';
 
 const useStyles = makeStyles((theme) => ({
     title: {
@@ -25,8 +25,8 @@ function Selection() {
     }, []);
 
     const renderDesigns = () => {
-        return MaskDesigns.map((design, index) => {
-            return <DesignCard design={design} key={index} />;
+        return Object.keys(selection).map((key, index) => {
+            return <DesignCard design={selection[key]} key={index} />;
         });
     };
 

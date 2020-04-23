@@ -1,45 +1,13 @@
-export const MaskDesigns = [
-    { color: 'Navy Blue', param: 'navyblue', img: 'NavyBlue.jpg' },
-    { color: 'Grey', param: 'grey', img: 'Grey.jpg' },
-    {
-        color: 'Black Textured',
-        param: 'blacktextured',
-        img: 'BlackTextured.jpg',
-    },
-    {
-        color: 'Navy Blue Bandana',
-        param: 'navybluebandana',
-        img: 'NavyBlueBandana.jpg',
-    },
-    { color: 'Dotted', param: 'dotted', img: 'Dotted.jpg' },
-    {
-        color: 'Flowery White',
-        param: 'flowerywhite',
-        img: 'FloweryWhite.jpg',
-    },
-    {
-        color: 'Flowery White 2',
-        param: 'flowerywhite2',
-        img: 'FloweryWhite2.jpg',
-    },
-    {
-        color: 'Flowery Purple',
-        param: 'flowerypurple',
-        img: 'FloweryPurple.jpg',
-    },
-    { color: 'Flowery Pink', param: 'flowerypink', img: 'FloweryPink.jpg' },
-    {
-        color: 'Garden Flowers',
-        param: 'gardenflowers',
-        img: 'GardenFlowers.jpg',
-    },
-];
-
 export const selection = {
-    navyblue: {
-        color: 'Navy Blue',
-        img: 'NavyBlue.jpg',
-        param: 'navyblue',
+    black: {
+        color: 'Black',
+        img: 'Black.jpg',
+        param: 'black',
+    },
+    lightblue: {
+        color: 'Light Blue',
+        img: 'LightBlue.jpg',
+        param: 'lightblue',
     },
     grey: {
         color: 'Grey',
@@ -51,6 +19,16 @@ export const selection = {
         img: 'BlackTextured.jpg',
         param: 'blacktextured',
     },
+    blacknoise: {
+        color: 'Black Noise',
+        img: 'BlackNoise.jpg',
+        param: 'blacknoise',
+    },
+    white: {
+        color: 'White',
+        img: 'White.jpg',
+        param: 'white',
+    },
     navybluebandana: {
         color: 'Navy Blue Bandana',
         img: 'NavyBlueBandana.jpg',
@@ -60,6 +38,21 @@ export const selection = {
         color: 'Dotted',
         img: 'Dotted.jpg',
         param: 'dotted',
+    },
+    redtextured: {
+        color: 'Red Textured',
+        img: 'RedTextured.jpg',
+        param: 'redtextured',
+    },
+    americanflag: {
+        color: 'American Flag',
+        img: 'AmericanFlag.jpg',
+        param: 'americanflag',
+    },
+    blackandwhitepatterns: {
+        color: 'Black And White Patterns',
+        img: 'BlackAndWhitePatterns.jpg',
+        param: 'blackandwhitepatterns',
     },
     flowerywhite: {
         color: 'Flowery White',
@@ -79,10 +72,26 @@ export const selection = {
     flowerypink: {
         color: 'Flowery Pink',
         img: 'FloweryPink.jpg',
+        param: 'flowerypink',
     },
     gardenflowers: {
         color: 'Garden Flowers',
         img: 'GardenFlowers.jpg',
         param: 'gardenflowers',
+    },
+    floweryblue: {
+        color: 'Flowery Blue',
+        img: 'FloweryBlue.jpg',
+        param: 'floweryblue',
+    },
+    leopard: {
+        color: 'Leopard',
+        img: 'Leopard.jpg',
+        param: 'leopard',
+    },
+    blackandredstripes: {
+        color: 'Black and Red Stripes',
+        img: 'BlackAndRedStripes.jpg',
+        param: 'blackandredstripes',
     },
 };

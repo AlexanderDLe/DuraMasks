@@ -14,3 +14,20 @@
     transform: scale(1.05);
     transition: all 1s;
 }
+
+.slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide-buttons {
+    margin: 8px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+.landing-cards-div {
+    background: #000 url('../img/BlueBG.jpg') no-repeat center;
+    background-size: cover;
+}

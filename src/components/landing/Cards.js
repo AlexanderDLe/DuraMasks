@@ -12,13 +12,6 @@ import Comfort from '../../img/Comfort.png';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-    heroContent: {
-        backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(8, 0, 6),
-    },
-    heroButtons: {
-        marginTop: theme.spacing(4),
-    },
     cardGrid: {
         paddingTop: theme.spacing(8),
         paddingBottom: theme.spacing(8),
@@ -27,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
+        borderBottom: '2px solid #3f51b5',
     },
     cardMedia: {
         paddingTop: '56.25%', // 16:9
@@ -52,7 +46,7 @@ function Cards() {
                         <Typography gutterBottom variant="h5" component="h2">
                             Multi-layered
                         </Typography>
-                        <Typography>
+                        <Typography color="textSecondary">
                             These masks are composed of tight-woven cotton and
                             stabilizer cutaway (rayon & polyester) to ensure
                             thickness.
@@ -71,7 +65,7 @@ function Cards() {
                         <Typography gutterBottom variant="h5" component="h2">
                             Reusable
                         </Typography>
-                        <Typography>
+                        <Typography color="textSecondary">
                             It is highly recommended to wash and dry after each
                             use. We suggest hand-washing with soap then hang to
                             air dry.
@@ -90,7 +84,7 @@ function Cards() {
                         <Typography gutterBottom variant="h5" component="h2">
                             Comfortable
                         </Typography>
-                        <Typography>
+                        <Typography color="textSecondary">
                             Our selection of carefully curated fabrics are soft
                             and easy to wear for extended periods.
                         </Typography>
