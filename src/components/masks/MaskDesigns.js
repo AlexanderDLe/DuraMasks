@@ -14,20 +14,25 @@ export const selection = {
         img: 'Grey.jpg',
         param: 'grey',
     },
-    blacktextured: {
-        color: 'Black Textured',
-        img: 'BlackTextured.jpg',
-        param: 'blacktextured',
+    white: {
+        color: 'White',
+        img: 'White.jpg',
+        param: 'white',
+    },
+    artisanblack: {
+        color: 'Artisan Black',
+        img: 'ArtisanBlack.jpg',
+        param: 'artisanblack',
+    },
+    artisanred: {
+        color: 'Artisan Red',
+        img: 'ArtisanRed.jpg',
+        param: 'artisanred',
     },
     blacknoise: {
         color: 'Black Noise',
         img: 'BlackNoise.jpg',
         param: 'blacknoise',
-    },
-    white: {
-        color: 'White',
-        img: 'White.jpg',
-        param: 'white',
     },
     navybluebandana: {
         color: 'Navy Blue Bandana',
@@ -39,59 +44,54 @@ export const selection = {
         img: 'Dotted.jpg',
         param: 'dotted',
     },
-    redtextured: {
-        color: 'Red Textured',
-        img: 'RedTextured.jpg',
-        param: 'redtextured',
+    patriot: {
+        color: 'Patriot',
+        img: 'Patriot.jpg',
+        param: 'patriot',
     },
-    americanflag: {
-        color: 'American Flag',
-        img: 'AmericanFlag.jpg',
-        param: 'americanflag',
+    tribal: {
+        color: 'Tribal',
+        img: 'Tribal.jpg',
+        param: 'tribal',
     },
-    blackandwhitepatterns: {
-        color: 'Black And White Patterns',
-        img: 'BlackAndWhitePatterns.jpg',
-        param: 'blackandwhitepatterns',
+    floralrose: {
+        color: 'Floral Rose',
+        img: 'FloralRose.jpg',
+        param: 'floralrose',
     },
-    flowerywhite: {
-        color: 'Flowery White',
-        img: 'FloweryWhite.jpg',
-        param: 'flowerywhite',
+    floralwhite: {
+        color: 'Floral White',
+        img: 'FloralWhite.jpg',
+        param: 'floralwhite',
     },
-    flowerywhite2: {
-        color: 'Flowery White 2',
-        img: 'FloweryWhite2.jpg',
-        param: 'flowerywhite2',
+    florallavender: {
+        color: 'Floral Lavender',
+        img: 'FloralLavender.jpg',
+        param: 'florallavender',
     },
-    flowerypurple: {
-        color: 'Flowery Purple',
-        img: 'FloweryPurple.jpg',
-        param: 'flowerypurple',
+    floralpink: {
+        color: 'Floral Pink',
+        img: 'FloralPink.jpg',
+        param: 'floralpink',
     },
-    flowerypink: {
-        color: 'Flowery Pink',
-        img: 'FloweryPink.jpg',
-        param: 'flowerypink',
+    floralblue: {
+        color: 'Floral Blue',
+        img: 'FloralBlue.jpg',
+        param: 'floralblue',
     },
-    gardenflowers: {
-        color: 'Garden Flowers',
-        img: 'GardenFlowers.jpg',
-        param: 'gardenflowers',
-    },
-    floweryblue: {
-        color: 'Flowery Blue',
-        img: 'FloweryBlue.jpg',
-        param: 'floweryblue',
+    garden: {
+        color: 'Garden',
+        img: 'Garden.jpg',
+        param: 'garden',
     },
     leopard: {
         color: 'Leopard',
         img: 'Leopard.jpg',
         param: 'leopard',
     },
-    blackandredstripes: {
-        color: 'Black and Red Stripes',
-        img: 'BlackAndRedStripes.jpg',
-        param: 'blackandredstripes',
+    violetredzebra: {
+        color: 'Violet Red Zebra',
+        img: 'VioletRedZebra.jpg',
+        param: 'violetredzebra',
     },
 };
