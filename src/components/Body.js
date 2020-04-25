@@ -8,6 +8,7 @@ import Cart from './checkout/Cart';
 import Success from './checkout/Success';
 import Policies from './Policies';
 import CustomItem from './order/CustomItem';
+import Pricing from './pricing/Pricing';
 
 function Body(props) {
     const { removeOrder, addOrder, orders, resetOrders, amount } = props;
@@ -23,6 +24,7 @@ function Body(props) {
                     render={(props) => <Item {...props} addOrder={addOrder} />}
                 />
                 <Route exact path="/custom" component={CustomItem} />
+                <Route exact path="/pricing" component={Pricing} />
                 <Route
                     exact
                     path="/cart"

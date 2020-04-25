@@ -66,11 +66,11 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
     const [paypalError, setPaypalError] = useState(false);
     const [checkedOut, setCheckedOut] = useState(false);
     const shippingPrice = 5;
-    const [shippingFee] = useState(amount < 5 ? shippingPrice : 0);
 
     let env = 'production';
     let currency = 'USD';
-    const maskPrice = 10;
+    const maskPrice = amount < 50 ? 10 : 6;
+    const shippingFee = amount < 5 ? shippingPrice : 0;
     let total = amount * maskPrice + shippingFee;
     const client = {
         sandbox:

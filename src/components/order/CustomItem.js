@@ -58,12 +58,9 @@ function CustomItem() {
                 </p>
                 <p>
                     <br />
-                    2424 W Ball Rd
+                    2424 W Ball Rd, Unit D
                     <br />
                     Anaheim, CA 92804.
-                    <br />
-                    <br />
-                    Our store is the CLEANERS.
                 </p>
             </CardContent>
 
