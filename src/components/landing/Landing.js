@@ -7,7 +7,7 @@ import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
 
 import Cards from './Cards';
-import Carousel from './Carousel';
+import Testimonials from './Testimonials';
 
 const useStyles = makeStyles((theme) => ({
     heroContent: {
@@ -128,7 +128,7 @@ export default function Album() {
                     maxWidth="sm"
                     style={{ padding: 16 }}
                 >
-                    <Carousel />
+                    <Testimonials />
                 </Container>
             </div>
         </main>

@@ -5,7 +5,6 @@ import {
     Slide,
     ButtonBack,
     ButtonNext,
-    // DotGroup,
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import Typography from '@material-ui/core/Typography';
@@ -17,8 +16,8 @@ function Carousel() {
     return (
         <CarouselProvider
             naturalSlideWidth={100}
-            naturalSlideHeight={25}
-            totalSlides={3}
+            naturalSlideHeight={45}
+            totalSlides={2}
             style={{ textAlign: 'center' }}
             interval={5000}
             isPlaying={true}
@@ -32,10 +31,14 @@ function Carousel() {
                         paragraph
                         style={{ fontSize: '1rem' }}
                     >
-                        "The masks created here are very comfortable and fit
-                        very nicely. I love the many designs available. I would
-                        highly recommend these facemasks during this difficult
-                        time to help provide safety."
+                        "I am very particular for buying Masks for myself and
+                        family members so I have to search for a company who can
+                        provide good quality masks with reasonable prices. I
+                        found these Masks able to provide what I’m looking for.
+                        I’m very happy once I tried it on. It fit my face
+                        snuggly and I can breathe with it. Knowing they have 3
+                        layers gives it more protection. I encourage everyone to
+                        buy these Masks."
                     </Typography>
                     <Typography
                         variant="caption"
@@ -44,30 +47,7 @@ function Carousel() {
                         paragraph
                         style={{ fontSize: '1rem' }}
                     >
-                        - Elizabeth La
-                    </Typography>
-                </Slide>
-                <Slide className="slide" index={1}>
-                    <Typography
-                        variant="caption"
-                        align="center"
-                        color="textSecondary"
-                        paragraph
-                        style={{ fontSize: '1rem' }}
-                    >
-                        "The masks created here are very comfortable and fit
-                        very nicely. I love the many designs available. I would
-                        highly recommend these facemasks during this difficult
-                        time to help provide safety."
-                    </Typography>
-                    <Typography
-                        variant="caption"
-                        align="center"
-                        color="textSecondary"
-                        paragraph
-                        style={{ fontSize: '1rem' }}
-                    >
-                        - Elizabeth La
+                        - Gina Le
                     </Typography>
                 </Slide>
                 <Slide className="slide" index={1}>
@@ -76,12 +56,12 @@ function Carousel() {
                         align="center"
                         color="textSecondary"
                         paragraph
-                        style={{ fontSize: '1rem' }}
+                        style={{ fontSize: '1rem', paddingTop: 30 }}
                     >
-                        "The masks created here are very comfortable and fit
-                        very nicely. I love the many designs available. I would
-                        highly recommend these facemasks during this difficult
-                        time to help provide safety."
+                        "I brought it home and my mom loved it and stole them
+                        from me. I had to get more! I like them. They’re
+                        comfortable, covers my face, and is not too heavy. I can
+                        breath easily through them. Would highly recommend."
                     </Typography>
                     <Typography
                         variant="caption"
@@ -90,7 +70,7 @@ function Carousel() {
                         paragraph
                         style={{ fontSize: '1rem' }}
                     >
-                        - Elizabeth La
+                        - Oscar Mejia
                     </Typography>
                 </Slide>
             </Slider>

@@ -65,13 +65,14 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
     const classes = useStyles();
     const [paypalError, setPaypalError] = useState(false);
     const [checkedOut, setCheckedOut] = useState(false);
-    const shippingPrice = 5;
 
-    let env = 'production';
-    let currency = 'USD';
-    const maskPrice = amount < 50 ? 10 : 6;
-    const shippingFee = amount < 5 ? shippingPrice : 0;
+    const currency = 'USD';
+    const maskPrice = 10;
+    const shippingPrice = 5;
+    const shippingFee = amount * maskPrice < 50 ? shippingPrice : 0;
     let total = amount * maskPrice + shippingFee;
+    // const total = 1;
+    let env = 'production';
     const client = {
         sandbox:
             'AUG0EGjB_-KelBfT2WHzsIunv893fV-rOmpXfou5lP1y_-j5EfUXTQa-go5hebKNF3EnUetQn06iB9_V',
