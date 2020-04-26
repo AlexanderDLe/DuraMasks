@@ -8,15 +8,30 @@ import {
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import Typography from '@material-ui/core/Typography';
+import { useMediaQuery } from '@material-ui/core';
 
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 function Carousel() {
+    const navMediaQuery580 = useMediaQuery('(min-width:580px)');
+    const navMediaQuery500 = useMediaQuery('(min-width:500px)');
+    const navMediaQuery400 = useMediaQuery('(min-width:400px)');
+    const navMediaQuery320 = useMediaQuery('(min-width:320px)');
     return (
         <CarouselProvider
             naturalSlideWidth={100}
-            naturalSlideHeight={45}
+            naturalSlideHeight={
+                navMediaQuery580
+                    ? 45
+                    : navMediaQuery500
+                    ? 60
+                    : navMediaQuery400
+                    ? 75
+                    : navMediaQuery320
+                    ? 85
+                    : 100
+            }
             totalSlides={2}
             style={{ textAlign: 'center' }}
             interval={5000}
@@ -29,7 +44,9 @@ function Carousel() {
                         align="center"
                         color="textSecondary"
                         paragraph
-                        style={{ fontSize: '1rem' }}
+                        style={{
+                            fontSize: `${navMediaQuery580 ? '1rem' : '.85rem'}`,
+                        }}
                     >
                         "I am very particular for buying Masks for myself and
                         family members so I have to search for a company who can
@@ -56,7 +73,9 @@ function Carousel() {
                         align="center"
                         color="textSecondary"
                         paragraph
-                        style={{ fontSize: '1rem', paddingTop: 30 }}
+                        style={{
+                            fontSize: `${navMediaQuery580 ? '1rem' : '.85rem'}`,
+                        }}
                     >
                         "I brought it home and my mom loved it and stole them
                         from me. I had to get more! I like them. They’re

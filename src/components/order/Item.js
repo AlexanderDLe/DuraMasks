@@ -29,8 +29,8 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 450,
         borderBottom: '2px solid #3f51b5',
         paddingBottom: 8,
-        marginTop: 24,
-        marginBottom: 24,
+
+        margin: 24,
     },
     media: {
         height: 280,
@@ -56,11 +56,10 @@ const useStyles = makeStyles((theme) => ({
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 'auto',
+        width: '100%',
         backgroundColor: theme.palette.background.paper,
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
-        padding: 8,
     },
 }));
 
@@ -136,6 +135,8 @@ function Item({ match, addOrder }) {
             <img
                 src={require(`../../img/PostMaskPhotos/${data.img}`)}
                 alt="Mask"
+                onClick={handleModalClose}
+                style={{ width: '100%' }}
             />
         </div>
     );
