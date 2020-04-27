@@ -79,19 +79,6 @@ const Navbar = ({ amount }) => {
             >
                 Pricing
             </Link>
-            <Link
-                to="/cart"
-                className={classes.link}
-                style={{ marginRight: '5px' }}
-            >
-                Cart
-            </Link>
-            <Link to="/cart" className={classes.link}>
-                <ShoppingCartIcon style={{ fontSize: '1.2rem' }} />
-            </Link>
-            <Link to="/cart" className={classes.cartAmount}>
-                {amount}
-            </Link>
         </React.Fragment>
     );
 
@@ -147,7 +134,9 @@ const Navbar = ({ amount }) => {
                                 <img
                                     style={{
                                         height: 'auto',
-                                        width: 45,
+                                        width: `${
+                                            navMediaQuery ? '45px' : '35px'
+                                        }`,
                                         marginRight: 4,
                                         paddingTop: 4,
                                     }}
@@ -156,11 +145,35 @@ const Navbar = ({ amount }) => {
                                 />
                             </Link>
                             <Typography variant="h6" className={classes.title}>
-                                <Link className={classes.link} to="/">
+                                <Link
+                                    style={{
+                                        fontSize: `${
+                                            navMediaQuery ? '1.15rem' : '.9rem'
+                                        }`,
+                                    }}
+                                    className={classes.link}
+                                    to="/"
+                                >
                                     CA Facemasks
                                 </Link>
                             </Typography>
+
                             {navMediaQuery ? fullNav : menuNav}
+                            <Link
+                                to="/cart"
+                                className={classes.link}
+                                style={{ marginRight: '5px' }}
+                            >
+                                Cart
+                            </Link>
+                            <Link to="/cart" className={classes.link}>
+                                <ShoppingCartIcon
+                                    style={{ fontSize: '1.2rem' }}
+                                />
+                            </Link>
+                            <Link to="/cart" className={classes.cartAmount}>
+                                {amount}
+                            </Link>
                         </Toolbar>
                     </Container>
                 </AppBar>
