@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
+import { useMediaQuery } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -29,8 +30,7 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 450,
         borderBottom: '2px solid #3f51b5',
         paddingBottom: 8,
-
-        margin: 24,
+        margin: 16,
     },
     media: {
         height: 280,
@@ -61,12 +61,28 @@ const useStyles = makeStyles((theme) => ({
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
     },
+    spanDimensions: {
+        paddingLeft: 8,
+        color: 'rgba(0, 0, 0, 0.5)',
+        fontSize: '.8rem',
+    },
+    smallSpanDimensions: {
+        color: 'rgba(0, 0, 0, 0.5)',
+        fontSize: '.8rem',
+        paddingBottom: 12,
+    },
+    smallQuery: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
 }));
 
 function Item({ match, addOrder }) {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    const navMediaQuery = useMediaQuery('(min-width:420px)');
 
     const classes = useStyles();
     const data = selection[match.params.id];
@@ -141,6 +157,12 @@ function Item({ match, addOrder }) {
         </div>
     );
 
+    // Radio Label Media Query Styles
+    const radioQuery = navMediaQuery ? classes.normalQuery : classes.smallQuery;
+    const spanQuery = navMediaQuery
+        ? classes.spanDimensions
+        : classes.smallSpanDimensions;
+
     return (
         <Card className={classes.root} elevation={3}>
             <CardContent>
@@ -172,27 +194,58 @@ function Item({ match, addOrder }) {
                         <FormControlLabel
                             value="XL"
                             control={<Radio color="primary" />}
-                            label='XL Adult (10.5" x 7")'
+                            label={
+                                <div className={radioQuery}>
+                                    XL Adult
+                                    <span className={spanQuery}>
+                                        10.5" x 7"
+                                    </span>
+                                </div>
+                            }
+                            className={classes.radioLabel}
                         />
+
                         <FormControlLabel
                             value="L"
                             control={<Radio color="primary" />}
-                            label='L Adult (10" x 6")'
+                            label={
+                                <div className={radioQuery}>
+                                    L Adult
+                                    <span className={spanQuery}>10" x 6"</span>
+                                </div>
+                            }
                         />
                         <FormControlLabel
                             value="M"
                             control={<Radio color="primary" />}
-                            label='M Teen (9" x 5.5")'
+                            label={
+                                <div className={radioQuery}>
+                                    M Teen
+                                    <span className={spanQuery}>9" x 5.5"</span>
+                                </div>
+                            }
                         />
+
                         <FormControlLabel
                             value="S"
                             control={<Radio color="primary" />}
-                            label='S Child (8" x 5")'
+                            label={
+                                <div className={radioQuery}>
+                                    S Child
+                                    <span className={spanQuery}>8" x 5"</span>
+                                </div>
+                            }
                         />
+
                         <FormControlLabel
                             value="XS"
                             control={<Radio color="primary" />}
-                            label='XS Child (7" x 4.5")'
+                            label={
+                                <div className={radioQuery}>
+                                    XS Child
+                                    <span className={spanQuery}>7" x 4.5"</span>
+                                </div>
+                            }
                         />
                     </RadioGroup>
                 </FormControl>

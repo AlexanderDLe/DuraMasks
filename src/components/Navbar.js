@@ -13,6 +13,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
+import Slide from '@material-ui/core/Slide';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -38,6 +41,16 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: 'none',
     },
 }));
+
+function HideOnScroll(props) {
+    const { children, window } = props;
+    const trigger = useScrollTrigger({ target: window ? window() : undefined });
+    return (
+        <Slide appear={false} direction="down" in={!trigger}>
+            {children}
+        </Slide>
+    );
+}
 
 const Navbar = ({ amount }) => {
     const classes = useStyles();
@@ -126,30 +139,32 @@ const Navbar = ({ amount }) => {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
-                <Container>
-                    <Toolbar>
-                        <Link className={classes.link} to="/">
-                            <img
-                                style={{
-                                    height: 'auto',
-                                    width: 45,
-                                    marginRight: 4,
-                                    paddingTop: 4,
-                                }}
-                                src={FacemaskIcon}
-                                alt="Facemask Icon"
-                            />
-                        </Link>
-                        <Typography variant="h6" className={classes.title}>
+            <HideOnScroll>
+                <AppBar>
+                    <Container>
+                        <Toolbar>
                             <Link className={classes.link} to="/">
-                                CA Facemasks
+                                <img
+                                    style={{
+                                        height: 'auto',
+                                        width: 45,
+                                        marginRight: 4,
+                                        paddingTop: 4,
+                                    }}
+                                    src={FacemaskIcon}
+                                    alt="Facemask Icon"
+                                />
                             </Link>
-                        </Typography>
-                        {navMediaQuery ? fullNav : menuNav}
-                    </Toolbar>
-                </Container>
-            </AppBar>
+                            <Typography variant="h6" className={classes.title}>
+                                <Link className={classes.link} to="/">
+                                    CA Facemasks
+                                </Link>
+                            </Typography>
+                            {navMediaQuery ? fullNav : menuNav}
+                        </Toolbar>
+                    </Container>
+                </AppBar>
+            </HideOnScroll>
         </div>
     );
 };

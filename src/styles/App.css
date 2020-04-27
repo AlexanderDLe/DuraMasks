@@ -1,8 +1,9 @@
 .body-class {
-    min-height: calc(100vh - 180px);
+    min-height: calc(100vh - 116px);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 56px;
 }
 
 .landing-image {

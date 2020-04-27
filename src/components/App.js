@@ -7,16 +7,19 @@ import Body from './Body';
 import Footer from './Footer';
 
 const App = () => {
-    // const testOrder = {
-    //     color: 'Black Textured',
-    //     param: 'blacktextured',
-    //     img: 'BlackTextured.jpg',
-    //     size: 'L',
-    //     amount: '2',
-    // };
-    // const testAmount = 2;
-    const [orders, setOrders] = useState([]);
-    const [amount, setAmount] = useState(0);
+    const testOrder = [
+        {
+            color: 'Black',
+            param: 'black',
+            img: 'Black.jpg',
+            size: 'L',
+            amount: '2',
+        },
+    ];
+    const testAmount = 2;
+    const mode = 'production';
+    const [orders, setOrders] = useState(mode === 'sandbox' ? testOrder : []);
+    const [amount, setAmount] = useState(mode === 'sandbox' ? testAmount : 0);
 
     const addOrder = (data) => {
         const newOrders = [...orders];

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
-import PayPalExpressButton from 'react-paypal-express-checkout';
+import { PayPalButton } from 'react-paypal-button-v2';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -16,7 +15,7 @@ const useStyles = makeStyles({
         maxWidth: 450,
         borderBottom: '2px solid #3f51b5',
         paddingBottom: 8,
-        marginTop: 24,
+        margin: 16,
         marginBottom: 24,
     },
     media: {
@@ -35,8 +34,10 @@ const useStyles = makeStyles({
         display: 'flex',
     },
     itemActions: {
+        width: '100%',
         display: 'flex',
-        justifyContent: 'space-between',
+        flexDirection: 'column',
+        // justifyContent: 'space-between',
     },
     shippingFee: {
         display: 'flex',
@@ -80,14 +81,25 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
             'Aaha3zpLzRiJwzYbxP_IrkxWtN4IrE9nzvYC0JGXJcYxo2BmbtsJhHfNLuTpx2A7XBWlklKTXqXEJGgy',
     };
 
-    const onSuccess = (payment) => {
-        console.log('The payment has succeeded!', payment);
-        const data = {
-            orders,
-            address: payment.address,
-            email: payment.email,
+    const onSuccess = (details, data) => {
+        const info = details.purchase_units[0];
+        const address = {
+            recipient_name: info.shipping.name.full_name,
+            line1: info.shipping.address.address_line_1,
+            line2: info.shipping.address.address_line_2,
+            city: info.shipping.address.admin_area_2,
+            state: info.shipping.address.admin_area_1,
+            postal_code: info.shipping.address.postal_code,
+            country_code: info.shipping.address.country_code,
         };
-        axios.post(API, data, header);
+        const email = details.payer.email_address;
+        const orderID = data.orderID;
+        const event = { orders, address, email, orderID };
+
+        console.log(details);
+        console.log(data);
+        console.log(event);
+        axios.post(API, event, header);
         resetOrders();
         setCheckedOut(true);
     };
@@ -195,26 +207,29 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
                 {renderCartTotals()}
             </CardContent>
 
-            <CardActions className={classes.itemActions}>
-                <Button size="small" color="primary">
-                    <Link to="/selection" className={classes.link}>
-                        Back to Selection
-                    </Link>
-                </Button>
-                {amount === 0 ? (
-                    ''
-                ) : (
-                    <PayPalExpressButton
-                        env={env}
-                        client={client}
+            {amount === 0 ? (
+                ''
+            ) : (
+                <div style={{ padding: '0px 16px' }}>
+                    <PayPalButton
                         currency={currency}
-                        total={total}
-                        onError={onError}
+                        amount={total}
                         onSuccess={onSuccess}
+                        onError={onError}
+                        options={{ clientId: client[env] }}
                         onCancel={onCancel}
                     />
-                )}
-            </CardActions>
+                </div>
+            )}
+            <Button
+                style={{ padding: '8px 16px' }}
+                size="small"
+                color="primary"
+            >
+                <Link to="/selection" className={classes.link}>
+                    Back to Selection
+                </Link>
+            </Button>
             {paypalError ? (
                 <div className={classes.paypalError}>
                     Sorry, there was an error.
