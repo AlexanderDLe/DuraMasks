@@ -68,11 +68,11 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
     const [checkedOut, setCheckedOut] = useState(false);
 
     const currency = 'USD';
-    const maskPrice = 10;
+    const maskPrice = 8;
     const shippingPrice = 5;
-    const shippingFee = amount * maskPrice < 50 ? shippingPrice : 0;
+    const orderTotal = amount * maskPrice;
+    const shippingFee = orderTotal < 50 ? shippingPrice : 0;
     let total = amount * maskPrice + shippingFee;
-    // const total = 1;
     let env = 'production';
     const client = {
         sandbox:
@@ -114,9 +114,19 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
     };
 
     const renderCartTotals = () => {
-        if (amount === 0) return <div>Your cart is empty</div>;
+        if (amount === 0)
+            return <div style={{ paddingBottom: 8 }}>Your cart is empty</div>;
         return (
             <React.Fragment>
+                <div
+                    className={classes.summaryOrder}
+                    style={{ marginBottom: -8 }}
+                >
+                    <div>
+                        <p>Order Total</p>
+                    </div>
+                    <p>${orderTotal}</p>
+                </div>
                 <div className={classes.shippingFee}>
                     <p>
                         Shipping
@@ -127,7 +137,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
                                 color: 'rgba(0,0,0,.5)',
                             }}
                         >
-                            Free shipping for $50+ orders.
+                            Free shipping for $50+ orders (before shipping fee).
                         </span>
                     </p>
                     <p>${shippingFee}</p>
