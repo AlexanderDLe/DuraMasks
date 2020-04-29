@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
     title: {
         flexGrow: 1,
     },
+    navIcon: {
+        paddingTop: 4,
+    },
     link: {
         color: 'white',
         textDecoration: 'none',
@@ -55,33 +58,52 @@ function HideOnScroll(props) {
 const Navbar = ({ amount }) => {
     const classes = useStyles();
     const navMediaQuery = useMediaQuery('(min-width:600px)');
+
+    // Dynamic Nav Styles
+    const navIconStyle = {
+        width: `${navMediaQuery ? '45px' : '35px'}`,
+    };
+    const navTitleStyle = {
+        fontSize: `${navMediaQuery ? '1.15rem' : '.9rem'}`,
+    };
+
+    // Standard Navigation
+    const fullNavItem = (path, label) => (
+        <Link
+            to={`/${path}`}
+            className={classes.link}
+            style={{ marginRight: '20px' }}
+        >
+            {label}
+        </Link>
+    );
+    const fullNav = (
+        <React.Fragment>
+            {fullNavItem('selection', 'Mask Selection')}
+            {fullNavItem('pricing', 'Pricing')}
+        </React.Fragment>
+    );
+
+    // Responsive/Mobile Menu Functionality
     const [anchorEl, setAnchorEl] = useState(null);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
     const handleClose = () => {
         setAnchorEl(null);
     };
-    const fullNav = (
-        <React.Fragment>
+    // Responsive/Mobile Navigation
+    const menuNavItem = (path, label) => (
+        <MenuItem onClick={handleClose}>
             <Link
-                to="/selection"
-                className={classes.link}
+                to={`/${path}`}
+                className={classes.menuItem}
                 style={{ marginRight: '20px' }}
             >
-                Mask Selection
+                {label}
             </Link>
-            <Link
-                to="/pricing"
-                className={classes.link}
-                style={{ marginRight: '20px' }}
-            >
-                Pricing
-            </Link>
-        </React.Fragment>
+        </MenuItem>
     );
-
     const menuNav = (
         <React.Fragment>
             <IconButton onClick={handleClick}>
@@ -93,33 +115,9 @@ const Navbar = ({ amount }) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose}>
-                    <Link
-                        to="/selection"
-                        className={classes.menuItem}
-                        style={{ marginRight: '20px' }}
-                    >
-                        Mask Selection
-                    </Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <Link
-                        to="/pricing"
-                        className={classes.menuItem}
-                        style={{ marginRight: '20px' }}
-                    >
-                        Pricing
-                    </Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <Link
-                        to="/cart"
-                        className={classes.menuItem}
-                        style={{ marginRight: '5px' }}
-                    >
-                        Cart
-                    </Link>
-                </MenuItem>
+                {menuNavItem('selection', 'Mask Selection')}
+                {menuNavItem('pricing', 'Pricing')}
+                {menuNavItem('cart', 'Cart')}
             </Menu>
         </React.Fragment>
     );
@@ -132,25 +130,15 @@ const Navbar = ({ amount }) => {
                         <Toolbar>
                             <Link className={classes.link} to="/">
                                 <img
-                                    style={{
-                                        height: 'auto',
-                                        width: `${
-                                            navMediaQuery ? '45px' : '35px'
-                                        }`,
-                                        marginRight: 4,
-                                        paddingTop: 4,
-                                    }}
+                                    style={navIconStyle}
+                                    className={classes.navIcon}
                                     src={FacemaskIcon}
                                     alt="Facemask Icon"
                                 />
                             </Link>
                             <Typography variant="h6" className={classes.title}>
                                 <Link
-                                    style={{
-                                        fontSize: `${
-                                            navMediaQuery ? '1.15rem' : '.9rem'
-                                        }`,
-                                    }}
+                                    style={navTitleStyle}
                                     className={classes.link}
                                     to="/"
                                 >

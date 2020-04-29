@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 import Cards from './Cards';
 import Testimonials from './Testimonials';
+
 import { useSpring, animated } from 'react-spring';
 
 const useStyles = makeStyles((theme) => ({
@@ -50,7 +51,7 @@ export default function Album() {
         window.scrollTo(0, 0);
     }, []);
 
-    const springDuration = 500;
+    const springDuration = 700;
     const springmass = 100;
     const fadeRight = useSpring({
         config: { duration: springDuration, mass: springmass },

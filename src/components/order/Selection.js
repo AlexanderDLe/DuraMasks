@@ -34,7 +34,7 @@ function Selection() {
     const pattern = [];
 
     const sortCategories = () => {
-        Object.keys(selection).map((key, index) => {
+        Object.keys(selection).map((key) => {
             let category = selection[key].category;
             switch (category) {
                 case 'solid':
@@ -53,10 +53,6 @@ function Selection() {
         });
     };
     sortCategories();
-    console.log(solid);
-    console.log(floral);
-    console.log(pattern);
-    console.log('-------');
 
     const renderCategory = (category) => {
         return category.map((design, index) => {
@@ -65,45 +61,33 @@ function Selection() {
     };
 
     const renderDesigns = () => {
-        return (
-            <React.Fragment>
+        const categoryTitle = (category) => {
+            return (
                 <Typography
                     variant="h5"
                     component="h2"
                     className={classes.categoryTitle}
                 >
-                    Solid Designs
+                    {category} Designs
                 </Typography>
+            );
+        };
+
+        return (
+            <React.Fragment>
+                {categoryTitle('Solid')}
                 <Grid container spacing={3}>
                     {renderCategory(solid)}
                 </Grid>
-                <Typography
-                    variant="h5"
-                    component="h2"
-                    className={classes.categoryTitle}
-                >
-                    Patterned Designs
-                </Typography>
+                {categoryTitle('Patterned')}
                 <Grid container spacing={3}>
                     {renderCategory(pattern)}
                 </Grid>
-                <Typography
-                    variant="h5"
-                    component="h2"
-                    className={classes.categoryTitle}
-                >
-                    Floral Designs
-                </Typography>
+                {categoryTitle('Floral')}
                 <Grid container spacing={3}>
                     {renderCategory(floral)}
                 </Grid>
-                <Typography
-                    variant="h5"
-                    component="h2"
-                    className={classes.categoryTitle}
-                >
-                    Custom Designs
-                </Typography>
+                {categoryTitle('Custom')}
                 <Grid container spacing={3}>
                     <CustomCard />
                 </Grid>
