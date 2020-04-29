@@ -15,8 +15,8 @@ const useStyles = makeStyles({
         maxWidth: 450,
         borderBottom: '2px solid #3f51b5',
         paddingBottom: 8,
-        margin: 16,
-        marginBottom: 24,
+        marginBottom: 16,
+        margin: 40,
     },
     media: {
         height: 350,
@@ -29,27 +29,38 @@ const useStyles = makeStyles({
         color: 'white',
         textDecoration: 'none',
     },
+    designItemName: {
+        color: 'black',
+        textDecoration: 'none',
+    },
     customizeBox: {
         paddingTop: 26,
         display: 'flex',
+    },
+    removeButton: {
+        fontSize: '.7rem',
+        color: 'red',
+        cursor: 'pointer',
     },
     itemActions: {
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
-        // justifyContent: 'space-between',
     },
-    shippingFee: {
+    shippingCaption: {
+        fontSize: '.7rem',
+        color: 'rgba(0,0,0,.5)',
+    },
+    cartCalculation: {
         display: 'flex',
         justifyContent: 'space-between',
-    },
-    summaryOrder: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        paddingBottom: 8,
     },
     total: {
         fontWeight: 700,
+    },
+    designImage: {
+        height: 'auto',
+        width: '120px',
     },
 });
 
@@ -67,6 +78,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
     const [paypalError, setPaypalError] = useState(false);
     const [checkedOut, setCheckedOut] = useState(false);
 
+    // Checkout Configuration
     const currency = 'USD';
     const maskPrice = 8;
     const shippingPrice = 5;
@@ -81,6 +93,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
             'Aaha3zpLzRiJwzYbxP_IrkxWtN4IrE9nzvYC0JGXJcYxo2BmbtsJhHfNLuTpx2A7XBWlklKTXqXEJGgy',
     };
 
+    // Checkout Functionality
     const onSuccess = (details, data) => {
         const info = details.purchase_units[0];
         const address = {
@@ -103,49 +116,38 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
         resetOrders();
         setCheckedOut(true);
     };
-
     const onCancel = (data) => {
         console.log('The payment was canceled', data);
     };
-
     const onError = (err) => {
         console.log('There was an error', err);
         setPaypalError(true);
     };
 
+    // Render Cart Calculations
     const renderCartTotals = () => {
         if (amount === 0)
             return <div style={{ paddingBottom: 8 }}>Your cart is empty</div>;
         return (
             <React.Fragment>
-                <div
-                    className={classes.summaryOrder}
-                    style={{ marginBottom: -8 }}
-                >
+                <div className={classes.cartCalculation}>
                     <div>
                         <p>Order Total</p>
                     </div>
                     <p>${orderTotal}</p>
                 </div>
-                <div className={classes.shippingFee}>
+                <div className={classes.cartCalculation}>
                     <p>
                         Shipping
                         <br />
-                        <span
-                            style={{
-                                fontSize: '.7rem',
-                                color: 'rgba(0,0,0,.5)',
-                            }}
-                        >
+                        <span className={classes.shippingCaption}>
                             Free shipping for $50+ orders (before shipping fee).
                         </span>
                     </p>
                     <p>${shippingFee}</p>
                 </div>
-                <div className={classes.summaryOrder}>
-                    <div>
-                        <p style={{ fontWeight: 700 }}>Total</p>
-                    </div>
+                <div className={classes.cartCalculation}>
+                    <p style={{ fontWeight: 700 }}>Total</p>
                     <p style={{ fontWeight: 700 }}>${total}</p>
                 </div>
             </React.Fragment>
@@ -173,22 +175,19 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
                 </Typography>
 
                 {orders.map((order, index) => (
-                    <div className={classes.summaryOrder} key={index}>
+                    <div className={classes.cartCalculation} key={index}>
                         <div style={{ display: 'flex' }}>
                             <Link to={`/item/${order.param}`}>
                                 <img
                                     src={require(`../../img/SmallMaskPhotos/${order.img}`)}
                                     alt="Facemask"
-                                    style={{ height: 'auto', width: '120px' }}
+                                    className={classes.designImage}
                                 />
                             </Link>
                             <div style={{ padding: 9 }}>
                                 <Typography variant="body1" component="h2">
                                     <Link
-                                        style={{
-                                            color: 'black',
-                                            textDecoration: 'none',
-                                        }}
+                                        className={classes.designItemName}
                                         to={`/item/${order.param}`}
                                     >
                                         {order.amount}x {order.color} Design
@@ -202,11 +201,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
                         <p style={{ textAlign: 'right' }}>
                             ${order.amount * maskPrice} <br />{' '}
                             <span
-                                style={{
-                                    fontSize: '.7rem',
-                                    color: 'red',
-                                    cursor: 'pointer',
-                                }}
+                                className={classes.removeButton}
                                 onClick={() => removeOrder(order)}
                             >
                                 Remove
@@ -231,11 +226,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
                     />
                 </div>
             )}
-            <Button
-                style={{ padding: '8px 16px' }}
-                size="small"
-                color="primary"
-            >
+            <Button style={{ margin: '8px 16px' }} size="small" color="primary">
                 <Link to="/selection" className={classes.link}>
                     Back to Selection
                 </Link>

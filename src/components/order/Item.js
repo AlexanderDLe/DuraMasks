@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
         borderBottom: '2px solid #3f51b5',
         paddingBottom: 8,
         margin: 16,
+        marginTop: 40,
     },
     media: {
         height: 280,

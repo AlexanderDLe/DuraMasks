@@ -75,6 +75,7 @@ function Carousel() {
                         paragraph
                         style={{
                             fontSize: `${navMediaQuery580 ? '1rem' : '.85rem'}`,
+                            paddingTop: 24,
                         }}
                     >
                         "I brought it home and my mom loved it and stole them

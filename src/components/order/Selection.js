@@ -29,6 +29,7 @@ function Selection() {
         window.scrollTo(0, 0);
     }, []);
 
+    // Categorization
     const solid = [];
     const floral = [];
     const pattern = [];
@@ -107,8 +108,6 @@ function Selection() {
                     component="h2"
                     style={{ color: 'rgba(0,0,0,.6)' }}
                 >
-                    Free shipping for $50+ orders.
-                    <br />
                     More designs coming soon.
                 </Typography>
             </div>

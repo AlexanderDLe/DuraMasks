@@ -14,7 +14,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 const useStyles = makeStyles((theme) => ({
     root: {
         paddingBottom: 8,
-        marginTop: 24,
+        marginTop: 40,
         marginBottom: 24,
         maxWidth: 400,
     },
@@ -65,8 +65,8 @@ function Pricing() {
                     shipping fee is applied).
                     <br />
                     <br />
-                    You can also buy masks directly in-person at our shop at
-                    2424 W Ball Rd Unit D, Anaheim, CA 92804.
+                    You can also purchase directly in-person at our shop at 2424
+                    W Ball Rd Unit D, Anaheim, CA 92804.
                 </Typography>
             </CardContent>
         </React.Fragment>

@@ -8,6 +8,8 @@ const useStyles = makeStyles({
         maxWidth: 850,
         borderBottom: '2px solid #3f51b5',
         padding: 16,
+        margin: 24,
+        marginTop: 40,
     },
     media: {
         height: 280,
@@ -38,7 +40,7 @@ function Policies() {
     }, []);
 
     return (
-        <Card style={{ margin: 24 }} className={classes.root} elevation={3}>
+        <Card className={classes.root} elevation={3}>
             <h1>Refund Policy</h1>
             <p>
                 Due to the hazardous nature of used/handled facemasks, we do not
