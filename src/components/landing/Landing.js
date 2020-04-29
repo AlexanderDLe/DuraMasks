@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 import Cards from './Cards';
 import Testimonials from './Testimonials';
+import { useSpring, animated } from 'react-spring';
 
 const useStyles = makeStyles((theme) => ({
     heroContent: {
@@ -49,6 +50,20 @@ export default function Album() {
         window.scrollTo(0, 0);
     }, []);
 
+    const springDuration = 500;
+    const springmass = 100;
+    const fadeRight = useSpring({
+        config: { duration: springDuration, mass: springmass },
+        to: { opacity: 1, transform: 'translateX(0)' },
+        from: { opacity: 0, transform: 'translateX(-30px)' },
+    });
+
+    const fadeLeft = useSpring({
+        config: { duration: springDuration, mass: springmass },
+        to: { opacity: 1, transform: 'translateX(0)' },
+        from: { opacity: 0, transform: 'translateX(30px)' },
+    });
+
     return (
         <main style={{ width: '100%' }}>
             <div className="landing-image"></div>
@@ -79,29 +94,33 @@ export default function Album() {
                     <div className={classes.heroButtons}>
                         <Grid container spacing={2} justify="center">
                             <Grid item>
-                                <Button variant="contained" color="primary">
-                                    <Link
-                                        to="/selection"
-                                        className={classes.link}
-                                    >
-                                        Buy Facemasks
-                                    </Link>
-                                </Button>
+                                <animated.div style={fadeRight}>
+                                    <Button variant="contained" color="primary">
+                                        <Link
+                                            to="/selection"
+                                            className={classes.link}
+                                        >
+                                            Buy Facemasks
+                                        </Link>
+                                    </Button>
+                                </animated.div>
                             </Grid>
                             <Grid item>
-                                <Button variant="outlined" color="primary">
-                                    <a
-                                        style={{
-                                            textDecoration: 'none',
-                                            color: '#3f51b5',
-                                        }}
-                                        target="_blank"
-                                        href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/diy-cloth-face-coverings.html"
-                                        rel="noopener noreferrer"
-                                    >
-                                        Learn More
-                                    </a>
-                                </Button>
+                                <animated.div style={fadeLeft}>
+                                    <Button variant="outlined" color="primary">
+                                        <a
+                                            style={{
+                                                textDecoration: 'none',
+                                                color: '#3f51b5',
+                                            }}
+                                            target="_blank"
+                                            href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/diy-cloth-face-coverings.html"
+                                            rel="noopener noreferrer"
+                                        >
+                                            Learn More
+                                        </a>
+                                    </Button>
+                                </animated.div>
                             </Grid>
                         </Grid>
                     </div>
