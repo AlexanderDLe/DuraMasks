@@ -9,7 +9,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -100,32 +99,28 @@ function Pricing() {
                         {pricingState === 'normal'
                             ? normalPricingContent
                             : wholesalePricingContent}
-                        <ButtonGroup
-                            variant="contained"
+
+                        <Button
                             color="primary"
-                            aria-label="contained primary button group"
-                            style={{ width: '100%', marginTop: 16 }}
+                            style={{
+                                borderTopLeftRadius: '0',
+                                width: '50%',
+                            }}
+                            onClick={setPricingToNormal}
                         >
-                            <Button
-                                style={{
-                                    borderTopLeftRadius: '0',
-                                    width: '50%',
-                                }}
-                                onClick={setPricingToNormal}
-                            >
-                                Normal
-                            </Button>
-                            <Button
-                                style={{
-                                    borderWidth: '2px',
-                                    borderTopRightRadius: '0',
-                                    width: '50%',
-                                }}
-                                onClick={setPricingToWholesale}
-                            >
-                                Wholesale
-                            </Button>
-                        </ButtonGroup>
+                            Normal
+                        </Button>
+                        <Button
+                            color="primary"
+                            style={{
+                                borderWidth: '2px',
+                                borderTopRightRadius: '0',
+                                width: '50%',
+                            }}
+                            onClick={setPricingToWholesale}
+                        >
+                            Wholesale
+                        </Button>
                     </Card>
                 </Grid>
             </Grid>

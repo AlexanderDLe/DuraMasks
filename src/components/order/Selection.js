@@ -18,8 +18,10 @@ const useStyles = makeStyles((theme) => ({
     },
     categoryTitle: {
         fontSize: '1.5rem',
-        paddingTop: 40,
+        paddingLeft: 2,
+        paddingTop: 48,
         paddingBottom: 16,
+        fontWeight: '500',
     },
 }));
 

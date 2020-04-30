@@ -23,6 +23,24 @@ export const selection = {
         param: 'white',
         category: 'solid',
     },
+    pink: {
+        color: 'Pink',
+        img: 'Pink.jpg',
+        param: 'pink',
+        category: 'solid',
+    },
+    // red: {
+    //     color: 'Red',
+    //     img: 'Red.jpg',
+    //     param: 'red',
+    //     category: 'solid',
+    // },
+    steelblue: {
+        color: 'Steel Blue',
+        img: 'SteelBlue.jpg',
+        param: 'steelblue',
+        category: 'solid',
+    },
     artisanblack: {
         color: 'Artisan Black',
         img: 'ArtisanBlack.jpg',
@@ -47,10 +65,16 @@ export const selection = {
         param: 'navybluebandana',
         category: 'pattern',
     },
-    dotted: {
-        color: 'Dotted',
-        img: 'Dotted.jpg',
-        param: 'dotted',
+    blackdotted: {
+        color: 'Black Dotted',
+        img: 'BlackDotted.jpg',
+        param: 'blackdotted',
+        category: 'pattern',
+    },
+    whitedotted: {
+        color: 'White Dotted',
+        img: 'WhiteDotted.jpg',
+        param: 'whitedotted',
         category: 'pattern',
     },
     patriot: {
@@ -101,6 +125,24 @@ export const selection = {
         param: 'floralblue',
         category: 'floral',
     },
+    floralred: {
+        color: 'Floral Red',
+        img: 'FloralRed.jpg',
+        param: 'floralred',
+        category: 'floral',
+    },
+    floralsunset: {
+        color: 'Floral Sunset',
+        img: 'FloralSunset.jpg',
+        param: 'floralsunset',
+        category: 'floral',
+    },
+    floralvibrant: {
+        color: 'Floral Vibrant',
+        img: 'FloralVibrant.jpg',
+        param: 'floralvibrant',
+        category: 'floral',
+    },
     purpleplaid: {
         color: 'Purple Plaid',
         img: 'PurplePlaid.jpg',
@@ -123,6 +165,66 @@ export const selection = {
         color: 'Violet Red Zebra',
         img: 'VioletRedZebra.jpg',
         param: 'violetredzebra',
+        category: 'pattern',
+    },
+    cherries: {
+        color: 'Cherries',
+        img: 'Cherries.jpg',
+        param: 'cherries',
+        category: 'floral',
+    },
+    cobra: {
+        color: 'Cobra',
+        img: 'Cobra.jpg',
+        param: 'cobra',
+        category: 'pattern',
+    },
+    flames: {
+        color: 'Flames',
+        img: 'Flames.jpg',
+        param: 'flames',
+        category: 'pattern',
+    },
+    hawaiinblue: {
+        color: 'Hawaiin Blue',
+        img: 'HawaiinBlue.jpg',
+        param: 'hawaiinblue',
+        category: 'pattern',
+    },
+    hawaiindusk: {
+        color: 'Hawaiin Dusk',
+        img: 'HawaiinDusk.jpg',
+        param: 'hawaiindusk',
+        category: 'pattern',
+    },
+    native: {
+        color: 'Native',
+        img: 'Native.jpg',
+        param: 'native',
+        category: 'pattern',
+    },
+    vacation: {
+        color: 'Vacation',
+        img: 'Vacation.jpg',
+        param: 'vacation',
+        category: 'pattern',
+    },
+    zoo: {
+        color: 'Zoo',
+        img: 'Zoo.jpg',
+        param: 'zoo',
+        category: 'pattern',
+    },
+    palmtrees: {
+        color: 'Palm Trees',
+        img: 'PalmTrees.jpg',
+        param: 'palmtrees',
+        category: 'pattern',
+    },
+    oldfashioned: {
+        color: 'Old Fashioned',
+        img: 'OldFashioned.jpg',
+        param: 'oldfashioned',
         category: 'pattern',
     },
 };

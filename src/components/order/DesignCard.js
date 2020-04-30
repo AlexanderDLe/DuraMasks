@@ -33,6 +33,8 @@ const useStyles = makeStyles({
         color: '#3f51b5',
     },
     cardTitle: {
+        textAlign: 'center',
+        fontSize: '1.3rem',
         '@media (max-width: 800px)': {
             fontSize: '.9rem',
         },
@@ -54,7 +56,7 @@ function DesignCard({ design }) {
                     <CardContent className={classes.colorTitle}>
                         <Typography
                             className={classes.cardTitle}
-                            variant="h6"
+                            variant="body1"
                             component="h2"
                         >
                             {design.color}

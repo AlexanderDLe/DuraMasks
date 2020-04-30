@@ -15,8 +15,8 @@ const useStyles = makeStyles({
         maxWidth: 450,
         borderBottom: '2px solid #3f51b5',
         paddingBottom: 8,
-        marginBottom: 16,
-        margin: 40,
+        margin: 16,
+        marginTop: 40,
     },
     media: {
         height: 350,
