@@ -20,7 +20,10 @@ import TextField from '@material-ui/core/TextField';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+
 import Modal from '@material-ui/core/Modal';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import { selection } from '../masks/MaskDesigns';
 
@@ -77,6 +80,25 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
     },
+    innerModal: {
+        position: 'relative',
+        padding: 0,
+        margin: 0,
+    },
+    modalLeftChevron: {
+        cursor: 'pointer',
+        position: 'absolute',
+        top: '50%',
+        left: '10px',
+        fontSize: '2rem',
+    },
+    modalRightChevron: {
+        cursor: 'pointer',
+        position: 'absolute',
+        top: '50%',
+        right: '10px',
+        fontSize: '2rem',
+    },
 }));
 
 function Item({ match, addOrder }) {
@@ -95,6 +117,9 @@ function Item({ match, addOrder }) {
     const queueRef = useRef([]);
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [messageInfo, setMessageInfo] = useState(undefined);
+    const [angledState, setAngledState] = useState('PostMaskPhotos');
+
+    console.log(data.angled | false);
 
     // Mask Order Configuration
     const handleChange = (event) => {
@@ -142,20 +167,40 @@ function Item({ match, addOrder }) {
     };
 
     // Modal
+    const handleAngleStateChange = () => {
+        if (angledState === 'PostMaskPhotos') setAngledState('AngledPhotos');
+        if (angledState === 'AngledPhotos') setAngledState('PostMaskPhotos');
+    };
     const handleModalOpen = () => {
         setModalOpen(true);
     };
     const handleModalClose = () => {
         setModalOpen(false);
     };
+    const modalActions = (
+        <div className={classes.modalActions}>
+            <ChevronLeftIcon
+                onClick={handleAngleStateChange}
+                className={classes.modalLeftChevron}
+                style={{ fontSize: `${navMediaQuery ? '' : ''}` }}
+            />
+            <ChevronRightIcon
+                onClick={handleAngleStateChange}
+                className={classes.modalRightChevron}
+            />
+        </div>
+    );
     const modalContent = (
         <div className={classes.modal}>
-            <img
-                src={require(`../../img/PostMaskPhotos/${data.img}`)}
-                alt="Mask"
-                onClick={handleModalClose}
-                style={{ width: '100%' }}
-            />
+            <div className={classes.innerModal}>
+                <img
+                    src={require(`../../img/${angledState}/${data.img}`)}
+                    alt="Mask"
+                    onClick={handleModalClose}
+                    style={{ width: '100%', padding: 0 }}
+                />
+                {data.angled ? modalActions : ''}
+            </div>
         </div>
     );
 
@@ -271,8 +316,8 @@ function Item({ match, addOrder }) {
                         Dimensions are in Width x Height
                         <br />
                         <br />
-                        Measuring tape was used to follow the cloth exterior
-                        from one end to the other.
+                        All measurements used measuring tape to follow the
+                        front-facing cloth exterior.
                     </p>
                 </div>
             </CardContent>

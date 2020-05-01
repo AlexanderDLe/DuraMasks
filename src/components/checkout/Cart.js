@@ -80,8 +80,8 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
 
     // Checkout Configuration
     const currency = 'USD';
-    const maskPrice = 8;
-    const shippingPrice = 5;
+    const maskPrice = 10;
+    const shippingPrice = 0;
     const orderTotal = amount * maskPrice;
     const shippingFee = orderTotal < 50 ? shippingPrice : 0;
     let total = amount * maskPrice + shippingFee;
@@ -141,11 +141,17 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
                         Shipping
                         <br />
                         <span className={classes.shippingCaption}>
-                            Free shipping for $50+ orders (before shipping fee).
+                            Free shipping for all domestic (US) orders.
                         </span>
                     </p>
                     <p>${shippingFee}</p>
                 </div>
+                <hr
+                    style={{
+                        border: 'none',
+                        borderBottom: '1px solid rgba(0,0,0,.2)',
+                    }}
+                />
                 <div className={classes.cartCalculation}>
                     <p style={{ fontWeight: 700 }}>Total</p>
                     <p style={{ fontWeight: 700 }}>${total}</p>

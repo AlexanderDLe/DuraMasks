@@ -34,9 +34,9 @@ const useStyles = makeStyles({
     },
     cardTitle: {
         textAlign: 'center',
-        fontSize: '1.3rem',
+        fontSize: '1.1rem',
         '@media (max-width: 800px)': {
-            fontSize: '.9rem',
+            fontSize: '.8rem',
         },
     },
 });

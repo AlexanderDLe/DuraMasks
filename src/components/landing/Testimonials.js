@@ -53,7 +53,7 @@ function Carousel() {
                         provide good quality masks with reasonable prices. I
                         found these Masks able to provide what I’m looking for.
                         I’m very happy once I tried it on. It fit my face
-                        snuggly and I can breathe with it. Knowing they have 3
+                        snuggly and I can breathe with it. Knowing they have 4
                         layers gives it more protection. I encourage everyone to
                         buy these Masks."
                     </Typography>

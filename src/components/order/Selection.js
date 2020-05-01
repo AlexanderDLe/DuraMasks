@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
 import DesignCard from './DesignCard';
 import CustomCard from './CustomCard';
@@ -16,12 +17,23 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: '24px',
         paddingBottom: '24px',
     },
+    category: {
+        display: 'flex',
+    },
     categoryTitle: {
+        cursor: 'pointer',
         fontSize: '1.5rem',
-        paddingLeft: 2,
-        paddingTop: 48,
-        paddingBottom: 16,
+        marginLeft: 2,
+        marginTop: 48,
+        marginBottom: 16,
+        fontFamily: 'Montserrat',
         fontWeight: '500',
+        // textTransform: 'uppercase',
+    },
+    expandCollapse: {
+        cursor: 'pointer',
+        fontSize: '1.8rem',
+        marginTop: 48,
     },
 }));
 
@@ -31,10 +43,33 @@ function Selection() {
         window.scrollTo(0, 0);
     }, []);
 
+    const [solidOpen, setSolidOpen] = useState(true);
+    const [floralOpen, setFloralOpen] = useState(true);
+    const [patternOpen, setPatternOpen] = useState(true);
+    const [hawaiianOpen, setHawaiianOpen] = useState(true);
+    const [customOpen, setCustomOpen] = useState(true);
+
+    const handleSolidOpens = () => {
+        setSolidOpen(!solidOpen);
+    };
+    const handleFloralOpens = () => {
+        setFloralOpen(!floralOpen);
+    };
+    const handlePatternOpens = () => {
+        setPatternOpen(!patternOpen);
+    };
+    const handleHawaiianOpens = () => {
+        setHawaiianOpen(!hawaiianOpen);
+    };
+    const handleCustomOpens = () => {
+        setCustomOpen(!customOpen);
+    };
+
     // Categorization
     const solid = [];
     const floral = [];
     const pattern = [];
+    const hawaiian = [];
 
     const sortCategories = () => {
         Object.keys(selection).map((key) => {
@@ -48,6 +83,9 @@ function Selection() {
                     break;
                 case 'pattern':
                     pattern.push(selection[key]);
+                    break;
+                case 'hawaiian':
+                    hawaiian.push(selection[key]);
                     break;
                 default:
                     break;
@@ -64,35 +102,50 @@ function Selection() {
     };
 
     const renderDesigns = () => {
-        const categoryTitle = (category) => {
+        const categoryTitle = (category, handleClickEvent, state) => {
             return (
-                <Typography
-                    variant="h5"
-                    component="h2"
-                    className={classes.categoryTitle}
-                >
-                    {category} Designs
-                </Typography>
+                <div className={classes.category}>
+                    <ExpandLessIcon
+                        onClick={handleClickEvent}
+                        className={classes.expandCollapse}
+                        style={{
+                            transform: `rotate(${state ? '0deg' : '180deg'})`,
+                            transition: 'all .5s',
+                        }}
+                    />
+                    <Typography
+                        onClick={handleClickEvent}
+                        variant="h5"
+                        component="h2"
+                        className={classes.categoryTitle}
+                    >
+                        {category}
+                    </Typography>
+                </div>
             );
         };
 
         return (
             <React.Fragment>
-                {categoryTitle('Solid')}
+                {categoryTitle('Solid', handleSolidOpens, solidOpen)}
                 <Grid container spacing={3}>
-                    {renderCategory(solid)}
+                    {solidOpen ? renderCategory(solid) : ''}
                 </Grid>
-                {categoryTitle('Patterned')}
+                {categoryTitle('Patterned', handlePatternOpens, patternOpen)}
                 <Grid container spacing={3}>
-                    {renderCategory(pattern)}
+                    {patternOpen ? renderCategory(pattern) : ''}
                 </Grid>
-                {categoryTitle('Floral')}
+                {categoryTitle('Hawaiian', handleHawaiianOpens, hawaiianOpen)}
                 <Grid container spacing={3}>
-                    {renderCategory(floral)}
+                    {hawaiianOpen ? renderCategory(hawaiian) : ''}
                 </Grid>
-                {categoryTitle('Custom')}
+                {categoryTitle('Floral', handleFloralOpens, floralOpen)}
                 <Grid container spacing={3}>
-                    <CustomCard />
+                    {floralOpen ? renderCategory(floral) : ''}
+                </Grid>
+                {categoryTitle('Custom', handleCustomOpens, customOpen)}
+                <Grid container spacing={3}>
+                    {customOpen ? <CustomCard /> : ''}
                 </Grid>
             </React.Fragment>
         );
@@ -100,7 +153,7 @@ function Selection() {
 
     return (
         <Container className={classes.root}>
-            <div style={{ textAlign: 'center', paddingTop: 24 }}>
+            <div style={{ textAlign: 'left', paddingTop: 24 }}>
                 <Typography variant="h4" component="h2">
                     Select A Design
                 </Typography>
@@ -108,7 +161,7 @@ function Selection() {
                     gutterBottom
                     variant="body1"
                     component="h2"
-                    style={{ color: 'rgba(0,0,0,.6)' }}
+                    style={{ paddingBottom: 0, color: 'rgba(0,0,0,.6)' }}
                 >
                     More designs coming soon.
                 </Typography>

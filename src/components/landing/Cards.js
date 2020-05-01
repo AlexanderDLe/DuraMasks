@@ -48,7 +48,7 @@ function Cards() {
                             Multi-layered
                         </Typography>
                         <Typography color="textSecondary">
-                            These masks are composed of tight-woven cotton and
+                            These masks are composed of tightly-woven cotton and
                             stabilizer cutaway (rayon & polyester) to ensure
                             thickness.
                         </Typography>

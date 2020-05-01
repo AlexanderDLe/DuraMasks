@@ -45,7 +45,7 @@ function Pricing() {
         <React.Fragment>
             <CardContent style={{ paddingBottom: 0 }} className="price">
                 <div className="dollar-sign">$</div>
-                <div className="priceNumber">8</div>
+                <div className="priceNumber">10</div>
                 <div className="each">/each</div>
             </CardContent>
             <CardHeader
@@ -59,9 +59,9 @@ function Pricing() {
                     component="p"
                     style={{ textAlign: 'left' }}
                 >
-                    Normal pricing has a $5 shipping fee. The shipping fee will
-                    automatically be waived if your order total is $50+ (before
-                    shipping fee is applied).
+                    <strong>Free Shipping</strong> for all domestic (USA)
+                    orders. We currently do not offer free shipping for orders
+                    outside of the United States.
                     <br />
                     <br />
                     You can also purchase directly in-person at our shop at 2424

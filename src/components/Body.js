@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Landing from './landing/Landing';
-import Selection from './order/Selection';
+import Selection from './order/Selection2';
 import Item from './order/Item';
 import Cart from './checkout/Cart';
 import Success from './checkout/Success';
