@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { PayPalButton } from 'react-paypal-button-v2';
+import { useMediaQuery } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -16,7 +17,6 @@ const useStyles = makeStyles({
         borderBottom: '2px solid #3f51b5',
         paddingBottom: 8,
         margin: 16,
-        marginTop: 40,
     },
     media: {
         height: 350,
@@ -77,6 +77,8 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
     const classes = useStyles();
     const [paypalError, setPaypalError] = useState(false);
     const [checkedOut, setCheckedOut] = useState(false);
+
+    const navMediaQuery600 = useMediaQuery('(min-width:600px)');
 
     // Checkout Configuration
     const currency = 'USD';
@@ -141,7 +143,11 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
                         Shipping
                         <br />
                         <span className={classes.shippingCaption}>
-                            Free 2-5 day shipping for all domestic (US) orders.
+                            Free shipping for all domestic (US) orders.
+                        </span>
+                        <br />
+                        <span className={classes.shippingCaption}>
+                            Delivery will be between 2-5 business days.
                         </span>
                     </p>
                     <p>${shippingFee}</p>
@@ -163,7 +169,11 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
     if (checkedOut) return <Redirect to="/success" />;
 
     return (
-        <Card className={classes.root} elevation={3}>
+        <Card
+            style={{ marginTop: navMediaQuery600 ? 40 : 16 }}
+            className={classes.root}
+            elevation={3}
+        >
             <CardContent>
                 <Typography variant="h4" component="h2">
                     Cart

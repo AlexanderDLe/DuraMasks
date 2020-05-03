@@ -99,6 +99,10 @@ const useStyles = makeStyles((theme) => ({
         right: '10px',
         fontSize: '2rem',
     },
+    title: {
+        paddingBottom: 0,
+        marginBottom: 0,
+    },
 }));
 
 function Item({ match, addOrder }) {
@@ -107,6 +111,7 @@ function Item({ match, addOrder }) {
     }, []);
 
     const navMediaQuery = useMediaQuery('(min-width:420px)');
+    const navMediaQuery600 = useMediaQuery('(min-width:600px)');
 
     const classes = useStyles();
     const data = selection[match.params.id];
@@ -211,8 +216,12 @@ function Item({ match, addOrder }) {
         : classes.smallSpanDimensions;
 
     return (
-        <Card className={classes.root} elevation={3}>
-            <CardContent>
+        <Card
+            style={{ marginTop: navMediaQuery600 ? 40 : 16 }}
+            className={classes.root}
+            elevation={3}
+        >
+            <CardContent className={classes.title}>
                 <Typography
                     className={classes.title}
                     gutterBottom

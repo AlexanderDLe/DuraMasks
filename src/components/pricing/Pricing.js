@@ -59,10 +59,8 @@ function Pricing() {
                     component="p"
                     style={{ textAlign: 'left' }}
                 >
-                    <strong>Free Shipping</strong> for all domestic (USA)
-                    orders. We currently do not offer free shipping for orders
-                    outside of the United States. Typical delivery will be
-                    between 2-5 business days.
+                    <strong>Free Shipping</strong> for all domestic (US) orders.
+                    Typical delivery will be between 2-5 business days.
                     <br />
                     <br />
                     You can also purchase directly in-person at our shop at 2424

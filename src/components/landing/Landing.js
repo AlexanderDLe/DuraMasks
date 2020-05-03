@@ -106,7 +106,7 @@ export default function Album() {
                                             to="/selection"
                                             className={classes.link}
                                         >
-                                            Order Facemasks
+                                            View Selection
                                         </Link>
                                     </Button>
                                 </animated.div>

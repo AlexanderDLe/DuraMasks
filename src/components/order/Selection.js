@@ -3,37 +3,49 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
+import Checkbox from '@material-ui/core/Checkbox';
 import DesignCard from './DesignCard';
 import CustomCard from './CustomCard';
 import { selection } from '../masks/MaskDesigns';
+import FlowerTitle from '../../img/FlowerTitle.png';
 
 const useStyles = makeStyles((theme) => ({
     title: {
         // textAlign: 'center',
+    },
+    smallContainer: {
+        paddingLeft: 0,
+        paddingRight: 0,
     },
     root: {
         paddingTop: '24px',
         paddingBottom: '24px',
     },
     category: {
+        margin: '24px 0',
+        marginTop: 48,
+        backgroundSize: 'cover',
         display: 'flex',
+        alignItems: 'center',
+        marginBottom: 16,
     },
     categoryTitle: {
+        fontSize: '1.8rem',
         cursor: 'pointer',
-        fontSize: '1.5rem',
-        marginLeft: 2,
-        marginTop: 48,
-        marginBottom: 16,
-        fontFamily: 'Montserrat',
-        fontWeight: '500',
-        // textTransform: 'uppercase',
+        fontWeight: '400',
     },
     expandCollapse: {
         cursor: 'pointer',
-        fontSize: '1.8rem',
-        marginTop: 48,
+        fontSize: '1.25rem',
+        marginLeft: 8,
+    },
+    checkbox: {
+        color: 'rgba(0, 0, 0, 0.87)',
+        marginLeft: -10,
+    },
+    selectionTitle: {
+        fontFamily: 'Roboto',
     },
 }));
 
@@ -105,17 +117,15 @@ function Selection() {
         const categoryTitle = (category, handleClickEvent, state) => {
             return (
                 <div className={classes.category}>
-                    <ExpandLessIcon
+                    <Checkbox
                         onClick={handleClickEvent}
-                        className={classes.expandCollapse}
-                        style={{
-                            transform: `rotate(${state ? '0deg' : '180deg'})`,
-                            transition: 'all .5s',
-                        }}
+                        checked={state}
+                        color="default"
+                        className={classes.checkbox}
                     />
                     <Typography
                         onClick={handleClickEvent}
-                        variant="h5"
+                        variant="h4"
                         component="h2"
                         className={classes.categoryTitle}
                     >
@@ -152,22 +162,42 @@ function Selection() {
     };
 
     return (
-        <Container className={classes.root}>
-            <div style={{ textAlign: 'left', paddingTop: 24 }}>
-                <Typography variant="h4" component="h2">
-                    Select A Design
-                </Typography>
-                <Typography
-                    gutterBottom
-                    variant="body1"
-                    component="h2"
-                    style={{ paddingBottom: 0, color: 'rgba(0,0,0,.6)' }}
-                >
-                    More designs coming soon.
-                </Typography>
-            </div>
-            {renderDesigns()}
-        </Container>
+        <React.Fragment>
+            <main style={{ width: '100%' }}>
+                <div className="selection-hero"></div>
+                <Container className={classes.root}>
+                    <div
+                        className="selection-title"
+                        style={{ textAlign: 'center', paddingTop: 24 }}
+                    >
+                        <img
+                            className="selection-title-flower"
+                            src={FlowerTitle}
+                            alt="Flower Title PNG"
+                        />
+                        <Typography
+                            className={classes.selectionTitle}
+                            variant="h4"
+                            component="h2"
+                        >
+                            Mask Selection
+                        </Typography>
+                        {/* <Typography
+                            gutterBottom
+                            variant="body1"
+                            component="h2"
+                            style={{
+                                paddingBottom: 0,
+                                color: 'rgba(0,0,0,.6)',
+                            }}
+                        >
+                            More designs coming soon.
+                        </Typography> */}
+                    </div>
+                    {renderDesigns()}
+                </Container>
+            </main>
+        </React.Fragment>
     );
 }
 
