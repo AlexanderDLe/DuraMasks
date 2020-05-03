@@ -43,6 +43,10 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(6, 0, 6),
         paddingBottom: 0,
     },
+    landingTitle: {
+        // fontFamily: 'Montserrat',
+        // fontWeight: 500,
+    },
 }));
 
 export default function Album() {
@@ -76,6 +80,7 @@ export default function Album() {
                         align="center"
                         color="textPrimary"
                         gutterBottom
+                        className={classes.landingTitle}
                     >
                         CA Facemasks
                     </Typography>

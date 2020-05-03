@@ -141,7 +141,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
                         Shipping
                         <br />
                         <span className={classes.shippingCaption}>
-                            Free shipping for all domestic (US) orders.
+                            Free 2-5 day shipping for all domestic (US) orders.
                         </span>
                     </p>
                     <p>${shippingFee}</p>

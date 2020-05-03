@@ -70,6 +70,13 @@ export const selection = {
         category: 'pattern',
         angled: true,
     },
+    // diamonds: {
+    //     color: 'Diamonds',
+    //     img: 'Diamonds.jpg',
+    //     param: 'diamonds',
+    //     category: 'pattern',
+    //     angled: true,
+    // },
     navybluebandana: {
         color: 'Navy Blue Bandana',
         img: 'NavyBlueBandana.jpg',
@@ -110,7 +117,7 @@ export const selection = {
         img: 'FloralRose.jpg',
         param: 'floralrose',
         category: 'floral',
-        angled: false,
+        angled: true,
     },
     floralwhite: {
         color: 'Floral White',
@@ -159,7 +166,7 @@ export const selection = {
         img: 'FloralRed.jpg',
         param: 'floralred',
         category: 'floral',
-        angled: false,
+        angled: true,
     },
     sunset: {
         color: 'Sunset',
@@ -203,18 +210,25 @@ export const selection = {
         category: 'pattern',
         angled: true,
     },
+    orangeplaid: {
+        color: 'Orange Plaid',
+        img: 'OrangePlaid.jpg',
+        param: 'orangeplaid',
+        category: 'pattern',
+        angled: true,
+    },
     garden: {
         color: 'Garden',
         img: 'Garden.jpg',
         param: 'garden',
         category: 'floral',
-        angled: false,
+        angled: true,
     },
     buttercup: {
         color: 'Buttercup',
         img: 'Buttercup.jpg',
         param: 'buttercup',
-        category: 'floral',
+        category: 'hawaiian',
         angled: true,
     },
     celeste: {
@@ -271,7 +285,14 @@ export const selection = {
         img: 'Spring.jpg',
         param: 'spring',
         category: 'floral',
-        angled: false,
+        angled: true,
+    },
+    canopy: {
+        color: 'Canopy',
+        img: 'Canopy.jpg',
+        param: 'canopy',
+        category: 'hawaiian',
+        angled: true,
     },
     violetredzebra: {
         color: 'Violet Red Zebra',
@@ -301,17 +322,17 @@ export const selection = {
         category: 'pattern',
         angled: true,
     },
-    hawaiiansky: {
-        color: 'Hawaiian Sky',
-        img: 'HawaiianSky.jpg',
-        param: 'hawaiiansky',
+    sky: {
+        color: 'Sky',
+        img: 'Sky.jpg',
+        param: 'sky',
         category: 'hawaiian',
         angled: false,
     },
-    hawaiiandusk: {
-        color: 'Hawaiian Dusk',
-        img: 'HawaiianDusk.jpg',
-        param: 'hawaiiandusk',
+    dusk: {
+        color: 'Dusk',
+        img: 'Dusk.jpg',
+        param: 'dusk',
         category: 'hawaiian',
         angled: false,
     },
@@ -322,10 +343,10 @@ export const selection = {
         category: 'pattern',
         angled: true,
     },
-    hawaiiansurf: {
-        color: 'Hawaiian Surf',
-        img: 'HawaiianSurf.jpg',
-        param: 'hawaiiansurf',
+    surf: {
+        color: 'Surf',
+        img: 'Surf.jpg',
+        param: 'surf',
         category: 'hawaiian',
         angled: false,
     },
@@ -336,17 +357,17 @@ export const selection = {
         category: 'pattern',
         angled: false,
     },
-    // palmtrees: {
-    //     color: 'Palm Trees',
-    //     img: 'PalmTrees.jpg',
-    //     param: 'palmtrees',
-    //     category: 'hawaiian',
-    // angled: false
-    // },
-    oldfashioned: {
-        color: 'Old Fashioned',
-        img: 'OldFashioned.jpg',
-        param: 'oldfashioned',
+    palms: {
+        color: 'Palms',
+        img: 'Palms.jpg',
+        param: 'palms',
+        category: 'hawaiian',
+        angled: true,
+    },
+    classic: {
+        color: 'Classic',
+        img: 'Classic.jpg',
+        param: 'classic',
         category: 'pattern',
         angled: false,
     },
