@@ -11,7 +11,7 @@ import CustomItem from './order/CustomItem';
 import Pricing from './pricing/Pricing';
 
 function Body(props) {
-    const { removeOrder, addOrder, orders, resetOrders, amount } = props;
+    const { removeOrder, addOrder, orders, resetOrders, amount, mode } = props;
 
     return (
         <main className="body-class">
@@ -31,6 +31,7 @@ function Body(props) {
                     render={() => (
                         <Cart
                             {...props}
+                            mode={mode}
                             removeOrder={removeOrder}
                             orders={orders}
                             resetOrders={resetOrders}

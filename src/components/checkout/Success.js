@@ -25,6 +25,9 @@ const useStyles = makeStyles({
     close: {
         padding: 8,
     },
+    successHeader: {
+        fontFamily: 'Open Sans',
+    },
 });
 
 const Success = () => {
@@ -36,7 +39,11 @@ const Success = () => {
     return (
         <Card className={classes.root} elevation={3}>
             <CardContent>
-                <Typography variant="h4" component="h2">
+                <Typography
+                    className={classes.successHeader}
+                    variant="h4"
+                    component="h2"
+                >
                     Thank You
                 </Typography>
             </CardContent>

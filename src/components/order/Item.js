@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
         color: 'white',
     },
     customizeBox: {
-        paddingTop: 26,
+        paddingTop: 16,
         display: 'flex',
     },
     itemActions: {
@@ -102,6 +102,7 @@ const useStyles = makeStyles((theme) => ({
     title: {
         paddingBottom: 0,
         marginBottom: 0,
+        fontFamily: 'Open Sans',
     },
 }));
 

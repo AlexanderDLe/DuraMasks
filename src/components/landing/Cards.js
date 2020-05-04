@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        borderBottom: '2px solid #3f51b5',
         margin: 8,
     },
     cardMedia: {
@@ -28,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     },
     cardContent: {
         flexGrow: 1,
+    },
+    cardTitle: {
+        fontFamily: 'Open Sans',
     },
 }));
 
@@ -44,7 +46,12 @@ function Cards() {
                         title="Layer Image"
                     />
                     <CardContent className={classes.cardContent}>
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography
+                            className={classes.cardTitle}
+                            gutterBottom
+                            variant="h5"
+                            component="h2"
+                        >
                             Multi-layered
                         </Typography>
                         <Typography color="textSecondary">
@@ -63,7 +70,12 @@ function Cards() {
                         title="Reusable Image"
                     />
                     <CardContent className={classes.cardContent}>
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography
+                            className={classes.cardTitle}
+                            gutterBottom
+                            variant="h5"
+                            component="h2"
+                        >
                             Reusable
                         </Typography>
                         <Typography color="textSecondary">
@@ -82,7 +94,12 @@ function Cards() {
                         title="Comfort Image"
                     />
                     <CardContent className={classes.cardContent}>
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography
+                            className={classes.cardTitle}
+                            gutterBottom
+                            variant="h5"
+                            component="h2"
+                        >
                             Comfortable
                         </Typography>
                         <Typography color="textSecondary">

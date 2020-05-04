@@ -62,6 +62,7 @@ const App = () => {
             <CssBaseline />
             <Navbar amount={amount} />
             <Body
+                mode={mode}
                 orders={orders}
                 addOrder={addOrder}
                 removeOrder={removeOrder}

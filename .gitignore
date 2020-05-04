@@ -24,6 +24,5 @@ yarn-error.log*
 
 # unused images
 /src/img/PreMasksPhotos
-/src/img/NewPhotos
-/src/img/AngledResized\
+/src/img/ResizedPhotos
 /src/img/CAFacemasksPhoto.psd

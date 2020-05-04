@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
 
-import Cards from './Cards';
+import Cards from './Cards2';
 import Testimonials from './Testimonials';
 
 import { useSpring, animated } from 'react-spring';
@@ -43,9 +43,10 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(6, 0, 6),
         paddingBottom: 0,
     },
-    landingTitle: {
-        // fontFamily: 'Montserrat',
-        // fontWeight: 500,
+    sectionTitle: {
+        fontFamily: 'Open Sans',
+        // fontWeight: 600,
+        // textTransform: 'uppercase',
     },
 }));
 
@@ -55,16 +56,17 @@ export default function Album() {
         window.scrollTo(0, 0);
     }, []);
 
-    const springDuration = 700;
-    const springmass = 100;
+    const spring = {
+        duration: 700,
+        mass: 100,
+    };
     const fadeRight = useSpring({
-        config: { duration: springDuration, mass: springmass },
+        config: { duration: spring.duration, mass: spring.mass },
         to: { opacity: 1, transform: 'translateX(0)' },
         from: { opacity: 0, transform: 'translateX(-30px)' },
     });
-
     const fadeLeft = useSpring({
-        config: { duration: springDuration, mass: springmass },
+        config: { duration: spring.duration, mass: spring.mass },
         to: { opacity: 1, transform: 'translateX(0)' },
         from: { opacity: 0, transform: 'translateX(30px)' },
     });
@@ -80,7 +82,7 @@ export default function Album() {
                         align="center"
                         color="textPrimary"
                         gutterBottom
-                        className={classes.landingTitle}
+                        className={classes.sectionTitle}
                     >
                         CA Facemasks
                     </Typography>
@@ -145,13 +147,14 @@ export default function Album() {
                     align="center"
                     color="textPrimary"
                     gutterBottom
+                    className={classes.sectionTitle}
                 >
                     Testimonials
                 </Typography>
                 <Container
                     className={classes.cardGrid}
                     maxWidth="sm"
-                    style={{ padding: 16 }}
+                    style={{ padding: 16, paddingTop: 0 }}
                 >
                     <Testimonials />
                 </Container>

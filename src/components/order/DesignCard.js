@@ -24,20 +24,12 @@ const useStyles = makeStyles({
         textDecoration: 'none',
         color: '#3f51b5',
     },
-    colorTitle: {
-        paddingTop: 16,
-        paddingBottom: 0,
-    },
     designName: {
         textDecoration: 'none',
         color: '#3f51b5',
     },
     cardTitle: {
         textAlign: 'center',
-        fontSize: '1.1rem',
-        '@media (max-width: 800px)': {
-            fontSize: '.8rem',
-        },
     },
 });
 
@@ -53,7 +45,7 @@ function DesignCard({ design }) {
                         image={require(`../../img/SmallMaskPhotos/${design.img}`)}
                         title={design.color}
                     />
-                    <CardContent className={classes.colorTitle}>
+                    <CardContent>
                         <Typography
                             className={classes.cardTitle}
                             variant="body1"

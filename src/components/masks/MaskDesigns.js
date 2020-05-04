@@ -5,13 +5,7 @@ export const selection = {
         param: 'black',
         category: 'solid',
         angled: true,
-    },
-    lightblue: {
-        color: 'Light Blue',
-        img: 'LightBlue.jpg',
-        param: 'lightblue',
-        category: 'solid',
-        angled: true,
+        tags: [],
     },
     grey: {
         color: 'Grey',
@@ -19,6 +13,7 @@ export const selection = {
         param: 'grey',
         category: 'solid',
         angled: true,
+        tags: ['black', 'white'],
     },
     white: {
         color: 'White',
@@ -26,6 +21,7 @@ export const selection = {
         param: 'white',
         category: 'solid',
         angled: true,
+        tags: [],
     },
     pink: {
         color: 'Pink',
@@ -33,21 +29,23 @@ export const selection = {
         param: 'pink',
         category: 'solid',
         angled: true,
+        tags: ['red'],
     },
-
     // red: {
     //     color: 'Red',
     //     img: 'Red.jpg',
     //     param: 'red',
     //     category: 'solid',
-    // angled: false
+    //     angled: false
+    //     tags: ['solid','red','pink']
     // },
-    steelblue: {
-        color: 'Steel Blue',
-        img: 'SteelBlue.jpg',
-        param: 'steelblue',
+    navyblue: {
+        color: 'Navy Blue',
+        img: 'NavyBlue.jpg',
+        param: 'navyblue',
         category: 'solid',
         angled: true,
+        tags: ['grey'],
     },
     artisanblack: {
         color: 'Artisan Black',
@@ -55,6 +53,7 @@ export const selection = {
         param: 'artisanblack',
         category: 'pattern',
         angled: true,
+        tags: [],
     },
     artisanred: {
         color: 'Artisan Red',
@@ -62,6 +61,7 @@ export const selection = {
         param: 'artisanred',
         category: 'pattern',
         angled: false,
+        tags: ['pink'],
     },
     ash: {
         color: 'Ash',
@@ -69,6 +69,7 @@ export const selection = {
         param: 'ash',
         category: 'pattern',
         angled: true,
+        tags: ['pattern', 'black', 'grey'],
     },
     // diamonds: {
     //     color: 'Diamonds',
@@ -76,20 +77,15 @@ export const selection = {
     //     param: 'diamonds',
     //     category: 'pattern',
     //     angled: true,
+    //     tags: ['white']
     // },
-    navybluebandana: {
-        color: 'Navy Blue Bandana',
-        img: 'NavyBlueBandana.jpg',
-        param: 'navybluebandana',
-        category: 'pattern',
-        angled: true,
-    },
     blackdotted: {
         color: 'Black Dotted',
         img: 'BlackDotted.jpg',
         param: 'blackdotted',
         category: 'pattern',
         angled: true,
+        tags: ['dots'],
     },
     whitedotted: {
         color: 'White Dotted',
@@ -97,6 +93,7 @@ export const selection = {
         param: 'whitedotted',
         category: 'pattern',
         angled: true,
+        tags: ['dots'],
     },
     patriot: {
         color: 'Patriot',
@@ -104,6 +101,7 @@ export const selection = {
         param: 'patriot',
         category: 'pattern',
         angled: true,
+        tags: ['american', 'flag', 'blue'],
     },
     tribal: {
         color: 'Tribal',
@@ -111,6 +109,7 @@ export const selection = {
         param: 'tribal',
         category: 'pattern',
         angled: true,
+        tags: ['black', 'white'],
     },
     floralrose: {
         color: 'Floral Rose',
@@ -118,6 +117,7 @@ export const selection = {
         param: 'floralrose',
         category: 'floral',
         angled: true,
+        tags: ['pink'],
     },
     floralwhite: {
         color: 'Floral White',
@@ -125,6 +125,7 @@ export const selection = {
         param: 'floralwhite',
         category: 'floral',
         angled: false,
+        tags: [],
     },
     floralgreen: {
         color: 'Floral Green',
@@ -132,6 +133,7 @@ export const selection = {
         param: 'floralgreen',
         category: 'floral',
         angled: true,
+        tags: [],
     },
     florallavender: {
         color: 'Floral Lavender',
@@ -139,6 +141,7 @@ export const selection = {
         param: 'florallavender',
         category: 'floral',
         angled: true,
+        tags: ['purple', 'violet'],
     },
     floralpink: {
         color: 'Floral Pink',
@@ -146,6 +149,7 @@ export const selection = {
         param: 'floralpink',
         category: 'floral',
         angled: true,
+        tags: ['red'],
     },
     floralburgundy: {
         color: 'Floral Burgundy',
@@ -153,6 +157,7 @@ export const selection = {
         param: 'floralburgundy',
         category: 'floral',
         angled: true,
+        tags: ['pink', 'brown'],
     },
     floralblue: {
         color: 'Floral Blue',
@@ -160,6 +165,7 @@ export const selection = {
         param: 'floralblue',
         category: 'floral',
         angled: true,
+        tags: [],
     },
     floralred: {
         color: 'Floral Red',
@@ -167,6 +173,7 @@ export const selection = {
         param: 'floralred',
         category: 'floral',
         angled: true,
+        tags: ['pink'],
     },
     sunset: {
         color: 'Sunset',
@@ -174,6 +181,7 @@ export const selection = {
         param: 'sunset',
         category: 'hawaiian',
         angled: false,
+        tags: ['yellow', 'orange'],
     },
     hula: {
         color: 'Hula',
@@ -181,6 +189,7 @@ export const selection = {
         param: 'hula',
         category: 'hawaiian',
         angled: false,
+        tags: ['pink', 'red', 'green'],
     },
     beach: {
         color: 'Beach',
@@ -188,6 +197,7 @@ export const selection = {
         param: 'beach',
         category: 'hawaiian',
         angled: true,
+        tags: ['blue'],
     },
     koi: {
         color: 'Koi',
@@ -195,6 +205,7 @@ export const selection = {
         param: 'koi',
         category: 'hawaiian',
         angled: true,
+        tags: ['red', 'pink'],
     },
     magnetic: {
         color: 'Magnetic',
@@ -202,6 +213,7 @@ export const selection = {
         param: 'magnetic',
         category: 'pattern',
         angled: true,
+        tags: ['blue', 'yellow'],
     },
     purpleplaid: {
         color: 'Purple Plaid',
@@ -209,6 +221,7 @@ export const selection = {
         param: 'purpleplaid',
         category: 'pattern',
         angled: true,
+        tags: ['lavender', 'violet'],
     },
     orangeplaid: {
         color: 'Orange Plaid',
@@ -216,6 +229,7 @@ export const selection = {
         param: 'orangeplaid',
         category: 'pattern',
         angled: true,
+        tags: [],
     },
     garden: {
         color: 'Garden',
@@ -223,6 +237,7 @@ export const selection = {
         param: 'garden',
         category: 'floral',
         angled: true,
+        tags: [],
     },
     buttercup: {
         color: 'Buttercup',
@@ -230,6 +245,7 @@ export const selection = {
         param: 'buttercup',
         category: 'hawaiian',
         angled: true,
+        tags: ['yellow', 'orange'],
     },
     celeste: {
         color: 'Celeste',
@@ -237,6 +253,7 @@ export const selection = {
         param: 'celeste',
         category: 'floral',
         angled: true,
+        tags: ['blue', 'brown'],
     },
     blossom: {
         color: 'Blossom',
@@ -244,6 +261,7 @@ export const selection = {
         param: 'blossom',
         category: 'floral',
         angled: true,
+        tags: ['pink', 'red'],
     },
     peaches: {
         color: 'Peaches',
@@ -251,6 +269,7 @@ export const selection = {
         param: 'peaches',
         category: 'floral',
         angled: true,
+        tags: ['pink', 'orange', 'red'],
     },
     pineapple: {
         color: 'Pineapple',
@@ -258,6 +277,7 @@ export const selection = {
         param: 'pineapple',
         category: 'hawaiian',
         angled: true,
+        tags: ['yellow'],
     },
     pond: {
         color: 'Pond',
@@ -265,6 +285,7 @@ export const selection = {
         param: 'pond',
         category: 'hawaiian',
         angled: true,
+        tags: ['blue'],
     },
     vines: {
         color: 'Vines',
@@ -272,6 +293,7 @@ export const selection = {
         param: 'vines',
         category: 'floral',
         angled: true,
+        tags: ['green'],
     },
     leopard: {
         color: 'Leopard',
@@ -279,6 +301,7 @@ export const selection = {
         param: 'leopard',
         category: 'pattern',
         angled: true,
+        tags: ['animal', 'brown'],
     },
     spring: {
         color: 'Spring',
@@ -286,6 +309,7 @@ export const selection = {
         param: 'spring',
         category: 'floral',
         angled: true,
+        tags: ['pink', 'orange'],
     },
     canopy: {
         color: 'Canopy',
@@ -293,6 +317,7 @@ export const selection = {
         param: 'canopy',
         category: 'hawaiian',
         angled: true,
+        tags: ['pink', 'green'],
     },
     violetredzebra: {
         color: 'Violet Red Zebra',
@@ -300,20 +325,23 @@ export const selection = {
         param: 'violetredzebra',
         category: 'pattern',
         angled: true,
+        tags: ['animal'],
     },
-    cherries: {
-        color: 'Cherries',
-        img: 'Cherries.jpg',
-        param: 'cherries',
-        category: 'floral',
-        angled: true,
-    },
+    // cherries: {
+    //     color: 'Cherries',
+    //     img: 'Cherries.jpg',
+    //     param: 'cherries',
+    //     category: 'floral',
+    //     angled: true,
+    //     tags: [],
+    // },
     cobra: {
         color: 'Cobra',
         img: 'Cobra.jpg',
         param: 'cobra',
         category: 'pattern',
         angled: false,
+        tags: ['animal', 'orange', 'brown'],
     },
     flames: {
         color: 'Flames',
@@ -321,6 +349,7 @@ export const selection = {
         param: 'flames',
         category: 'pattern',
         angled: true,
+        tags: ['orange', 'yellow'],
     },
     sky: {
         color: 'Sky',
@@ -328,6 +357,7 @@ export const selection = {
         param: 'sky',
         category: 'hawaiian',
         angled: false,
+        tags: ['blue'],
     },
     dusk: {
         color: 'Dusk',
@@ -335,6 +365,7 @@ export const selection = {
         param: 'dusk',
         category: 'hawaiian',
         angled: false,
+        tags: ['pink'],
     },
     native: {
         color: 'Native',
@@ -342,6 +373,7 @@ export const selection = {
         param: 'native',
         category: 'pattern',
         angled: true,
+        tags: ['orange', 'brown'],
     },
     surf: {
         color: 'Surf',
@@ -349,6 +381,7 @@ export const selection = {
         param: 'surf',
         category: 'hawaiian',
         angled: false,
+        tags: ['grey', 'yellow'],
     },
     madagascar: {
         color: 'Madagascar',
@@ -356,6 +389,7 @@ export const selection = {
         param: 'madagascar',
         category: 'pattern',
         angled: false,
+        tags: ['animal', 'brown', 'yellow'],
     },
     palms: {
         color: 'Palms',
@@ -363,6 +397,7 @@ export const selection = {
         param: 'palms',
         category: 'hawaiian',
         angled: true,
+        tags: ['black'],
     },
     classic: {
         color: 'Classic',
@@ -370,5 +405,14 @@ export const selection = {
         param: 'classic',
         category: 'pattern',
         angled: false,
+        tags: ['yellow', 'brown'],
     },
+    // redpolkadot: {
+    //     color: 'Red Polkadot',
+    //     img: 'RedPolkadot.jpg',
+    //     param: 'redpolkadot',
+    //     category: 'pattern',
+    //     angled: true,
+    //     tags: ['black', 'dotted'],
+    // },
 };

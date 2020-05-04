@@ -62,6 +62,9 @@ const useStyles = makeStyles({
         height: 'auto',
         width: '120px',
     },
+    cartTitle: {
+        fontFamily: 'Open Sans',
+    },
 });
 
 const API = 'https://0n6fj67t7l.execute-api.us-west-1.amazonaws.com/dev/mail';
@@ -69,7 +72,7 @@ const header = {
     'Content-Type': 'application/json',
 };
 
-const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
+const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -87,7 +90,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
     const orderTotal = amount * maskPrice;
     const shippingFee = orderTotal < 50 ? shippingPrice : 0;
     let total = amount * maskPrice + shippingFee;
-    let env = 'production';
+    let env = mode;
     const client = {
         sandbox:
             'AUG0EGjB_-KelBfT2WHzsIunv893fV-rOmpXfou5lP1y_-j5EfUXTQa-go5hebKNF3EnUetQn06iB9_V',
@@ -147,7 +150,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
                         </span>
                         <br />
                         <span className={classes.shippingCaption}>
-                            Delivery will be between 2-5 business days.
+                            Delivery will be between 3-7 business days.
                         </span>
                     </p>
                     <p>${shippingFee}</p>
@@ -175,7 +178,11 @@ const Cart = ({ orders, removeOrder, resetOrders, amount }) => {
             elevation={3}
         >
             <CardContent>
-                <Typography variant="h4" component="h2">
+                <Typography
+                    className={classes.cartTitle}
+                    variant="h4"
+                    component="h2"
+                >
                     Cart
                 </Typography>
             </CardContent>

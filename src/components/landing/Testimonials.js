@@ -23,11 +23,11 @@ function Carousel() {
             naturalSlideWidth={100}
             naturalSlideHeight={
                 navMediaQuery580
-                    ? 45
+                    ? 40
                     : navMediaQuery500
-                    ? 60
+                    ? 50
                     : navMediaQuery400
-                    ? 75
+                    ? 65
                     : navMediaQuery320
                     ? 85
                     : 100
@@ -48,14 +48,14 @@ function Carousel() {
                             fontSize: `${navMediaQuery580 ? '1rem' : '.85rem'}`,
                         }}
                     >
-                        "I am very particular for buying Masks for myself and
+                        "I am very particular for buying masks for myself and
                         family members so I have to search for a company who can
                         provide good quality masks with reasonable prices. I
-                        found these Masks able to provide what I’m looking for.
+                        found these masks able to provide what I’m looking for.
                         I’m very happy once I tried it on. It fit my face
                         snuggly and I can breathe with it. Knowing they have 4
                         layers gives it more protection. I encourage everyone to
-                        buy these Masks."
+                        buy these masks."
                     </Typography>
                     <Typography
                         variant="caption"

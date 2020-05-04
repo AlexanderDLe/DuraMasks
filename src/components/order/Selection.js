@@ -8,12 +8,10 @@ import Checkbox from '@material-ui/core/Checkbox';
 import DesignCard from './DesignCard';
 import CustomCard from './CustomCard';
 import { selection } from '../masks/MaskDesigns';
-import FlowerTitle from '../../img/FlowerTitle.png';
+import Search from './Search';
+import SelectionHero from './SelectionHero';
 
 const useStyles = makeStyles((theme) => ({
-    title: {
-        // textAlign: 'center',
-    },
     smallContainer: {
         paddingLeft: 0,
         paddingRight: 0,
@@ -21,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         paddingTop: '24px',
         paddingBottom: '24px',
+        minHeight: 'calc(100vh - 630px)',
     },
     category: {
         margin: '24px 0',
@@ -34,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '1.8rem',
         cursor: 'pointer',
         fontWeight: '400',
+        fontFamily: 'Open Sans',
     },
     expandCollapse: {
         cursor: 'pointer',
@@ -44,8 +44,8 @@ const useStyles = makeStyles((theme) => ({
         color: 'rgba(0, 0, 0, 0.87)',
         marginLeft: -10,
     },
-    selectionTitle: {
-        fontFamily: 'Roboto',
+    sectionTitle: {
+        fontFamily: 'Open Sans',
     },
 }));
 
@@ -60,7 +60,17 @@ function Selection() {
     const [patternOpen, setPatternOpen] = useState(true);
     const [hawaiianOpen, setHawaiianOpen] = useState(true);
     const [customOpen, setCustomOpen] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [useSearchTerm, setUseSearchTerm] = useState(false);
+    const [searchResults, setSearchResults] = useState([]);
 
+    // Categorization
+    const solid = [];
+    const floral = [];
+    const pattern = [];
+    const hawaiian = [];
+
+    // Handlers
     const handleSolidOpens = () => {
         setSolidOpen(!solidOpen);
     };
@@ -76,13 +86,13 @@ function Selection() {
     const handleCustomOpens = () => {
         setCustomOpen(!customOpen);
     };
+    const handleSearchReset = () => {
+        setSearchTerm('');
+        setUseSearchTerm(false);
+        setSearchResults([]);
+    };
 
     // Categorization
-    const solid = [];
-    const floral = [];
-    const pattern = [];
-    const hawaiian = [];
-
     const sortCategories = () => {
         Object.keys(selection).map((key) => {
             let category = selection[key].category;
@@ -107,12 +117,69 @@ function Selection() {
     };
     sortCategories();
 
+    // Search
+    const handleSearch = (e) => {
+        e.preventDefault();
+
+        if (searchTerm === '') setUseSearchTerm(false);
+        else {
+            let newSearchResults = [];
+            Object.keys(selection).filter((key) => {
+                let term = searchTerm.toLowerCase();
+                let name = selection[key].color.toLowerCase();
+                let type = selection[key].category.toLowerCase();
+                let tags = selection[key].tags;
+
+                if (name.includes(term) || type.includes(term)) {
+                    return newSearchResults.push(selection[key]);
+                }
+                for (let tag of tags) {
+                    if (tag.includes(term))
+                        return newSearchResults.push(selection[key]);
+                }
+                return '';
+            });
+            console.log(newSearchResults);
+            setSearchResults(newSearchResults);
+            setUseSearchTerm(true);
+        }
+    };
+    const handleSearchTermChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
+    // Render Designs
     const renderCategory = (category) => {
         return category.map((design, index) => {
             return <DesignCard design={design} key={index} />;
         });
     };
-
+    const renderSearchResults = () => {
+        console.log('hello');
+        console.log(searchResults);
+        return (
+            <React.Fragment>
+                <div className={classes.category}>
+                    <Typography
+                        variant="h4"
+                        component="h2"
+                        className={classes.categoryTitle}
+                    >
+                        Search Results
+                    </Typography>
+                </div>
+                <Grid container spacing={3}>
+                    {searchResults.length === 0 ? (
+                        <span style={{ padding: 13 }}>
+                            Your search has no matches
+                        </span>
+                    ) : (
+                        renderCategory(searchResults)
+                    )}
+                </Grid>
+            </React.Fragment>
+        );
+    };
     const renderDesigns = () => {
         const categoryTitle = (category, handleClickEvent, state) => {
             return (
@@ -122,6 +189,7 @@ function Selection() {
                         checked={state}
                         color="default"
                         className={classes.checkbox}
+                        size="small"
                     />
                     <Typography
                         onClick={handleClickEvent}
@@ -164,37 +232,29 @@ function Selection() {
     return (
         <React.Fragment>
             <main style={{ width: '100%' }}>
-                <div className="selection-hero"></div>
+                {/* <div className="selection-hero"></div> */}
+                <SelectionHero />
+
                 <Container className={classes.root}>
                     <div
                         className="selection-title"
                         style={{ textAlign: 'center', paddingTop: 24 }}
                     >
-                        <img
-                            className="selection-title-flower"
-                            src={FlowerTitle}
-                            alt="Flower Title PNG"
-                        />
                         <Typography
-                            className={classes.selectionTitle}
+                            className={classes.sectionTitle}
                             variant="h4"
                             component="h2"
                         >
-                            Mask Selection
+                            Select A Design
                         </Typography>
-                        {/* <Typography
-                            gutterBottom
-                            variant="body1"
-                            component="h2"
-                            style={{
-                                paddingBottom: 0,
-                                color: 'rgba(0,0,0,.6)',
-                            }}
-                        >
-                            More designs coming soon.
-                        </Typography> */}
                     </div>
-                    {renderDesigns()}
+                    <Search
+                        handleSearchReset={handleSearchReset}
+                        searchTerm={searchTerm}
+                        handleSearchTermChange={handleSearchTermChange}
+                        handleSearch={handleSearch}
+                    />
+                    {useSearchTerm ? renderSearchResults() : renderDesigns()}
                 </Container>
             </main>
         </React.Fragment>

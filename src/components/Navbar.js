@@ -24,11 +24,13 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     navIcon: {
-        paddingTop: 4,
+        padding: 3,
+        paddingTop: 8,
     },
     link: {
         color: 'white',
         textDecoration: 'none',
+        fontFamily: 'Open Sans',
     },
     cartAmount: {
         marginLeft: '3px',
@@ -65,6 +67,7 @@ const Navbar = ({ amount }) => {
     };
     const navTitleStyle = {
         fontSize: `${navMediaQuery ? '1.15rem' : '.9rem'}`,
+        fontFamily: 'Open Sans',
     };
 
     // Standard Navigation
