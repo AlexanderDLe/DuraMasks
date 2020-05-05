@@ -107,6 +107,7 @@ function Pricing() {
                             style={{
                                 borderTopLeftRadius: '0',
                                 width: '50%',
+                                border: 'none !important',
                             }}
                             onClick={setPricingToNormal}
                         >
@@ -118,6 +119,7 @@ function Pricing() {
                                 borderWidth: '2px',
                                 borderTopRightRadius: '0',
                                 width: '50%',
+                                border: 'none !important',
                             }}
                             onClick={setPricingToWholesale}
                         >

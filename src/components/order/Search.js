@@ -3,15 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
-import CloseIcon from '@material-ui/icons/Close';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     search: {
         display: 'flex',
-        justifyContent: 'center',
         alignItems: 'center',
-        textAlign: 'center',
-        marginTop: 16,
     },
     searchIcon: {
         cursor: 'pointer',
@@ -20,6 +17,10 @@ const useStyles = makeStyles((theme) => ({
         border: 'none',
         paddingLeft: 0,
         paddingRight: 0,
+        marginTop: 24,
+    },
+    textfield: {
+        width: '200px',
     },
 }));
 
@@ -35,23 +36,23 @@ function Search({
         <form className={classes.search} onSubmit={handleSearch}>
             <TextField
                 onChange={handleSearchTermChange}
-                label="Search"
+                label="Search Your Favorite Color"
                 value={searchTerm}
+                className={classes.textfield}
             />
             <div
-                style={{ marginTop: 24 }}
+                onClick={handleSearch}
                 className={classes.searchButton}
                 type="submit"
             >
                 <SearchIcon className={classes.searchIcon} />
             </div>
-            <div
+            <Button
                 onClick={handleSearchReset}
                 className={classes.searchButton}
-                style={{ marginTop: 24 }}
             >
-                <CloseIcon className={classes.searchIcon} />
-            </div>
+                Reset
+            </Button>
         </form>
     );
 }

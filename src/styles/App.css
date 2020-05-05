@@ -1,3 +1,11 @@
+* {
+    text-decoration: none !important;
+}
+
+*:focus {
+    outline: none !important;
+}
+
 .body-class {
     min-height: calc(100vh - 116px);
     display: flex;
@@ -80,27 +88,8 @@
 }
 
 /* CAROUSEL */
-.carousel-item {
-    min-height: 450px;
-}
+
 .carousel-control {
     font-size: 300px;
     width: 100px;
-}
-.carousel-image-1 {
-    background: url('../img/LandingMask.jpg') no-repeat center;
-    background-size: cover;
-    width: 100%;
-}
-.carousel-image-2 {
-    background: url('../img/LandingMask.jpg') no-repeat center;
-    background-size: cover;
-}
-.carousel-image-3 {
-    background: url('../img/LandingMask.jpg') no-repeat center;
-    background-size: cover;
-}
-.carousel-image-4 {
-    background: url('../img/LandingMask.jpg') no-repeat center;
-    background-size: cover;
 }

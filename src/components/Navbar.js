@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: 8,
     },
     link: {
-        color: 'white',
+        color: 'white !important',
         textDecoration: 'none',
         fontFamily: 'Open Sans',
     },

@@ -47,6 +47,11 @@ const useStyles = makeStyles((theme) => ({
     sectionTitle: {
         fontFamily: 'Open Sans',
     },
+    controlBox: {
+        marginTop: 24,
+        display: 'flex',
+        justifyContent: 'space-between',
+    },
 }));
 
 function Selection() {
