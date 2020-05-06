@@ -259,11 +259,11 @@ function Selection() {
     return (
         <React.Fragment>
             <main style={{ width: '100%' }}>
-                <div className="selection-hero"></div>
-                {/* <SelectionHero /> */}
+                {/* <div className="selection-hero"></div> */}
+                <SelectionHero />
 
                 <Container className={classes.root}>
-                    <div
+                    {/* <div
                         className="selection-title"
                         style={{ textAlign: 'center', paddingTop: 24 }}
                     >
@@ -274,7 +274,7 @@ function Selection() {
                         >
                             Select A Design
                         </Typography>
-                    </div>
+                    </div> */}
                     <Search
                         handleSearchReset={handleSearchReset}
                         searchTerm={searchTerm}

@@ -1,16 +1,11 @@
 import { createMuiTheme } from '@material-ui/core';
+// import indigo from '@material-ui/core/colors/indigo';
 
 export const theme = createMuiTheme({
-    // overrides: {
-    //     MuiInput: {
-    //         underline: {
-    //             '&&&&:hover:before': {
-    //                 borderBottom: '1px solid rgba(0, 0, 0, 0)',
-    //             },
-    //         },
+    // palette: {
+    //     primary: {
+    //         main: indigo[800],
+    //         light: indigo[600],
     //     },
-    // },
-    // typography: {
-    //     fontFamily: ['Roboto', 'sans-serif', 'Helvetica'],
     // },
 });

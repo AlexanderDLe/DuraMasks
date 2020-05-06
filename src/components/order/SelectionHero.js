@@ -1,62 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useMediaQuery } from '@material-ui/core';
+import 'react-bootstrap';
+import Carousel from 'react-bootstrap/Carousel';
 
-import LandingMask from '../../img/LandingMask.jpg';
+import Phone_Dotted from '../../img/SelectionCarouselImages/Phone_Dotted.jpg';
+import Desktop_Dotted from '../../img/SelectionCarouselImages/Desktop_Dotted.jpg';
+import Phone_Hawaiian from '../../img/SelectionCarouselImages/Phone_Hawaiian.jpg';
+import Desktop_Hawaiian from '../../img/SelectionCarouselImages/Desktop_Hawaiian.jpg';
+import Desktop_Bandana from '../../img/SelectionCarouselImages/Desktop_Bandana.jpg';
+import Phone_Bandana from '../../img/SelectionCarouselImages/Phone_Bandana.jpg';
 
 function SelectionHero() {
-    const renderCarouselItem = (index, img, state) => {
+    const navMediaQuery = useMediaQuery('(min-width:900px)');
+    const [index, setIndex] = useState(0);
+
+    const handleSelect = (selectedIndex, e) => {
+        setIndex(selectedIndex);
+    };
+
+    const renderCarouselItem = (index, desktop_img, phone_img) => {
+        let bg_img = navMediaQuery ? desktop_img : phone_img;
         return (
-            <div
+            <Carousel.Item
                 style={{
                     minHeight: 450,
-                    background: `url(${img}) no-repeat center`,
+                    background: `url(${bg_img}) no-repeat center`,
                 }}
-                className={`carousel-item carousel-image-${index} ${state}`}
-            >
-                <div className="container">
-                    <div className="carousel-caption d-none d-sm-block text-right mb-5" />
-                </div>
-            </div>
+                className={`carousel-item carousel-image-${index}`}
+            ></Carousel.Item>
         );
     };
 
     return (
-        <div
-            id="myCarousel"
-            className="Landing carousel slide center"
-            data-ride="carousel"
-        >
-            <ol className="carousel-indicators">
-                <li
-                    data-target="#myCarousel"
-                    data-slide-to="0"
-                    className="active"
-                />
-                <li data-target="#myCarousel" data-slide-to="1" />
-                <li data-target="#myCarousel" data-slide-to="2" />
-                <li data-target="#myCarousel" data-slide-to="3" />
-            </ol>
-            <div className="carousel-inner">
-                {renderCarouselItem(1, LandingMask, 'active')}
-                {renderCarouselItem(2, LandingMask)}
-                {renderCarouselItem(3, LandingMask)}
-                {renderCarouselItem(4, LandingMask)}
-            </div>
-
-            <a
-                href="#myCarousel"
-                data-slide="prev"
-                className="carousel-control-prev carousel-control"
-            >
-                <span className="carousel-control-prev-icon carousel-control" />
-            </a>
-            <a
-                href="#myCarousel"
-                data-slide="next"
-                className="carousel-control-next carousel-control"
-            >
-                <span className="carousel-control-next-icon carousel-control" />
-            </a>
-        </div>
+        <Carousel pause={false} active={index} onSelect={handleSelect}>
+            {renderCarouselItem(1, Desktop_Dotted, Phone_Dotted)}
+            {renderCarouselItem(2, Desktop_Hawaiian, Phone_Hawaiian)}
+            {renderCarouselItem(3, Desktop_Bandana, Phone_Bandana)}
+        </Carousel>
     );
 }
 

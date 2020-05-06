@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     search: {
+        marginTop: 16,
         display: 'flex',
         alignItems: 'center',
     },
