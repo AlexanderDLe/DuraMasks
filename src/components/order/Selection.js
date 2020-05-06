@@ -64,6 +64,8 @@ function Selection() {
     const [floralOpen, setFloralOpen] = useState(true);
     const [patternOpen, setPatternOpen] = useState(true);
     const [hawaiianOpen, setHawaiianOpen] = useState(true);
+    const [bandanaOpen, setBandanaOpen] = useState(true);
+    const [animalOpen, setAnimalOpen] = useState(true);
     const [customOpen, setCustomOpen] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
     const [useSearchTerm, setUseSearchTerm] = useState(false);
@@ -74,6 +76,8 @@ function Selection() {
     const floral = [];
     const pattern = [];
     const hawaiian = [];
+    const bandana = [];
+    const animal = [];
 
     // Handlers
     const handleSolidOpens = () => {
@@ -90,6 +94,12 @@ function Selection() {
     };
     const handleCustomOpens = () => {
         setCustomOpen(!customOpen);
+    };
+    const handleBandanaOpens = () => {
+        setBandanaOpen(!bandanaOpen);
+    };
+    const handleAnimalOpens = () => {
+        setAnimalOpen(!animalOpen);
     };
     const handleSearchReset = () => {
         setSearchTerm('');
@@ -113,6 +123,12 @@ function Selection() {
                     break;
                 case 'hawaiian':
                     hawaiian.push(selection[key]);
+                    break;
+                case 'animal':
+                    animal.push(selection[key]);
+                    break;
+                case 'bandana':
+                    bandana.push(selection[key]);
                     break;
                 default:
                     break;
@@ -160,8 +176,6 @@ function Selection() {
         });
     };
     const renderSearchResults = () => {
-        console.log('hello');
-        console.log(searchResults);
         return (
             <React.Fragment>
                 <div className={classes.category}>
@@ -214,9 +228,17 @@ function Selection() {
                 <Grid container spacing={3}>
                     {solidOpen ? renderCategory(solid) : ''}
                 </Grid>
+                {categoryTitle('Bandana', handleBandanaOpens, bandanaOpen)}
+                <Grid container spacing={3}>
+                    {bandanaOpen ? renderCategory(bandana) : ''}
+                </Grid>
                 {categoryTitle('Patterned', handlePatternOpens, patternOpen)}
                 <Grid container spacing={3}>
                     {patternOpen ? renderCategory(pattern) : ''}
+                </Grid>
+                {categoryTitle('Animal', handleAnimalOpens, animalOpen)}
+                <Grid container spacing={3}>
+                    {animalOpen ? renderCategory(animal) : ''}
                 </Grid>
                 {categoryTitle('Hawaiian', handleHawaiianOpens, hawaiianOpen)}
                 <Grid container spacing={3}>
@@ -237,8 +259,8 @@ function Selection() {
     return (
         <React.Fragment>
             <main style={{ width: '100%' }}>
-                {/* <div className="selection-hero"></div> */}
-                <SelectionHero />
+                <div className="selection-hero"></div>
+                {/* <SelectionHero /> */}
 
                 <Container className={classes.root}>
                     <div
