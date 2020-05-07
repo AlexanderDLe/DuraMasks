@@ -10,13 +10,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import TextField from '@material-ui/core/TextField';
-
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
@@ -25,6 +18,7 @@ import Modal from '@material-ui/core/Modal';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
+import MaskOrderForm from './MaskOrderForm';
 import { selection } from '../masks/MaskDesigns';
 
 const useStyles = makeStyles((theme) => ({
@@ -65,16 +59,6 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.background.paper,
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
-    },
-    spanDimensions: {
-        paddingLeft: 8,
-        color: 'rgba(0, 0, 0, 0.5)',
-        fontSize: '.8rem',
-    },
-    smallSpanDimensions: {
-        color: 'rgba(0, 0, 0, 0.5)',
-        fontSize: '.8rem',
-        paddingBottom: 12,
     },
     smallQuery: {
         display: 'flex',
@@ -124,8 +108,6 @@ function Item({ match, addOrder }) {
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [messageInfo, setMessageInfo] = useState(undefined);
     const [angledState, setAngledState] = useState('PostMaskPhotos');
-
-    console.log(data.angled | false);
 
     // Mask Order Configuration
     const handleChange = (event) => {
@@ -210,12 +192,6 @@ function Item({ match, addOrder }) {
         </div>
     );
 
-    // Radio Label Media Query Styles
-    const radioQuery = navMediaQuery ? classes.normalQuery : classes.smallQuery;
-    const spanQuery = navMediaQuery
-        ? classes.spanDimensions
-        : classes.smallSpanDimensions;
-
     return (
         <Card
             style={{ marginTop: navMediaQuery600 ? 40 : 16 }}
@@ -239,7 +215,14 @@ function Item({ match, addOrder }) {
                 onClick={handleModalOpen}
                 style={{ cursor: 'pointer' }}
             />
-            <CardContent className={classes.customizeBox}>
+            <MaskOrderForm
+                handleChange={handleChange}
+                amount={amount}
+                size={size}
+                navMediaQuery={navMediaQuery}
+                handleAmountChange={handleAmountChange}
+            />
+            {/* <CardContent className={classes.customizeBox}>
                 <FormControl style={{ width: '50%' }} component="fieldset">
                     <FormLabel component="legend">Select Size</FormLabel>
                     <RadioGroup
@@ -330,11 +313,11 @@ function Item({ match, addOrder }) {
                         front-facing cloth exterior.
                     </p>
                 </div>
-            </CardContent>
+            </CardContent> */}
             <CardActions className={classes.itemActions}>
                 <Button size="small" color="primary">
                     <Link to="/selection" className={classes.link}>
-                        Back To Selections
+                        Back To Selection
                     </Link>
                 </Button>
                 <Button

@@ -3,6 +3,7 @@ export const selection = {
     // SOLIDS //
     ///////////
     black: {
+        type: 'Mask',
         color: 'Black',
         img: 'Black.jpg',
         param: 'black',
@@ -11,6 +12,7 @@ export const selection = {
         tags: [],
     },
     darkgrey: {
+        type: 'Mask',
         color: 'Dark Grey',
         img: 'DarkGrey.jpg',
         param: 'darkgrey',
@@ -19,6 +21,7 @@ export const selection = {
         tags: ['black'],
     },
     grey: {
+        type: 'Mask',
         color: 'Grey',
         img: 'Grey.jpg',
         param: 'grey',
@@ -27,6 +30,7 @@ export const selection = {
         tags: ['black', 'white'],
     },
     white: {
+        type: 'Mask',
         color: 'White',
         img: 'White.jpg',
         param: 'white',
@@ -35,6 +39,7 @@ export const selection = {
         tags: [],
     },
     navyblue: {
+        type: 'Mask',
         color: 'Navy Blue',
         img: 'NavyBlue.jpg',
         param: 'navyblue',
@@ -43,6 +48,7 @@ export const selection = {
         tags: [],
     },
     navygrey: {
+        type: 'Mask',
         color: 'Navy Grey',
         img: 'NavyGrey.jpg',
         param: 'navygrey',
@@ -51,6 +57,7 @@ export const selection = {
         tags: ['blue'],
     },
     red: {
+        type: 'Mask',
         color: 'Red',
         img: 'Red.jpg',
         param: 'red',
@@ -59,6 +66,7 @@ export const selection = {
         tags: ['red', 'pink'],
     },
     pink: {
+        type: 'Mask',
         color: 'Pink',
         img: 'Pink.jpg',
         param: 'pink',
@@ -70,6 +78,7 @@ export const selection = {
     // BANDANAS //
     /////////////
     blackbandana: {
+        type: 'Mask',
         color: 'Black Bandana',
         img: 'BlackBandana.jpg',
         param: 'blackbandana',
@@ -78,6 +87,7 @@ export const selection = {
         tags: ['black'],
     },
     whitebandana: {
+        type: 'Mask',
         color: 'White Bandana',
         img: 'WhiteBandana.jpg',
         param: 'whitebandana',
@@ -86,6 +96,7 @@ export const selection = {
         tags: ['black'],
     },
     redbandana: {
+        type: 'Mask',
         color: 'Red Bandana',
         img: 'RedBandana.jpg',
         param: 'redbandana',
@@ -94,6 +105,7 @@ export const selection = {
         tags: ['pink'],
     },
     pinkbandana: {
+        type: 'Mask',
         color: 'Pink Bandana',
         img: 'PinkBandana.jpg',
         param: 'pinkbandana',
@@ -102,14 +114,16 @@ export const selection = {
         tags: ['red'],
     },
     navybandana: {
+        type: 'Mask',
         color: 'Navy Bandana',
         img: 'NavyBandana.jpg',
         param: 'navybandana',
         category: 'bandana',
         angled: true,
-        tags: [],
+        tags: ['blue'],
     },
     bluebandana: {
+        type: 'Mask',
         color: 'Blue Bandana',
         img: 'BlueBandana.jpg',
         param: 'bluebandana',
@@ -121,6 +135,7 @@ export const selection = {
     // PATTERNED //
     //////////////
     artisanblack: {
+        type: 'Mask',
         color: 'Artisan Black',
         img: 'ArtisanBlack.jpg',
         param: 'artisanblack',
@@ -129,6 +144,7 @@ export const selection = {
         tags: [],
     },
     ash: {
+        type: 'Mask',
         color: 'Ash',
         img: 'Ash.jpg',
         param: 'ash',
@@ -137,6 +153,7 @@ export const selection = {
         tags: ['pattern', 'black', 'grey'],
     },
     spots: {
+        type: 'Mask',
         color: 'Spots',
         img: 'Spots.jpg',
         param: 'spots',
@@ -145,6 +162,7 @@ export const selection = {
         tags: ['white', 'dots'],
     },
     blackdotted: {
+        type: 'Mask',
         color: 'Black Dotted',
         img: 'BlackDotted.jpg',
         param: 'blackdotted',
@@ -152,15 +170,8 @@ export const selection = {
         angled: true,
         tags: ['dots'],
     },
-    // diamonds: {
-    //     color: 'Diamonds',
-    //     img: 'Diamonds.jpg',
-    //     param: 'diamonds',
-    //     category: 'pattern',
-    //     angled: true,
-    //     tags: ['white']
-    // },
     whitedotted: {
+        type: 'Mask',
         color: 'White Dotted',
         img: 'WhiteDotted.jpg',
         param: 'whitedotted',
@@ -169,6 +180,7 @@ export const selection = {
         tags: ['dots'],
     },
     artisanred: {
+        type: 'Mask',
         color: 'Artisan Red',
         img: 'ArtisanRed.jpg',
         param: 'artisanred',
@@ -177,6 +189,7 @@ export const selection = {
         tags: ['pink'],
     },
     ladybug: {
+        type: 'Mask',
         color: 'Ladybug',
         img: 'Ladybug.jpg',
         param: 'ladybug',
@@ -185,6 +198,7 @@ export const selection = {
         tags: ['red'],
     },
     minnie: {
+        type: 'Mask',
         color: 'Minnie',
         img: 'Minnie.jpg',
         param: 'minnie',
@@ -193,6 +207,7 @@ export const selection = {
         tags: ['red'],
     },
     tribal: {
+        type: 'Mask',
         color: 'Tribal',
         img: 'Tribal.jpg',
         param: 'tribal',
@@ -201,6 +216,7 @@ export const selection = {
         tags: ['black', 'white'],
     },
     patriot: {
+        type: 'Mask',
         color: 'Patriot',
         img: 'Patriot.jpg',
         param: 'patriot',
@@ -209,6 +225,7 @@ export const selection = {
         tags: ['american', 'flag', 'blue'],
     },
     purpleplaid: {
+        type: 'Mask',
         color: 'Purple Plaid',
         img: 'PurplePlaid.jpg',
         param: 'purpleplaid',
@@ -217,6 +234,7 @@ export const selection = {
         tags: ['lavender', 'violet'],
     },
     orangeplaid: {
+        type: 'Mask',
         color: 'Orange Plaid',
         img: 'OrangePlaid.jpg',
         param: 'orangeplaid',
@@ -225,6 +243,7 @@ export const selection = {
         tags: [],
     },
     magnetic: {
+        type: 'Mask',
         color: 'Magnetic',
         img: 'Magnetic.jpg',
         param: 'magnetic',
@@ -233,6 +252,7 @@ export const selection = {
         tags: ['blue', 'yellow'],
     },
     flames: {
+        type: 'Mask',
         color: 'Flames',
         img: 'Flames.jpg',
         param: 'flames',
@@ -241,6 +261,7 @@ export const selection = {
         tags: ['orange', 'yellow'],
     },
     native: {
+        type: 'Mask',
         color: 'Native',
         img: 'Native.jpg',
         param: 'native',
@@ -249,6 +270,7 @@ export const selection = {
         tags: ['orange', 'brown'],
     },
     radiant: {
+        type: 'Mask',
         color: 'Radiant',
         img: 'Radiant.jpg',
         param: 'radiant',
@@ -257,6 +279,7 @@ export const selection = {
         tags: ['yellow', 'orange', 'red'],
     },
     classic: {
+        type: 'Mask',
         color: 'Classic',
         img: 'Classic.jpg',
         param: 'classic',
@@ -265,6 +288,7 @@ export const selection = {
         tags: ['yellow', 'brown'],
     },
     sutra: {
+        type: 'Mask',
         color: 'Sutra',
         img: 'Sutra.jpg',
         param: 'sutra',
@@ -272,18 +296,11 @@ export const selection = {
         angled: true,
         tags: ['pink', 'purple'],
     },
-    // glitter: {
-    //     color: 'Glitter',
-    //     img: 'Glitter.jpg',
-    //     param: 'glitter',
-    //     category: 'pattern',
-    //     angled: true,
-    //     tags: ['pink', 'purple'],
-    // },
     ////////////
     // ANIMAL //
     ///////////
     zebra: {
+        type: 'Mask',
         color: 'Zebra',
         img: 'Zebra.jpg',
         param: 'zebra',
@@ -292,6 +309,7 @@ export const selection = {
         tags: ['black', 'white'],
     },
     cabin: {
+        type: 'Mask',
         color: 'Cabin',
         img: 'Cabin.jpg',
         param: 'cabin',
@@ -300,6 +318,7 @@ export const selection = {
         tags: ['brown', 'white'],
     },
     leopard: {
+        type: 'Mask',
         color: 'Leopard',
         img: 'Leopard.jpg',
         param: 'leopard',
@@ -308,6 +327,7 @@ export const selection = {
         tags: ['animal', 'brown'],
     },
     violetredzebra: {
+        type: 'Mask',
         color: 'Violet Red Zebra',
         img: 'VioletRedZebra.jpg',
         param: 'violetredzebra',
@@ -316,6 +336,7 @@ export const selection = {
         tags: ['magenta'],
     },
     cobra: {
+        type: 'Mask',
         color: 'Cobra',
         img: 'Cobra.jpg',
         param: 'cobra',
@@ -324,6 +345,7 @@ export const selection = {
         tags: ['animal', 'orange', 'brown'],
     },
     madagascar: {
+        type: 'Mask',
         color: 'Madagascar',
         img: 'Madagascar.jpg',
         param: 'madagascar',
@@ -332,6 +354,7 @@ export const selection = {
         tags: ['animal', 'brown', 'yellow'],
     },
     paws: {
+        type: 'Mask',
         color: 'Paws',
         img: 'Paws.jpg',
         param: 'paws',
@@ -343,6 +366,7 @@ export const selection = {
     // HAWAIIAN //
     //////////////
     sunset: {
+        type: 'Mask',
         color: 'Sunset',
         img: 'Sunset.jpg',
         param: 'sunset',
@@ -351,6 +375,7 @@ export const selection = {
         tags: ['yellow', 'orange'],
     },
     hula: {
+        type: 'Mask',
         color: 'Hula',
         img: 'Hula.jpg',
         param: 'hula',
@@ -359,6 +384,7 @@ export const selection = {
         tags: ['pink', 'red', 'green'],
     },
     beach: {
+        type: 'Mask',
         color: 'Beach',
         img: 'Beach.jpg',
         param: 'beach',
@@ -367,6 +393,7 @@ export const selection = {
         tags: ['blue'],
     },
     koi: {
+        type: 'Mask',
         color: 'Koi',
         img: 'Koi.jpg',
         param: 'koi',
@@ -375,6 +402,7 @@ export const selection = {
         tags: ['red', 'pink'],
     },
     buttercup: {
+        type: 'Mask',
         color: 'Buttercup',
         img: 'Buttercup.jpg',
         param: 'buttercup',
@@ -383,6 +411,7 @@ export const selection = {
         tags: ['yellow', 'orange'],
     },
     pineapple: {
+        type: 'Mask',
         color: 'Pineapple',
         img: 'Pineapple.jpg',
         param: 'pineapple',
@@ -391,6 +420,7 @@ export const selection = {
         tags: ['yellow'],
     },
     pond: {
+        type: 'Mask',
         color: 'Pond',
         img: 'Pond.jpg',
         param: 'pond',
@@ -399,6 +429,7 @@ export const selection = {
         tags: ['blue'],
     },
     canopy: {
+        type: 'Mask',
         color: 'Canopy',
         img: 'Canopy.jpg',
         param: 'canopy',
@@ -407,6 +438,7 @@ export const selection = {
         tags: ['pink', 'green'],
     },
     sky: {
+        type: 'Mask',
         color: 'Sky',
         img: 'Sky.jpg',
         param: 'sky',
@@ -415,6 +447,7 @@ export const selection = {
         tags: ['blue'],
     },
     dusk: {
+        type: 'Mask',
         color: 'Dusk',
         img: 'Dusk.jpg',
         param: 'dusk',
@@ -423,6 +456,7 @@ export const selection = {
         tags: ['pink'],
     },
     surf: {
+        type: 'Mask',
         color: 'Surf',
         img: 'Surf.jpg',
         param: 'surf',
@@ -431,6 +465,7 @@ export const selection = {
         tags: ['grey', 'yellow'],
     },
     bloom: {
+        type: 'Mask',
         color: 'Bloom',
         img: 'Bloom.jpg',
         param: 'bloom',
@@ -439,6 +474,7 @@ export const selection = {
         tags: ['orange', 'yellow'],
     },
     loft: {
+        type: 'Mask',
         color: 'Loft',
         img: 'Loft.jpg',
         param: 'loft',
@@ -447,6 +483,7 @@ export const selection = {
         tags: ['purple'],
     },
     lagoon: {
+        type: 'Mask',
         color: 'Lagoon',
         img: 'Lagoon.jpg',
         param: 'lagoon',
@@ -455,6 +492,7 @@ export const selection = {
         tags: ['blue'],
     },
     palms: {
+        type: 'Mask',
         color: 'Palms',
         img: 'Palms.jpg',
         param: 'palms',
@@ -463,6 +501,7 @@ export const selection = {
         tags: ['black'],
     },
     honolulu: {
+        type: 'Mask',
         color: 'Honolulu',
         img: 'Honolulu.jpg',
         param: 'honolulu',
@@ -471,6 +510,7 @@ export const selection = {
         tags: ['red'],
     },
     river: {
+        type: 'Mask',
         color: 'River',
         img: 'River.jpg',
         param: 'river',
@@ -480,16 +520,9 @@ export const selection = {
     },
     ////////////
     // FLORAL //
-    ////////////
-    // floralrose: {
-    //     color: 'Floral Rose',
-    //     img: 'FloralRose.jpg',
-    //     param: 'floralrose',
-    //     category: 'floral',
-    //     angled: true,
-    //     tags: ['pink'],
-    // },
+    ////////////,
     floralwhite: {
+        type: 'Mask',
         color: 'Floral White',
         img: 'FloralWhite.jpg',
         param: 'floralwhite',
@@ -498,6 +531,7 @@ export const selection = {
         tags: [],
     },
     floralgreen: {
+        type: 'Mask',
         color: 'Floral Green',
         img: 'FloralGreen.jpg',
         param: 'floralgreen',
@@ -506,6 +540,7 @@ export const selection = {
         tags: [],
     },
     florallavender: {
+        type: 'Mask',
         color: 'Floral Lavender',
         img: 'FloralLavender.jpg',
         param: 'florallavender',
@@ -514,6 +549,7 @@ export const selection = {
         tags: ['purple', 'violet'],
     },
     floralpink: {
+        type: 'Mask',
         color: 'Floral Pink',
         img: 'FloralPink.jpg',
         param: 'floralpink',
@@ -522,6 +558,7 @@ export const selection = {
         tags: ['red'],
     },
     floralburgundy: {
+        type: 'Mask',
         color: 'Floral Burgundy',
         img: 'FloralBurgundy.jpg',
         param: 'floralburgundy',
@@ -530,6 +567,7 @@ export const selection = {
         tags: ['pink', 'brown'],
     },
     holly: {
+        type: 'Mask',
         color: 'Holly',
         img: 'Holly.jpg',
         param: 'holly',
@@ -538,6 +576,7 @@ export const selection = {
         tags: ['pink', 'brown', 'burgundy'],
     },
     floralblue: {
+        type: 'Mask',
         color: 'Floral Blue',
         img: 'FloralBlue.jpg',
         param: 'floralblue',
@@ -546,6 +585,7 @@ export const selection = {
         tags: [],
     },
     floralred: {
+        type: 'Mask',
         color: 'Floral Red',
         img: 'FloralRed.jpg',
         param: 'floralred',
@@ -554,6 +594,7 @@ export const selection = {
         tags: ['pink'],
     },
     garden: {
+        type: 'Mask',
         color: 'Garden',
         img: 'Garden.jpg',
         param: 'garden',
@@ -562,6 +603,7 @@ export const selection = {
         tags: [],
     },
     celeste: {
+        type: 'Mask',
         color: 'Celeste',
         img: 'Celeste.jpg',
         param: 'celeste',
@@ -570,6 +612,7 @@ export const selection = {
         tags: ['blue', 'brown'],
     },
     blossom: {
+        type: 'Mask',
         color: 'Blossom',
         img: 'Blossom.jpg',
         param: 'blossom',
@@ -578,6 +621,7 @@ export const selection = {
         tags: ['pink', 'red'],
     },
     peaches: {
+        type: 'Mask',
         color: 'Peaches',
         img: 'Peaches.jpg',
         param: 'peaches',
@@ -586,6 +630,7 @@ export const selection = {
         tags: ['pink', 'orange', 'red'],
     },
     vines: {
+        type: 'Mask',
         color: 'Vines',
         img: 'Vines.jpg',
         param: 'vines',
@@ -594,6 +639,7 @@ export const selection = {
         tags: ['green'],
     },
     spring: {
+        type: 'Mask',
         color: 'Spring',
         img: 'Spring.jpg',
         param: 'spring',
@@ -602,6 +648,7 @@ export const selection = {
         tags: ['pink', 'orange'],
     },
     stem: {
+        type: 'Mask',
         color: 'Stem',
         img: 'Stem.jpg',
         param: 'stem',
@@ -610,6 +657,7 @@ export const selection = {
         tags: ['white', 'green'],
     },
     terrace: {
+        type: 'Mask',
         color: 'Terrace',
         img: 'Terrace.jpg',
         param: 'terrace',
@@ -618,12 +666,25 @@ export const selection = {
         tags: ['pink'],
     },
     // LIMITED SUPPLY
-    // cherries: {
-    //     color: 'Cherries',
-    //     img: 'Cherries.jpg',
-    //     param: 'cherries',
-    //     category: 'floral',
-    //     angled: true,
-    //     tags: [],
-    // },
+    ////////////
+    // ELASTIC //
+    ////////////
+    blackelastic: {
+        type: 'Elastic',
+        color: 'Black Elastic',
+        img: 'BlackElastic.jpg',
+        param: 'blackelastic',
+        category: 'custom',
+        angled: false,
+        tags: ['elastic'],
+    },
+    whiteelastic: {
+        type: 'Elastic',
+        color: 'White Elastic',
+        img: 'WhiteElastic.jpg',
+        param: 'whiteelastic',
+        category: 'custom',
+        angled: false,
+        tags: ['elastic'],
+    },
 };

@@ -10,6 +10,7 @@ import CustomCard from './CustomCard';
 import { selection } from '../masks/MaskDesigns';
 import Search from './Search';
 import SelectionHero from './SelectionHero';
+// import SelectionFilter from './SelectionFilter';
 
 const useStyles = makeStyles((theme) => ({
     smallContainer: {
@@ -70,6 +71,7 @@ function Selection() {
     const [searchTerm, setSearchTerm] = useState('');
     const [useSearchTerm, setUseSearchTerm] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
+    // const [filterState, setFilterState] = useState('All');
 
     // Categorization
     const solid = [];
@@ -169,7 +171,7 @@ function Selection() {
         setSearchTerm(e.target.value);
     };
 
-    // Render Designs
+    // Render
     const renderCategory = (category) => {
         return category.map((design, index) => {
             return <DesignCard design={design} key={index} />;
@@ -196,6 +198,15 @@ function Selection() {
                         renderCategory(searchResults)
                     )}
                 </Grid>
+            </React.Fragment>
+        );
+    };
+    const renderCustom = () => {
+        return (
+            <React.Fragment>
+                <CustomCard />
+                <DesignCard design={selection.blackelastic} key={99} />
+                <DesignCard design={selection.whiteelastic} key={100} />
             </React.Fragment>
         );
     };
@@ -250,7 +261,7 @@ function Selection() {
                 </Grid>
                 {categoryTitle('Custom', handleCustomOpens, customOpen)}
                 <Grid container spacing={3}>
-                    {customOpen ? <CustomCard /> : ''}
+                    {customOpen ? renderCustom() : ''}
                 </Grid>
             </React.Fragment>
         );
@@ -261,20 +272,11 @@ function Selection() {
             <main style={{ width: '100%' }}>
                 {/* <div className="selection-hero"></div> */}
                 <SelectionHero />
-
+                {/* <SelectionFilter
+                    filterState={filterState}
+                    setFilterState={setFilterState}
+                /> */}
                 <Container className={classes.root}>
-                    {/* <div
-                        className="selection-title"
-                        style={{ textAlign: 'center', paddingTop: 24 }}
-                    >
-                        <Typography
-                            className={classes.sectionTitle}
-                            variant="h4"
-                            component="h2"
-                        >
-                            Select A Design
-                        </Typography>
-                    </div> */}
                     <Search
                         handleSearchReset={handleSearchReset}
                         searchTerm={searchTerm}
