@@ -67,6 +67,14 @@ const useStyles = makeStyles({
     },
 });
 
+const calculateOrderTotal = (orders) => {
+    let orderTotal = 0;
+    for (let order of orders) {
+        orderTotal += order.price * order.amount;
+    }
+    return orderTotal;
+};
+
 const API = 'https://0n6fj67t7l.execute-api.us-west-1.amazonaws.com/dev/mail';
 const header = {
     'Content-Type': 'application/json',
@@ -85,11 +93,9 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
 
     // Checkout Configuration
     const currency = 'USD';
-    const maskPrice = 10;
-    const shippingPrice = 0;
-    const orderTotal = amount * maskPrice;
-    const shippingFee = orderTotal < 50 ? shippingPrice : 0;
-    let total = amount * maskPrice + shippingFee;
+    const orderTotal = calculateOrderTotal(orders);
+    const shippingFee = 0;
+    let total = orderTotal + shippingFee;
     let env = mode;
     const client = {
         sandbox:
@@ -136,7 +142,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
         return (
             <React.Fragment>
                 <div className={classes.cartCalculation}>
-                    <div>
+                    <div style={{ paddingTop: 16 }}>
                         <p>Order Total</p>
                     </div>
                     <p>${orderTotal}</p>
@@ -213,7 +219,8 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
                                         className={classes.designItemName}
                                         to={`/item/${order.param}`}
                                     >
-                                        {order.amount}x {order.color} Design
+                                        {order.amount}x {order.color}{' '}
+                                        {order.type === 'Mask' ? 'Design' : ''}
                                     </Link>
                                 </Typography>
                                 <Typography variant="caption" component="h2">
@@ -222,7 +229,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
                             </div>
                         </div>
                         <p style={{ textAlign: 'right' }}>
-                            ${order.amount * maskPrice} <br />{' '}
+                            ${order.price * order.amount} <br />{' '}
                             <span
                                 className={classes.removeButton}
                                 onClick={() => removeOrder(order)}

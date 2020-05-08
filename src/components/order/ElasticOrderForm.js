@@ -64,56 +64,12 @@ function MaskOrderForm({
                     onChange={handleChange}
                 >
                     <FormControlLabel
-                        value="XL"
+                        value="200 Yards"
                         control={<Radio color="primary" />}
                         label={
                             <div className={radioQuery}>
-                                XL Adult
-                                <span className={spanQuery}>10.5" x 7"</span>
-                            </div>
-                        }
-                        className={classes.radioLabel}
-                    />
-
-                    <FormControlLabel
-                        value="L"
-                        control={<Radio color="primary" />}
-                        label={
-                            <div className={radioQuery}>
-                                L Adult
-                                <span className={spanQuery}>10" x 6"</span>
-                            </div>
-                        }
-                    />
-                    <FormControlLabel
-                        value="M"
-                        control={<Radio color="primary" />}
-                        label={
-                            <div className={radioQuery}>
-                                M Teen
-                                <span className={spanQuery}>9" x 5.5"</span>
-                            </div>
-                        }
-                    />
-
-                    <FormControlLabel
-                        value="S"
-                        control={<Radio color="primary" />}
-                        label={
-                            <div className={radioQuery}>
-                                S Child
-                                <span className={spanQuery}>8" x 5"</span>
-                            </div>
-                        }
-                    />
-
-                    <FormControlLabel
-                        value="XS"
-                        control={<Radio color="primary" />}
-                        label={
-                            <div className={radioQuery}>
-                                XS Child
-                                <span className={spanQuery}>7" x 4.5"</span>
+                                200 Yards
+                                <span className={spanQuery}>$50</span>
                             </div>
                         }
                     />
@@ -136,11 +92,10 @@ function MaskOrderForm({
                 <br />
                 <br />
                 <p style={{ color: 'rgba(0,0,0,.5', fontSize: '.85rem' }}>
-                    Dimensions are in Width x Height
+                    These elastic bands measure 1/4" (6mm) in width.
                     <br />
                     <br />
-                    All measurements used measuring tape to follow the
-                    front-facing cloth exterior.
+                    Composed of polyester fiber. Very comfortable and durable.
                 </p>
             </div>
         </CardContent>

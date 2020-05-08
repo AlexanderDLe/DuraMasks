@@ -82,7 +82,7 @@ const Navbar = ({ amount }) => {
     );
     const fullNav = (
         <React.Fragment>
-            {fullNavItem('selection', 'Mask Selection')}
+            {fullNavItem('selection', 'Selection')}
             {fullNavItem('pricing', 'Pricing')}
         </React.Fragment>
     );
@@ -118,7 +118,7 @@ const Navbar = ({ amount }) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                {menuNavItem('selection', 'Mask Selection')}
+                {menuNavItem('selection', 'Selection')}
                 {menuNavItem('pricing', 'Pricing')}
                 {menuNavItem('cart', 'Cart')}
             </Menu>

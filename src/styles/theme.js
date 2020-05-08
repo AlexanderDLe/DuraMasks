@@ -8,4 +8,11 @@ export const theme = createMuiTheme({
     //         light: indigo[600],
     //     },
     // },
+    overrides: {
+        MuiButton: {
+            root: {
+                borderRadius: 0,
+            },
+        },
+    },
 });

@@ -19,6 +19,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import MaskOrderForm from './MaskOrderForm';
+import ElasticOrderForm from './ElasticOrderForm';
 import { selection } from '../masks/MaskDesigns';
 
 const useStyles = makeStyles((theme) => ({
@@ -48,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
     itemActions: {
         display: 'flex',
         justifyContent: 'space-between',
+        margin: '0px 8px',
     },
     modal: {
         position: 'absolute',
@@ -101,7 +103,9 @@ function Item({ match, addOrder }) {
     const classes = useStyles();
     const data = selection[match.params.id];
 
-    const [size, setSize] = React.useState('L');
+    const defaultSize = data.type === 'Mask' ? 'L' : '200 Yards';
+
+    const [size, setSize] = React.useState(defaultSize);
     const [amount, setAmount] = React.useState(1);
     const [modalOpen, setModalOpen] = React.useState(false);
     const queueRef = useRef([]);
@@ -119,10 +123,12 @@ function Item({ match, addOrder }) {
     };
     const handleAddItem = () => () => {
         addOrder({
+            type: data.type,
             color: data.color,
             size: size,
             amount: amount,
             param: data.param,
+            price: data.price,
             img: data.img,
         });
         queueRef.current.push({
@@ -215,105 +221,23 @@ function Item({ match, addOrder }) {
                 onClick={handleModalOpen}
                 style={{ cursor: 'pointer' }}
             />
-            <MaskOrderForm
-                handleChange={handleChange}
-                amount={amount}
-                size={size}
-                navMediaQuery={navMediaQuery}
-                handleAmountChange={handleAmountChange}
-            />
-            {/* <CardContent className={classes.customizeBox}>
-                <FormControl style={{ width: '50%' }} component="fieldset">
-                    <FormLabel component="legend">Select Size</FormLabel>
-                    <RadioGroup
-                        aria-label="Mask Size"
-                        name="Size"
-                        value={size}
-                        onChange={handleChange}
-                    >
-                        <FormControlLabel
-                            value="XL"
-                            control={<Radio color="primary" />}
-                            label={
-                                <div className={radioQuery}>
-                                    XL Adult
-                                    <span className={spanQuery}>
-                                        10.5" x 7"
-                                    </span>
-                                </div>
-                            }
-                            className={classes.radioLabel}
-                        />
-
-                        <FormControlLabel
-                            value="L"
-                            control={<Radio color="primary" />}
-                            label={
-                                <div className={radioQuery}>
-                                    L Adult
-                                    <span className={spanQuery}>10" x 6"</span>
-                                </div>
-                            }
-                        />
-                        <FormControlLabel
-                            value="M"
-                            control={<Radio color="primary" />}
-                            label={
-                                <div className={radioQuery}>
-                                    M Teen
-                                    <span className={spanQuery}>9" x 5.5"</span>
-                                </div>
-                            }
-                        />
-
-                        <FormControlLabel
-                            value="S"
-                            control={<Radio color="primary" />}
-                            label={
-                                <div className={radioQuery}>
-                                    S Child
-                                    <span className={spanQuery}>8" x 5"</span>
-                                </div>
-                            }
-                        />
-
-                        <FormControlLabel
-                            value="XS"
-                            control={<Radio color="primary" />}
-                            label={
-                                <div className={radioQuery}>
-                                    XS Child
-                                    <span className={spanQuery}>7" x 4.5"</span>
-                                </div>
-                            }
-                        />
-                    </RadioGroup>
-                </FormControl>
-                <div style={{ width: '50%' }}>
-                    <FormLabel style={{ paddingLeft: 5 }} component="legend">
-                        Amount
-                    </FormLabel>
-                    <TextField
-                        id="standard-number"
-                        type="number"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        value={amount}
-                        onChange={handleAmountChange}
-                        style={{ paddingLeft: 5 }}
-                    />
-                    <br />
-                    <br />
-                    <p style={{ color: 'rgba(0,0,0,.5', fontSize: '.85rem' }}>
-                        Dimensions are in Width x Height
-                        <br />
-                        <br />
-                        All measurements used measuring tape to follow the
-                        front-facing cloth exterior.
-                    </p>
-                </div>
-            </CardContent> */}
+            {data.type === 'Mask' ? (
+                <MaskOrderForm
+                    handleChange={handleChange}
+                    amount={amount}
+                    size={size}
+                    navMediaQuery={navMediaQuery}
+                    handleAmountChange={handleAmountChange}
+                />
+            ) : (
+                <ElasticOrderForm
+                    handleChange={handleChange}
+                    amount={amount}
+                    size={size}
+                    navMediaQuery={navMediaQuery}
+                    handleAmountChange={handleAmountChange}
+                />
+            )}
             <CardActions className={classes.itemActions}>
                 <Button size="small" color="primary">
                     <Link to="/selection" className={classes.link}>
