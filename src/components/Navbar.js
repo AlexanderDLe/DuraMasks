@@ -69,7 +69,7 @@ const Navbar = ({ amount }) => {
     // Dynamic Nav Styles
     const navIconStyle = {
         width: `${navMediaQuery ? '50px' : '35px'}`,
-        paddingBottom: 8,
+        paddingBottom: 12,
         paddingRight: 4,
     };
     const navTitleStyle = {

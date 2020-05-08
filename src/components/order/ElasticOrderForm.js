@@ -69,7 +69,27 @@ function MaskOrderForm({
                         label={
                             <div className={radioQuery}>
                                 200 Yards
-                                <span className={spanQuery}>$50</span>
+                                <span className={spanQuery}>$40</span>
+                            </div>
+                        }
+                    />
+                    <FormControlLabel
+                        value="75 Yards"
+                        control={<Radio color="primary" />}
+                        label={
+                            <div className={radioQuery}>
+                                75 Yards
+                                <span className={spanQuery}>$20</span>
+                            </div>
+                        }
+                    />
+                    <FormControlLabel
+                        value="20 Yards"
+                        control={<Radio color="primary" />}
+                        label={
+                            <div className={radioQuery}>
+                                20 Yards
+                                <span className={spanQuery}>$10</span>
                             </div>
                         }
                     />

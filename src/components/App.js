@@ -21,7 +21,7 @@ const App = () => {
             type: 'Elastic',
             color: '1/4" Black Elastic',
             param: 'blackelastic',
-            price: 50,
+            price: 40,
             img: 'BlackElastic.jpg',
             size: '200 Yards',
             amount: '1',

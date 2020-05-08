@@ -122,13 +122,16 @@ function Item({ match, addOrder }) {
         setAmount(Math.ceil(event.target.value));
     };
     const handleAddItem = () => () => {
+        let price = 0;
+        if (data.type === 'Mask') price = data.price;
+        if (data.type === 'Elastic') price = data.price[size];
         addOrder({
             type: data.type,
             color: data.color,
             size: size,
             amount: amount,
             param: data.param,
-            price: data.price,
+            price: price,
             img: data.img,
         });
         queueRef.current.push({
