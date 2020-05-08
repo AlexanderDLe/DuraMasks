@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
+        borderRadius: 0,
         transform: 'scale(1)',
         transition: 'transform 1s',
         '&:hover': {

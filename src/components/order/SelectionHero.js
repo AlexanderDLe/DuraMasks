@@ -34,8 +34,8 @@ function SelectionHero() {
     return (
         <Carousel pause={false} active={index} onSelect={handleSelect}>
             {renderCarouselItem(1, Desktop_Dotted, Phone_Dotted)}
-            {renderCarouselItem(2, Desktop_Hawaiian, Phone_Hawaiian)}
-            {renderCarouselItem(3, Desktop_Bandana, Phone_Bandana)}
+            {renderCarouselItem(2, Desktop_Bandana, Phone_Bandana)}
+            {renderCarouselItem(3, Desktop_Hawaiian, Phone_Hawaiian)}
         </Carousel>
     );
 }

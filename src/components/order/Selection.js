@@ -10,7 +10,7 @@ import CustomCard from './CustomCard';
 import { selection } from '../masks/MaskDesigns';
 import Search from './Search';
 import SelectionHero from './SelectionHero';
-// import SelectionFilter from './SelectionFilter';
+import SelectionFilter from './SelectionFilter';
 
 const useStyles = makeStyles((theme) => ({
     smallContainer: {
@@ -55,12 +55,37 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const searchThroughSelection = (searchTerm) => {
+    let selectionResults = [];
+    Object.keys(selection).forEach((key) => {
+        if (searchTerm === '') return selectionResults.push(selection[key]);
+        else {
+            let term = searchTerm.toLowerCase();
+            let name = selection[key].color.toLowerCase();
+            let catg = selection[key].category.toLowerCase();
+            let tags = selection[key].tags;
+
+            if (name.includes(term) || catg.includes(term)) {
+                return selectionResults.push(selection[key]);
+            }
+            for (let tag of tags) {
+                if (tag.toLowerCase().includes(term)) {
+                    return selectionResults.push(selection[key]);
+                }
+            }
+        }
+    });
+    return selectionResults;
+};
+
 function Selection() {
-    const classes = useStyles();
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
+    const classes = useStyles();
+
+    const [filter, setFilter] = useState('All');
     const [solidOpen, setSolidOpen] = useState(true);
     const [floralOpen, setFloralOpen] = useState(true);
     const [patternOpen, setPatternOpen] = useState(true);
@@ -69,104 +94,49 @@ function Selection() {
     const [animalOpen, setAnimalOpen] = useState(true);
     const [customOpen, setCustomOpen] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
-    const [useSearchTerm, setUseSearchTerm] = useState(false);
-    const [searchResults, setSearchResults] = useState([]);
-    // const [filterState, setFilterState] = useState('All');
+
+    // Categories
+    let solid = [];
+    let bandana = [];
+    let pattern = [];
+    let animal = [];
+    let hawaiian = [];
+    let floral = [];
+    // let custom = [];
 
     // Categorization
-    const solid = [];
-    const floral = [];
-    const pattern = [];
-    const hawaiian = [];
-    const bandana = [];
-    const animal = [];
-
-    // Handlers
-    const handleSolidOpens = () => {
-        setSolidOpen(!solidOpen);
-    };
-    const handleFloralOpens = () => {
-        setFloralOpen(!floralOpen);
-    };
-    const handlePatternOpens = () => {
-        setPatternOpen(!patternOpen);
-    };
-    const handleHawaiianOpens = () => {
-        setHawaiianOpen(!hawaiianOpen);
-    };
-    const handleCustomOpens = () => {
-        setCustomOpen(!customOpen);
-    };
-    const handleBandanaOpens = () => {
-        setBandanaOpen(!bandanaOpen);
-    };
-    const handleAnimalOpens = () => {
-        setAnimalOpen(!animalOpen);
-    };
-    const handleSearchReset = () => {
-        setSearchTerm('');
-        setUseSearchTerm(false);
-        setSearchResults([]);
-    };
-
-    // Categorization
-    const sortCategories = () => {
-        Object.keys(selection).map((key) => {
-            let category = selection[key].category;
+    const sortCategories = (selectionToSort) => {
+        selectionToSort.forEach((item) => {
+            let category = item.category;
             switch (category) {
                 case 'solid':
-                    solid.push(selection[key]);
+                    solid.push(item);
                     break;
                 case 'floral':
-                    floral.push(selection[key]);
+                    floral.push(item);
                     break;
                 case 'pattern':
-                    pattern.push(selection[key]);
+                    pattern.push(item);
                     break;
                 case 'hawaiian':
-                    hawaiian.push(selection[key]);
+                    hawaiian.push(item);
                     break;
                 case 'animal':
-                    animal.push(selection[key]);
+                    animal.push(item);
                     break;
                 case 'bandana':
-                    bandana.push(selection[key]);
+                    bandana.push(item);
                     break;
                 default:
                     break;
             }
-            return '';
         });
     };
-    sortCategories();
+
+    const searchResults = searchThroughSelection(searchTerm);
+    sortCategories(searchResults);
 
     // Search
-    const handleSearch = (e) => {
-        e.preventDefault();
-
-        if (searchTerm === '') setUseSearchTerm(false);
-        else {
-            let newSearchResults = [];
-            Object.keys(selection).filter((key) => {
-                let term = searchTerm.toLowerCase();
-                let name = selection[key].color.toLowerCase();
-                let type = selection[key].category.toLowerCase();
-                let tags = selection[key].tags;
-
-                if (name.includes(term) || type.includes(term)) {
-                    return newSearchResults.push(selection[key]);
-                }
-                for (let tag of tags) {
-                    if (tag.includes(term))
-                        return newSearchResults.push(selection[key]);
-                }
-                return '';
-            });
-            console.log(newSearchResults);
-            setSearchResults(newSearchResults);
-            setUseSearchTerm(true);
-        }
-    };
     const handleSearchTermChange = (e) => {
         setSearchTerm(e.target.value);
     };
@@ -177,31 +147,7 @@ function Selection() {
             return <DesignCard design={design} key={index} />;
         });
     };
-    const renderSearchResults = () => {
-        return (
-            <React.Fragment>
-                <div className={classes.category}>
-                    <Typography
-                        variant="h4"
-                        component="h2"
-                        className={classes.categoryTitle}
-                    >
-                        Search Results
-                    </Typography>
-                </div>
-                <Grid container spacing={3}>
-                    {searchResults.length === 0 ? (
-                        <span style={{ padding: 13 }}>
-                            Your search has no matches
-                        </span>
-                    ) : (
-                        renderCategory(searchResults)
-                    )}
-                </Grid>
-            </React.Fragment>
-        );
-    };
-    const renderCustom = () => {
+    const renderCustomItems = () => {
         return (
             <React.Fragment>
                 <CustomCard />
@@ -215,14 +161,14 @@ function Selection() {
             return (
                 <div className={classes.category}>
                     <Checkbox
-                        onClick={handleClickEvent}
+                        onClick={() => handleClickEvent(!state)}
                         checked={state}
                         color="default"
                         className={classes.checkbox}
                         size="small"
                     />
                     <Typography
-                        onClick={handleClickEvent}
+                        onClick={() => handleClickEvent(!state)}
                         variant="h4"
                         component="h2"
                         className={classes.categoryTitle}
@@ -232,37 +178,103 @@ function Selection() {
                 </div>
             );
         };
+        const renderSolid = () => {
+            if (solid.length)
+                return (
+                    <React.Fragment>
+                        {categoryTitle('Solid', setSolidOpen, solidOpen)}
+                        <Grid container spacing={3}>
+                            {solidOpen ? renderCategory(solid) : ''}
+                        </Grid>
+                    </React.Fragment>
+                );
+        };
+        const renderBandana = () => {
+            if (bandana.length)
+                return (
+                    <React.Fragment>
+                        {categoryTitle('Bandana', setBandanaOpen, bandanaOpen)}
+                        <Grid container spacing={3}>
+                            {bandanaOpen ? renderCategory(bandana) : ''}
+                        </Grid>
+                    </React.Fragment>
+                );
+        };
+        const renderPattern = () => {
+            if (pattern.length)
+                return (
+                    <React.Fragment>
+                        {categoryTitle('Pattern', setPatternOpen, patternOpen)}
+                        <Grid container spacing={3}>
+                            {patternOpen ? renderCategory(pattern) : ''}
+                        </Grid>
+                    </React.Fragment>
+                );
+        };
+        const renderAnimal = () => {
+            if (animal.length)
+                return (
+                    <React.Fragment>
+                        {categoryTitle('Animal', setAnimalOpen, animalOpen)}
+                        <Grid container spacing={3}>
+                            {animalOpen ? renderCategory(animal) : ''}
+                        </Grid>
+                    </React.Fragment>
+                );
+        };
+        const renderHawaiian = () => {
+            if (hawaiian.length)
+                return (
+                    <React.Fragment>
+                        {categoryTitle(
+                            'Hawaiian',
+                            setHawaiianOpen,
+                            hawaiianOpen
+                        )}
+                        <Grid container spacing={3}>
+                            {hawaiianOpen ? renderCategory(hawaiian) : ''}
+                        </Grid>
+                    </React.Fragment>
+                );
+        };
+        const renderFloral = () => {
+            if (floral.length)
+                return (
+                    <React.Fragment>
+                        {categoryTitle('Floral', setFloralOpen, floralOpen)}
+                        <Grid container spacing={3}>
+                            {floralOpen ? renderCategory(floral) : ''}
+                        </Grid>
+                    </React.Fragment>
+                );
+        };
+        const renderCustom = () => {
+            // if (custom.length)
+            return (
+                <React.Fragment>
+                    {categoryTitle('Custom', setCustomOpen, customOpen)}
+                    <Grid container spacing={3}>
+                        {customOpen ? renderCustomItems() : ''}
+                    </Grid>
+                </React.Fragment>
+            );
+        };
 
         return (
             <React.Fragment>
-                {categoryTitle('Solid', handleSolidOpens, solidOpen)}
-                <Grid container spacing={3}>
-                    {solidOpen ? renderCategory(solid) : ''}
-                </Grid>
-                {categoryTitle('Bandana', handleBandanaOpens, bandanaOpen)}
-                <Grid container spacing={3}>
-                    {bandanaOpen ? renderCategory(bandana) : ''}
-                </Grid>
-                {categoryTitle('Patterned', handlePatternOpens, patternOpen)}
-                <Grid container spacing={3}>
-                    {patternOpen ? renderCategory(pattern) : ''}
-                </Grid>
-                {categoryTitle('Animal', handleAnimalOpens, animalOpen)}
-                <Grid container spacing={3}>
-                    {animalOpen ? renderCategory(animal) : ''}
-                </Grid>
-                {categoryTitle('Hawaiian', handleHawaiianOpens, hawaiianOpen)}
-                <Grid container spacing={3}>
-                    {hawaiianOpen ? renderCategory(hawaiian) : ''}
-                </Grid>
-                {categoryTitle('Floral', handleFloralOpens, floralOpen)}
-                <Grid container spacing={3}>
-                    {floralOpen ? renderCategory(floral) : ''}
-                </Grid>
-                {categoryTitle('Custom', handleCustomOpens, customOpen)}
-                <Grid container spacing={3}>
-                    {customOpen ? renderCustom() : ''}
-                </Grid>
+                {filter === 'All' || filter === 'Solid' ? renderSolid() : ''}
+                {filter === 'All' || filter === 'Bandana'
+                    ? renderBandana()
+                    : ''}
+                {filter === 'All' || filter === 'Pattern'
+                    ? renderPattern()
+                    : ''}
+                {filter === 'All' || filter === 'Animal' ? renderAnimal() : ''}
+                {filter === 'All' || filter === 'Hawaiian'
+                    ? renderHawaiian()
+                    : ''}
+                {filter === 'All' || filter === 'Floral' ? renderFloral() : ''}
+                {filter === 'All' || filter === 'Custom' ? renderCustom() : ''}
             </React.Fragment>
         );
     };
@@ -270,20 +282,14 @@ function Selection() {
     return (
         <React.Fragment>
             <main style={{ width: '100%' }}>
-                {/* <div className="selection-hero"></div> */}
                 <SelectionHero />
-                {/* <SelectionFilter
-                    filterState={filterState}
-                    setFilterState={setFilterState}
-                /> */}
+                <SelectionFilter filter={filter} setFilter={setFilter} />
                 <Container className={classes.root}>
                     <Search
-                        handleSearchReset={handleSearchReset}
                         searchTerm={searchTerm}
                         handleSearchTermChange={handleSearchTermChange}
-                        handleSearch={handleSearch}
                     />
-                    {useSearchTerm ? renderSearchResults() : renderDesigns()}
+                    {renderDesigns()}
                 </Container>
             </main>
         </React.Fragment>

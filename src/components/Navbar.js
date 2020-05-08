@@ -16,9 +16,14 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Slide from '@material-ui/core/Slide';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
+const navTextColor = 'black';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+    },
+    appbar: {
+        backgroundColor: '#fff',
     },
     title: {
         flexGrow: 1,
@@ -28,21 +33,21 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: 8,
     },
     link: {
-        color: 'white !important',
+        color: `${navTextColor} !important`,
         textDecoration: 'none',
         fontFamily: 'Open Sans',
     },
     cartAmount: {
         marginLeft: '3px',
-        color: 'white',
+        color: navTextColor,
         textDecoration: 'none',
     },
     menuIcon: {
-        color: 'white',
+        color: navTextColor,
         display: 'block',
     },
     menuItem: {
-        color: 'black',
+        color: navTextColor,
         textDecoration: 'none',
     },
 }));
@@ -63,11 +68,15 @@ const Navbar = ({ amount }) => {
 
     // Dynamic Nav Styles
     const navIconStyle = {
-        width: `${navMediaQuery ? '45px' : '35px'}`,
+        width: `${navMediaQuery ? '50px' : '35px'}`,
+        paddingBottom: 8,
+        paddingRight: 4,
     };
     const navTitleStyle = {
-        fontSize: `${navMediaQuery ? '1.15rem' : '.9rem'}`,
+        fontSize: `${navMediaQuery ? '1.25rem' : '1rem'}`,
         fontFamily: 'Open Sans',
+        fontWeight: 600,
+        textTransform: 'uppercase',
     };
 
     // Standard Navigation
@@ -128,18 +137,18 @@ const Navbar = ({ amount }) => {
     return (
         <div className={classes.root}>
             <HideOnScroll>
-                <AppBar>
+                <AppBar className={classes.appbar}>
                     <Container>
                         <Toolbar>
-                            <Link className={classes.link} to="/">
+                            {/* <Link className={classes.link} to="/">
+                            </Link> */}
+                            <Typography variant="h6" className={classes.title}>
                                 <img
                                     style={navIconStyle}
                                     className={classes.navIcon}
                                     src={FacemaskIcon}
                                     alt="Facemask Icon"
                                 />
-                            </Link>
-                            <Typography variant="h6" className={classes.title}>
                                 <Link
                                     style={navTitleStyle}
                                     className={classes.link}

@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
-import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     search: {
@@ -25,12 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Search({
-    handleSearch,
-    handleSearchTermChange,
-    searchTerm,
-    handleSearchReset,
-}) {
+function Search({ handleSearch, handleSearchTermChange, searchTerm }) {
     const classes = useStyles();
 
     return (
@@ -48,12 +42,6 @@ function Search({
             >
                 <SearchIcon className={classes.searchIcon} />
             </div>
-            <Button
-                onClick={handleSearchReset}
-                className={classes.searchButton}
-            >
-                Reset
-            </Button>
         </form>
     );
 }
