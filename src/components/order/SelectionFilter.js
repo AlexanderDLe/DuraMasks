@@ -81,35 +81,35 @@ function SelectionFilter({ filter, setFilter }) {
         );
     };
 
-    const sub600 = () => {
-        return (
-            <div
-                style={{
-                    width: '100%',
-                    maxWidth: '350px',
-                    flexDirection: 'column',
-                }}
-            >
-                <div className={classes.halfContainer}>
-                    {renderFilterItem('All')}
-                    {renderFilterItem('Solid')}
-                    {renderFilterItem('Bandana')}
-                    {renderFilterItem('Pattern')}
-                </div>
-                <div className={classes.halfContainer}>
-                    {renderFilterItem('Animal')}
-                    {renderFilterItem('Hawaiian')}
-                    {renderFilterItem('Floral')}
-                    {renderFilterItem('Custom')}
-                </div>
-            </div>
-        );
-    };
+    // const sub600 = () => {
+    //     return (
+    //         <div
+    //             style={{
+    //                 width: '100%',
+    //                 maxWidth: '350px',
+    //                 flexDirection: 'column',
+    //             }}
+    //         >
+    //             <div className={classes.halfContainer}>
+    //                 {renderFilterItem('All')}
+    //                 {renderFilterItem('Solid')}
+    //                 {renderFilterItem('Bandana')}
+    //                 {renderFilterItem('Pattern')}
+    //             </div>
+    //             <div className={classes.halfContainer}>
+    //                 {renderFilterItem('Animal')}
+    //                 {renderFilterItem('Hawaiian')}
+    //                 {renderFilterItem('Floral')}
+    //                 {renderFilterItem('Custom')}
+    //             </div>
+    //         </div>
+    //     );
+    // };
 
     return (
         <div className={classes.root}>
             <Container className={classes.container}>
-                {navMediaQuery ? over600() : sub600()}
+                {navMediaQuery ? over600() : ''}
             </Container>
         </div>
     );

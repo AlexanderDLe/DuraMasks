@@ -143,7 +143,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
             <React.Fragment>
                 <div className={classes.cartCalculation}>
                     <div style={{ paddingTop: 16 }}>
-                        <p>Order Total</p>
+                        <p>Subtotal</p>
                     </div>
                     <p>${orderTotal}</p>
                 </div>

@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
 
-import Cards from './Cards2';
+import Cards from './Cards';
 import Testimonials from './Testimonials';
 import LandingHero from './LandingHero';
 
@@ -87,6 +87,15 @@ export default function Album() {
                         className={classes.sectionTitle}
                     >
                         CA Facemasks
+                    </Typography>
+                    <Typography
+                        variant="caption"
+                        align="center"
+                        color="textSecondary"
+                        paragraph
+                        style={{ fontSize: '1rem', fontWeight: 600 }}
+                    >
+                        Made in California, USA
                     </Typography>
                     <Typography
                         variant="caption"

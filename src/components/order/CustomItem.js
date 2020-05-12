@@ -52,8 +52,9 @@ function CustomItem() {
                 </Typography>
                 <p>
                     Would you like to have facemasks with your own designs?
-                    Bring your favorite fabric and we'll create them for you.
-                    Please visit our shop at:
+                    Bring or send your favorite fabric and we'll create them for
+                    you. Send an email to Contact@CAFacemasks.com or visit our
+                    shop at:
                 </p>
                 <p>
                     <br />

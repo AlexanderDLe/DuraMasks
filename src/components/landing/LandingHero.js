@@ -5,10 +5,11 @@ import Carousel from 'react-bootstrap/Carousel';
 
 import LandingMask from '../../img/LandingCarouselImages/LandingMask.jpg';
 import LandingMask2 from '../../img/LandingCarouselImages/LandingMask2.jpg';
+import Phone_LandingMask2 from '../../img/LandingCarouselImages/Phone_LandingMask2.jpg';
 import LandingMask3 from '../../img/LandingCarouselImages/LandingMask3.jpg';
 
 function SelectionHero() {
-    const navMediaQuery = useMediaQuery('(min-width:900px)');
+    const navMediaQuery = useMediaQuery('(min-width:530px)');
     const [index, setIndex] = useState(0);
 
     const handleSelect = (selectedIndex, e) => {
@@ -37,7 +38,7 @@ function SelectionHero() {
             onSelect={handleSelect}
         >
             {renderCarouselItem(1, LandingMask, LandingMask)}
-            {renderCarouselItem(2, LandingMask2, LandingMask2)}
+            {renderCarouselItem(2, LandingMask2, Phone_LandingMask2)}
             {renderCarouselItem(3, LandingMask3, LandingMask3)}
         </Carousel>
     );

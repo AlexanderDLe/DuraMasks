@@ -74,21 +74,21 @@ function MaskOrderForm({
                         }
                     />
                     <FormControlLabel
-                        value="75 Yards"
+                        value="85 Yards"
                         control={<Radio color="primary" />}
                         label={
                             <div className={radioQuery}>
-                                75 Yards
+                                85 Yards
                                 <span className={spanQuery}>$20</span>
                             </div>
                         }
                     />
                     <FormControlLabel
-                        value="20 Yards"
+                        value="25 Yards"
                         control={<Radio color="primary" />}
                         label={
                             <div className={radioQuery}>
-                                20 Yards
+                                25 Yards
                                 <span className={spanQuery}>$10</span>
                             </div>
                         }
