@@ -141,6 +141,9 @@ function MaskOrderForm({
                     <br />
                     All measurements used measuring tape to follow the
                     front-facing cloth exterior.
+                    <br />
+                    <br />
+                    Disclaimer: Some mask designs may vary depending on cut.
                 </p>
             </div>
         </CardContent>

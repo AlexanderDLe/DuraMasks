@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import keys from '../../config/keys';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { PayPalButton } from 'react-paypal-button-v2';
@@ -75,7 +76,8 @@ const calculateOrderTotal = (orders) => {
     return orderTotal;
 };
 
-const API = 'https://0n6fj67t7l.execute-api.us-west-1.amazonaws.com/dev/mail';
+const API = keys.emailConfirmationAPI;
+// const API = 'https://0n6fj67t7l.execute-api.us-west-1.amazonaws.com/dev/mail';
 const header = {
     'Content-Type': 'application/json',
 };
@@ -98,10 +100,8 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
     let total = orderTotal + shippingFee;
     let env = mode;
     const client = {
-        sandbox:
-            'AUG0EGjB_-KelBfT2WHzsIunv893fV-rOmpXfou5lP1y_-j5EfUXTQa-go5hebKNF3EnUetQn06iB9_V',
-        production:
-            'Aaha3zpLzRiJwzYbxP_IrkxWtN4IrE9nzvYC0JGXJcYxo2BmbtsJhHfNLuTpx2A7XBWlklKTXqXEJGgy',
+        sandbox: keys.paypalSandboxID,
+        production: keys.paypalProductionID,
     };
 
     // Checkout Functionality

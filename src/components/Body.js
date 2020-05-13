@@ -9,6 +9,7 @@ import Success from './checkout/Success';
 import Policies from './Policies';
 import CustomItem from './order/CustomItem';
 import Pricing from './pricing/Pricing';
+import Stats from './stats/Stats';
 
 function Body(props) {
     const { removeOrder, addOrder, orders, resetOrders, amount, mode } = props;
@@ -18,6 +19,7 @@ function Body(props) {
             <Switch>
                 <Route exact path="/" component={Landing} />
                 <Route exact path="/selection" component={Selection} />
+                <Route exact path="/stats" component={Stats} />
                 <Route
                     exact
                     path="/item/:id"
