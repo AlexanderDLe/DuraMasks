@@ -27,7 +27,7 @@ const App = () => {
             amount: '1',
         },
     ];
-    const testAmount = 2;
+    const testAmount = 3;
     const mode = 'production';
     const [orders, setOrders] = useState(mode === 'sandbox' ? testOrder : []);
     const [amount, setAmount] = useState(mode === 'sandbox' ? testAmount : 0);

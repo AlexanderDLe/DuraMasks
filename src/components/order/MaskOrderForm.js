@@ -69,7 +69,7 @@ function MaskOrderForm({
                         label={
                             <div className={radioQuery}>
                                 XL Adult
-                                <span className={spanQuery}>10.5" x 7"</span>
+                                <span className={spanQuery}>10.5" x 6"</span>
                             </div>
                         }
                         className={classes.radioLabel}
@@ -81,7 +81,7 @@ function MaskOrderForm({
                         label={
                             <div className={radioQuery}>
                                 L Adult
-                                <span className={spanQuery}>10" x 6"</span>
+                                <span className={spanQuery}>10" x 5.5"</span>
                             </div>
                         }
                     />
@@ -91,7 +91,7 @@ function MaskOrderForm({
                         label={
                             <div className={radioQuery}>
                                 M Teen
-                                <span className={spanQuery}>9" x 5.5"</span>
+                                <span className={spanQuery}>9" x 5"</span>
                             </div>
                         }
                     />
@@ -102,7 +102,7 @@ function MaskOrderForm({
                         label={
                             <div className={radioQuery}>
                                 S Child
-                                <span className={spanQuery}>8" x 5"</span>
+                                <span className={spanQuery}>8" x 4.5"</span>
                             </div>
                         }
                     />
@@ -113,7 +113,7 @@ function MaskOrderForm({
                         label={
                             <div className={radioQuery}>
                                 XS Child
-                                <span className={spanQuery}>7" x 4.5"</span>
+                                <span className={spanQuery}>7" x 4"</span>
                             </div>
                         }
                     />
