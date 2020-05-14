@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# config
+/src/config
+
 # testing
 /coverage
 
@@ -27,6 +30,3 @@ yarn-error.log*
 /src/img/ResizedPhotos
 /src/img/CAFacemasksPhoto.psd
 /src/img/SelectionCarouselImages/PSDs
-
-# config keys
-/src/config/keys

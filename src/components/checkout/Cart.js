@@ -77,7 +77,6 @@ const calculateOrderTotal = (orders) => {
 };
 
 const API = keys.emailConfirmationAPI;
-// const API = 'https://0n6fj67t7l.execute-api.us-west-1.amazonaws.com/dev/mail';
 const header = {
     'Content-Type': 'application/json',
 };
