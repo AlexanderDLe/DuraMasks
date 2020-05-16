@@ -28,7 +28,7 @@ const App = () => {
         },
     ];
     const testAmount = 3;
-    const mode = 'sandbox';
+    const mode = 'production';
     const [orders, setOrders] = useState(mode === 'sandbox' ? testOrder : []);
     const [amount, setAmount] = useState(mode === 'sandbox' ? testAmount : 0);
 
@@ -48,6 +48,8 @@ const App = () => {
 
         setOrders(newOrders);
         setAmount(amount + parseInt(data.amount));
+        console.log(data);
+        console.log(newOrders);
     };
 
     const removeOrder = (data) => {

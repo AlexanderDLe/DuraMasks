@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function MaskOrderForm({
+    price,
     navMediaQuery,
     size,
     amount,
@@ -135,7 +136,20 @@ function MaskOrderForm({
                 />
                 <br />
                 <br />
-                <p style={{ color: 'rgba(0,0,0,.5', fontSize: '.85rem' }}>
+                <FormLabel
+                    style={{ paddingLeft: 5, marginBottom: 0 }}
+                    component="legend"
+                >
+                    Price: <span style={{ color: 'black' }}>${price}</span>
+                </FormLabel>
+                <br />
+                <p
+                    style={{
+                        color: 'rgba(0,0,0,.5',
+                        fontSize: '.85rem',
+                        paddingLeft: 3,
+                    }}
+                >
                     Dimensions are in Width x Height
                     <br />
                     <br />

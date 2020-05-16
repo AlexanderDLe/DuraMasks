@@ -231,6 +231,7 @@ function Item({ match, addOrder }) {
                     size={size}
                     navMediaQuery={navMediaQuery}
                     handleAmountChange={handleAmountChange}
+                    price={data.price}
                 />
             ) : (
                 <ElasticOrderForm

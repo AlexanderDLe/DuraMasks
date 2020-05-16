@@ -31,12 +31,7 @@ function SelectionHero() {
     };
 
     return (
-        <Carousel
-            autoplay="false"
-            pause={false}
-            active={index}
-            onSelect={handleSelect}
-        >
+        <Carousel pause={false} active={index} onSelect={handleSelect}>
             {renderCarouselItem(1, LandingMask, LandingMask)}
             {renderCarouselItem(2, LandingMask2, Phone_LandingMask2)}
             {renderCarouselItem(3, LandingMask3, LandingMask3)}

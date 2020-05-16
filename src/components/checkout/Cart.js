@@ -68,12 +68,12 @@ const useStyles = makeStyles({
     },
 });
 
-const calculateOrderTotal = (orders) => {
-    let orderTotal = 0;
+const calculateSubtotal = (orders) => {
+    let subtotal = 0;
     for (let order of orders) {
-        orderTotal += order.price * order.amount;
+        subtotal += order.price * order.amount;
     }
-    return orderTotal;
+    return subtotal;
 };
 
 const API = keys.emailConfirmationAPI;
@@ -94,14 +94,15 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
 
     // Checkout Configuration
     const currency = 'USD';
-    const orderTotal = calculateOrderTotal(orders);
+    const subtotal = calculateSubtotal(orders);
     const shippingFee = 0;
-    let total = orderTotal + shippingFee;
+    let total = subtotal + shippingFee;
     let env = mode;
     const client = {
         sandbox: keys.paypalSandboxID,
         production: keys.paypalProductionID,
     };
+    console.log(total);
 
     // Checkout Functionality
     const onSuccess = (details, data) => {
@@ -117,8 +118,10 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
         };
         const email = details.payer.email_address;
         const orderID = data.orderID;
-        const event = { orders, address, email, orderID };
+        const amount = info.amount.value;
+        const event = { orders, address, email, orderID, amount };
 
+        console.log(amount);
         console.log(details);
         console.log(data);
         console.log(event);
@@ -144,7 +147,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
                     <div style={{ paddingTop: 16 }}>
                         <p>Subtotal</p>
                     </div>
-                    <p>${orderTotal}</p>
+                    <p>${subtotal}</p>
                 </div>
                 <div className={classes.cartCalculation}>
                     <p>
