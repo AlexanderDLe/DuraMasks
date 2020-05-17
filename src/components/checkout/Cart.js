@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import keys from '../../config/keys';
 import { Link, Redirect } from 'react-router-dom';
-import axios from 'axios';
 import { PayPalButton } from 'react-paypal-button-v2';
 import { useMediaQuery } from '@material-ui/core';
+import moment from 'moment-timezone';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+
+import axios from 'axios';
+const API = keys.emailConfirmationAPI;
+const header = {
+    'Content-Type': 'application/json',
+};
 
 const useStyles = makeStyles({
     root: {
@@ -68,17 +74,21 @@ const useStyles = makeStyles({
     },
 });
 
+const calculateTimestamp = (time) => {
+    let timestamp = time;
+    console.log(timestamp);
+    timestamp = moment(timestamp).tz('America/Los_Angeles').format().toString();
+    timestamp = timestamp.split('T').join(' ');
+    timestamp = timestamp.slice(0, timestamp.length - 9) + ' Pacific Time';
+    return timestamp;
+};
+
 const calculateSubtotal = (orders) => {
     let subtotal = 0;
     for (let order of orders) {
         subtotal += order.price * order.amount;
     }
     return subtotal;
-};
-
-const API = keys.emailConfirmationAPI;
-const header = {
-    'Content-Type': 'application/json',
 };
 
 const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
@@ -119,12 +129,12 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
         const email = details.payer.email_address;
         const orderID = data.orderID;
         const amount = info.amount.value;
-        const event = { orders, address, email, orderID, amount };
+        let timestamp = calculateTimestamp(details.create_time);
+        const event = { orders, address, email, orderID, amount, timestamp };
 
-        console.log(amount);
-        console.log(details);
-        console.log(data);
-        console.log(event);
+        console.log('Details: ', details);
+        console.log('Data: ', data);
+        console.log('Event: ', event);
         axios.post(API, event, header);
         resetOrders();
         setCheckedOut(true);
@@ -158,7 +168,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
                         </span>
                         <br />
                         <span className={classes.shippingCaption}>
-                            Delivery will be between 3-7 business days.
+                            Delivery will be between 5-9 business days.
                         </span>
                     </p>
                     <p>${shippingFee}</p>

@@ -63,7 +63,7 @@ function Pricing() {
                     style={{ textAlign: 'left' }}
                 >
                     <strong>Free Shipping</strong> for all domestic (US) orders.
-                    Typical delivery will be between 3-7 business days.
+                    Typical delivery will be between 5-9 business days.
                     <br />
                     <br />
                     You can also purchase directly in-person at our shop at 2424

@@ -143,17 +143,17 @@ const Navbar = ({ amount }) => {
                             {/* <Link className={classes.link} to="/">
                             </Link> */}
                             <Typography variant="h6" className={classes.title}>
-                                <img
-                                    style={navIconStyle}
-                                    className={classes.navIcon}
-                                    src={FacemaskIcon}
-                                    alt="Facemask Icon"
-                                />
                                 <Link
                                     style={navTitleStyle}
                                     className={classes.link}
                                     to="/"
                                 >
+                                    <img
+                                        style={navIconStyle}
+                                        className={classes.navIcon}
+                                        src={FacemaskIcon}
+                                        alt="Facemask Icon"
+                                    />
                                     CA Facemasks
                                 </Link>
                             </Typography>

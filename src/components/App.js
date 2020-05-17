@@ -10,24 +10,24 @@ const App = () => {
     const testOrder = [
         {
             type: 'Mask',
-            color: 'Black',
+            color: 'Test',
             param: 'black',
             price: 10,
             img: 'Black.jpg',
             size: 'L',
-            amount: '2',
-        },
-        {
-            type: 'Elastic',
-            color: '1/4" Black Elastic',
-            param: 'blackelastic',
-            price: 40,
-            img: 'BlackElastic.jpg',
-            size: '200 Yards',
             amount: '1',
         },
+        // {
+        //     type: 'Elastic',
+        //     color: '1/4" Black Elastic',
+        //     param: 'blackelastic',
+        //     price: 40,
+        //     img: 'BlackElastic.jpg',
+        //     size: '200 Yards',
+        //     amount: '1',
+        // },
     ];
-    const testAmount = 3;
+    const testAmount = 1;
     const mode = 'production';
     const [orders, setOrders] = useState(mode === 'sandbox' ? testOrder : []);
     const [amount, setAmount] = useState(mode === 'sandbox' ? testAmount : 0);
