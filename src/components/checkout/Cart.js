@@ -72,6 +72,10 @@ const useStyles = makeStyles({
     cartTitle: {
         fontFamily: 'Open Sans',
     },
+    paypalError: {
+        textAlign: 'center',
+        color: 'red',
+    },
 });
 
 const calculateTimestamp = (time) => {
@@ -79,7 +83,7 @@ const calculateTimestamp = (time) => {
     console.log(timestamp);
     timestamp = moment(timestamp).tz('America/Los_Angeles').format().toString();
     timestamp = timestamp.split('T').join(' ');
-    timestamp = timestamp.slice(0, timestamp.length - 9) + ' Pacific Time';
+    timestamp = timestamp.slice(0, timestamp.length - 9) + ' PT';
     return timestamp;
 };
 
@@ -89,6 +93,19 @@ const calculateSubtotal = (orders) => {
         subtotal += order.price * order.amount;
     }
     return subtotal;
+};
+
+const extractOrderData = (ordersToExtract) => {
+    let extractedOrders = [];
+    for (let order of ordersToExtract) {
+        extractedOrders.push({
+            color: order.color,
+            price: order.price,
+            size: order.size,
+            amount: order.amount,
+        });
+    }
+    return extractedOrders;
 };
 
 const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
@@ -115,7 +132,8 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
     console.log(total);
 
     // Checkout Functionality
-    const onSuccess = (details, data) => {
+
+    const onSuccess = async (details, data) => {
         const info = details.purchase_units[0];
         const address = {
             recipient_name: info.shipping.name.full_name,
@@ -130,12 +148,20 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
         const orderID = data.orderID;
         const amount = info.amount.value;
         let timestamp = calculateTimestamp(details.create_time);
-        const event = { orders, address, email, orderID, amount, timestamp };
+        let orderData = extractOrderData(orders);
+        const event = {
+            orders: orderData,
+            address,
+            email,
+            orderID,
+            amount,
+            timestamp,
+        };
 
         console.log('Details: ', details);
         console.log('Data: ', data);
         console.log('Event: ', event);
-        axios.post(API, event, header);
+        await axios.post(API, event, header);
         resetOrders();
         setCheckedOut(true);
     };
@@ -157,7 +183,9 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
                     <div style={{ paddingTop: 16 }}>
                         <p>Subtotal</p>
                     </div>
-                    <p>${subtotal}</p>
+                    <p style={{ marginBottom: 0, marginTop: 16 }}>
+                        ${subtotal}
+                    </p>
                 </div>
                 <div className={classes.cartCalculation}>
                     <p>
@@ -263,6 +291,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
                         amount={total}
                         onSuccess={onSuccess}
                         onError={onError}
+                        catchError={onError}
                         options={{ clientId: client[env] }}
                         onCancel={onCancel}
                     />

@@ -86,7 +86,7 @@ function Pricing() {
                     style={{ textAlign: 'left' }}
                 >
                     Interested in buying in bulk? Please email
-                    contact@cafacemasks.com or call (714)944-5209 to discuss
+                    <strong> contact@cafacemasks.com</strong> to discuss
                     options.
                 </Typography>
             </CardContent>

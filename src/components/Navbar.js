@@ -3,7 +3,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-import FacemaskIcon from '../img/FacemaskIcon.png';
+import FacemaskIcon from '../img/FacemaskIcon2.png';
 import { useMediaQuery, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import Menu from '@material-ui/core/Menu';
