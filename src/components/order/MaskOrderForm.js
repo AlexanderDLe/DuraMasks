@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: 12,
     },
     radioLabel: {
-        color: 'black',
+        color: 'black !important',
     },
     sizeLabel: {
         color: 'rgba(0, 0, 0, 0.54) !important',

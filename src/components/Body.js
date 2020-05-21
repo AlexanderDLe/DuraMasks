@@ -6,10 +6,11 @@ import Selection from './order/Selection';
 import Item from './order/Item';
 import Cart from './checkout/Cart';
 import Success from './checkout/Success';
-import Policies from './Policies';
 import CustomItem from './order/CustomItem';
 import Pricing from './pricing/Pricing';
 import Stats from './stats/Stats';
+import Policies from './misc/Policies';
+import FAQ from './misc/FAQ';
 
 function Body(props) {
     const { removeOrder, addOrder, orders, resetOrders, amount, mode } = props;
@@ -53,6 +54,7 @@ function Body(props) {
                     )}
                 />
                 <Route exact path="/policies" component={Policies} />
+                <Route exact path="/faq" component={FAQ} />
             </Switch>
         </main>
     );

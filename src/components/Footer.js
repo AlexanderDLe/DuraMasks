@@ -15,8 +15,18 @@ function Copyright() {
                     textDecoration: 'none',
                 }}
             >
-                Refund, Customer Service, & Privacy Policy
-            </Link>
+                Policies
+            </Link>{' '}
+            |{' '}
+            <Link
+                to="/faq"
+                style={{
+                    color: 'rgba(0, 0, 0, 0.54)',
+                    textDecoration: 'none',
+                }}
+            >
+                FAQ
+            </Link>{' '}
             <a
                 // className={classes.paypalAUP}
                 style={{ color: 'rgba(0, 0, 0, 0.54)', textDecoration: 'none' }}
@@ -25,7 +35,7 @@ function Copyright() {
                 rel="noopener noreferrer"
             >
                 {' '}
-                | PayPal Acceptable Use Policy
+                | PayPal AUP
             </a>
         </Typography>
     );

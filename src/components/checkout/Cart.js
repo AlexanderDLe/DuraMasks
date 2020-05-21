@@ -156,6 +156,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
             orderID,
             amount,
             timestamp,
+            mode,
         };
 
         console.log('Details: ', details);

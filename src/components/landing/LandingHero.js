@@ -4,8 +4,8 @@ import 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
 
 import LandingMask from '../../img/LandingCarouselImages/LandingMask.jpg';
-import LandingMask2 from '../../img/LandingCarouselImages/LandingMask2.jpg';
-import Phone_LandingMask2 from '../../img/LandingCarouselImages/Phone_LandingMask2.jpg';
+import LandingMask4 from '../../img/LandingCarouselImages/LandingMask4.jpg';
+import Phone_LandingMask4 from '../../img/LandingCarouselImages/Phone_LandingMask4.jpg';
 import LandingMask3 from '../../img/LandingCarouselImages/LandingMask3.jpg';
 
 function SelectionHero() {
@@ -33,8 +33,8 @@ function SelectionHero() {
     return (
         <Carousel pause={false} active={index} onSelect={handleSelect}>
             {renderCarouselItem(1, LandingMask, LandingMask)}
-            {renderCarouselItem(2, LandingMask2, Phone_LandingMask2)}
-            {renderCarouselItem(3, LandingMask3, LandingMask3)}
+            {renderCarouselItem(2, LandingMask3, LandingMask3)}
+            {renderCarouselItem(3, LandingMask4, Phone_LandingMask4)}
         </Carousel>
     );
 }
