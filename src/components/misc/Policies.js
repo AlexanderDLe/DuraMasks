@@ -30,6 +30,21 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'space-between',
     },
+    question: {
+        paddingLeft: 10,
+        fontSize: '1.2rem',
+        paddingTop: 12,
+        position: 'relative',
+        '&::before': {
+            content: '""',
+            display: 'block',
+            height: 'calc(100% - 12px)',
+            width: '2px',
+            backgroundColor: '#3f51b5',
+            position: 'absolute',
+            left: '-0px',
+        },
+    },
 });
 
 function Policies() {
@@ -43,17 +58,17 @@ function Policies() {
         <Card className={classes.root} elevation={3}>
             <h2>Policies</h2>
             <hr />
-            <h5>Refund Policy</h5>
+            <h5 className={classes.question}>Refund Policy</h5>
             <p>
                 Due to the hazardous nature of used/handled facemasks, we do not
                 offer refunds.
             </p>
-            <h5>Customer Service Policy</h5>
+            <h5 className={classes.question}>Customer Service Policy</h5>
             <p>
                 If you have questions or comments about this policy, you may
                 email us at contact@cafacemasks.com.
             </p>
-            <h5>Privacy Policy</h5>
+            <h5 className={classes.question}>Privacy Policy</h5>
             <p>
                 Thank you for choosing to be part of our community at CA
                 Facemasks. We are committed to protecting your personal
@@ -68,31 +83,41 @@ function Policies() {
                 this privacy notice carefully as it will help you make informed
                 decisions about sharing your personal information with us.
             </p>
-            <h5>What information do we collect?</h5>
+            <h5 className={classes.question}>
+                What information do we collect?
+            </h5>
             <p>
                 We only take information regarding your order and shipping
                 information to fulfill your order. Any payment information is
                 handled solely by Paypal thus sensitive information is never
                 exposed.
             </p>
-            <h5>Will your information be shared with anyone?</h5>
+            <h5 className={classes.question}>
+                Will your information be shared with anyone?
+            </h5>
             <p>
                 We only use information with your consent to comply with laws
                 and to provide you with your ordered products.
             </p>
-            <h5>How long do we keep your information?</h5>
+            <h5 className={classes.question}>
+                How long do we keep your information?
+            </h5>
             <p>
                 We keep your information for as long as necessary to fulfill the
                 purposes outlined in this privacy notice unless otherwise
                 required by law
             </p>
-            <h5>Do we collect information from minors?</h5>
+            <h5 className={classes.question}>
+                Do we collect information from minors?
+            </h5>
             <p>
                 We do not knowingly collect data from or market to children
                 under 18 years of age.
             </p>
 
-            <h5>How can you contact us about this policy?</h5>
+            <h5 className={classes.question}>
+                How can you contact us about this policy?
+            </h5>
             <p>
                 If you have questions or comments about this policy, you may
                 email us at contact@cafacemasks.com

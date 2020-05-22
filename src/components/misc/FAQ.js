@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
         maxWidth: 750,
@@ -30,7 +30,22 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'space-between',
     },
-});
+    question: {
+        paddingLeft: 10,
+        fontSize: '1.2rem',
+        paddingTop: 12,
+        position: 'relative',
+        '&::before': {
+            content: '""',
+            display: 'block',
+            height: 'calc(100% - 12px)',
+            width: '2px',
+            backgroundColor: '#3f51b5',
+            position: 'absolute',
+            left: '-0px',
+        },
+    },
+}));
 
 function FAQ() {
     const classes = useStyles();
@@ -43,39 +58,59 @@ function FAQ() {
         <Card className={classes.root} elevation={3}>
             <h2>Frequently Asked Questions</h2>
             <hr />
-            <h5>Are these masks washable?</h5>
+            <h5 className={classes.question}>Are these masks washable?</h5>
             <p>
-                Yes, we recommend hand washing with cold water then hanging to
-                air dry. Avoid using heat as heat may shrink certain fabric.
+                Yes, we recommend hand washing with cold water & soap then
+                hanging to air dry. Avoid using heat as heat may shrink certain
+                fabric.
             </p>
-
-            <h5>How much does shipping cost?</h5>
-            <p>Shipping is absolutely free in the US.</p>
-
-            <h5>How long will it take for the masks to be delivered?</h5>
-            <p>Delivery will be between 5-9 business days.</p>
-
-            <h5>What are these masks made of? How many layers?</h5>
+            <h5 className={classes.question}>How much do these masks cost?</h5>
+            <p>
+                Each mask is currently priced at $10 each with absolutely free
+                shipping in the US.
+            </p>
+            <h5 className={classes.question}>How long will delivery take?</h5>
+            <p>Delivery will typically be within 5-9 business days.</p>
+            <h5 className={classes.question}>
+                What are these masks made of? How many layers?
+            </h5>
             <p>
                 These masks are composed of tightly-woven cotton and a non-woven
                 polyester blend to ensure thickness. There are a total layers of
                 4 layers for each mask.
             </p>
-
-            <h5>Where are these masks made?</h5>
-            <p>All masks are made in Anaheim, California.</p>
-
-            <h5>Do the masks come with elastic?</h5>
-            <p>Yes, all masks come with elastic that loop around the ears.</p>
-
-            <h5>How do you know what size to get?</h5>
+            <h5 className={classes.question}>
+                Do these masks come with elastic? How long are they? Are they
+                adjustable?
+            </h5>
+            <p>
+                Yes, each mask comes with two elastic bands - one for looping
+                around each ear. Each of the bands are 10 inches in length. You
+                can retie these bands if you wish to adjust for better fitting.
+            </p>
+            <h5 className={classes.question}>Is there a nose clip?</h5>
+            <p>Yes, each mask comes with a metal nose clip wire.</p>
+            <h5 className={classes.question}>Where are these masks made?</h5>
+            <p>All masks are made in Anaheim, California, USA.</p>
+            <h5 className={classes.question}>
+                How do you know what size to get?
+            </h5>
             <p>
                 There are size dimensions (Width x Height in inches) available
                 on each product page. Select a size that would best suit you.
             </p>
-
-            <h5>Is there a nose clip?</h5>
-            <p>Yes, each mask contains a nose clip.</p>
+            <h5 className={classes.question}>Do they have a filter pocket?</h5>
+            <p>
+                No, these masks do not have filter pockets - but they are
+                resusable by proper washing.
+            </p>
+            <h5 className={classes.question}>
+                How can I get in contact with you?
+            </h5>
+            <p>
+                If you wish to get in touch, you can send an email to
+                contact@cafacemasks.com.
+            </p>
         </Card>
     );
 }

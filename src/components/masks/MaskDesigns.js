@@ -818,16 +818,16 @@ export const selection = {
         angled: true,
         tags: ['white', 'green'],
     },
-    terrace: {
-        type: 'Mask',
-        color: 'Terrace',
-        img: 'Terrace.jpg',
-        param: 'terrace',
-        price: 10,
-        category: 'floral',
-        angled: true,
-        tags: ['pink'],
-    },
+    // terrace: {
+    //     type: 'Mask',
+    //     color: 'Terrace',
+    //     img: 'Terrace.jpg',
+    //     param: 'terrace',
+    //     price: 10,
+    //     category: 'floral',
+    //     angled: true,
+    //     tags: ['pink'],
+    // },
     // LIMITED SUPPLY
     ////////////
     // ELASTIC //
