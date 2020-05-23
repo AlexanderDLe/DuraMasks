@@ -17,18 +17,9 @@ const App = () => {
             size: 'L',
             amount: '1',
         },
-        // {
-        //     type: 'Elastic',
-        //     color: '1/4" Black Elastic',
-        //     param: 'blackelastic',
-        //     price: 40,
-        //     img: 'BlackElastic.jpg',
-        //     size: '200 Yards',
-        //     amount: '1',
-        // },
     ];
     const testAmount = 1;
-    const mode = 'production';
+    const mode = 'sandbox';
     const [orders, setOrders] = useState(mode === 'sandbox' ? testOrder : []);
     const [amount, setAmount] = useState(mode === 'sandbox' ? testAmount : 0);
 

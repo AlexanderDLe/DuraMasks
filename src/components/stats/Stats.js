@@ -7,6 +7,9 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
+import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+
 const useStyles = makeStyles({
     root: {
         marginTop: 60,
@@ -328,6 +331,31 @@ const Stats = () => {
                 <hr />
                 {renderItem({ Color: 'Total', Total: total })}
             </CardContent>
+            <Link to="/stats">
+                <Button
+                    color="primary"
+                    style={{
+                        borderTopLeftRadius: '0',
+                        width: '50%',
+                        border: 'none !important',
+                    }}
+                >
+                    Total
+                </Button>
+            </Link>
+            <Link to="/daily">
+                <Button
+                    color="primary"
+                    style={{
+                        borderWidth: '2px',
+                        borderTopRightRadius: '0',
+                        width: '50%',
+                        border: 'none !important',
+                    }}
+                >
+                    Daily
+                </Button>
+            </Link>
         </Card>
     );
 };

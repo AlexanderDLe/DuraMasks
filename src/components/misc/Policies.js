@@ -32,7 +32,7 @@ const useStyles = makeStyles({
     },
     question: {
         paddingLeft: 10,
-        fontSize: '1.2rem',
+        fontSize: '1.15rem',
         paddingTop: 12,
         position: 'relative',
         '&::before': {

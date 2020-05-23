@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     },
     question: {
         paddingLeft: 10,
-        fontSize: '1.2rem',
+        fontSize: '1.15rem',
         paddingTop: 12,
         position: 'relative',
         '&::before': {
@@ -61,8 +61,9 @@ function FAQ() {
             <h5 className={classes.question}>Are these masks washable?</h5>
             <p>
                 Yes, we recommend hand washing with cold water & soap then
-                hanging to air dry. Avoid using heat as heat may shrink certain
-                fabric.
+                hanging to air dry. Avoid using hot water or a dryer as the
+                prolonged heat may shrink certain fabric. You may use an iron to
+                smoothen any following wrinkles.
             </p>
             <h5 className={classes.question}>How much do these masks cost?</h5>
             <p>
