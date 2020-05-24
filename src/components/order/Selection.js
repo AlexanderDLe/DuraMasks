@@ -11,6 +11,7 @@ import { selection } from '../masks/MaskDesigns';
 import Search from './Search';
 import SelectionHero from './SelectionHero';
 import SelectionFilter from './SelectionFilter';
+// import Banner from '../misc/Banner';
 
 const useStyles = makeStyles((theme) => ({
     smallContainer: {
@@ -282,6 +283,7 @@ function Selection() {
     return (
         <React.Fragment>
             <main style={{ width: '100%' }}>
+                {/* <Banner /> */}
                 <SelectionHero />
                 <SelectionFilter filter={filter} setFilter={setFilter} />
                 <Container className={classes.root}>

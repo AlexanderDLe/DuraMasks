@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import Cards from './Cards';
 import Testimonials from './Testimonials';
 import LandingHero from './LandingHero';
+// import Banner from '../misc/Banner';
 
 import { useSpring, animated } from 'react-spring';
 
@@ -75,6 +76,7 @@ export default function Album() {
     return (
         <main style={{ width: '100%' }}>
             {/* <div className="landing-image"></div> */}
+            {/* <Banner /> */}
             <LandingHero />
             <div className={classes.heroContent}>
                 <Container maxWidth="sm">

@@ -20,12 +20,14 @@ function SelectionHero() {
         let bg_img = navMediaQuery ? desktop_img : phone_img;
         return (
             <Carousel.Item
-                className={`carousel-image-${index}`}
                 style={{
                     minHeight: 450,
                     background: `url(${bg_img}) center / auto 100% no-repeat`,
+                    backgroundSize: 'cover',
                     // backgroundSize: 'auto 100%',
+                    // backgroundColor: 'red',
                 }}
+                className={`carousel-image-${index}`}
             ></Carousel.Item>
         );
     };
