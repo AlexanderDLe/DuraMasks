@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles({
     root: {
@@ -269,6 +270,7 @@ const Stats = () => {
     // console.log(tot);
     let [total, setTotal] = useState(0);
     let [stats, setStats] = useState([]);
+    let [loading, setLoading] = useState(true);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -284,10 +286,12 @@ const Stats = () => {
                 );
                 setStats(response.data);
                 setTotal(dataTotal);
+                setLoading(false);
             } catch (error) {
                 console.log(error);
                 setStats([]);
                 setTotal(0);
+                setLoading(false);
             }
         }
         fetchData();
@@ -327,7 +331,13 @@ const Stats = () => {
             </CardContent>
 
             <CardContent style={{ paddingTop: 0, paddingBottom: 20 }}>
-                {renderStats()}
+                {loading ? (
+                    <div style={{ textAlign: 'center' }}>
+                        <CircularProgress />
+                    </div>
+                ) : (
+                    renderStats()
+                )}
                 <hr />
                 {renderItem({ Color: 'Total', Total: total })}
             </CardContent>

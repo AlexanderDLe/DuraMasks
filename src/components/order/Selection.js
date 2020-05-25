@@ -11,7 +11,7 @@ import { selection } from '../masks/MaskDesigns';
 import Search from './Search';
 import SelectionHero from './SelectionHero';
 import SelectionFilter from './SelectionFilter';
-// import Banner from '../misc/Banner';
+import Banner from '../misc/Banner';
 
 const useStyles = makeStyles((theme) => ({
     smallContainer: {
@@ -88,6 +88,7 @@ function Selection() {
 
     const [filter, setFilter] = useState('All');
     const [solidOpen, setSolidOpen] = useState(true);
+    const [martialOpen, setMartialOpen] = useState(true);
     const [floralOpen, setFloralOpen] = useState(true);
     const [patternOpen, setPatternOpen] = useState(true);
     const [hawaiianOpen, setHawaiianOpen] = useState(true);
@@ -98,6 +99,7 @@ function Selection() {
 
     // Categories
     let solid = [];
+    let martial = [];
     let bandana = [];
     let pattern = [];
     let animal = [];
@@ -112,6 +114,9 @@ function Selection() {
             switch (category) {
                 case 'solid':
                     solid.push(item);
+                    break;
+                case 'martial':
+                    martial.push(item);
                     break;
                 case 'floral':
                     floral.push(item);
@@ -190,6 +195,17 @@ function Selection() {
                     </React.Fragment>
                 );
         };
+        const renderMartial = () => {
+            if (martial.length)
+                return (
+                    <React.Fragment>
+                        {categoryTitle('Patriot', setMartialOpen, martialOpen)}
+                        <Grid container spacing={3}>
+                            {martialOpen ? renderCategory(martial) : ''}
+                        </Grid>
+                    </React.Fragment>
+                );
+        };
         const renderBandana = () => {
             if (bandana.length)
                 return (
@@ -263,14 +279,17 @@ function Selection() {
 
         return (
             <React.Fragment>
+                {filter === 'All' || filter === 'Martial'
+                    ? renderMartial()
+                    : ''}
                 {filter === 'All' || filter === 'Solid' ? renderSolid() : ''}
                 {filter === 'All' || filter === 'Bandana'
                     ? renderBandana()
                     : ''}
+                {filter === 'All' || filter === 'Animal' ? renderAnimal() : ''}
                 {filter === 'All' || filter === 'Pattern'
                     ? renderPattern()
                     : ''}
-                {filter === 'All' || filter === 'Animal' ? renderAnimal() : ''}
                 {filter === 'All' || filter === 'Hawaiian'
                     ? renderHawaiian()
                     : ''}
@@ -283,7 +302,7 @@ function Selection() {
     return (
         <React.Fragment>
             <main style={{ width: '100%' }}>
-                {/* <Banner /> */}
+                <Banner />
                 <SelectionHero />
                 <SelectionFilter filter={filter} setFilter={setFilter} />
                 <Container className={classes.root}>

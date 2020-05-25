@@ -45,7 +45,7 @@ function Pricing() {
         <React.Fragment>
             <CardContent style={{ paddingBottom: 0 }} className="price">
                 <div className="dollar-sign">$</div>
-                <div className="priceNumber">10</div>
+                <div className="priceNumber">12.50</div>
                 <div className="each">/mask</div>
             </CardContent>
             <CardHeader

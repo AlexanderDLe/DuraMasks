@@ -67,8 +67,8 @@ function FAQ() {
             </p>
             <h5 className={classes.question}>How much do these masks cost?</h5>
             <p>
-                Each mask is currently priced at $10 each with absolutely free
-                shipping in the US.
+                Each mask is currently priced at $12.50 each with absolutely
+                free shipping in the US.
             </p>
             <h5 className={classes.question}>How long will delivery take?</h5>
             <p>Delivery will typically be within 5-9 business days.</p>

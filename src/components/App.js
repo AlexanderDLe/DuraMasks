@@ -8,17 +8,17 @@ import Footer from './Footer';
 
 const App = () => {
     const testOrder = [
-        {
-            type: 'Mask',
-            color: 'Test',
-            param: 'black',
-            price: 10,
-            img: 'Black.jpg',
-            size: 'L',
-            amount: '1',
-        },
+        // {
+        //     type: 'Mask',
+        //     color: 'Test',
+        //     param: 'black',
+        //     price: 12.5,
+        //     img: 'Black.jpg',
+        //     size: 'L',
+        //     amount: '0',
+        // },
     ];
-    const testAmount = 1;
+    const testAmount = 0;
     const mode = 'production';
     const [orders, setOrders] = useState(mode === 'sandbox' ? testOrder : []);
     const [amount, setAmount] = useState(mode === 'sandbox' ? testAmount : 0);

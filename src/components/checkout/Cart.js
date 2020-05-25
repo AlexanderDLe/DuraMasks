@@ -123,7 +123,9 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
     const currency = 'USD';
     const subtotal = calculateSubtotal(orders);
     const shippingFee = 0;
-    let total = subtotal + shippingFee;
+    const discount =
+        subtotal >= 50 ? Math.ceil(subtotal * 0.15 * 100) / 100 : 0;
+    let total = subtotal + shippingFee - discount;
     let env = mode;
     const client = {
         sandbox: keys.paypalSandboxID,
@@ -202,6 +204,11 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
                     </p>
                     <p>${shippingFee}</p>
                 </div>
+                <div className={classes.cartCalculation}>
+                    <p>Discount</p>
+                    <p>- ${discount}</p>
+                </div>
+
                 <hr
                     style={{
                         border: 'none',

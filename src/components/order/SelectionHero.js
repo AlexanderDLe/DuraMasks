@@ -9,6 +9,8 @@ import Phone_Hawaiian from '../../img/SelectionCarouselImages/Phone_Hawaiian.jpg
 import Desktop_Hawaiian from '../../img/SelectionCarouselImages/Desktop_Hawaiian.jpg';
 import Desktop_Bandana from '../../img/SelectionCarouselImages/Desktop_Bandana.jpg';
 import Phone_Bandana from '../../img/SelectionCarouselImages/Phone_Bandana.jpg';
+import Desktop_Patriot from '../../img/SelectionCarouselImages/Desktop_Patriot.jpg';
+import Phone_Patriot from '../../img/SelectionCarouselImages/Phone_Patriot.jpg';
 
 function SelectionHero() {
     const navMediaQuery = useMediaQuery('(min-width:900px)');
@@ -25,6 +27,7 @@ function SelectionHero() {
                 style={{
                     minHeight: 450,
                     background: `url(${bg_img}) no-repeat center`,
+                    backgroundSize: 'cover',
                 }}
                 className={`carousel-item carousel-image-${index}`}
             ></Carousel.Item>
@@ -33,9 +36,10 @@ function SelectionHero() {
 
     return (
         <Carousel pause={false} active={index} onSelect={handleSelect}>
-            {renderCarouselItem(1, Desktop_Dotted, Phone_Dotted)}
-            {renderCarouselItem(2, Desktop_Bandana, Phone_Bandana)}
-            {renderCarouselItem(3, Desktop_Hawaiian, Phone_Hawaiian)}
+            {renderCarouselItem(1, Desktop_Patriot, Phone_Patriot)}
+            {renderCarouselItem(2, Desktop_Dotted, Phone_Dotted)}
+            {renderCarouselItem(3, Desktop_Bandana, Phone_Bandana)}
+            {renderCarouselItem(4, Desktop_Hawaiian, Phone_Hawaiian)}
         </Carousel>
     );
 }

@@ -65,6 +65,7 @@ function HideOnScroll(props) {
 const Navbar = ({ amount }) => {
     const classes = useStyles();
     const navMediaQuery = useMediaQuery('(min-width:600px)');
+    const navMediaQuery330 = useMediaQuery('(min-width:330px)');
 
     // Dynamic Nav Styles
     const navIconStyle = {
@@ -154,7 +155,7 @@ const Navbar = ({ amount }) => {
                                         src={FacemaskIcon}
                                         alt="Facemask Icon"
                                     />
-                                    CA Facemasks
+                                    {navMediaQuery330 ? 'CA Facemasks' : ''}
                                 </Link>
                             </Typography>
 

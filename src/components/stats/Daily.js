@@ -17,6 +17,7 @@ import moment from 'moment-timezone';
 
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles({
     root: {
@@ -97,6 +98,7 @@ const calculateTotals = (data) => {
 const Stats = () => {
     let [totals, setTotals] = useState({});
     let [data, setData] = useState([]);
+    let [loading, setLoading] = useState(true);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -109,28 +111,20 @@ const Stats = () => {
                 });
                 setData(response.data ? response.data : []);
                 setTotals(calculateTotals(response.data));
+                setLoading(false);
             } catch (error) {
                 console.log(error);
                 setData([]);
                 setTotals({});
+                setLoading(false);
             }
         }
         fetchData();
     }, []);
     const classes = useStyles();
 
-    return (
-        <Card className={classes.root} elevation={3}>
-            <CardContent>
-                <Typography
-                    className={classes.header}
-                    variant="h4"
-                    component="h2"
-                >
-                    Today's Orders
-                </Typography>
-            </CardContent>
-
+    const renderTable = () => {
+        return (
             <TableContainer>
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
@@ -186,6 +180,27 @@ const Stats = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
+        );
+    };
+
+    return (
+        <Card className={classes.root} elevation={3}>
+            <CardContent>
+                <Typography
+                    className={classes.header}
+                    variant="h4"
+                    component="h2"
+                >
+                    Today's Orders
+                </Typography>
+            </CardContent>
+            {loading ? (
+                <div style={{ textAlign: 'center' }}>
+                    <CircularProgress />
+                </div>
+            ) : (
+                renderTable()
+            )}
             <Link to="/stats">
                 <Button
                     color="primary"
