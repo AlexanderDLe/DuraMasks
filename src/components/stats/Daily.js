@@ -107,6 +107,7 @@ const Stats = () => {
                 const response = await axios.get(API, {
                     params: {
                         date: calculateTimestamp(),
+                        // date: '2020-05-24',
                     },
                 });
                 setData(response.data ? response.data : []);

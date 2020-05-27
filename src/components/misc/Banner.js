@@ -5,7 +5,7 @@ import { useMediaQuery } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     banner: {
-        backgroundColor: 'red',
+        backgroundColor: '#6868fd',
         paddingTop: 24,
         height: '85px',
         display: 'flex',
@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     flag: {
         paddingBottom: 16,
+        boxShadow: 'none',
     },
 }));
 
@@ -34,7 +35,7 @@ function Banner() {
             <img alt="Flag" className={classes.flag} src={Flag} />
             <div className={classes.textbox}>
                 <h5 style={{ fontSize: navMediaQuery ? '1rem' : '.85rem' }}>
-                    MEMORIAL DAY SALE
+                    MEMORIAL SALE
                 </h5>
                 <p>15% Off 50$+ Orders</p>
             </div>

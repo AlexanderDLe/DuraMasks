@@ -7,8 +7,8 @@ import LandingMask from '../../img/LandingCarouselImages/LandingMask.jpg';
 import LandingMask4 from '../../img/LandingCarouselImages/LandingMask4.jpg';
 import Phone_LandingMask4 from '../../img/LandingCarouselImages/Phone_LandingMask4.jpg';
 import LandingMask3 from '../../img/LandingCarouselImages/LandingMask3.jpg';
-import Desktop_Patriot from '../../img/SelectionCarouselImages/Desktop_Patriot.jpg';
-import Phone_Patriot from '../../img/SelectionCarouselImages/Phone_Patriot.jpg';
+// import Desktop_Patriot from '../../img/SelectionCarouselImages/Desktop_Patriot.jpg';
+// import Phone_Patriot from '../../img/SelectionCarouselImages/Phone_Patriot.jpg';
 
 function SelectionHero() {
     const navMediaQuery = useMediaQuery('(min-width:530px)');
@@ -36,7 +36,7 @@ function SelectionHero() {
 
     return (
         <Carousel pause={false} active={index} onSelect={handleSelect}>
-            {renderCarouselItem(1, Desktop_Patriot, Phone_Patriot)}
+            {/* {renderCarouselItem(1, Desktop_Patriot, Phone_Patriot)} */}
             {renderCarouselItem(1, LandingMask, LandingMask)}
             {renderCarouselItem(2, LandingMask3, LandingMask3)}
             {renderCarouselItem(3, LandingMask4, Phone_LandingMask4)}
