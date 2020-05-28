@@ -279,9 +279,6 @@ function Selection() {
 
         return (
             <React.Fragment>
-                {filter === 'All' || filter === 'Martial'
-                    ? renderMartial()
-                    : ''}
                 {filter === 'All' || filter === 'Solid' ? renderSolid() : ''}
                 {filter === 'All' || filter === 'Bandana'
                     ? renderBandana()
@@ -294,6 +291,9 @@ function Selection() {
                     ? renderHawaiian()
                     : ''}
                 {filter === 'All' || filter === 'Floral' ? renderFloral() : ''}
+                {filter === 'All' || filter === 'Martial'
+                    ? renderMartial()
+                    : ''}
                 {filter === 'All' || filter === 'Custom' ? renderCustom() : ''}
             </React.Fragment>
         );

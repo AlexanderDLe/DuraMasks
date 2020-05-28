@@ -24,10 +24,7 @@ function SelectionHero() {
             <Carousel.Item
                 style={{
                     minHeight: 450,
-                    background: `url(${bg_img}) center / auto 100% no-repeat`,
-                    backgroundSize: 'cover',
-                    // backgroundSize: 'auto 100%',
-                    // backgroundColor: 'red',
+                    background: `url(${bg_img}) #6868fd center / auto 100% no-repeat`,
                 }}
                 className={`carousel-image-${index}`}
             ></Carousel.Item>

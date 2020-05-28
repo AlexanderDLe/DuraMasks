@@ -35,6 +35,10 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'space-between',
     },
+    dailyHeader: {
+        display: 'flex',
+        justifyContent: 'space-between',
+    },
 });
 
 const calculateTimestamp = () => {
@@ -96,6 +100,7 @@ const calculateTotals = (data) => {
 };
 
 const Stats = () => {
+    let [dailyTotal, setDailyTotal] = useState(0);
     let [totals, setTotals] = useState({});
     let [data, setData] = useState([]);
     let [loading, setLoading] = useState(true);
@@ -110,11 +115,13 @@ const Stats = () => {
                         // date: '2020-05-24',
                     },
                 });
-                setData(response.data ? response.data : []);
-                setTotals(calculateTotals(response.data));
+                setDailyTotal(response.data.total ? response.data.total : 0);
+                setData(response.data.payload ? response.data.payload : []);
+                setTotals(calculateTotals(response.data.payload));
                 setLoading(false);
             } catch (error) {
                 console.log(error);
+                setDailyTotal(0);
                 setData([]);
                 setTotals({});
                 setLoading(false);
@@ -123,6 +130,9 @@ const Stats = () => {
         fetchData();
     }, []);
     const classes = useStyles();
+    console.log(dailyTotal);
+    console.log(totals);
+    console.log(data);
 
     const renderTable = () => {
         return (
@@ -186,13 +196,20 @@ const Stats = () => {
 
     return (
         <Card className={classes.root} elevation={3}>
-            <CardContent>
+            <CardContent className={classes.dailyHeader}>
                 <Typography
                     className={classes.header}
                     variant="h4"
                     component="h2"
                 >
                     Today's Orders
+                </Typography>
+                <Typography
+                    className={classes.header}
+                    variant="h4"
+                    component="h2"
+                >
+                    ${dailyTotal}
                 </Typography>
             </CardContent>
             {loading ? (

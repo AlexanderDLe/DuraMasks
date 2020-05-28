@@ -27,7 +27,7 @@ function SelectionHero() {
                 style={{
                     minHeight: 450,
                     background: `url(${bg_img}) no-repeat center`,
-                    backgroundSize: 'cover',
+                    // backgroundSize: 'cover',
                 }}
                 className={`carousel-item carousel-image-${index}`}
             ></Carousel.Item>
@@ -36,10 +36,10 @@ function SelectionHero() {
 
     return (
         <Carousel pause={false} active={index} onSelect={handleSelect}>
-            {renderCarouselItem(1, Desktop_Patriot, Phone_Patriot)}
-            {renderCarouselItem(2, Desktop_Dotted, Phone_Dotted)}
-            {renderCarouselItem(3, Desktop_Bandana, Phone_Bandana)}
-            {renderCarouselItem(4, Desktop_Hawaiian, Phone_Hawaiian)}
+            {renderCarouselItem(1, Desktop_Dotted, Phone_Dotted)}
+            {renderCarouselItem(2, Desktop_Bandana, Phone_Bandana)}
+            {renderCarouselItem(3, Desktop_Hawaiian, Phone_Hawaiian)}
+            {renderCarouselItem(4, Desktop_Patriot, Phone_Patriot)}
         </Carousel>
     );
 }

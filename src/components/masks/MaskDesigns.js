@@ -4,27 +4,28 @@ export const selection = {
     //////////////
     // MEMORIAL //
     //////////////
-
-    armycamo: {
-        type: 'Mask',
-        color: 'Army Camo',
-        img: 'ArmyCamo.jpg',
-        param: 'armycamo',
-        price: maskPrice,
-        category: 'martial',
-        angled: true,
-        tags: ['blue'],
-    },
-    navycamo: {
-        type: 'Mask',
-        color: 'Navy Camo',
-        img: 'NavyCamo.jpg',
-        param: 'navycamo',
-        price: maskPrice,
-        category: 'martial',
-        angled: true,
-        tags: ['blue'],
-    },
+    // armycamo: {
+    //     type: 'Mask',
+    //     color: 'Army Camo',
+    //     img: 'ArmyCamo.jpg',
+    //     param: 'armycamo',
+    //     price: maskPrice,
+    //     category: 'martial',
+    //     angled: true,
+    //     hot: false,
+    //     tags: ['blue'],
+    // },
+    // navycamo: {
+    //     type: 'Mask',
+    //     color: 'Navy Camo',
+    //     img: 'NavyCamo.jpg',
+    //     param: 'navycamo',
+    //     price: maskPrice,
+    //     category: 'martial',
+    //     angled: true,
+    //     hot: false,
+    //     tags: ['blue'],
+    // },
     service: {
         type: 'Mask',
         color: 'Service',
@@ -33,6 +34,7 @@ export const selection = {
         price: maskPrice,
         category: 'martial',
         angled: true,
+        hot: false,
         tags: ['green', 'brown'],
     },
     airforce: {
@@ -43,6 +45,7 @@ export const selection = {
         price: maskPrice,
         category: 'martial',
         angled: true,
+        hot: false,
         tags: ['brown', 'army'],
     },
     marines: {
@@ -53,6 +56,7 @@ export const selection = {
         price: maskPrice,
         category: 'martial',
         angled: true,
+        hot: false,
         tags: ['brown', 'army'],
     },
     marinecorps: {
@@ -63,6 +67,7 @@ export const selection = {
         price: maskPrice,
         category: 'martial',
         angled: true,
+        hot: false,
         tags: ['blue'],
     },
     usnavy: {
@@ -73,6 +78,7 @@ export const selection = {
         price: maskPrice,
         category: 'martial',
         angled: true,
+        hot: false,
         tags: ['blue'],
     },
     army: {
@@ -83,6 +89,7 @@ export const selection = {
         price: maskPrice,
         category: 'martial',
         angled: true,
+        hot: false,
         tags: ['blue'],
     },
     excellence: {
@@ -93,18 +100,20 @@ export const selection = {
         price: maskPrice,
         category: 'martial',
         angled: true,
+        hot: false,
         tags: ['blue'],
     },
-    // integrity: {
-    //     type: 'Mask',
-    //     color: 'Integrity',
-    //     img: 'Integrity.jpg',
-    //     param: 'integrity',
-    //     price: maskPrice,
-    //     category: 'martial',
-    //     angled: true,
-    //     tags: ['blue'],
-    // },
+    integrity: {
+        type: 'Mask',
+        color: 'Integrity',
+        img: 'Integrity.jpg',
+        param: 'integrity',
+        price: maskPrice,
+        category: 'martial',
+        angled: true,
+        hot: false,
+        tags: ['blue'],
+    },
     veteran: {
         type: 'Mask',
         color: 'Veteran',
@@ -113,6 +122,7 @@ export const selection = {
         price: maskPrice,
         category: 'martial',
         angled: true,
+        hot: false,
         tags: ['brown'],
     },
     forces: {
@@ -123,6 +133,7 @@ export const selection = {
         price: maskPrice,
         category: 'martial',
         angled: true,
+        hot: false,
         tags: ['green'],
     },
     usa: {
@@ -133,28 +144,31 @@ export const selection = {
         price: maskPrice,
         category: 'martial',
         angled: true,
+        hot: false,
         tags: ['black'],
     },
-    // tags: {
-    //     type: 'Mask',
-    //     color: 'Tags',
-    //     img: 'Tags.jpg',
-    //     param: 'tags',
-    //     price: maskPrice,
-    //     category: 'martial',
-    //     angled: true,
-    //     tags: ['black'],
-    // },
-    // usguard: {
-    //     type: 'Mask',
-    //     color: 'US Guard',
-    //     img: 'USGuard.jpg',
-    //     param: 'usguard',
-    //     price: maskPrice,
-    //     category: 'martial',
-    //     angled: true,
-    //     tags: ['blue', 'grey'],
-    // },
+    tags: {
+        type: 'Mask',
+        color: 'Tags',
+        img: 'Tags.jpg',
+        param: 'tags',
+        price: maskPrice,
+        category: 'martial',
+        angled: true,
+        hot: false,
+        tags: ['black'],
+    },
+    usguard: {
+        type: 'Mask',
+        color: 'US Guard',
+        img: 'USGuard.jpg',
+        param: 'usguard',
+        price: maskPrice,
+        category: 'martial',
+        angled: true,
+        hot: false,
+        tags: ['blue', 'grey'],
+    },
     // patriot: {
     //     type: 'Mask',
     //     color: 'Patriot',
@@ -163,6 +177,7 @@ export const selection = {
     //     price: maskPrice,
     //     category: 'martial',
     //     angled: true,
+    //     hot: false,
     //     tags: ['american', 'flag', 'blue'],
     // },
     ////////////
@@ -176,6 +191,7 @@ export const selection = {
         price: maskPrice,
         category: 'solid',
         angled: true,
+        hot: true,
         tags: [],
     },
     darkgrey: {
@@ -186,6 +202,7 @@ export const selection = {
         price: maskPrice,
         category: 'solid',
         angled: true,
+        hot: true,
         tags: ['black'],
     },
     grey: {
@@ -196,6 +213,7 @@ export const selection = {
         price: maskPrice,
         category: 'solid',
         angled: true,
+        hot: false,
         tags: ['black', 'white'],
     },
     white: {
@@ -206,6 +224,7 @@ export const selection = {
         price: maskPrice,
         category: 'solid',
         angled: true,
+        hot: false,
         tags: [],
     },
     ash: {
@@ -216,6 +235,7 @@ export const selection = {
         price: maskPrice,
         category: 'solid',
         angled: true,
+        hot: true,
         tags: ['pattern', 'black', 'grey'],
     },
     jumper: {
@@ -226,6 +246,7 @@ export const selection = {
         price: maskPrice,
         category: 'solid',
         angled: true,
+        hot: false,
         tags: ['green'],
     },
     navyblue: {
@@ -236,6 +257,7 @@ export const selection = {
         price: maskPrice,
         category: 'solid',
         angled: true,
+        hot: true,
         tags: [],
     },
     navygrey: {
@@ -246,6 +268,7 @@ export const selection = {
         price: maskPrice,
         category: 'solid',
         angled: true,
+        hot: true,
         tags: ['blue'],
     },
     denim: {
@@ -256,6 +279,7 @@ export const selection = {
         price: maskPrice,
         category: 'solid',
         angled: true,
+        hot: false,
         tags: ['jeans', 'blue'],
     },
     red: {
@@ -266,6 +290,7 @@ export const selection = {
         price: maskPrice,
         category: 'solid',
         angled: true,
+        hot: false,
         tags: ['red', 'pink'],
     },
     pink: {
@@ -276,6 +301,7 @@ export const selection = {
         price: maskPrice,
         category: 'solid',
         angled: true,
+        hot: false,
         tags: ['red'],
     },
     //////////////
@@ -289,6 +315,7 @@ export const selection = {
         price: maskPrice,
         category: 'bandana',
         angled: true,
+        hot: true,
         tags: ['black'],
     },
     whitebandana: {
@@ -299,6 +326,7 @@ export const selection = {
         price: maskPrice,
         category: 'bandana',
         angled: true,
+        hot: true,
         tags: ['black'],
     },
     redbandana: {
@@ -309,6 +337,7 @@ export const selection = {
         price: maskPrice,
         category: 'bandana',
         angled: true,
+        hot: false,
         tags: ['pink'],
     },
     pinkbandana: {
@@ -319,6 +348,7 @@ export const selection = {
         price: maskPrice,
         category: 'bandana',
         angled: true,
+        hot: false,
         tags: ['red'],
     },
     navybandana: {
@@ -329,6 +359,7 @@ export const selection = {
         price: maskPrice,
         category: 'bandana',
         angled: true,
+        hot: true,
         tags: ['blue'],
     },
     bluebandana: {
@@ -339,11 +370,34 @@ export const selection = {
         price: maskPrice,
         category: 'bandana',
         angled: true,
+        hot: false,
         tags: [],
     },
     ///////////////
     // PATTERNED //
     //////////////
+    navycamo: {
+        type: 'Mask',
+        color: 'Navy Camo',
+        img: 'NavyCamo.jpg',
+        param: 'navycamo',
+        price: maskPrice,
+        category: 'pattern',
+        angled: true,
+        hot: true,
+        tags: ['blue'],
+    },
+    armycamo: {
+        type: 'Mask',
+        color: 'Army Camo',
+        img: 'ArmyCamo.jpg',
+        param: 'armycamo',
+        price: maskPrice,
+        category: 'pattern',
+        angled: true,
+        hot: true,
+        tags: ['blue'],
+    },
     artisanblack: {
         type: 'Mask',
         color: 'Artisan Black',
@@ -352,6 +406,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: true,
+        hot: true,
         tags: [],
     },
     spots: {
@@ -362,6 +417,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: true,
+        hot: false,
         tags: ['white', 'dots'],
     },
     blackdotted: {
@@ -372,6 +428,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: true,
+        hot: true,
         tags: ['dots'],
     },
     // whitedotted: {
@@ -382,6 +439,7 @@ export const selection = {
     //     price: maskPrice,
     //     category: 'pattern',
     //     angled: true,
+    //     hot: false,
     //     tags: ['dots'],
     // },
     artisanred: {
@@ -392,6 +450,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: false,
+        hot: false,
         tags: ['pink'],
     },
     ladybug: {
@@ -402,6 +461,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: true,
+        hot: false,
         tags: ['red'],
     },
     minnie: {
@@ -412,6 +472,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: true,
+        hot: true,
         tags: ['red'],
     },
     tribal: {
@@ -422,6 +483,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: true,
+        hot: true,
         tags: ['black', 'white'],
     },
     motion: {
@@ -432,6 +494,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: true,
+        hot: false,
         tags: ['green'],
     },
     polk: {
@@ -442,6 +505,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: true,
+        hot: true,
         tags: ['white', 'brown', 'orange'],
     },
     magnetic: {
@@ -452,6 +516,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: true,
+        hot: false,
         tags: ['blue', 'yellow'],
     },
     // flames: {
@@ -462,6 +527,7 @@ export const selection = {
     //     price: maskPrice,
     //     category: 'pattern',
     //     angled: true,
+    //     hot: false,
     //     tags: ['orange', 'yellow'],
     // },
     native: {
@@ -472,6 +538,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: true,
+        hot: false,
         tags: ['orange', 'brown'],
     },
     radiant: {
@@ -482,6 +549,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: true,
+        hot: false,
         tags: ['yellow', 'orange', 'red'],
     },
     classic: {
@@ -492,6 +560,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: false,
+        hot: false,
         tags: ['yellow', 'brown'],
     },
     // sutra: {
@@ -502,6 +571,7 @@ export const selection = {
     //     price: maskPrice,
     //     category: 'pattern',
     //     angled: true,
+    //     hot: false,
     //     tags: ['pink', 'purple'],
     // },
     calavera: {
@@ -512,6 +582,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: true,
+        hot: true,
         tags: ['red'],
     },
     nurse: {
@@ -522,6 +593,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: true,
+        hot: false,
         tags: ['pink', 'red'],
     },
     apple: {
@@ -532,6 +604,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: true,
+        hot: false,
         tags: ['black', 'red'],
     },
     gardener: {
@@ -542,6 +615,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: true,
+        hot: false,
         tags: ['yellow'],
     },
     heels: {
@@ -552,6 +626,7 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: true,
+        hot: false,
         tags: ['yellow'],
     },
     rainbow: {
@@ -562,12 +637,24 @@ export const selection = {
         price: maskPrice,
         category: 'pattern',
         angled: true,
+        hot: false,
         tags: ['yellow'],
     },
 
     ////////////
     // ANIMAL //
     ///////////
+    paws: {
+        type: 'Mask',
+        color: 'Paws',
+        img: 'Paws.jpg',
+        param: 'paws',
+        price: maskPrice,
+        category: 'animal',
+        angled: true,
+        hot: true,
+        tags: ['animal', 'black'],
+    },
     pupper: {
         type: 'Mask',
         color: 'Pupper',
@@ -576,6 +663,7 @@ export const selection = {
         price: maskPrice,
         category: 'animal',
         angled: true,
+        hot: true,
         tags: ['dog', 'black'],
     },
     woof: {
@@ -586,6 +674,7 @@ export const selection = {
         price: maskPrice,
         category: 'animal',
         angled: true,
+        hot: true,
         tags: ['dog', 'red'],
     },
     dawg: {
@@ -596,6 +685,7 @@ export const selection = {
         price: maskPrice,
         category: 'animal',
         angled: true,
+        hot: false,
         tags: ['dog', 'red'],
     },
     boyscout: {
@@ -606,18 +696,10 @@ export const selection = {
         price: maskPrice,
         category: 'animal',
         angled: true,
+        hot: false,
         tags: ['blue', 'yellow'],
     },
-    // paws: {
-    //     type: 'Mask',
-    //     color: 'Paws',
-    //     img: 'Paws.jpg',
-    //     param: 'paws',
-    //     price: maskPrice,
-    //     category: 'animal',
-    //     angled: true,
-    //     tags: ['animal', 'black'],
-    // },
+
     kittens: {
         type: 'Mask',
         color: 'Kittens',
@@ -626,6 +708,7 @@ export const selection = {
         price: maskPrice,
         category: 'animal',
         angled: true,
+        hot: true,
         tags: ['cat', 'brown'],
     },
     zebra: {
@@ -636,6 +719,7 @@ export const selection = {
         price: maskPrice,
         category: 'animal',
         angled: true,
+        hot: false,
         tags: ['black', 'white'],
     },
     cabin: {
@@ -646,6 +730,7 @@ export const selection = {
         price: maskPrice,
         category: 'animal',
         angled: true,
+        hot: false,
         tags: ['brown', 'white'],
     },
     leopard: {
@@ -656,6 +741,7 @@ export const selection = {
         price: maskPrice,
         category: 'animal',
         angled: true,
+        hot: true,
         tags: ['animal', 'brown'],
     },
     cheetah: {
@@ -666,6 +752,7 @@ export const selection = {
         price: maskPrice,
         category: 'animal',
         angled: true,
+        hot: true,
         tags: ['animal', 'brown'],
     },
     violetredzebra: {
@@ -676,6 +763,7 @@ export const selection = {
         price: maskPrice,
         category: 'animal',
         angled: true,
+        hot: false,
         tags: ['magenta'],
     },
     cobra: {
@@ -686,6 +774,7 @@ export const selection = {
         price: maskPrice,
         category: 'animal',
         angled: false,
+        hot: false,
         tags: ['animal', 'orange', 'brown'],
     },
     play: {
@@ -696,6 +785,7 @@ export const selection = {
         price: maskPrice,
         category: 'animal',
         angled: false,
+        hot: false,
         tags: ['dog', 'red'],
     },
     madagascar: {
@@ -706,6 +796,7 @@ export const selection = {
         price: maskPrice,
         category: 'animal',
         angled: false,
+        hot: false,
         tags: ['animal', 'brown', 'yellow'],
     },
 
@@ -720,6 +811,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: false,
+        hot: true,
         tags: ['yellow', 'orange'],
     },
     hula: {
@@ -730,6 +822,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: false,
+        hot: true,
         tags: ['pink', 'red', 'green'],
     },
     beach: {
@@ -740,6 +833,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: true,
+        hot: true,
         tags: ['blue'],
     },
     koi: {
@@ -750,6 +844,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: true,
+        hot: true,
         tags: ['red', 'pink'],
     },
     // buttercup: {
@@ -760,6 +855,7 @@ export const selection = {
     //     price: maskPrice,
     //     category: 'hawaiian',
     //     angled: true,
+    //     hot: false,
     //     tags: ['yellow', 'orange'],
     // },
     pineapple: {
@@ -770,6 +866,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: true,
+        hot: false,
         tags: ['yellow'],
     },
     pond: {
@@ -780,6 +877,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: true,
+        hot: false,
         tags: ['blue'],
     },
     canopy: {
@@ -790,6 +888,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: true,
+        hot: false,
         tags: ['pink', 'green'],
     },
     sky: {
@@ -800,6 +899,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: false,
+        hot: true,
         tags: ['blue'],
     },
     dusk: {
@@ -810,6 +910,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: false,
+        hot: false,
         tags: ['pink'],
     },
     surf: {
@@ -820,6 +921,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: false,
+        hot: false,
         tags: ['grey', 'yellow'],
     },
     bloom: {
@@ -830,6 +932,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: true,
+        hot: false,
         tags: ['orange', 'yellow'],
     },
     loft: {
@@ -840,6 +943,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: true,
+        hot: true,
         tags: ['purple'],
     },
     paradise: {
@@ -850,6 +954,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: true,
+        hot: false,
         tags: ['blue'],
     },
     palms: {
@@ -860,6 +965,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: true,
+        hot: false,
         tags: ['black'],
     },
     honolulu: {
@@ -870,6 +976,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: true,
+        hot: false,
         tags: ['red'],
     },
     river: {
@@ -880,6 +987,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: true,
+        hot: false,
         tags: ['green', 'brown'],
     },
     ////////////
@@ -893,6 +1001,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
+        hot: true,
         tags: ['red', 'yellow'],
     },
     spring: {
@@ -903,6 +1012,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
+        hot: true,
         tags: ['pink', 'orange'],
     },
     floralwhite: {
@@ -913,6 +1023,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: false,
+        hot: true,
         tags: [],
     },
     garden: {
@@ -923,6 +1034,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
+        hot: true,
         tags: [],
     },
     floralblue: {
@@ -933,6 +1045,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
+        hot: true,
         tags: [],
     },
     floret: {
@@ -943,6 +1056,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
+        hot: false,
         tags: ['green', 'pink', 'purple'],
     },
     floralgreen: {
@@ -953,6 +1067,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
+        hot: false,
         tags: [],
     },
     florallavender: {
@@ -963,6 +1078,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
+        hot: false,
         tags: ['purple', 'violet'],
     },
     floralpink: {
@@ -973,6 +1089,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
+        hot: false,
         tags: ['red'],
     },
     purpleplaid: {
@@ -983,6 +1100,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
+        hot: false,
         tags: ['lavender', 'violet'],
     },
     orangeplaid: {
@@ -993,6 +1111,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
+        hot: false,
         tags: [],
     },
     rose: {
@@ -1003,6 +1122,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
+        hot: false,
         tags: ['red'],
     },
     floralburgundy: {
@@ -1013,6 +1133,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
+        hot: false,
         tags: ['pink', 'brown'],
     },
     stem: {
@@ -1023,6 +1144,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
+        hot: false,
         tags: ['white', 'green'],
     },
     vines: {
@@ -1033,6 +1155,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
+        hot: false,
         tags: ['green'],
     },
     celeste: {
@@ -1043,6 +1166,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
+        hot: false,
         tags: ['blue', 'brown'],
     },
     holly: {
@@ -1053,6 +1177,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
+        hot: false,
         tags: ['pink', 'brown', 'burgundy'],
     },
     peaches: {
@@ -1063,6 +1188,7 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
+        hot: false,
         tags: ['pink', 'orange', 'red'],
     },
 
@@ -1074,6 +1200,7 @@ export const selection = {
     //     price: maskPrice,
     //     category: 'floral',
     //     angled: true,
+    //     hot: false,
     //     tags: ['pink', 'red'],
     // },
     // terrace: {
@@ -1084,6 +1211,7 @@ export const selection = {
     //     price: maskPrice,
     //     category: 'floral',
     //     angled: true,
+    //     hot: false,
     //     tags: ['pink'],
     // },
     // LIMITED SUPPLY
@@ -1102,6 +1230,7 @@ export const selection = {
         },
         category: 'custom',
         angled: false,
+        hot: false,
         tags: ['elastic'],
     },
     whiteelastic: {
@@ -1116,6 +1245,7 @@ export const selection = {
         },
         category: 'custom',
         angled: false,
+        hot: false,
         tags: ['elastic'],
     },
 };
