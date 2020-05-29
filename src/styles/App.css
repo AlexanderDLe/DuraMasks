@@ -6,12 +6,20 @@
     outline: none !important;
 }
 
+#preloader {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .body-class {
     min-height: calc(100vh - 116px);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 34px;
+    padding-top: 56px;
 }
 
 .landing-image {

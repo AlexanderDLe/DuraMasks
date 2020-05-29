@@ -1,12 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useMediaQuery } from '@material-ui/core';
 import 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
-
-import LandingMask from '../../img/LandingCarouselImages/LandingMask.jpg';
-import LandingMask4 from '../../img/LandingCarouselImages/LandingMask4.jpg';
-import Phone_LandingMask4 from '../../img/LandingCarouselImages/Phone_LandingMask4.jpg';
-import LandingMask3 from '../../img/LandingCarouselImages/LandingMask3.jpg';
 
 function SelectionHero() {
     const navMediaQuery = useMediaQuery('(min-width:530px)');
@@ -16,25 +11,37 @@ function SelectionHero() {
         setIndex(selectedIndex);
     };
 
-    const renderCarouselItem = (index, desktop_img, phone_img) => {
-        let bg_img = navMediaQuery ? desktop_img : phone_img;
+    const landingImage = useMemo(() => {
+        return {
+            elizabro: navMediaQuery
+                ? require('../../img/LandingCarouselImages/LandingMask.jpg')
+                : require('../../img/LandingCarouselImages/Phone_LandingMask.jpg'),
+            hispanic: navMediaQuery
+                ? require('../../img/LandingCarouselImages/LandingMask2.jpg')
+                : require('../../img/LandingCarouselImages/Phone_LandingMask2.jpg'),
+            caucasian: navMediaQuery
+                ? require('../../img/LandingCarouselImages/LandingMask3.jpg')
+                : require('../../img/LandingCarouselImages/Phone_LandingMask3.jpg'),
+        };
+    }, [navMediaQuery]);
+
+    const renderCarouselItem = (index, bg_img) => {
         return (
             <Carousel.Item
                 style={{
                     minHeight: 450,
-                    background: `url(${bg_img}) #6868fd center / auto 100% no-repeat`,
+                    background: `url(${bg_img}) center / auto 100% no-repeat`,
                 }}
-                className={`carousel-image-${index}`}
+                className={`landing-carousel-item carousel-image-${index}`}
             ></Carousel.Item>
         );
     };
 
     return (
         <Carousel pause={false} active={index} onSelect={handleSelect}>
-            {/* {renderCarouselItem(1, Desktop_Patriot, Phone_Patriot)} */}
-            {renderCarouselItem(1, LandingMask, LandingMask)}
-            {renderCarouselItem(2, LandingMask3, LandingMask3)}
-            {renderCarouselItem(3, LandingMask4, Phone_LandingMask4)}
+            {renderCarouselItem(1, landingImage.elizabro)}
+            {renderCarouselItem(2, landingImage.hispanic)}
+            {renderCarouselItem(3, landingImage.caucasian)}
         </Carousel>
     );
 }

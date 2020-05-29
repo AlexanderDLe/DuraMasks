@@ -33,6 +33,9 @@ const useStyles = makeStyles({
         textDecoration: 'none',
         color: '#3f51b5',
     },
+    text: {
+        color: 'rgba(0,0,0,.65',
+    },
 });
 
 function CustomCard() {
@@ -47,7 +50,7 @@ function CustomCard() {
                             Custom
                         </Typography>
                         <Typography
-                            style={{ color: 'rgba(0,0,0,.65' }}
+                            className={classes.text}
                             variant="body1"
                             component="h2"
                         >

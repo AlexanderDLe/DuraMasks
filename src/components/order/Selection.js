@@ -14,6 +14,9 @@ import SelectionFilter from './SelectionFilter';
 import Banner from '../misc/Banner';
 
 const useStyles = makeStyles((theme) => ({
+    main: {
+        width: '100%',
+    },
     smallContainer: {
         paddingLeft: 0,
         paddingRight: 0,
@@ -105,7 +108,6 @@ function Selection() {
     let animal = [];
     let hawaiian = [];
     let floral = [];
-    // let custom = [];
 
     // Categorization
     const sortCategories = (selectionToSort) => {
@@ -301,7 +303,7 @@ function Selection() {
 
     return (
         <React.Fragment>
-            <main style={{ width: '100%' }}>
+            <main className={classes.main}>
                 <Banner />
                 <SelectionHero />
                 <SelectionFilter filter={filter} setFilter={setFilter} />

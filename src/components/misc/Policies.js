@@ -11,25 +11,6 @@ const useStyles = makeStyles({
         margin: 24,
         marginTop: 40,
     },
-    media: {
-        height: 280,
-    },
-    link: {
-        textDecoration: 'none',
-        color: '#3f51b5',
-    },
-    buttonLink: {
-        textDecoration: 'none',
-        color: 'white',
-    },
-    customizeBox: {
-        paddingTop: 26,
-        display: 'flex',
-    },
-    itemActions: {
-        display: 'flex',
-        justifyContent: 'space-between',
-    },
     question: {
         paddingLeft: 10,
         fontSize: '1.15rem',

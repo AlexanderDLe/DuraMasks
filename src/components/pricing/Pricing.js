@@ -23,6 +23,25 @@ const useStyles = makeStyles((theme) => ({
     priceNumber: {
         fontWeight: 700,
     },
+    cardHeaderNormal: {
+        textAlign: 'center',
+        paddingTop: 0,
+    },
+    cardHeaderWholesale: {
+        textAlign: 'center',
+        paddingTop: 32,
+    },
+    normalButton: {
+        borderTopLeftRadius: '0',
+        width: '50%',
+        border: 'none !important',
+    },
+    wholesaleButton: {
+        borderWidth: '2px',
+        borderTopRightRadius: '0',
+        width: '50%',
+        border: 'none !important',
+    },
 }));
 
 function Pricing() {
@@ -48,19 +67,13 @@ function Pricing() {
                 <div className="priceNumber">12.50</div>
                 <div className="each">/mask</div>
             </CardContent>
-            <CardHeader
-                style={{
-                    textAlign: 'center',
-                    paddingTop: 0,
-                }}
-                title="Normal"
-            />
+            <CardHeader className={classes.cardHeaderNormal} title="Normal" />
             <CardContent className="price">
                 <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
-                    style={{ textAlign: 'left' }}
+                    align="left"
                 >
                     <strong>Free Shipping</strong> for all domestic (US) orders.
                     Typical delivery will be between 5-9 business days.
@@ -75,7 +88,7 @@ function Pricing() {
     const wholesalePricingContent = (
         <React.Fragment>
             <CardHeader
-                style={{ textAlign: 'center', paddingTop: '32px' }}
+                className={classes.cardHeaderWholesale}
                 title="Wholesale"
             />
             <CardContent className="price">
@@ -101,26 +114,16 @@ function Pricing() {
                         {pricingState === 'normal'
                             ? normalPricingContent
                             : wholesalePricingContent}
-
                         <Button
                             color="primary"
-                            style={{
-                                borderTopLeftRadius: '0',
-                                width: '50%',
-                                border: 'none !important',
-                            }}
+                            className={classes.normalButton}
                             onClick={setPricingToNormal}
                         >
                             Normal
                         </Button>
                         <Button
                             color="primary"
-                            style={{
-                                borderWidth: '2px',
-                                borderTopRightRadius: '0',
-                                width: '50%',
-                                border: 'none !important',
-                            }}
+                            className={classes.wholesaleButton}
                             onClick={setPricingToWholesale}
                         >
                             Wholesale

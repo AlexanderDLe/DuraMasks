@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: 'none',
         fontFamily: 'Open Sans',
     },
+    shoppingCartIcon: {
+        fontSize: '1.2rem',
+    },
     cartAmount: {
         marginLeft: '3px',
         color: navTextColor,
@@ -68,24 +71,31 @@ const Navbar = ({ amount }) => {
     const navMediaQuery330 = useMediaQuery('(min-width:330px)');
 
     // Dynamic Nav Styles
-    const navIconStyle = {
-        width: `${navMediaQuery ? '50px' : '35px'}`,
-        paddingBottom: 12,
-        paddingRight: 4,
-    };
-    const navTitleStyle = {
-        fontSize: `${navMediaQuery ? '1.25rem' : '1rem'}`,
-        fontFamily: 'Open Sans',
-        fontWeight: 600,
-        textTransform: 'uppercase',
-    };
+    const dynamicStyles = useMemo(() => {
+        return {
+            navIconStyle: {
+                width: `${navMediaQuery ? '50px' : '35px'}`,
+                paddingBottom: 12,
+                paddingRight: 4,
+            },
+            navTitleStyle: {
+                fontSize: `${navMediaQuery ? '1.25rem' : '1rem'}`,
+                fontFamily: 'Open Sans',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+            },
+            navItem: {
+                marginRight: '20px',
+            },
+        };
+    }, [navMediaQuery]);
 
     // Standard Navigation
     const fullNavItem = (path, label) => (
         <Link
             to={`/${path}`}
             className={classes.link}
-            style={{ marginRight: '20px' }}
+            style={dynamicStyles.navItem}
         >
             {label}
         </Link>
@@ -111,7 +121,7 @@ const Navbar = ({ amount }) => {
             <Link
                 to={`/${path}`}
                 className={classes.menuItem}
-                style={{ marginRight: '20px' }}
+                style={dynamicStyles.navItem}
             >
                 {label}
             </Link>
@@ -137,7 +147,6 @@ const Navbar = ({ amount }) => {
 
     return (
         <div className={classes.root}>
-            <div className={classes.cartButton}>Cart Button</div>
             <HideOnScroll>
                 <AppBar className={classes.appbar}>
                     <Container>
@@ -146,12 +155,12 @@ const Navbar = ({ amount }) => {
                             </Link> */}
                             <Typography variant="h6" className={classes.title}>
                                 <Link
-                                    style={navTitleStyle}
+                                    style={dynamicStyles.navTitleStyle}
                                     className={classes.link}
                                     to="/"
                                 >
                                     <img
-                                        style={navIconStyle}
+                                        style={dynamicStyles.navIconStyle}
                                         className={classes.navIcon}
                                         src={FacemaskIcon}
                                         alt="Facemask Icon"
@@ -170,7 +179,7 @@ const Navbar = ({ amount }) => {
                             </Link>
                             <Link to="/cart" className={classes.link}>
                                 <ShoppingCartIcon
-                                    style={{ fontSize: '1.2rem' }}
+                                    className={classes.shoppingCartIcon}
                                 />
                             </Link>
                             <Link to="/cart" className={classes.cartAmount}>

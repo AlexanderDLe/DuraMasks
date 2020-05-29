@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Flag from '../../img/Flag.png';
 import { useMediaQuery } from '@material-ui/core';
@@ -6,7 +6,7 @@ import { useMediaQuery } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
     banner: {
         backgroundColor: '#6868fd',
-        paddingTop: 28,
+        paddingTop: 24,
         height: '85px',
         display: 'flex',
         justifyContent: 'center',
@@ -30,13 +30,18 @@ function Banner() {
     const classes = useStyles();
     const navMediaQuery = useMediaQuery('(min-width:330px)');
 
+    const bannerHeader = useMemo(
+        () => ({
+            fontSize: navMediaQuery ? '1rem' : '.85rem',
+        }),
+        [navMediaQuery]
+    );
+
     return (
         <div className={classes.banner}>
             <img alt="Flag" className={classes.flag} src={Flag} />
             <div className={classes.textbox}>
-                <h5 style={{ fontSize: navMediaQuery ? '1rem' : '.85rem' }}>
-                    MEMORIAL SALE
-                </h5>
+                <h5 style={bannerHeader}>MEMORIAL SALE</h5>
                 <p>15% Off 50$+ Orders</p>
             </div>
             <img alt="Flag" className={classes.flag} src={Flag} />

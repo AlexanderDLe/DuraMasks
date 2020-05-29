@@ -54,7 +54,6 @@ function DesignCard({ design }) {
                     {design.hot ? (
                         <div className={classes.bestseller}>
                             <WhatshotIcon />
-                            {/* <p>Hot</p> */}
                         </div>
                     ) : (
                         ''

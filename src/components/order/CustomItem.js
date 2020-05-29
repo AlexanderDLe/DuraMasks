@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     itemActions: {
         display: 'flex',
         justifyContent: 'space-between',
+        paddingTop: 0,
     },
 }));
 
@@ -64,10 +65,7 @@ function CustomItem() {
                 </p>
             </CardContent>
 
-            <CardActions
-                className={classes.itemActions}
-                style={{ paddingTop: 0 }}
-            >
+            <CardActions className={classes.itemActions}>
                 <Button size="small" color="primary">
                     <Link to="/selection" className={classes.link}>
                         Back To Selections
