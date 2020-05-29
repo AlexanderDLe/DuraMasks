@@ -76,6 +76,12 @@ const useStyles = makeStyles({
         textAlign: 'center',
         color: 'red',
     },
+    cartTotal: {
+        fontWeight: 700,
+    },
+    backToSelectionButton: {
+        margin: '8px 16px',
+    },
 });
 
 const calculateTimestamp = (time) => {
@@ -216,8 +222,8 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
                     }}
                 />
                 <div className={classes.cartCalculation}>
-                    <p style={{ fontWeight: 700 }}>Total</p>
-                    <p style={{ fontWeight: 700 }}>${total}</p>
+                    <p className={classes.cartTotal}>Total</p>
+                    <p className={classes.cartTotal}>${total}</p>
                 </div>
             </React.Fragment>
         );
@@ -305,7 +311,11 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
                     />
                 </div>
             )}
-            <Button style={{ margin: '8px 16px' }} size="small" color="primary">
+            <Button
+                className={classes.backToSelectionButton}
+                size="small"
+                color="primary"
+            >
                 <Link to="/selection" className={classes.link}>
                     Back to Selection
                 </Link>

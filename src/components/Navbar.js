@@ -137,6 +137,7 @@ const Navbar = ({ amount }) => {
 
     return (
         <div className={classes.root}>
+            <div className={classes.cartButton}>Cart Button</div>
             <HideOnScroll>
                 <AppBar className={classes.appbar}>
                     <Container>

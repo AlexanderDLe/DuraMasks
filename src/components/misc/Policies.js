@@ -58,10 +58,11 @@ function Policies() {
         <Card className={classes.root} elevation={3}>
             <h2>Policies</h2>
             <hr />
-            <h5 className={classes.question}>Refund Policy</h5>
+            <h5 className={classes.question}>Return/Exchange Policy</h5>
             <p>
-                Due to the hazardous nature of used/handled facemasks, we do not
-                offer refunds.
+                You may choose to return or exchange a product within 14 days,
+                but you will be required to pay for shipping costs (if
+                applicable).
             </p>
             <h5 className={classes.question}>Customer Service Policy</h5>
             <p>

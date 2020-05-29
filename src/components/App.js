@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import '../styles/App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import Navbar from './Navbar';
 import Body from './Body';
 import Footer from './Footer';
+const Navbar = lazy(() => import('./Navbar'));
 
 const App = () => {
-    const testOrder = [
-        // {
-        //     type: 'Mask',
-        //     color: 'Test',
-        //     param: 'black',
-        //     price: 12.5,
-        //     img: 'Black.jpg',
-        //     size: 'L',
-        //     amount: '0',
-        // },
-    ];
-    const testAmount = 0;
-    const mode = 'sandbox';
-    const [orders, setOrders] = useState(mode === 'sandbox' ? testOrder : []);
-    const [amount, setAmount] = useState(mode === 'sandbox' ? testAmount : 0);
+    // const testOrder = [
+    // {
+    //     type: 'Mask',
+    //     color: 'Test',
+    //     param: 'black',
+    //     price: 12.5,
+    //     img: 'Black.jpg',
+    //     size: 'L',
+    //     amount: '0',
+    // },
+    // ];
+
+    const mode = 'production';
+    const [orders, setOrders] = useState([]);
+    const [amount, setAmount] = useState(0);
 
     const addOrder = (data) => {
         const newOrders = [...orders];
@@ -64,7 +64,9 @@ const App = () => {
     return (
         <div>
             <CssBaseline />
-            <Navbar amount={amount} />
+            <Suspense fallback={<div />}>
+                <Navbar amount={amount} />
+            </Suspense>
             <Body
                 mode={mode}
                 orders={orders}

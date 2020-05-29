@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#37474f',
     },
     container: {
-        maxWidth: 600,
+        maxWidth: 680,
         display: 'flex',
         justifyContent: 'center',
     },
@@ -76,35 +76,11 @@ function SelectionFilter({ filter, setFilter }) {
                 {renderFilterItem('Animal')}
                 {renderFilterItem('Hawaiian')}
                 {renderFilterItem('Floral')}
+                {renderFilterItem('Patriot')}
                 {renderFilterItem('Custom')}
             </div>
         );
     };
-
-    // const sub600 = () => {
-    //     return (
-    //         <div
-    //             style={{
-    //                 width: '100%',
-    //                 maxWidth: '350px',
-    //                 flexDirection: 'column',
-    //             }}
-    //         >
-    //             <div className={classes.halfContainer}>
-    //                 {renderFilterItem('All')}
-    //                 {renderFilterItem('Solid')}
-    //                 {renderFilterItem('Bandana')}
-    //                 {renderFilterItem('Pattern')}
-    //             </div>
-    //             <div className={classes.halfContainer}>
-    //                 {renderFilterItem('Animal')}
-    //                 {renderFilterItem('Hawaiian')}
-    //                 {renderFilterItem('Floral')}
-    //                 {renderFilterItem('Custom')}
-    //             </div>
-    //         </div>
-    //     );
-    // };
 
     return (
         <div className={classes.root}>

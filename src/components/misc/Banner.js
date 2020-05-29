@@ -6,7 +6,7 @@ import { useMediaQuery } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
     banner: {
         backgroundColor: '#6868fd',
-        paddingTop: 24,
+        paddingTop: 28,
         height: '85px',
         display: 'flex',
         justifyContent: 'center',

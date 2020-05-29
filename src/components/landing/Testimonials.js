@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
     CarouselProvider,
     Slider,
@@ -9,15 +9,57 @@ import {
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import Typography from '@material-ui/core/Typography';
 import { useMediaQuery } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
+const useStyles = makeStyles((theme) => ({
+    testimonialSection: {
+        backgroundColor: '#fff',
+        padding: theme.spacing(6, 0, 6),
+        paddingBottom: 0,
+    },
+    sectionTitle: {
+        fontFamily: 'Open Sans',
+    },
+    authorText: {
+        fontSize: '1rem',
+    },
+    carouselContainer: {
+        padding: 16,
+        paddingTop: 0,
+    },
+    carouselProvider: {
+        textAlign: 'center',
+    },
+}));
+
 function Carousel() {
+    const classes = useStyles();
+
     const navMediaQuery580 = useMediaQuery('(min-width:580px)');
     const navMediaQuery500 = useMediaQuery('(min-width:500px)');
     const navMediaQuery400 = useMediaQuery('(min-width:400px)');
     const navMediaQuery320 = useMediaQuery('(min-width:320px)');
+
+    const carouselHeight = useMemo(() => {
+        return navMediaQuery580
+            ? 40
+            : navMediaQuery500
+            ? 50
+            : navMediaQuery400
+            ? 65
+            : navMediaQuery320
+            ? 85
+            : 100;
+    }, [
+        navMediaQuery580,
+        navMediaQuery500,
+        navMediaQuery400,
+        navMediaQuery320,
+    ]);
 
     const renderSlide = (text, author, index, paddingLen) => {
         return (
@@ -39,7 +81,7 @@ function Carousel() {
                     align="center"
                     color="textSecondary"
                     paragraph
-                    style={{ fontSize: '1rem' }}
+                    className={classes.authorText}
                 >
                     - {author}
                 </Typography>
@@ -48,58 +90,61 @@ function Carousel() {
     };
 
     return (
-        <CarouselProvider
-            naturalSlideWidth={100}
-            naturalSlideHeight={
-                navMediaQuery580
-                    ? 40
-                    : navMediaQuery500
-                    ? 50
-                    : navMediaQuery400
-                    ? 65
-                    : navMediaQuery320
-                    ? 85
-                    : 100
-            }
-            totalSlides={4}
-            style={{ textAlign: 'center' }}
-            interval={5000}
-            isPlaying={true}
-        >
-            <Slider>
-                {renderSlide(
-                    'I am very particular for buying masks for myself and family members so I have to search for a company who can provide good quality masks with reasonable prices. I found these masks able to provide what I’m looking for. I’m very happy once I tried it on. It fit my face snuggly and I can breathe with it. Knowing they have 4 layers gives it more protection. I encourage everyone to buy these masks.',
-                    'Gina Le',
-                    0,
-                    0
-                )}
-                {renderSlide(
-                    'I brought it home and my mom loved it and stole them from me. I had to get more! I like them. They’re comfortable, covers my face, and is not too heavy. I can breath easily through them. Would highly recommend.',
-                    'Oscar Mejia',
-                    1,
-                    24
-                )}
-                {renderSlide(
-                    'Just got my "bandana" pattern masks today, I\'m amazed at the quality for such a low price and highly recommend them. They\'re made here in California, I love that too, and took about 7 days between order and delivery. Thanks CA Facemasks.',
-                    'Linda Garcini',
-                    2,
-                    24
-                )}
-                {renderSlide(
-                    'Just got my mask in the mail today. Wow, very impressed with the quality. Thanks for making such a great mask.',
-                    'Vicki Newell',
-                    3,
-                    32
-                )}
-            </Slider>
-            <ButtonBack className="slide-buttons">
-                <ChevronLeftIcon />
-            </ButtonBack>
-            <ButtonNext className="slide-buttons">
-                <ChevronRightIcon />
-            </ButtonNext>
-            {/* <DotGroup /> */}
-        </CarouselProvider>
+        <div className={classes.testimonialSection}>
+            <Typography
+                component="h2"
+                variant="h4"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+                className={classes.sectionTitle}
+            >
+                Testimonials
+            </Typography>
+            <Container className={classes.carouselContainer} maxWidth="sm">
+                <CarouselProvider
+                    naturalSlideWidth={100}
+                    naturalSlideHeight={carouselHeight}
+                    totalSlides={4}
+                    className={classes.carouselProvider}
+                    interval={5000}
+                    isPlaying={true}
+                >
+                    <Slider>
+                        {renderSlide(
+                            'I am very particular for buying masks for myself and family members so I have to search for a company who can provide good quality masks with reasonable prices. I found these masks able to provide what I’m looking for. I’m very happy once I tried it on. It fit my face snuggly and I can breathe with it. Knowing they have 4 layers gives it more protection. I encourage everyone to buy these masks.',
+                            'Gina Le',
+                            0,
+                            0
+                        )}
+                        {renderSlide(
+                            'I brought it home and my mom loved it and stole them from me. I had to get more! I like them. They’re comfortable, covers my face, and is not too heavy. I can breath easily through them. Would highly recommend.',
+                            'Oscar Mejia',
+                            1,
+                            24
+                        )}
+                        {renderSlide(
+                            'Just got my "bandana" pattern masks today, I\'m amazed at the quality for such a low price and highly recommend them. They\'re made here in California, I love that too, and took about 7 days between order and delivery. Thanks CA Facemasks.',
+                            'Linda Garcini',
+                            2,
+                            24
+                        )}
+                        {renderSlide(
+                            'Just got my mask in the mail today. Wow, very impressed with the quality. Thanks for making such a great mask.',
+                            'Vicki Newell',
+                            3,
+                            32
+                        )}
+                    </Slider>
+                    <ButtonBack className="slide-buttons">
+                        <ChevronLeftIcon />
+                    </ButtonBack>
+                    <ButtonNext className="slide-buttons">
+                        <ChevronRightIcon />
+                    </ButtonNext>
+                </CarouselProvider>
+            </Container>
+        </div>
     );
 }
 

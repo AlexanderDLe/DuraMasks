@@ -88,7 +88,7 @@ function Selection() {
 
     const [filter, setFilter] = useState('All');
     const [solidOpen, setSolidOpen] = useState(true);
-    const [martialOpen, setMartialOpen] = useState(true);
+    const [patriotOpen, setPatriotOpen] = useState(true);
     const [floralOpen, setFloralOpen] = useState(true);
     const [patternOpen, setPatternOpen] = useState(true);
     const [hawaiianOpen, setHawaiianOpen] = useState(true);
@@ -99,7 +99,7 @@ function Selection() {
 
     // Categories
     let solid = [];
-    let martial = [];
+    let patriot = [];
     let bandana = [];
     let pattern = [];
     let animal = [];
@@ -115,8 +115,8 @@ function Selection() {
                 case 'solid':
                     solid.push(item);
                     break;
-                case 'martial':
-                    martial.push(item);
+                case 'patriot':
+                    patriot.push(item);
                     break;
                 case 'floral':
                     floral.push(item);
@@ -195,13 +195,13 @@ function Selection() {
                     </React.Fragment>
                 );
         };
-        const renderMartial = () => {
-            if (martial.length)
+        const renderPatriot = () => {
+            if (patriot.length)
                 return (
                     <React.Fragment>
-                        {categoryTitle('Patriot', setMartialOpen, martialOpen)}
+                        {categoryTitle('Patriot', setPatriotOpen, patriotOpen)}
                         <Grid container spacing={3}>
-                            {martialOpen ? renderCategory(martial) : ''}
+                            {patriotOpen ? renderCategory(patriot) : ''}
                         </Grid>
                     </React.Fragment>
                 );
@@ -291,8 +291,8 @@ function Selection() {
                     ? renderHawaiian()
                     : ''}
                 {filter === 'All' || filter === 'Floral' ? renderFloral() : ''}
-                {filter === 'All' || filter === 'Martial'
-                    ? renderMartial()
+                {filter === 'All' || filter === 'Patriot'
+                    ? renderPatriot()
                     : ''}
                 {filter === 'All' || filter === 'Custom' ? renderCustom() : ''}
             </React.Fragment>

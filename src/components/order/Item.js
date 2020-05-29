@@ -44,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
     media: {
         height: 280,
     },
+    smallMedia: {
+        height: 230,
+    },
     link: {
         textDecoration: 'none',
         color: '#3f51b5',
@@ -236,7 +239,7 @@ function Item({ match, addOrder }) {
                 </Typography>
             </CardContent>
             <CardMedia
-                className={classes.media}
+                className={navMediaQuery ? classes.media : classes.smallMedia}
                 image={require(`../../img/PostMaskPhotos/${data.img}`)}
                 title={data.color}
                 onClick={handleModalOpen}

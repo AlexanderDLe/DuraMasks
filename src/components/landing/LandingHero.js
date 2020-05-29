@@ -7,8 +7,6 @@ import LandingMask from '../../img/LandingCarouselImages/LandingMask.jpg';
 import LandingMask4 from '../../img/LandingCarouselImages/LandingMask4.jpg';
 import Phone_LandingMask4 from '../../img/LandingCarouselImages/Phone_LandingMask4.jpg';
 import LandingMask3 from '../../img/LandingCarouselImages/LandingMask3.jpg';
-// import Desktop_Patriot from '../../img/SelectionCarouselImages/Desktop_Patriot.jpg';
-// import Phone_Patriot from '../../img/SelectionCarouselImages/Phone_Patriot.jpg';
 
 function SelectionHero() {
     const navMediaQuery = useMediaQuery('(min-width:530px)');
