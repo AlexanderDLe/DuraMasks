@@ -694,7 +694,7 @@ export const selection = {
         category: 'animal',
         angled: true,
         hot: false,
-        tags: ['magenta'],
+        tags: ['purple', 'magenta'],
     },
     cobra: {
         type: 'Mask',
