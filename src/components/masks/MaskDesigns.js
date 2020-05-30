@@ -24,7 +24,7 @@ export const selection = {
         category: 'solid',
         angled: true,
         hot: true,
-        tags: ['black'],
+        tags: ['black', 'white'],
     },
     grey: {
         type: 'Mask',
@@ -57,7 +57,7 @@ export const selection = {
         category: 'solid',
         angled: true,
         hot: true,
-        tags: ['pattern', 'black', 'grey'],
+        tags: ['black', 'grey'],
     },
     navyblue: {
         type: 'Mask',
@@ -225,7 +225,7 @@ export const selection = {
         category: 'bandana',
         angled: true,
         hot: false,
-        tags: [],
+        tags: ['navy'],
     },
     ///////////////
     // PATTERNED //
@@ -250,7 +250,7 @@ export const selection = {
         category: 'pattern',
         angled: true,
         hot: true,
-        tags: ['blue'],
+        tags: ['green'],
     },
     artisanblack: {
         type: 'Mask',
@@ -272,7 +272,7 @@ export const selection = {
         category: 'pattern',
         angled: true,
         hot: false,
-        tags: ['white', 'dots'],
+        tags: ['black', 'white', 'dots'],
     },
     blackdotted: {
         type: 'Mask',
@@ -360,18 +360,7 @@ export const selection = {
         category: 'pattern',
         angled: true,
         hot: false,
-        tags: ['black'],
-    },
-    tribal: {
-        type: 'Mask',
-        color: 'Tribal',
-        img: 'Tribal.jpg',
-        param: 'tribal',
-        price: maskPrice,
-        category: 'pattern',
-        angled: true,
-        hot: true,
-        tags: ['black', 'white'],
+        tags: ['black', 'orange'],
     },
     motion: {
         type: 'Mask',
@@ -415,7 +404,7 @@ export const selection = {
         category: 'pattern',
         angled: true,
         hot: false,
-        tags: ['green', 'red'],
+        tags: ['black', 'pink'],
     },
     magnetic: {
         type: 'Mask',
@@ -426,7 +415,7 @@ export const selection = {
         category: 'pattern',
         angled: true,
         hot: false,
-        tags: ['blue', 'yellow'],
+        tags: ['blue', 'yellow', 'teal'],
     },
     native: {
         type: 'Mask',
@@ -514,7 +503,7 @@ export const selection = {
         category: 'pattern',
         angled: true,
         hot: false,
-        tags: ['yellow'],
+        tags: ['brown', 'yellow'],
     },
     gardener: {
         type: 'Mask',
@@ -536,7 +525,7 @@ export const selection = {
         category: 'pattern',
         angled: true,
         hot: false,
-        tags: ['yellow'],
+        tags: ['colorful'],
     },
     menace: {
         type: 'Mask',
@@ -558,7 +547,7 @@ export const selection = {
         category: 'pattern',
         angled: true,
         hot: false,
-        tags: ['grey'],
+        tags: ['grey', 'orange'],
     },
     firefighter: {
         type: 'Mask',
@@ -583,7 +572,7 @@ export const selection = {
         category: 'animal',
         angled: true,
         hot: true,
-        tags: ['animal', 'black'],
+        tags: ['black', 'dog'],
     },
     pupper: {
         type: 'Mask',
@@ -616,7 +605,7 @@ export const selection = {
         category: 'animal',
         angled: true,
         hot: false,
-        tags: ['dog', 'red'],
+        tags: ['dog', 'brown'],
     },
     dalmation: {
         type: 'Mask',
@@ -627,7 +616,7 @@ export const selection = {
         category: 'animal',
         angled: true,
         hot: false,
-        tags: ['dog', 'red'],
+        tags: ['white', 'black'],
     },
     boyscout: {
         type: 'Mask',
@@ -727,7 +716,7 @@ export const selection = {
         category: 'animal',
         angled: false,
         hot: false,
-        tags: ['dog', 'red'],
+        tags: ['blue', 'red'],
     },
     madagascar: {
         type: 'Mask',
@@ -760,7 +749,7 @@ export const selection = {
         category: 'animal',
         angled: true,
         hot: false,
-        tags: ['blue', 'birds'],
+        tags: ['blue', 'cat', 'navy'],
     },
     unicorn: {
         type: 'Mask',
@@ -771,7 +760,7 @@ export const selection = {
         category: 'animal',
         angled: true,
         hot: false,
-        tags: ['blue', 'birds'],
+        tags: ['blue', 'pink'],
     },
     //////////////
     // HAWAIIAN //
@@ -975,7 +964,7 @@ export const selection = {
         category: 'floral',
         angled: true,
         hot: true,
-        tags: ['black', 'yellow'],
+        tags: ['black', 'yellow', 'white'],
     },
     bouquet: {
         type: 'Mask',
@@ -986,7 +975,7 @@ export const selection = {
         category: 'floral',
         angled: true,
         hot: true,
-        tags: ['black', 'yellow'],
+        tags: ['black', 'purple'],
     },
     majestic: {
         type: 'Mask',
@@ -1065,6 +1054,17 @@ export const selection = {
         hot: false,
         tags: ['green', 'pink', 'purple'],
     },
+    roses: {
+        type: 'Mask',
+        color: 'Roses',
+        img: 'Roses.jpg',
+        param: 'roses',
+        price: maskPrice,
+        category: 'floral',
+        angled: true,
+        hot: false,
+        tags: ['red'],
+    },
     floralgreen: {
         type: 'Mask',
         color: 'Floral Green',
@@ -1120,28 +1120,17 @@ export const selection = {
         hot: false,
         tags: [],
     },
-    roses: {
-        type: 'Mask',
-        color: 'Roses',
-        img: 'Roses.jpg',
-        param: 'roses',
-        price: maskPrice,
-        category: 'floral',
-        angled: true,
-        hot: false,
-        tags: ['red'],
-    },
-    rose: {
-        type: 'Mask',
-        color: 'Rose',
-        img: 'Rose.jpg',
-        param: 'rose',
-        price: maskPrice,
-        category: 'floral',
-        angled: true,
-        hot: false,
-        tags: ['red'],
-    },
+    // rose: {
+    //     type: 'Mask',
+    //     color: 'Rose',
+    //     img: 'Rose.jpg',
+    //     param: 'rose',
+    //     price: maskPrice,
+    //     category: 'floral',
+    //     angled: true,
+    //     hot: false,
+    //     tags: ['red'],
+    // },
     floralburgundy: {
         type: 'Mask',
         color: 'Floral Burgundy',

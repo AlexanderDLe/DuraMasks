@@ -23,6 +23,17 @@ export const archive = {
     //     hot: false,
     //     tags: ['red'],
     // },
+    // tribal: {
+    //     type: 'Mask',
+    //     color: 'Tribal',
+    //     img: 'Tribal.jpg',
+    //     param: 'tribal',
+    //     price: maskPrice,
+    //     category: 'pattern',
+    //     angled: true,
+    //     hot: true,
+    //     tags: ['black', 'white'],
+    // },
     // whitedotted: {
     //     type: 'Mask',
     //     color: 'White Dotted',
