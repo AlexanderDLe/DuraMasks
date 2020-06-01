@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import keys from '../../config/keys';
 import { Link, Redirect } from 'react-router-dom';
 import { PayPalButton } from 'react-paypal-button-v2';
@@ -11,6 +11,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import Modal from '@material-ui/core/Modal';
+import WarningIcon from '@material-ui/icons/Warning';
+
 import axios from 'axios';
 const API = keys.emailConfirmationAPI;
 const trelloAPI = keys.trelloAPI;
@@ -18,7 +21,7 @@ const header = {
     'Content-Type': 'application/json',
 };
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
         maxWidth: 450,
@@ -83,7 +86,31 @@ const useStyles = makeStyles({
     backToSelectionButton: {
         margin: '8px 16px',
     },
-});
+    modal: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '300px',
+        backgroundColor: theme.palette.background.paper,
+        border: '1px solid #000',
+        boxShadow: theme.shadows[5],
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 16,
+    },
+    warningIcon: {
+        color: 'red',
+        height: 65,
+        width: 65,
+        marginBottom: 8,
+    },
+    warningButton: {
+        textAlign: 'right',
+    },
+}));
 
 const calculateTimestamp = (time) => {
     let timestamp = time;
@@ -140,8 +167,30 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
     const classes = useStyles();
     const [paypalError, setPaypalError] = useState(false);
     const [checkedOut, setCheckedOut] = useState(false);
-
+    const [modalOpen, setModalOpen] = React.useState(false);
     const navMediaQuery600 = useMediaQuery('(min-width:600px)');
+
+    // Modal
+    const modalContent = useMemo(() => {
+        return (
+            <div className={classes.modal}>
+                <WarningIcon className={classes.warningIcon} />
+                <strong>Are you sure?</strong>
+                <br />
+                The US has the highest number of total Covid-19 cases in the
+                world, at nearly 2 million.
+                <br />
+                <Button
+                    onClick={() => setModalOpen(false)}
+                    className={classes.warningButton}
+                    size="small"
+                    color="primary"
+                >
+                    Okay
+                </Button>
+            </div>
+        );
+    }, [classes.modal, classes.warningIcon, classes.warningButton]);
 
     // Checkout Configuration
     const currency = 'USD';
@@ -201,6 +250,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
         setCheckedOut(true);
     };
     const onCancel = (data) => {
+        setModalOpen(true);
         console.log('The payment was canceled', data);
     };
     const onError = (err) => {
@@ -321,6 +371,14 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
                 ))}
                 {renderCartTotals()}
             </CardContent>
+            <Modal
+                open={modalOpen}
+                onClose={() => setModalOpen(false)}
+                aria-labelledby="Order Cancellation"
+                aria-describedby="Are you sure?"
+            >
+                {modalContent}
+            </Modal>
 
             {amount === 0 ? (
                 ''
