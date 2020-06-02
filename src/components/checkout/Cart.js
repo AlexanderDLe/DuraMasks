@@ -238,11 +238,14 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
         console.log('Data: ', data);
         console.log('Event: ', event);
 
+        const cardName = `${address.recipient_name} ${orderID.slice(0, 3)}`;
         const newCard = {
-            name: address.recipient_name,
+            name: cardName,
             pos: 'bottom',
             idLabels: setTrelloLabel(),
         };
+        console.log(newCard);
+
         await axios.post(trelloAPI, newCard);
         await axios.post(API, event, header);
 

@@ -41,7 +41,7 @@ function Banner() {
         <div className={classes.banner}>
             <img alt="Flag" className={classes.flag} src={Flag} />
             <div className={classes.textbox}>
-                <h5 style={bannerHeader}>MEMORIAL SALE</h5>
+                <h5 style={bannerHeader}>SPECIAL DISCOUNT</h5>
                 <p>15% Off 50$+ Orders</p>
             </div>
             <img alt="Flag" className={classes.flag} src={Flag} />
