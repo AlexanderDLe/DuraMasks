@@ -286,13 +286,13 @@ function Selection() {
                     ? renderBandana()
                     : ''}
                 {filter === 'All' || filter === 'Animal' ? renderAnimal() : ''}
+                {filter === 'All' || filter === 'Floral' ? renderFloral() : ''}
                 {filter === 'All' || filter === 'Pattern'
                     ? renderPattern()
                     : ''}
                 {filter === 'All' || filter === 'Hawaiian'
                     ? renderHawaiian()
                     : ''}
-                {filter === 'All' || filter === 'Floral' ? renderFloral() : ''}
                 {filter === 'All' || filter === 'Patriot'
                     ? renderPatriot()
                     : ''}

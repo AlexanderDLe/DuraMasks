@@ -238,7 +238,7 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
         console.log('Data: ', data);
         console.log('Event: ', event);
 
-        const cardName = `${address.recipient_name} ${orderID.slice(0, 3)}`;
+        const cardName = `${address.recipient_name} - ${orderID.slice(0, 3)}`;
         const newCard = {
             name: cardName,
             pos: 'bottom',
@@ -246,8 +246,16 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
         };
         console.log(newCard);
 
-        await axios.post(trelloAPI, newCard);
-        await axios.post(API, event, header);
+        try {
+            await axios.post(trelloAPI, newCard);
+        } catch (error) {
+            console.log(error);
+        }
+        try {
+            await axios.post(API, event, header);
+        } catch (error) {
+            console.log(error);
+        }
 
         resetOrders();
         setCheckedOut(true);

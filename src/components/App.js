@@ -8,15 +8,15 @@ const Navbar = lazy(() => import('./Navbar'));
 
 const App = () => {
     // const testOrder = [
-    // {
-    //     type: 'Mask',
-    //     color: 'Test',
-    //     param: 'black',
-    //     price: 12.5,
-    //     img: 'Black.jpg',
-    //     size: 'L',
-    //     amount: '0',
-    // },
+    //     {
+    //         type: 'Mask',
+    //         color: 'Test',
+    //         param: 'black',
+    //         price: 12.5,
+    //         img: 'Black.jpg',
+    //         size: 'L',
+    //         amount: '1',
+    //     },
     // ];
 
     const mode = 'production';

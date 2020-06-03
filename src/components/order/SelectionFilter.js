@@ -73,9 +73,9 @@ function SelectionFilter({ filter, setFilter }) {
                 {renderFilterItem('Solid')}
                 {renderFilterItem('Bandana')}
                 {renderFilterItem('Animal')}
+                {renderFilterItem('Floral')}
                 {renderFilterItem('Pattern')}
                 {renderFilterItem('Hawaiian')}
-                {renderFilterItem('Floral')}
                 {renderFilterItem('Patriot')}
                 {renderFilterItem('Custom')}
             </div>
