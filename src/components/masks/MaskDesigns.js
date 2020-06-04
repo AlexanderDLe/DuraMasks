@@ -776,17 +776,6 @@ export const selection = {
     //////////////
     // HAWAIIAN //
     //////////////
-    sunset: {
-        type: 'Mask',
-        color: 'Sunset',
-        img: 'Sunset.jpg',
-        param: 'sunset',
-        price: maskPrice,
-        category: 'hawaiian',
-        angled: false,
-        hot: true,
-        tags: ['yellow', 'orange'],
-    },
     hula: {
         type: 'Mask',
         color: 'Hula',
@@ -864,6 +853,17 @@ export const selection = {
         hot: true,
         tags: ['blue'],
     },
+    aloha: {
+        type: 'Mask',
+        color: 'Aloha',
+        img: 'Aloha.jpg',
+        param: 'aloha',
+        price: maskPrice,
+        category: 'hawaiian',
+        angled: true,
+        hot: false,
+        tags: ['red', 'orange', 'yellow'],
+    },
     dusk: {
         type: 'Mask',
         color: 'Dusk',
@@ -940,17 +940,6 @@ export const selection = {
         angled: true,
         hot: false,
         tags: ['green', 'brown'],
-    },
-    incas: {
-        type: 'Mask',
-        color: 'Incas',
-        img: 'Incas.jpg',
-        param: 'incas',
-        price: maskPrice,
-        category: 'hawaiian',
-        angled: true,
-        hot: false,
-        tags: ['red', 'orange', 'yellow'],
     },
     ////////////
     // FLORAL //

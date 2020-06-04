@@ -34,6 +34,17 @@ export const archive = {
     //     hot: true,
     //     tags: ['purple'],
     // },
+    // sunset: {
+    //     type: 'Mask',
+    //     color: 'Sunset',
+    //     img: 'Sunset.jpg',
+    //     param: 'sunset',
+    //     price: maskPrice,
+    //     category: 'hawaiian',
+    //     angled: false,
+    //     hot: true,
+    //     tags: ['yellow', 'orange'],
+    // },
     // whitedotted: {
     //     type: 'Mask',
     //     color: 'White Dotted',
