@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '1.5rem',
     },
     text: {
-        padding: '0px 8px',
+        padding: '0px 8px 0px 12px',
         margin: 0,
     },
     close: {
@@ -37,18 +37,17 @@ function AppSnackbar({ snackbarOpen, onClose }) {
     const navMediaQuery = useMediaQuery('(min-width:600px)');
 
     const snackbarRoot = useMemo(() => {
-        let obj = navMediaQuery
+        return navMediaQuery
             ? {
-                  width: '75%',
+                  width: '80%',
                   maxWidth: 800,
                   margin: '0 auto',
               }
             : {};
-        return obj;
     }, [navMediaQuery]);
 
     const textSize = useMemo(() => {
-        let rem = navMediaQuery ? '.95rem' : '.825rem';
+        let rem = navMediaQuery ? '.925rem' : '.825rem';
         return { fontSize: rem };
     }, [navMediaQuery]);
 
@@ -64,9 +63,9 @@ function AppSnackbar({ snackbarOpen, onClose }) {
                 <ReportProblemOutlinedIcon className={classes.warning} />
                 <p className={classes.text} style={textSize}>
                     Due to the protests sweeping the nation, there is
-                    anticipation of a massive second wave of new Covid cases. As
-                    a result, we highly recommend wearing face coverings to help
-                    reduce the likelihood of infection.
+                    anticipation of a massive second wave of new Covid-19 cases.
+                    As a result, we highly recommend wearing face coverings to
+                    help reduce the likelihood of infection.
                 </p>
                 <CloseOutlinedIcon
                     onClick={onClose}

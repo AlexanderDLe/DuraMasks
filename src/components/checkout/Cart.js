@@ -11,8 +11,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-import Modal from '@material-ui/core/Modal';
-import WarningIcon from '@material-ui/icons/Warning';
+import CartItems from './CartItems';
+import CartCalculations from './CartCalcuations';
+import CartModal from './CartModal';
 
 import axios from 'axios';
 const API = keys.emailConfirmationAPI;
@@ -20,6 +21,13 @@ const trelloAPI = keys.trelloAPI;
 const header = {
     'Content-Type': 'application/json',
 };
+const client = {
+    sandbox: keys.paypalSandboxID,
+    production: keys.paypalProductionID,
+};
+const currency = 'USD';
+const discountCode = '15OFF';
+const shippingFee = 0;
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -29,49 +37,9 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: 8,
         margin: 16,
     },
-    media: {
-        height: 350,
-    },
     link: {
         color: '#3f51b5',
         textDecoration: 'none',
-    },
-    buttonLink: {
-        color: 'white',
-        textDecoration: 'none',
-    },
-    designItemName: {
-        color: 'black',
-        textDecoration: 'none',
-    },
-    customizeBox: {
-        paddingTop: 26,
-        display: 'flex',
-    },
-    removeButton: {
-        fontSize: '.7rem',
-        color: 'red',
-        cursor: 'pointer',
-    },
-    itemActions: {
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    shippingCaption: {
-        fontSize: '.7rem',
-        color: 'rgba(0,0,0,.5)',
-    },
-    cartCalculation: {
-        display: 'flex',
-        justifyContent: 'space-between',
-    },
-    total: {
-        fontWeight: 700,
-    },
-    designImage: {
-        height: 'auto',
-        width: '120px',
     },
     cartTitle: {
         fontFamily: 'Open Sans',
@@ -79,9 +47,6 @@ const useStyles = makeStyles((theme) => ({
     paypalError: {
         textAlign: 'center',
         color: 'red',
-    },
-    cartTotal: {
-        fontWeight: 700,
     },
     backToSelectionButton: {
         margin: '8px 16px',
@@ -106,9 +71,6 @@ const useStyles = makeStyles((theme) => ({
         height: 65,
         width: 65,
         marginBottom: 8,
-    },
-    warningButton: {
-        textAlign: 'right',
     },
 }));
 
@@ -168,46 +130,32 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
     const [paypalError, setPaypalError] = useState(false);
     const [checkedOut, setCheckedOut] = useState(false);
     const [modalOpen, setModalOpen] = React.useState(false);
+    const [discountField, setDiscountField] = useState('');
     const navMediaQuery600 = useMediaQuery('(min-width:600px)');
 
-    // Modal
-    const modalContent = useMemo(() => {
-        return (
-            <div className={classes.modal}>
-                <WarningIcon className={classes.warningIcon} />
-                <strong>Are you sure?</strong>
-                <br />
-                The US has the highest number of total Covid-19 cases in the
-                world, at nearly 2 million.
-                <br />
-                <Button
-                    onClick={() => setModalOpen(false)}
-                    className={classes.warningButton}
-                    size="small"
-                    color="primary"
-                >
-                    Okay
-                </Button>
-            </div>
-        );
-    }, [classes.modal, classes.warningIcon, classes.warningButton]);
+    // Cart Root Styles
+    const cartRootStyles = useMemo(() => {
+        let marginTop = navMediaQuery600 ? 40 : 16;
+        return { marginTop };
+    }, [navMediaQuery600]);
 
     // Checkout Configuration
-    const currency = 'USD';
-    const subtotal = calculateSubtotal(orders);
-    const shippingFee = 0;
-    const discount =
-        subtotal >= 50 ? Math.ceil(subtotal * 0.15 * 100) / 100 : 0;
-    let total = subtotal + shippingFee - discount;
-    let env = mode;
-    const client = {
-        sandbox: keys.paypalSandboxID,
-        production: keys.paypalProductionID,
-    };
+    const env = mode;
+    const subtotal = useMemo(() => {
+        return calculateSubtotal(orders);
+    }, [orders]);
+    const discount = useMemo(() => {
+        return discountField === discountCode && subtotal > 40
+            ? Math.ceil(subtotal * 0.15 * 100) / 100
+            : 0;
+    }, [subtotal, discountField]);
+    const total = useMemo(() => {
+        return ((subtotal + shippingFee - discount) * 100) / 100;
+    }, [subtotal, discount]);
+
     console.log(total);
 
     // Checkout Functionality
-
     const onSuccess = async (details, data) => {
         const info = details.purchase_units[0];
         const address = {
@@ -269,61 +217,10 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
         setPaypalError(true);
     };
 
-    // Render Cart Calculations
-    const renderCartTotals = () => {
-        if (amount === 0)
-            return <div style={{ paddingBottom: 8 }}>Your cart is empty</div>;
-        return (
-            <React.Fragment>
-                <div className={classes.cartCalculation}>
-                    <div style={{ paddingTop: 16 }}>
-                        <p>Subtotal</p>
-                    </div>
-                    <p style={{ marginBottom: 0, marginTop: 16 }}>
-                        ${subtotal}
-                    </p>
-                </div>
-                <div className={classes.cartCalculation}>
-                    <p>
-                        Shipping
-                        <br />
-                        <span className={classes.shippingCaption}>
-                            Free shipping for all domestic (US) orders.
-                        </span>
-                        <br />
-                        <span className={classes.shippingCaption}>
-                            Delivery will be between 5-9 business days.
-                        </span>
-                    </p>
-                    <p>${shippingFee}</p>
-                </div>
-                <div className={classes.cartCalculation}>
-                    <p>Discount</p>
-                    <p>- ${discount}</p>
-                </div>
-
-                <hr
-                    style={{
-                        border: 'none',
-                        borderBottom: '1px solid rgba(0,0,0,.2)',
-                    }}
-                />
-                <div className={classes.cartCalculation}>
-                    <p className={classes.cartTotal}>Total</p>
-                    <p className={classes.cartTotal}>${total}</p>
-                </div>
-            </React.Fragment>
-        );
-    };
-
     if (checkedOut) return <Redirect to="/success" />;
 
     return (
-        <Card
-            style={{ marginTop: navMediaQuery600 ? 40 : 16 }}
-            className={classes.root}
-            elevation={3}
-        >
+        <Card style={cartRootStyles} className={classes.root} elevation={3}>
             <CardContent>
                 <Typography
                     className={classes.cartTitle}
@@ -335,61 +232,19 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
             </CardContent>
 
             <CardContent>
-                <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="h2"
-                    style={{ paddingBottom: 8 }}
-                >
-                    Order Details
-                </Typography>
-
-                {orders.map((order, index) => (
-                    <div className={classes.cartCalculation} key={index}>
-                        <div style={{ display: 'flex' }}>
-                            <Link to={`/item/${order.param}`}>
-                                <img
-                                    src={require(`../../img/SmallMaskPhotos/${order.img}`)}
-                                    alt="Facemask"
-                                    className={classes.designImage}
-                                />
-                            </Link>
-                            <div style={{ padding: 9 }}>
-                                <Typography variant="body1" component="h2">
-                                    <Link
-                                        className={classes.designItemName}
-                                        to={`/item/${order.param}`}
-                                    >
-                                        {order.amount}x {order.color}{' '}
-                                        {order.type === 'Mask' ? 'Design' : ''}
-                                    </Link>
-                                </Typography>
-                                <Typography variant="caption" component="h2">
-                                    Size {order.size}
-                                </Typography>
-                            </div>
-                        </div>
-                        <p style={{ textAlign: 'right' }}>
-                            ${order.price * order.amount} <br />{' '}
-                            <span
-                                className={classes.removeButton}
-                                onClick={() => removeOrder(order)}
-                            >
-                                Remove
-                            </span>
-                        </p>
-                    </div>
-                ))}
-                {renderCartTotals()}
+                <CartItems orders={orders} removeOrder={removeOrder} />
+                <CartCalculations
+                    amount={amount}
+                    subtotal={subtotal}
+                    total={total}
+                    shippingFee={shippingFee}
+                    discountCode={discountCode}
+                    discount={discount}
+                    discountField={discountField}
+                    setDiscountField={setDiscountField}
+                />
             </CardContent>
-            <Modal
-                open={modalOpen}
-                onClose={() => setModalOpen(false)}
-                aria-labelledby="Order Cancellation"
-                aria-describedby="Are you sure?"
-            >
-                {modalContent}
-            </Modal>
+            <CartModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
 
             {amount === 0 ? (
                 ''
