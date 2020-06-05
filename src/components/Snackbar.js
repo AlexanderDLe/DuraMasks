@@ -1,0 +1,80 @@
+import React, { useMemo } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { useMediaQuery } from '@material-ui/core';
+
+import Snackbar from '@material-ui/core/Snackbar';
+import ReportProblemOutlinedIcon from '@material-ui/icons/ReportProblemOutlined';
+import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        backgroundColor: '#444',
+        borderRadius: '10px',
+        color: 'white',
+        padding: 12,
+    },
+    container: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    warning: {
+        color: 'yellow',
+        fontSize: '1.5rem',
+    },
+    text: {
+        padding: '0px 8px',
+        margin: 0,
+    },
+    close: {
+        cursor: 'pointer',
+        fontSize: '1.5rem',
+    },
+}));
+
+function AppSnackbar({ snackbarOpen, onClose }) {
+    const classes = useStyles();
+    const navMediaQuery = useMediaQuery('(min-width:600px)');
+
+    const snackbarRoot = useMemo(() => {
+        let obj = navMediaQuery
+            ? {
+                  width: '75%',
+                  maxWidth: 800,
+                  margin: '0 auto',
+              }
+            : {};
+        return obj;
+    }, [navMediaQuery]);
+
+    const textSize = useMemo(() => {
+        let rem = navMediaQuery ? '.95rem' : '.825rem';
+        return { fontSize: rem };
+    }, [navMediaQuery]);
+
+    return (
+        <Snackbar
+            className={classes.root}
+            open={snackbarOpen}
+            autoHideDuration={30000}
+            onClose={onClose}
+            style={snackbarRoot}
+        >
+            <div className={classes.container}>
+                <ReportProblemOutlinedIcon className={classes.warning} />
+                <p className={classes.text} style={textSize}>
+                    Due to the protests sweeping the nation, there is
+                    anticipation of a massive second wave of new Covid cases. As
+                    a result, we highly recommend wearing face coverings to help
+                    reduce the likelihood of infection.
+                </p>
+                <CloseOutlinedIcon
+                    onClick={onClose}
+                    className={classes.close}
+                />
+            </div>
+        </Snackbar>
+    );
+}
+
+export default AppSnackbar;

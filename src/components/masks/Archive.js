@@ -1,6 +1,17 @@
 const maskPrice = 12.5;
 
 export const archive = {
+    // beach: {
+    //     type: 'Mask',
+    //     color: 'Beach',
+    //     img: 'Beach.jpg',
+    //     param: 'beach',
+    //     price: maskPrice,
+    //     category: 'hawaiian',
+    //     angled: true,
+    //     hot: true,
+    //     tags: ['blue'],
+    // },
     // patriot: {
     //     type: 'Mask',
     //     color: 'Patriot',

@@ -4,7 +4,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Body from './Body';
 import Footer from './Footer';
+// import Snackbar from './Snackbar';
+
 const Navbar = lazy(() => import('./Navbar'));
+const Snackbar = lazy(() => import('./Snackbar'));
 
 const App = () => {
     // const testOrder = [
@@ -22,6 +25,7 @@ const App = () => {
     const mode = 'production';
     const [orders, setOrders] = useState([]);
     const [amount, setAmount] = useState(0);
+    const [snackbarOpen, setSnackbarOpen] = useState(true);
 
     const addOrder = (data) => {
         const newOrders = [...orders];
@@ -75,6 +79,12 @@ const App = () => {
                 resetOrders={resetOrders}
                 amount={amount}
             />
+            <Suspense fallback={<div />}>
+                <Snackbar
+                    snackbarOpen={snackbarOpen}
+                    onClose={() => setSnackbarOpen(false)}
+                />
+            </Suspense>
             <Footer />
         </div>
     );

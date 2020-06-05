@@ -787,17 +787,6 @@ export const selection = {
         hot: true,
         tags: ['pink', 'red', 'green'],
     },
-    beach: {
-        type: 'Mask',
-        color: 'Beach',
-        img: 'Beach.jpg',
-        param: 'beach',
-        price: maskPrice,
-        category: 'hawaiian',
-        angled: true,
-        hot: true,
-        tags: ['blue'],
-    },
     koi: {
         type: 'Mask',
         color: 'Koi',

@@ -2,11 +2,8 @@ import React, { useEffect, Suspense, lazy } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import LandingHero from './LandingHero';
-// import Banner from '../misc/Banner';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 import LandingCTA from './LandingCTA';
-// const LandingCTA = lazy(() => import('./LandingCTA'));
 const Cards = lazy(() => import('./Cards'));
 const Testimonials = lazy(() => import('./Testimonials'));
 
@@ -33,18 +30,9 @@ export default function Album() {
 
     return (
         <main className={classes.root}>
-            {/* <Banner /> */}
-            <Suspense
-                fallback={
-                    <div className={classes.loading}>
-                        <CircularProgress />
-                    </div>
-                }
-            >
-                <LandingHero />
-            </Suspense>
+            <LandingHero />
+            <LandingCTA />
             <Suspense fallback={<div className={classes.fallback} />}>
-                <LandingCTA />
                 <Cards />
                 <Testimonials />
             </Suspense>

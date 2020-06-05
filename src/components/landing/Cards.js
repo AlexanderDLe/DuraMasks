@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '50%',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        zIndex: 1500,
+        zIndex: 10,
     },
     cardContent: {
         flexGrow: 1,
