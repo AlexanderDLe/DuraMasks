@@ -770,7 +770,7 @@ export const selection = {
         price: maskPrice,
         category: 'animal',
         angled: true,
-        hot: false,
+        hot: true,
         tags: ['blue', 'pink'],
     },
     //////////////
@@ -883,7 +883,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: true,
-        hot: false,
+        hot: true,
         tags: ['orange', 'yellow'],
     },
     paradise: {
@@ -905,7 +905,7 @@ export const selection = {
         price: maskPrice,
         category: 'hawaiian',
         angled: true,
-        hot: false,
+        hot: true,
         tags: ['black'],
     },
     honolulu: {

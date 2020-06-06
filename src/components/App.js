@@ -9,30 +9,30 @@ const Navbar = lazy(() => import('./Navbar'));
 const Snackbar = lazy(() => import('./Snackbar'));
 
 const App = () => {
-    const testOrder = [
-        {
-            type: 'Mask',
-            color: 'Black Test',
-            param: 'black',
-            price: 12.5,
-            img: 'Black.jpg',
-            size: 'L',
-            amount: '1',
-        },
-        {
-            type: 'Mask',
-            color: 'White Test',
-            param: 'white',
-            price: 12.5,
-            img: 'White.jpg',
-            size: 'M',
-            amount: '3',
-        },
-    ];
+    // const testOrder = [
+    //     {
+    //         type: 'Mask',
+    //         color: 'Black Test',
+    //         param: 'black',
+    //         price: 12.5,
+    //         img: 'Black.jpg',
+    //         size: 'L',
+    //         amount: '1',
+    //     },
+    //     {
+    //         type: 'Mask',
+    //         color: 'White Test',
+    //         param: 'white',
+    //         price: 12.5,
+    //         img: 'White.jpg',
+    //         size: 'M',
+    //         amount: '3',
+    //     },
+    // ];
 
-    const mode = 'sandbox';
-    const [orders, setOrders] = useState(testOrder);
-    const [amount, setAmount] = useState(4);
+    const mode = 'production';
+    const [orders, setOrders] = useState([]);
+    const [amount, setAmount] = useState(0);
     const [snackbarOpen, setSnackbarOpen] = useState(true);
 
     const addOrder = (data) => {
