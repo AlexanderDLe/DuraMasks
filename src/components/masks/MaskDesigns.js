@@ -192,7 +192,6 @@ export const selection = {
         category: 'bandana',
         angled: true,
         hot: true,
-        XLUnavailable: true,
         tags: ['black'],
     },
     redbandana: {

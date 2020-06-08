@@ -82,7 +82,7 @@ const searchThroughSelection = (searchTerm) => {
     return selectionResults;
 };
 
-function Selection() {
+function Selection({ webp }) {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -305,7 +305,7 @@ function Selection() {
         <React.Fragment>
             <main className={classes.main}>
                 <Banner />
-                <SelectionHero />
+                <SelectionHero webp={webp} />
                 <SelectionFilter filter={filter} setFilter={setFilter} />
                 <Container className={classes.root}>
                     <Search

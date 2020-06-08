@@ -22,15 +22,14 @@ const useStyles = makeStyles({
     },
 });
 
-export default function Album() {
+export default function Landing({ webp }) {
     const classes = useStyles();
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
     return (
         <main className={classes.root}>
-            <LandingHero />
+            <LandingHero webp={webp} />
             <LandingCTA />
             <Suspense fallback={<div className={classes.fallback} />}>
                 <Cards />

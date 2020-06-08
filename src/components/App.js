@@ -1,4 +1,4 @@
-import React, { useState, Suspense, lazy } from 'react';
+import React, { useEffect, useState, Suspense, lazy } from 'react';
 import '../styles/App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -6,7 +6,7 @@ import Body from './Body';
 import Footer from './Footer';
 
 const Navbar = lazy(() => import('./Navbar'));
-const Snackbar = lazy(() => import('./Snackbar'));
+// const Snackbar = lazy(() => import('./Snackbar'));
 
 const App = () => {
     // const testOrder = [
@@ -33,8 +33,22 @@ const App = () => {
     const mode = 'production';
     const [orders, setOrders] = useState([]);
     const [amount, setAmount] = useState(0);
-    const [snackbarOpen, setSnackbarOpen] = useState(true);
+    const [webp, setWebp] = useState(true);
+    // const [snackbarOpen, setSnackbarOpen] = useState(true);
 
+    // Set Webp Availability
+    useEffect(() => {
+        const Modernizr = window.Modernizr;
+        Modernizr.on('webp', (result) => {
+            if (result) {
+                setWebp(true);
+            } else {
+                setWebp(false);
+            }
+        });
+    });
+
+    // Order Functionality
     const addOrder = (data) => {
         const newOrders = [...orders];
 
@@ -86,13 +100,14 @@ const App = () => {
                 removeOrder={removeOrder}
                 resetOrders={resetOrders}
                 amount={amount}
+                webp={webp}
             />
-            <Suspense fallback={<div />}>
+            {/* <Suspense fallback={<div />}>
                 <Snackbar
                     snackbarOpen={snackbarOpen}
                     onClose={() => setSnackbarOpen(false)}
                 />
-            </Suspense>
+            </Suspense> */}
             <Footer />
         </div>
     );

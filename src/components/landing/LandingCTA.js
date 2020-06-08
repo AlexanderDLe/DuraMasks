@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     },
     heroCaption: {
         fontSize: '1rem',
-        fontWeight: 600,
+        fontWeight: 500,
         // marginBottom: 0,
     },
     heroCaption2: {
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     },
     sectionTitle: {
         fontFamily: 'Open Sans',
-        marginBottom: 0,
+        // marginBottom: 0,
     },
 }));
 
