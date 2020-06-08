@@ -4,7 +4,7 @@ import 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
 
 function SelectionHero() {
-    const navMediaQuery = useMediaQuery('(min-width:530px)');
+    const navMediaQuery = useMediaQuery('(min-width:535px)');
     const [index, setIndex] = useState(0);
 
     const handleSelect = (selectedIndex, e) => {
@@ -15,13 +15,13 @@ function SelectionHero() {
         return {
             elizabro: navMediaQuery
                 ? require('../../img/LandingCarouselImages/LandingMask.jpg')
-                : require('../../img/LandingCarouselImages/Phone_LandingMask.jpg'),
+                : require('../../img/LandingCarouselImages/Phone_LandingMaskA.jpg'),
             hispanic: navMediaQuery
                 ? require('../../img/LandingCarouselImages/LandingMask2.jpg')
-                : require('../../img/LandingCarouselImages/Phone_LandingMask2.jpg'),
+                : require('../../img/LandingCarouselImages/Phone_LandingMask2A.jpg'),
             caucasian: navMediaQuery
                 ? require('../../img/LandingCarouselImages/LandingMask3.jpg')
-                : require('../../img/LandingCarouselImages/Phone_LandingMask3.jpg'),
+                : require('../../img/LandingCarouselImages/Phone_LandingMask3A.jpg'),
         };
     }, [navMediaQuery]);
 

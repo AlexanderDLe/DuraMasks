@@ -15,6 +15,13 @@ const useStyles = makeStyles((theme) => ({
     heroCaption: {
         fontSize: '1rem',
         fontWeight: 600,
+        // marginBottom: 0,
+    },
+    heroCaption2: {
+        fontSize: '.9rem',
+        marginTop: 24,
+        marginBottom: 0,
+        // fontWeight: 600,
     },
     heroText: {
         fontSize: '1rem',
@@ -32,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     },
     sectionTitle: {
         fontFamily: 'Open Sans',
+        marginBottom: 0,
     },
 }));
 
@@ -73,7 +81,7 @@ function LandingCTA() {
                     paragraph
                     className={classes.heroCaption}
                 >
-                    Made in California, USA
+                    Over 100 Designs Available
                 </Typography>
                 <Typography
                     variant="caption"
@@ -116,6 +124,15 @@ function LandingCTA() {
                         </Grid>
                     </Grid>
                 </div>
+                <Typography
+                    variant="caption"
+                    align="center"
+                    color="textSecondary"
+                    paragraph
+                    className={classes.heroCaption2}
+                >
+                    Made in California, USA
+                </Typography>
             </Container>
         </div>
     );

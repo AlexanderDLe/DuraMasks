@@ -45,6 +45,7 @@ function MaskOrderForm({
     amount,
     handleChange,
     handleAmountChange,
+    XLUnavailable,
 }) {
     const classes = useStyles();
 
@@ -54,7 +55,13 @@ function MaskOrderForm({
         ? classes.spanDimensions
         : classes.smallSpanDimensions;
 
-    const renderFormControlLabel = (value, label, measurement, description) => {
+    const renderFormControlLabel = (
+        value,
+        label,
+        measurement,
+        description,
+        XLUnavailable
+    ) => {
         return (
             <FormControlLabel
                 className={classes.label}
@@ -66,10 +73,11 @@ function MaskOrderForm({
                         <span className={spanQuery}>
                             {measurement}
                             <br />
-                            {description}
+                            {XLUnavailable ? 'Unavailable' : description}
                         </span>
                     </div>
                 }
+                disabled={XLUnavailable}
             />
         );
     };
@@ -90,7 +98,8 @@ function MaskOrderForm({
                         'XL',
                         'XL Adult',
                         '10" x 6"',
-                        'Large Adults'
+                        'Large Adults',
+                        XLUnavailable
                     )}
                     {renderFormControlLabel(
                         'L',

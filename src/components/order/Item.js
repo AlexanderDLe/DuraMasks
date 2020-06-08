@@ -253,6 +253,7 @@ function Item({ match, addOrder }) {
                     navMediaQuery={navMediaQuery}
                     handleAmountChange={handleAmountChange}
                     price={data.price}
+                    XLUnavailable={data.XLUnavailable ? true : false}
                 />
             ) : (
                 <ElasticOrderForm

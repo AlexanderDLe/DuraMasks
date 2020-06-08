@@ -192,6 +192,7 @@ export const selection = {
         category: 'bandana',
         angled: true,
         hot: true,
+        XLUnavailable: true,
         tags: ['black'],
     },
     redbandana: {
@@ -514,6 +515,7 @@ export const selection = {
         category: 'pattern',
         angled: true,
         hot: false,
+        XLUnavailable: true,
         tags: ['pink', 'red'],
     },
     apple: {
@@ -1151,6 +1153,7 @@ export const selection = {
         category: 'floral',
         angled: true,
         hot: false,
+        XLUnavailable: true,
         tags: ['red'],
     },
     floralgreen: {
