@@ -32,7 +32,7 @@ export default function Landing({ webp }) {
             <LandingHero webp={webp} />
             <LandingCTA />
             <Suspense fallback={<div className={classes.fallback} />}>
-                <Cards />
+                <Cards webp={webp} />
                 <Testimonials />
             </Suspense>
         </main>

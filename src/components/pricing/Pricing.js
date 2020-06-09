@@ -20,9 +20,6 @@ const useStyles = makeStyles((theme) => ({
     card: {
         borderBottom: '2px solid #3f51b5',
     },
-    priceNumber: {
-        fontWeight: 700,
-    },
     cardHeaderNormal: {
         textAlign: 'center',
         paddingTop: 0,
@@ -41,6 +38,17 @@ const useStyles = makeStyles((theme) => ({
         borderTopRightRadius: '0',
         width: '50%',
         border: 'none !important',
+    },
+    dollarSign: {
+        fontSize: '2rem',
+        paddingTop: 16,
+    },
+    priceNum: {
+        fontSize: '4.5rem',
+    },
+    each: {
+        fontSize: '1.5rem',
+        paddingTop: 50,
     },
 }));
 
@@ -63,9 +71,9 @@ function Pricing() {
     const normalPricingContent = (
         <React.Fragment>
             <CardContent style={{ paddingBottom: 0 }} className="price">
-                <div className="dollar-sign">$</div>
-                <div className="priceNumber">12.50</div>
-                <div className="each">/mask</div>
+                <div className={classes.dollarSign}>$</div>
+                <div className={classes.priceNum}>12.50</div>
+                <div className={classes.each}>/mask</div>
             </CardContent>
             <CardHeader className={classes.cardHeaderNormal} title="Normal" />
             <CardContent className="price">

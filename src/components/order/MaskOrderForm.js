@@ -151,7 +151,6 @@ function MaskOrderForm({
                     Price: <span style={{ color: 'black' }}>${price}</span>
                 </FormLabel>
                 <br />
-                <br />
                 <p
                     style={{
                         color: 'rgba(0,0,0,.5',
@@ -159,11 +158,9 @@ function MaskOrderForm({
                         paddingLeft: 3,
                     }}
                 >
-                    Dimensions are in Width x Height
-                    <br />
-                    <br />
-                    All measurements used measuring tape to follow the
-                    front-facing cloth exterior.
+                    Each mask comes with adjustable elastic ear bands, an
+                    adjustable metal nose clip wire, and 4 layers for protection
+                    and stability.
                     <br />
                     <br />
                     Disclaimer: Some mask designs may vary depending on cut.

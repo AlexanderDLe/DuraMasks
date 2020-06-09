@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -50,8 +50,16 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Cards() {
+function Cards({ webp }) {
     const classes = useStyles();
+
+    const bgImg = useMemo(() => {
+        if (webp) {
+            return require('../../img/webp/BlueBG.webp');
+        } else {
+            return require('../../img/BlueBG.jpg');
+        }
+    }, [webp]);
 
     const renderCard = (cardIMG, cardTitle, cardText) => {
         return (
@@ -83,7 +91,13 @@ function Cards() {
     };
 
     return (
-        <div className="landing-cards-div">
+        <div
+            style={{
+                background: `#000 url(${bgImg}) no-repeat center`,
+                backgroundSize: 'cover',
+                backgroundAttachment: 'fixed',
+            }}
+        >
             <div className="landing-cards-bg-overlay"></div>
             <Container className={classes.cardGrid} maxWidth="md">
                 <Grid container spacing={4}>

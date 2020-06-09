@@ -69,8 +69,8 @@ function FAQ() {
             </h5>
             <p>
                 These masks are composed of tightly-woven cotton and a non-woven
-                polyester blend to ensure thickness. There are a total layers of
-                4 layers for each mask.
+                polyester blend to ensure thickness and protection. There are a
+                total layers of 4 layers for each mask.
             </p>
             <h5 className={classes.question}>
                 Do these masks come with elastic? How long are they? Are they
@@ -81,10 +81,13 @@ function FAQ() {
                 around each ear. Each of the bands are 10 inches in length. You
                 can retie these bands if you wish to adjust for better fitting.
             </p>
+
             <h5 className={classes.question}>Is there a nose clip?</h5>
-            <p>Yes, each mask comes with a metal nose clip wire.</p>
+            <p>Yes, each mask comes with an adjustable metal nose clip wire.</p>
+
             <h5 className={classes.question}>Where are these masks made?</h5>
             <p>All masks are made in Anaheim, California, USA.</p>
+
             <h5 className={classes.question}>
                 How do you know what size to get?
             </h5>

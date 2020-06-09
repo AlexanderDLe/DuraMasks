@@ -5,7 +5,6 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
-import { useSpring, animated } from 'react-spring';
 
 const useStyles = makeStyles((theme) => ({
     heroContent: {
@@ -19,12 +18,14 @@ const useStyles = makeStyles((theme) => ({
     },
     heroCaption2: {
         fontSize: '.9rem',
-        marginTop: 24,
+        marginTop: 32,
         marginBottom: 0,
         // fontWeight: 600,
     },
     heroText: {
         fontSize: '1rem',
+        marginBottom: 0,
+        paddingBottom: 0,
     },
     heroButtons: {
         marginTop: theme.spacing(4),
@@ -39,27 +40,11 @@ const useStyles = makeStyles((theme) => ({
     },
     sectionTitle: {
         fontFamily: 'Open Sans',
-        // marginBottom: 0,
     },
 }));
 
 function LandingCTA() {
     const classes = useStyles();
-
-    const spring = {
-        duration: 700,
-        mass: 100,
-    };
-    const fadeRight = useSpring({
-        config: { duration: spring.duration, mass: spring.mass },
-        to: { opacity: 1, transform: 'translateX(0)' },
-        from: { opacity: 0, transform: 'translateX(-30px)' },
-    });
-    const fadeLeft = useSpring({
-        config: { duration: spring.duration, mass: spring.mass },
-        to: { opacity: 1, transform: 'translateX(0)' },
-        from: { opacity: 0, transform: 'translateX(30px)' },
-    });
 
     return (
         <div className={classes.heroContent}>
@@ -99,18 +84,16 @@ function LandingCTA() {
                 <div className={classes.heroButtons}>
                     <Grid container spacing={2} justify="center">
                         <Grid item>
-                            <animated.div style={fadeRight}>
-                                <Button variant="contained" color="primary">
-                                    <Link
-                                        to="/selection"
-                                        className={classes.viewSelectionButton}
-                                    >
-                                        View Selection
-                                    </Link>
-                                </Button>
-                            </animated.div>
+                            <Button variant="contained" color="primary">
+                                <Link
+                                    to="/selection"
+                                    className={classes.viewSelectionButton}
+                                >
+                                    View Selection
+                                </Link>
+                            </Button>
                         </Grid>
-                        <Grid item>
+                        {/* <Grid item>
                             <animated.div style={fadeLeft}>
                                 <Button variant="outlined" color="primary">
                                     <Link
@@ -121,7 +104,7 @@ function LandingCTA() {
                                     </Link>
                                 </Button>
                             </animated.div>
-                        </Grid>
+                        </Grid> */}
                     </Grid>
                 </div>
                 <Typography

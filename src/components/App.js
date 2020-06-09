@@ -38,14 +38,20 @@ const App = () => {
 
     // Set Webp Availability
     useEffect(() => {
-        const Modernizr = window.Modernizr;
-        Modernizr.on('webp', (result) => {
-            if (result) {
-                setWebp(true);
-            } else {
-                setWebp(false);
+        const loadModernizr = async () => {
+            try {
+                await window.Modernizr.on('webp', (result) => {
+                    if (result) {
+                        setWebp(true);
+                    } else {
+                        setWebp(false);
+                    }
+                });
+            } catch (error) {
+                console.log('Modernizr Not Loaded');
             }
-        });
+        };
+        loadModernizr();
     });
 
     // Order Functionality
