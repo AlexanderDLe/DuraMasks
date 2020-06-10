@@ -2,11 +2,6 @@ import React, { useMemo } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-
-import Layers from '../../img/LayersWhite.png';
-import Reusable from '../../img/ReusableWhite.png';
-import Comfort from '../../img/ComfortWhite.png';
-
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -53,13 +48,25 @@ const useStyles = makeStyles((theme) => ({
 function Cards({ webp }) {
     const classes = useStyles();
 
-    const bgImg = useMemo(() => {
-        if (webp) {
-            return require('../../img/webp/BlueBG.webp');
-        } else {
-            return require('../../img/BlueBG.jpg');
-        }
+    const images = useMemo(() => {
+        let dir = webp ? 'webp/' : '';
+        let format = webp ? 'webp' : 'png';
+
+        return {
+            bg: require(`../../img/${dir}BlueBG.${format}`),
+            layers: require(`../../img/${dir}LayersWhite.${format}`),
+            reusable: require(`../../img/${dir}ReusableWhite.${format}`),
+            comfort: require(`../../img/${dir}ComfortWhite.${format}`),
+        };
     }, [webp]);
+
+    const bgStyle = useMemo(() => {
+        return {
+            background: `#000 url(${images.bg}) no-repeat center`,
+            backgroundSize: 'cover',
+            backgroundAttachment: 'fixed',
+        };
+    }, [images]);
 
     const renderCard = (cardIMG, cardTitle, cardText) => {
         return (
@@ -91,28 +98,22 @@ function Cards({ webp }) {
     };
 
     return (
-        <div
-            style={{
-                background: `#000 url(${bgImg}) no-repeat center`,
-                backgroundSize: 'cover',
-                backgroundAttachment: 'fixed',
-            }}
-        >
+        <div style={bgStyle}>
             <div className="landing-cards-bg-overlay"></div>
             <Container className={classes.cardGrid} maxWidth="md">
                 <Grid container spacing={4}>
                     {renderCard(
-                        Layers,
-                        'Multi-layered',
-                        'These masks are composed of tightly-woven cotton and a non-woven polyester blend to ensure thickness.'
-                    )}
-                    {renderCard(
-                        Reusable,
+                        images.reusable,
                         'Reusable',
                         'It is highly recommended to wash and dry after each use. We suggest hand-washing with soap then hang to air dry.'
                     )}
                     {renderCard(
-                        Comfort,
+                        images.layers,
+                        'Multi-layered',
+                        'These masks are composed of tightly-woven cotton and a non-woven polyester blend to ensure thickness.'
+                    )}
+                    {renderCard(
+                        images.comfort,
                         'Comfortable',
                         'Our selection of carefully curated fabrics are soft and easy to wear for extended periods.'
                     )}

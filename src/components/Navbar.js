@@ -82,7 +82,7 @@ const Navbar = ({ amount }) => {
                 fontSize: `${navMediaQuery ? '1.25rem' : '1rem'}`,
                 fontFamily: 'Open Sans',
                 fontWeight: 600,
-                textTransform: 'uppercase',
+                // textTransform: 'uppercase',
             },
             navItem: {
                 marginRight: '20px',
@@ -104,6 +104,7 @@ const Navbar = ({ amount }) => {
         <React.Fragment>
             {fullNavItem('selection', 'Selection')}
             {fullNavItem('pricing', 'Pricing')}
+            {fullNavItem('faq', 'FAQ')}
         </React.Fragment>
     );
 
@@ -140,6 +141,7 @@ const Navbar = ({ amount }) => {
             >
                 {menuNavItem('selection', 'Selection')}
                 {menuNavItem('pricing', 'Pricing')}
+                {menuNavItem('faq', 'FAQ')}
                 {menuNavItem('cart', 'Cart')}
             </Menu>
         </React.Fragment>

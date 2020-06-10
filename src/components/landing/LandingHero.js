@@ -1,51 +1,134 @@
-import React, { useState, useMemo } from 'react';
+import React, { useMemo } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import { useMediaQuery } from '@material-ui/core';
-import 'react-bootstrap';
-import Carousel from 'react-bootstrap/Carousel';
+import { Link } from 'react-router-dom';
+import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
+
+const useStyles = makeStyles({
+    root: {},
+    overlay: {
+        height: '100%',
+        width: '100%',
+        backgroundColor: 'rgba(0,0,0,.33)',
+    },
+    container: {
+        width: '100%',
+        height: '100%',
+        color: 'white',
+        display: 'flex',
+        alignItems: 'center',
+    },
+    textBox: { fontFamily: 'Open Sans' },
+    button: {
+        marginTop: 8,
+        backgroundColor: 'white',
+        fontWeight: '500',
+        padding: '8px 32px 8px 32px',
+    },
+    caption: {
+        fontWeight: '400',
+    },
+});
 
 function SelectionHero({ webp }) {
-    const navMediaQuery = useMediaQuery('(min-width:535px)');
-    const [index, setIndex] = useState(0);
+    const navMediaQuery1980 = useMediaQuery('(min-width:1980px)');
+    const navMediaQuery980 = useMediaQuery('(min-width:980px)');
+    const navMediaQuery535 = useMediaQuery('(min-width:535px)');
+    const classes = useStyles();
 
-    const handleSelect = (selectedIndex, e) => {
-        setIndex(selectedIndex);
-    };
-    console.log(webp);
-    const landingImage = useMemo(() => {
-        let webpDir = webp ? 'webp/' : '';
+    const rootBG = useMemo(() => {
+        let dir = webp ? 'webp/' : '';
         let format = webp ? 'webp' : 'jpg';
 
-        return {
-            elizabro: navMediaQuery
-                ? require(`../../img/${webpDir}LandingCarouselImages/LandingMask.${format}`)
-                : require(`../../img/${webpDir}LandingCarouselImages/Phone_LandingMask.${format}`),
-            hispanic: navMediaQuery
-                ? require(`../../img/${webpDir}LandingCarouselImages/LandingMask2.${format}`)
-                : require(`../../img/${webpDir}LandingCarouselImages/Phone_LandingMask2.${format}`),
-            caucasian: navMediaQuery
-                ? require(`../../img/${webpDir}LandingCarouselImages/LandingMask3.${format}`)
-                : require(`../../img/${webpDir}LandingCarouselImages/Phone_LandingMask3.${format}`),
-        };
-    }, [navMediaQuery, webp]);
+        const bgImg = require(`../../img/${dir}LandingPhotos/GreenBG.${format}`);
 
-    const renderCarouselItem = (index, bg_img) => {
-        return (
-            <Carousel.Item
-                style={{
-                    minHeight: 450,
-                    background: `url(${bg_img}) center / auto 100% no-repeat`,
-                }}
-                className={`landing-carousel-item carousel-image-${index}`}
-            ></Carousel.Item>
-        );
-    };
+        return {
+            background: `url(${bgImg})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+        };
+    }, [webp]);
+
+    const landingBG = useMemo(() => {
+        let dir = webp ? 'webp/' : '';
+        let format = webp ? 'webp' : 'jpg';
+
+        const bgImg = navMediaQuery1980
+            ? require(`../../img/${dir}LandingPhotos/LandingPhotoLong.${format}`)
+            : navMediaQuery535
+            ? require(`../../img/${dir}LandingPhotos/LandingPhotoMedium.${format}`)
+            : require(`../../img/${dir}LandingPhotos/LandingPhotoSmall.${format}`);
+
+        return {
+            height: 'calc(100vh - 55px)',
+            background: `url(${bgImg}) center / auto 100% no-repeat`,
+        };
+    }, [navMediaQuery535, navMediaQuery1980, webp]);
+
+    const textStyles = useMemo(() => {
+        return navMediaQuery980
+            ? {
+                  header: {
+                      paddingTop: 100,
+                      fontSize: '3.5rem',
+                  },
+                  caption: {
+                      fontSize: '1.5rem',
+                  },
+                  button: {
+                      marginTop: 12,
+                  },
+              }
+            : navMediaQuery535
+            ? {
+                  header: {
+                      paddingTop: 150,
+                      fontSize: '3rem',
+                  },
+                  caption: {
+                      fontSize: '1.15rem',
+                  },
+                  button: {},
+              }
+            : {
+                  header: {
+                      paddingTop: 200,
+                      fontSize: '2.25rem',
+                  },
+                  caption: {
+                      fontSize: '1rem',
+                  },
+              };
+    }, [navMediaQuery535, navMediaQuery980]);
 
     return (
-        <Carousel pause={false} active={index} onSelect={handleSelect}>
-            {renderCarouselItem(1, landingImage.elizabro)}
-            {renderCarouselItem(2, landingImage.hispanic)}
-            {renderCarouselItem(3, landingImage.caucasian)}
-        </Carousel>
+        <div style={rootBG}>
+            <div style={landingBG}>
+                <div className={classes.overlay}>
+                    <Container className={classes.container}>
+                        <div className={classes.textBox}>
+                            <div style={textStyles.space}></div>
+                            <h1 style={textStyles.header}>CA Facemasks</h1>
+                            <h2
+                                style={textStyles.caption}
+                                className={classes.caption}
+                            >
+                                Reusable. Multilayered. Comfortable.
+                            </h2>
+                            <Link to="/selection">
+                                <Button
+                                    variant="contained"
+                                    className={classes.button}
+                                >
+                                    Shop Now
+                                </Button>
+                            </Link>
+                        </div>
+                    </Container>
+                </div>
+            </div>
+        </div>
     );
 }
 

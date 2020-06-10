@@ -15,6 +15,8 @@ import Container from '@material-ui/core/Container';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
+import StarRateIcon from '@material-ui/icons/StarRate';
+
 const useStyles = makeStyles((theme) => ({
     testimonialSection: {
         backgroundColor: '#fff',
@@ -34,6 +36,10 @@ const useStyles = makeStyles((theme) => ({
     carouselProvider: {
         textAlign: 'center',
     },
+    star: {
+        color: 'gold',
+        padding: 0,
+    },
 }));
 
 function Carousel() {
@@ -46,14 +52,14 @@ function Carousel() {
 
     const carouselHeight = useMemo(() => {
         return navMediaQuery580
-            ? 40
+            ? 45
             : navMediaQuery500
-            ? 50
+            ? 52
             : navMediaQuery400
-            ? 65
+            ? 75
             : navMediaQuery320
-            ? 85
-            : 100;
+            ? 100
+            : 110;
     }, [
         navMediaQuery580,
         navMediaQuery500,
@@ -85,6 +91,13 @@ function Carousel() {
                 >
                     - {author}
                 </Typography>
+                <div>
+                    <StarRateIcon className={classes.star} />
+                    <StarRateIcon className={classes.star} />
+                    <StarRateIcon className={classes.star} />
+                    <StarRateIcon className={classes.star} />
+                    <StarRateIcon className={classes.star} />
+                </div>
             </Slide>
         );
     };

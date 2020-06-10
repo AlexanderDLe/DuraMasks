@@ -3,9 +3,9 @@ import '../styles/App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Body from './Body';
-import Footer from './Footer';
 
 const Navbar = lazy(() => import('./Navbar'));
+const Footer = lazy(() => import('./Footer'));
 // const Snackbar = lazy(() => import('./Snackbar'));
 
 const App = () => {
@@ -108,13 +108,13 @@ const App = () => {
                 amount={amount}
                 webp={webp}
             />
-            {/* <Suspense fallback={<div />}>
-                <Snackbar
+            <Suspense fallback={<div />}>
+                {/* <Snackbar
                     snackbarOpen={snackbarOpen}
                     onClose={() => setSnackbarOpen(false)}
-                />
-            </Suspense> */}
-            <Footer />
+                /> */}
+                <Footer />
+            </Suspense>
         </div>
     );
 };

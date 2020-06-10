@@ -30,3 +30,6 @@ yarn-error.log*
 /src/img/ResizedPhotos
 /src/img/CAFacemasksPhoto.psd
 /src/img/SelectionCarouselImages/PSDs
+
+#archive
+/archive

@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import LandingHero from './LandingHero';
 
-import LandingCTA from './LandingCTA';
+const LandingCTA = lazy(() => import('./LandingCTA'));
 const Cards = lazy(() => import('./Cards'));
 const Testimonials = lazy(() => import('./Testimonials'));
 
@@ -30,8 +30,8 @@ export default function Landing({ webp }) {
     return (
         <main className={classes.root}>
             <LandingHero webp={webp} />
-            <LandingCTA />
             <Suspense fallback={<div className={classes.fallback} />}>
+                <LandingCTA />
                 <Cards webp={webp} />
                 <Testimonials />
             </Suspense>
