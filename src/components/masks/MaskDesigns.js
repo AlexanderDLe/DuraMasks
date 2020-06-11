@@ -1044,17 +1044,17 @@ export const selection = {
     ////////////
     // FLORAL //
     ////////////,
-    // midnight: {
-    //     type: 'Mask',
-    //     color: 'Midnight',
-    //     img: 'Midnight.jpg',
-    //     param: 'midnight',
-    //     price: maskPrice,
-    //     category: 'floral',
-    //     angled: true,
-    //     hot: true,
-    //     tags: ['black', 'yellow', 'white'],
-    // },
+    midnight: {
+        type: 'Mask',
+        color: 'Midnight',
+        img: 'Midnight.jpg',
+        param: 'midnight',
+        price: maskPrice,
+        category: 'floral',
+        angled: true,
+        hot: true,
+        tags: ['black', 'yellow', 'white'],
+    },
     bouquet: {
         type: 'Mask',
         color: 'Bouquet',

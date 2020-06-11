@@ -62,6 +62,11 @@ function FAQ() {
                 Each mask is currently priced at $12.50 each with absolutely
                 free shipping in the US.
             </p>
+            <h5 className={classes.question}>Is there a discount available?</h5>
+            <p>
+                Yes, there is a 15% discount for $40+ orders. Simply use code
+                15OFF in the cart to apply.
+            </p>
             <h5 className={classes.question}>How long will delivery take?</h5>
             <p>Delivery will typically be within 5-9 business days.</p>
             <h5 className={classes.question}>
