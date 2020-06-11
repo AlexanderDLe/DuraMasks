@@ -4,6 +4,11 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 
+import BlueBG from '../../img/BlueBG.jpg';
+import LayersWhite from '../../img/LayersWhite.png';
+import ReusableWhite from '../../img/ReusableWhite.png';
+import ComfortWhite from '../../img/ComfortWhite.png';
+
 const useStyles = makeStyles((theme) => ({
     cardGrid: {
         paddingTop: theme.spacing(8),
@@ -45,28 +50,16 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Cards({ webp }) {
+function Cards() {
     const classes = useStyles();
-
-    const images = useMemo(() => {
-        let dir = webp ? 'webp/' : '';
-        let format = webp ? 'webp' : 'png';
-
-        return {
-            bg: require(`../../img/${dir}BlueBG.${format}`),
-            layers: require(`../../img/${dir}LayersWhite.${format}`),
-            reusable: require(`../../img/${dir}ReusableWhite.${format}`),
-            comfort: require(`../../img/${dir}ComfortWhite.${format}`),
-        };
-    }, [webp]);
 
     const bgStyle = useMemo(() => {
         return {
-            background: `#000 url(${images.bg}) no-repeat center`,
+            background: `#000 url(${BlueBG}) no-repeat center`,
             backgroundSize: 'cover',
             backgroundAttachment: 'fixed',
         };
-    }, [images]);
+    }, []);
 
     const renderCard = (cardIMG, cardTitle, cardText) => {
         return (
@@ -103,17 +96,17 @@ function Cards({ webp }) {
             <Container className={classes.cardGrid} maxWidth="md">
                 <Grid container spacing={4}>
                     {renderCard(
-                        images.reusable,
+                        ReusableWhite,
                         'Reusable',
                         'It is highly recommended to wash and dry after each use. We suggest hand-washing with soap then hang to air dry.'
                     )}
                     {renderCard(
-                        images.layers,
+                        LayersWhite,
                         'Multi-layered',
-                        'These masks are composed of tightly-woven cotton and a non-woven polyester blend to ensure thickness.'
+                        'These masks are composed of tightly-woven cotton and non-woven polyester filters to ensure protection.'
                     )}
                     {renderCard(
-                        images.comfort,
+                        ComfortWhite,
                         'Comfortable',
                         'Our selection of carefully curated fabrics are soft and easy to wear for extended periods.'
                     )}

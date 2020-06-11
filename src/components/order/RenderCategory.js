@@ -62,7 +62,7 @@ export default ({ categoryName, categoryItems, filterState }) => {
                 onClick={() => setShowMore(!showMore)}
                 elevation={0}
             >
-                Show {showMore ? 'More' : 'Less'}
+                Show More
             </Button>
         </div>
     );
@@ -90,7 +90,9 @@ export default ({ categoryName, categoryItems, filterState }) => {
                 <Grid container spacing={3}>
                     {categoryOpen ? renderCategory(categoryItems) : ''}
                 </Grid>
-                {categoryOpen && categoryItems.length > 8 ? showMoreButton : ''}
+                {showMore && categoryOpen && categoryItems.length > 8
+                    ? showMoreButton
+                    : ''}
             </React.Fragment>
         );
     } else {

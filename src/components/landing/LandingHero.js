@@ -4,13 +4,18 @@ import { useMediaQuery } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
+import GreenBG from '../../img/LandingPhotos/GreenBG.jpg';
 
 const useStyles = makeStyles({
-    root: {},
+    root: {
+        background: `url(${GreenBG})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+    },
     overlay: {
         height: '100%',
         width: '100%',
-        backgroundColor: 'rgba(0,0,0,.33)',
+        backgroundColor: 'rgba(0,0,0,.25)',
     },
     container: {
         width: '100%',
@@ -27,44 +32,28 @@ const useStyles = makeStyles({
         padding: '8px 32px 8px 32px',
     },
     caption: {
-        fontWeight: '400',
+        fontWeight: '500',
     },
 });
 
-function SelectionHero({ webp }) {
+function SelectionHero() {
     const navMediaQuery1980 = useMediaQuery('(min-width:1980px)');
     const navMediaQuery980 = useMediaQuery('(min-width:980px)');
     const navMediaQuery535 = useMediaQuery('(min-width:535px)');
     const classes = useStyles();
 
-    const rootBG = useMemo(() => {
-        let dir = webp ? 'webp/' : '';
-        let format = webp ? 'webp' : 'jpg';
-
-        const bgImg = require(`../../img/${dir}LandingPhotos/GreenBG.${format}`);
-
-        return {
-            background: `url(${bgImg})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-        };
-    }, [webp]);
-
     const landingBG = useMemo(() => {
-        let dir = webp ? 'webp/' : '';
-        let format = webp ? 'webp' : 'jpg';
-
         const bgImg = navMediaQuery1980
-            ? require(`../../img/${dir}LandingPhotos/LandingPhotoLong.${format}`)
+            ? require(`../../img/LandingPhotos/LandingPhotoLong.jpg`)
             : navMediaQuery535
-            ? require(`../../img/${dir}LandingPhotos/LandingPhotoMedium.${format}`)
-            : require(`../../img/${dir}LandingPhotos/LandingPhotoSmall.${format}`);
+            ? require(`../../img/LandingPhotos/LandingPhotoMedium.jpg`)
+            : require(`../../img/LandingPhotos/LandingPhotoSmall.jpg`);
 
         return {
             height: 'calc(100vh - 55px)',
             background: `url(${bgImg}) center / auto 100% no-repeat`,
         };
-    }, [navMediaQuery535, navMediaQuery1980, webp]);
+    }, [navMediaQuery535, navMediaQuery1980]);
 
     const textStyles = useMemo(() => {
         return navMediaQuery980
@@ -93,7 +82,7 @@ function SelectionHero({ webp }) {
               }
             : {
                   header: {
-                      paddingTop: 200,
+                      paddingTop: 225,
                       fontSize: '2.25rem',
                   },
                   caption: {
@@ -103,7 +92,7 @@ function SelectionHero({ webp }) {
     }, [navMediaQuery535, navMediaQuery980]);
 
     return (
-        <div style={rootBG}>
+        <div className={classes.root}>
             <div style={landingBG}>
                 <div className={classes.overlay}>
                     <Container className={classes.container}>

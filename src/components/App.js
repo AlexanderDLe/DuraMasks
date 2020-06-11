@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense, lazy } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import '../styles/App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -33,26 +33,7 @@ const App = () => {
     const mode = 'production';
     const [orders, setOrders] = useState([]);
     const [amount, setAmount] = useState(0);
-    const [webp, setWebp] = useState(true);
     // const [snackbarOpen, setSnackbarOpen] = useState(true);
-
-    // Set Webp Availability
-    useEffect(() => {
-        const loadModernizr = async () => {
-            try {
-                await window.Modernizr.on('webp', (result) => {
-                    if (result) {
-                        setWebp(true);
-                    } else {
-                        setWebp(false);
-                    }
-                });
-            } catch (error) {
-                console.log('Modernizr Not Loaded');
-            }
-        };
-        loadModernizr();
-    });
 
     // Order Functionality
     const addOrder = (data) => {
@@ -106,7 +87,6 @@ const App = () => {
                 removeOrder={removeOrder}
                 resetOrders={resetOrders}
                 amount={amount}
-                webp={webp}
             />
             <Suspense fallback={<div />}>
                 {/* <Snackbar

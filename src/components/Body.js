@@ -14,29 +14,13 @@ import Policies from './misc/Policies';
 import FAQ from './misc/FAQ';
 
 function Body(props) {
-    const {
-        removeOrder,
-        addOrder,
-        orders,
-        resetOrders,
-        amount,
-        mode,
-        webp,
-    } = props;
+    const { removeOrder, addOrder, orders, resetOrders, amount, mode } = props;
 
     return (
         <main className="body-class">
             <Switch>
-                <Route
-                    exact
-                    path="/"
-                    render={() => <Landing {...props} webp={webp} />}
-                />
-                <Route
-                    exact
-                    path="/selection"
-                    render={() => <Selection {...props} webp={webp} />}
-                />
+                <Route exact path="/" component={Landing} />
+                <Route exact path="/selection" component={Selection} />
                 <Route exact path="/stats" component={Stats} />
                 <Route exact path="/daily" component={Daily} />
                 <Route

@@ -3,36 +3,32 @@ import { useMediaQuery } from '@material-ui/core';
 import 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
 
-function SelectionHero({ webp }) {
+function SelectionHero() {
     const navMediaQuery = useMediaQuery('(min-width:900px)');
     const [index, setIndex] = useState(0);
 
     const handleSelect = (selectedIndex, e) => {
         setIndex(selectedIndex);
     };
-    console.log(webp);
 
     const selectionImage = useMemo(() => {
-        let webpDir = webp ? 'webp/' : '';
-        let format = webp ? 'webp' : 'jpg';
-
         return {
             dotted: navMediaQuery
-                ? require(`../../img/${webpDir}SelectionCarouselImages/Desktop_Dotted.${format}`)
-                : require(`../../img/${webpDir}SelectionCarouselImages/Phone_Dotted.${format}`),
+                ? require(`../../img/SelectionCarouselImages/Desktop_Dotted.jpg`)
+                : require(`../../img/SelectionCarouselImages/Phone_Dotted.jpg`),
 
             hawaiian: navMediaQuery
-                ? require(`../../img/${webpDir}SelectionCarouselImages/Desktop_Hawaiian.${format}`)
-                : require(`../../img/${webpDir}SelectionCarouselImages/Phone_Hawaiian.${format}`),
+                ? require(`../../img/SelectionCarouselImages/Desktop_Hawaiian.jpg`)
+                : require(`../../img/SelectionCarouselImages/Phone_Hawaiian.jpg`),
 
             bandana: navMediaQuery
-                ? require(`../../img/${webpDir}SelectionCarouselImages/Desktop_Bandana.${format}`)
-                : require(`../../img/${webpDir}SelectionCarouselImages/Phone_Bandana.${format}`),
+                ? require(`../../img/SelectionCarouselImages/Desktop_Bandana.jpg`)
+                : require(`../../img/SelectionCarouselImages/Phone_Bandana.jpg`),
             patriot: navMediaQuery
-                ? require(`../../img/${webpDir}SelectionCarouselImages/Desktop_Patriot.${format}`)
-                : require(`../../img/${webpDir}SelectionCarouselImages/Phone_Patriot.${format}`),
+                ? require(`../../img/SelectionCarouselImages/Desktop_Patriot.jpg`)
+                : require(`../../img/SelectionCarouselImages/Phone_Patriot.jpg`),
         };
-    }, [navMediaQuery, webp]);
+    }, [navMediaQuery]);
 
     const renderCarouselItem = (index, bg_img) => {
         return (
