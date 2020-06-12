@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import GreenBG from '../../img/LandingPhotos/GreenBG.jpg';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 
 const useStyles = makeStyles({
     root: {
@@ -13,6 +14,7 @@ const useStyles = makeStyles({
         backgroundSize: 'cover',
     },
     overlay: {
+        position: 'relative',
         height: '100%',
         width: '100%',
         backgroundColor: 'rgba(0,0,0,.25)',
@@ -33,6 +35,12 @@ const useStyles = makeStyles({
     },
     caption: {
         fontWeight: '500',
+    },
+    arrowPos: {
+        position: 'absolute',
+        bottom: '10px',
+        left: '50%',
+        color: 'white',
     },
 });
 
@@ -68,6 +76,9 @@ function SelectionHero() {
                   button: {
                       marginTop: 12,
                   },
+                  arrow: {
+                      fontSize: '3rem',
+                  },
               }
             : navMediaQuery535
             ? {
@@ -78,7 +89,9 @@ function SelectionHero() {
                   caption: {
                       fontSize: '1.15rem',
                   },
-                  button: {},
+                  arrow: {
+                      fontSize: '2.5rem',
+                  },
               }
             : {
                   header: {
@@ -87,6 +100,9 @@ function SelectionHero() {
                   },
                   caption: {
                       fontSize: '1rem',
+                  },
+                  arrow: {
+                      fontSize: '2rem',
                   },
               };
     }, [navMediaQuery535, navMediaQuery980]);
@@ -115,6 +131,12 @@ function SelectionHero() {
                             </Link>
                         </div>
                     </Container>
+                    <div className={classes.arrowPos}>
+                        <KeyboardArrowDownIcon
+                            style={textStyles.arrow}
+                            className="arrow bounce"
+                        />
+                    </div>
                 </div>
             </div>
         </div>

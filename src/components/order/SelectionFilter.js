@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useMediaQuery } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        padding: '24px 8px',
         width: '100%',
         backgroundColor: '#37474f',
     },
@@ -43,6 +43,9 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
+    },
+    arrowPos: {
+        color: 'white',
     },
 }));
 
@@ -82,10 +85,33 @@ function SelectionFilter({ filter, setFilter }) {
         );
     };
 
+    const rootStyle = useMemo(() => {
+        return navMediaQuery
+            ? { padding: '24px 8px' }
+            : { padding: '16px 8px 8px 8px' };
+    }, [navMediaQuery]);
+
+    const arrowStyle = useMemo(() => {
+        return {
+            fontSize: '2rem',
+        };
+    }, []);
+
+    const under600 = () => {
+        return (
+            <div className={classes.arrowPos}>
+                <KeyboardArrowDownIcon
+                    className="arrow bounce"
+                    style={arrowStyle}
+                />
+            </div>
+        );
+    };
+
     return (
-        <div className={classes.root}>
+        <div className={classes.root} style={rootStyle}>
             <Container className={classes.container}>
-                {navMediaQuery ? over600() : ''}
+                {navMediaQuery ? over600() : under600()}
             </Container>
         </div>
     );

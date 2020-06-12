@@ -49,7 +49,7 @@ function DesignCard({ design }) {
     const classes = useStyles();
 
     return (
-        <LazyLoad height={100}>
+        <LazyLoad height={200} once>
             <Grid item xs={6} sm={4} md={3}>
                 <Link
                     className={classes.designName}

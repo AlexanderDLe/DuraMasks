@@ -6,8 +6,6 @@ import { useMediaQuery } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
     banner: {
         backgroundColor: '#6868fd',
-        paddingTop: 24,
-        height: '85px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -23,12 +21,14 @@ const useStyles = makeStyles((theme) => ({
     flag: {
         paddingBottom: 16,
         boxShadow: 'none',
+        fontSize: '1rem',
     },
 }));
 
 function Banner() {
     const classes = useStyles();
     const navMediaQuery = useMediaQuery('(min-width:330px)');
+    const navMediaQuery600 = useMediaQuery('(min-width:600px)');
 
     const bannerHeader = useMemo(
         () => ({
@@ -37,8 +37,16 @@ function Banner() {
         [navMediaQuery]
     );
 
+    const bannerStyle = useMemo(
+        () => ({
+            paddingTop: navMediaQuery600 ? 24 : 18,
+            height: navMediaQuery600 ? 85 : 70,
+        }),
+        [navMediaQuery600]
+    );
+
     return (
-        <div className={classes.banner}>
+        <div className={classes.banner} style={bannerStyle}>
             <img alt="Flag" className={classes.flag} src={Flag} />
             <div className={classes.textbox}>
                 <h5 style={bannerHeader}>Use Code 15OFF</h5>
