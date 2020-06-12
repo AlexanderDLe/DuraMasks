@@ -6,6 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazyload';
 
 import WhatshotIcon from '@material-ui/icons/Whatshot';
 
@@ -48,33 +49,38 @@ function DesignCard({ design }) {
     const classes = useStyles();
 
     return (
-        <Grid item xs={6} sm={4} md={3}>
-            <Link className={classes.designName} to={`/item/${design.param}`}>
-                <Card className={classes.root} elevation={1}>
-                    {design.hot ? (
-                        <div className={classes.bestseller}>
-                            <WhatshotIcon />
-                        </div>
-                    ) : (
-                        ''
-                    )}
-                    <CardMedia
-                        className={classes.media}
-                        image={require(`../../img/SmallMaskPhotos/${design.img}`)}
-                        title={design.color}
-                    />
-                    <CardContent>
-                        <Typography
-                            className={classes.cardTitle}
-                            variant="body1"
-                            component="h2"
-                        >
-                            {design.color}
-                        </Typography>
-                    </CardContent>
-                </Card>
-            </Link>
-        </Grid>
+        <LazyLoad height={100}>
+            <Grid item xs={6} sm={4} md={3}>
+                <Link
+                    className={classes.designName}
+                    to={`/item/${design.param}`}
+                >
+                    <Card className={classes.root} elevation={1}>
+                        {design.hot ? (
+                            <div className={classes.bestseller}>
+                                <WhatshotIcon />
+                            </div>
+                        ) : (
+                            ''
+                        )}
+                        <CardMedia
+                            className={classes.media}
+                            image={require(`../../img/SmallMaskPhotos/${design.img}`)}
+                            title={design.color}
+                        />
+                        <CardContent>
+                            <Typography
+                                className={classes.cardTitle}
+                                variant="body1"
+                                component="h2"
+                            >
+                                {design.color}
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </Link>
+            </Grid>
+        </LazyLoad>
     );
 }
 

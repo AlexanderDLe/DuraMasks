@@ -9,6 +9,9 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import TextField from '@material-ui/core/TextField';
 
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+
 const useStyles = makeStyles((theme) => ({
     smallQuery: {
         display: 'flex',
@@ -34,6 +37,21 @@ const useStyles = makeStyles((theme) => ({
     sizeLabel: {
         color: 'rgba(0, 0, 0, 0.54) !important',
     },
+    amountBox: {
+        display: 'flex',
+    },
+    amountField: {
+        marginTop: 10,
+        paddingLeft: 5,
+        width: '50%',
+    },
+    arrowsBox: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    arrow: {
+        cursor: 'pointer',
+    },
 }));
 
 function MaskOrderForm({
@@ -42,6 +60,8 @@ function MaskOrderForm({
     amount,
     handleChange,
     handleAmountChange,
+    incrementAmount,
+    decrementAmount,
 }) {
     const classes = useStyles();
 
@@ -99,23 +119,32 @@ function MaskOrderForm({
                 <FormLabel style={{ paddingLeft: 5 }} component="legend">
                     Amount
                 </FormLabel>
-                <TextField
-                    id="standard-number"
-                    type="number"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    value={amount}
-                    onChange={handleAmountChange}
-                    style={{ paddingLeft: 5 }}
-                />
+                <div className={classes.amountBox}>
+                    <TextField
+                        id="standard-number"
+                        type="number"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        value={amount}
+                        onChange={handleAmountChange}
+                        className={classes.amountField}
+                    />
+                    <div className={classes.arrowsBox}>
+                        <ArrowDropUpIcon
+                            className={classes.arrow}
+                            onClick={() => incrementAmount()}
+                        />
+                        <ArrowDropDownIcon
+                            className={classes.arrow}
+                            onClick={() => decrementAmount()}
+                        />
+                    </div>
+                </div>
                 <br />
                 <br />
                 <p style={{ color: 'rgba(0,0,0,.5', fontSize: '.85rem' }}>
                     These elastic bands measure 1/4" (6mm) in width.
-                    <br />
-                    <br />
-                    Composed of polyester fiber. Very comfortable and durable.
                 </p>
             </div>
         </CardContent>

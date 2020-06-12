@@ -159,6 +159,13 @@ function Item({ match, addOrder }) {
         }
     };
 
+    const incrementAmount = () => {
+        setAmount(amount + 1);
+    };
+    const decrementAmount = () => {
+        if (amount > 1) setAmount(amount - 1);
+    };
+
     // Snackbar
     const processQueue = () => {
         if (queueRef.current.length > 0) {
@@ -254,6 +261,8 @@ function Item({ match, addOrder }) {
                     handleAmountChange={handleAmountChange}
                     price={data.price}
                     XLUnavailable={data.XLUnavailable ? true : false}
+                    incrementAmount={incrementAmount}
+                    decrementAmount={decrementAmount}
                 />
             ) : (
                 <ElasticOrderForm
@@ -262,6 +271,8 @@ function Item({ match, addOrder }) {
                     size={size}
                     navMediaQuery={navMediaQuery}
                     handleAmountChange={handleAmountChange}
+                    incrementAmount={incrementAmount}
+                    decrementAmount={decrementAmount}
                 />
             )}
             <CardActions className={classes.itemActions}>
