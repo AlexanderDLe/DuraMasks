@@ -267,7 +267,7 @@ function Item({ match, addOrder }) {
             <CardActions className={classes.itemActions}>
                 <Button size="small" color="primary">
                     <Link to="/selection" className={classes.link}>
-                        Back To Selection
+                        Mask Selection
                     </Link>
                 </Button>
                 <Button

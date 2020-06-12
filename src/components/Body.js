@@ -2,8 +2,9 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Landing from './landing/Landing';
+import Redirect from './landing/Redirect';
 import Selection from './order/Selection';
-import Item from './order/Item';
+import Item from './item/Item';
 import Cart from './checkout/Cart';
 import Success from './checkout/Success';
 import CustomItem from './order/CustomItem';
@@ -19,7 +20,8 @@ function Body(props) {
     return (
         <main className="body-class">
             <Switch>
-                <Route exact path="/" component={Landing} />
+                <Route exact path="/" component={Redirect} />
+                <Route exact path="/home" component={Landing} />
                 <Route exact path="/selection" component={Selection} />
                 <Route exact path="/stats" component={Stats} />
                 <Route exact path="/daily" component={Daily} />

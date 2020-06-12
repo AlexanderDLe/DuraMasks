@@ -159,7 +159,7 @@ const Navbar = ({ amount }) => {
                                 <Link
                                     style={dynamicStyles.navTitleStyle}
                                     className={classes.link}
-                                    to="/"
+                                    to="/home"
                                 >
                                     <img
                                         style={dynamicStyles.navIconStyle}

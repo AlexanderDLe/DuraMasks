@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import LandingHero from './LandingHero';
 
+const BestSellers = lazy(() => import('./BestSellers'));
 const LandingCTA = lazy(() => import('./LandingCTA'));
 const Cards = lazy(() => import('./Cards'));
 const Testimonials = lazy(() => import('./Testimonials'));
@@ -27,10 +28,12 @@ export default function Landing() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
     return (
         <main className={classes.root}>
             <LandingHero />
             <Suspense fallback={<div className={classes.fallback} />}>
+                <BestSellers />
                 <LandingCTA />
                 <Cards />
                 <Testimonials />

@@ -47,7 +47,6 @@ export default ({ categoryName, categoryItems, filterState }) => {
         } else {
             itemsToShow = category;
         }
-        console.log(itemsToShow);
         return itemsToShow.map((design, index) => {
             return <DesignCard design={design} key={index} />;
         });

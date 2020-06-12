@@ -89,7 +89,7 @@ function LandingCTA() {
                                     to="/selection"
                                     className={classes.viewSelectionButton}
                                 >
-                                    View Selection
+                                    Shop Now
                                 </Link>
                             </Button>
                         </Grid>
