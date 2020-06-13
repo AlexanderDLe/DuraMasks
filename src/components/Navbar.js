@@ -153,13 +153,11 @@ const Navbar = ({ amount }) => {
                 <AppBar className={classes.appbar}>
                     <Container>
                         <Toolbar>
-                            {/* <Link className={classes.link} to="/">
-                            </Link> */}
                             <Typography variant="h6" className={classes.title}>
                                 <Link
                                     style={dynamicStyles.navTitleStyle}
                                     className={classes.link}
-                                    to="/home"
+                                    to="/"
                                 >
                                     <img
                                         style={dynamicStyles.navIconStyle}

@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     amountField: {
         marginTop: 10,
         paddingLeft: 5,
-        width: '50%',
+        width: '70%',
     },
     arrowsBox: {
         display: 'flex',

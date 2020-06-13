@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
 
 import WhatshotIcon from '@material-ui/icons/Whatshot';
+import Placeholder from './Placeholder';
 
 const useStyles = makeStyles({
     root: {
@@ -40,16 +41,23 @@ const useStyles = makeStyles({
         textDecoration: 'none',
         color: '#3f51b5',
     },
+    cardTextContent: {
+        // padding: 8,
+        paddingTop: '8px !important',
+        paddingBottom: '16px !important',
+    },
     cardTitle: {
         textAlign: 'center',
+    },
+    placeholderText: {
+        color: 'white',
     },
 });
 
 function DesignCard({ design }) {
     const classes = useStyles();
-
     return (
-        <LazyLoad height={200} once>
+        <LazyLoad height={200} placeholder={<Placeholder />} offset={0} once>
             <Grid item xs={6} sm={4} md={3}>
                 <Link
                     className={classes.designName}
@@ -68,7 +76,7 @@ function DesignCard({ design }) {
                             image={require(`../../img/SmallMaskPhotos/${design.img}`)}
                             title={design.color}
                         />
-                        <CardContent>
+                        <CardContent className={classes.cardTextContent}>
                             <Typography
                                 className={classes.cardTitle}
                                 variant="body1"

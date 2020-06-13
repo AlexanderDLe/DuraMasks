@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
+import { useMediaQuery } from '@material-ui/core';
 
 import Checkbox from '@material-ui/core/Checkbox';
 import DesignCard from './DesignCard';
@@ -23,8 +24,6 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: 0,
     },
     root: {
-        paddingTop: '24px',
-        paddingBottom: '24px',
         minHeight: 'calc(100vh - 630px)',
     },
     category: {
@@ -82,6 +81,7 @@ function Selection() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    const navMediaQuery = useMediaQuery('(min-width:900px)');
 
     const classes = useStyles();
 
@@ -175,7 +175,7 @@ function Selection() {
                             Custom
                         </Typography>
                     </div>
-                    <Grid container spacing={3}>
+                    <Grid container spacing={2}>
                         {customOpen ? renderCustomItems() : ''}
                     </Grid>
                 </React.Fragment>
@@ -224,13 +224,19 @@ function Selection() {
         );
     };
 
+    const selectionPadding = useMemo(() => {
+        return navMediaQuery
+            ? { paddingTop: '24px', paddingBottom: '24px' }
+            : {};
+    }, [navMediaQuery]);
+
     return (
         <React.Fragment>
             <main className={classes.main}>
                 <Banner />
                 <SelectionHero />
                 <SelectionFilter filter={filter} setFilter={setFilter} />
-                <Container className={classes.root}>
+                <Container className={classes.root} style={selectionPadding}>
                     <Search
                         searchTerm={searchTerm}
                         handleSearchTermChange={handleSearchTermChange}

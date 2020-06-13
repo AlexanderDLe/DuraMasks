@@ -155,4 +155,15 @@ export const archive = {
     //     hot: false,
     //     tags: ['pink', 'orange', 'red'],
     // },
+    // spring: {
+    //     type: 'Mask',
+    //     color: 'Spring',
+    //     img: 'Spring.jpg',
+    //     param: 'spring',
+    //     price: maskPrice,
+    //     category: 'floral',
+    //     angled: true,
+    //     // hot: true,
+    //     tags: ['pink', 'orange'],
+    // },
 };

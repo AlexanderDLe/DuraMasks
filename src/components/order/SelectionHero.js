@@ -15,18 +15,16 @@ function SelectionHero() {
         return {
             dotted: navMediaQuery
                 ? require(`../../img/SelectionCarouselImages/Desktop_Dotted.jpg`)
-                : require(`../../img/SelectionCarouselImages/Phone_Dotted.jpg`),
-
+                : require(`../../img/SelectionCarouselImages/Phone_Dotted2.jpg`),
             hawaiian: navMediaQuery
                 ? require(`../../img/SelectionCarouselImages/Desktop_Hawaiian.jpg`)
-                : require(`../../img/SelectionCarouselImages/Phone_Hawaiian.jpg`),
-
+                : require(`../../img/SelectionCarouselImages/Phone_Hawaiian2.jpg`),
             bandana: navMediaQuery
                 ? require(`../../img/SelectionCarouselImages/Desktop_Bandana.jpg`)
-                : require(`../../img/SelectionCarouselImages/Phone_Bandana.jpg`),
+                : require(`../../img/SelectionCarouselImages/Phone_Bandana2.jpg`),
             patriot: navMediaQuery
                 ? require(`../../img/SelectionCarouselImages/Desktop_Patriot.jpg`)
-                : require(`../../img/SelectionCarouselImages/Phone_Patriot.jpg`),
+                : require(`../../img/SelectionCarouselImages/Phone_Patriot2.jpg`),
         };
     }, [navMediaQuery]);
 
@@ -34,7 +32,7 @@ function SelectionHero() {
         return (
             <Carousel.Item
                 style={{
-                    minHeight: 450,
+                    minHeight: navMediaQuery ? 450 : 300,
                     background: `url(${bg_img}) no-repeat center`,
                 }}
                 className={`carousel-item carousel-image-${index}`}

@@ -9,14 +9,14 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
     category: {
         margin: '24px 0',
-        marginTop: 48,
+        marginTop: 24,
         backgroundSize: 'cover',
         display: 'flex',
         alignItems: 'center',
         marginBottom: 16,
     },
     categoryTitle: {
-        fontSize: '1.8rem',
+        fontSize: '1.6rem',
         cursor: 'pointer',
         fontWeight: '400',
         fontFamily: 'Open Sans',
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     },
     showMoreDiv: {
         textAlign: 'center',
-        marginTop: 32,
+        marginTop: 16,
     },
     showMoreButton: {
         borderRadius: 3,
@@ -86,7 +86,7 @@ export default ({ categoryName, categoryItems, filterState }) => {
                         {categoryName}
                     </Typography>
                 </div>
-                <Grid container spacing={3}>
+                <Grid container spacing={2}>
                     {categoryOpen ? renderCategory(categoryItems) : ''}
                 </Grid>
                 {showMore && categoryOpen && categoryItems.length > 8

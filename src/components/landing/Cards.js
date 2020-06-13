@@ -14,6 +14,10 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: theme.spacing(8),
         paddingBottom: theme.spacing(8),
     },
+    gridItem: {
+        marginTop: 8,
+        marginBottom: 16,
+    },
     card: {
         height: '100%',
         display: 'flex',
@@ -22,14 +26,14 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
         backgroundColor: 'white',
         borderRadius: '8px',
-        padding: 16,
-        paddingTop: 90,
+        padding: 8,
+        paddingTop: 80,
         borderBottom: `2px solid ${theme.palette.primary.main}`,
     },
     cardMedia: {
         position: 'absolute',
         left: '50%',
-        transform: 'translate(-50%, -113px)',
+        transform: 'translate(-50%, -108px)',
         backgroundColor: theme.palette.primary.main,
         height: '95px',
         width: '95px',
@@ -61,9 +65,34 @@ function Cards() {
         };
     }, []);
 
+    const cardText = useMemo(() => {
+        return {
+            multilayered: (
+                <Typography className={classes.cardText} color="textSecondary">
+                    Composed of <strong>4 layers</strong> of tightly-woven
+                    cotton and polyester tri-blend filters. We prioritize safety
+                    and health.
+                </Typography>
+            ),
+            reusable: (
+                <Typography className={classes.cardText} color="textSecondary">
+                    They are <strong>completely washable</strong>. We highly
+                    recommend hand-washing with soap then hanging to air dry.
+                </Typography>
+            ),
+            comfortable: (
+                <Typography className={classes.cardText} color="textSecondary">
+                    Our <strong>carefully curated fabrics </strong>
+                    are soft, easy to wear for extended periods, and allow for
+                    ease of breathing.
+                </Typography>
+            ),
+        };
+    }, [classes.cardText]);
+
     const renderCard = (cardIMG, cardTitle, cardText) => {
         return (
-            <Grid item xs={12} sm={12} md={4}>
+            <Grid className={classes.gridItem} item xs={12} sm={12} md={4}>
                 <div className={classes.card}>
                     <div
                         className={classes.cardMedia}
@@ -95,20 +124,16 @@ function Cards() {
             <div className="landing-cards-bg-overlay"></div>
             <Container className={classes.cardGrid} maxWidth="md">
                 <Grid container spacing={4}>
-                    {renderCard(
-                        ReusableWhite,
-                        'Reusable',
-                        'It is highly recommended to wash and dry after each use. We suggest hand-washing with soap then hang to air dry.'
-                    )}
+                    {renderCard(ReusableWhite, 'Reusable', cardText.reusable)}
                     {renderCard(
                         LayersWhite,
                         'Multi-layered',
-                        'These masks are composed of tightly-woven cotton and non-woven polyester filters to ensure protection.'
+                        cardText.multilayered
                     )}
                     {renderCard(
                         ComfortWhite,
                         'Comfortable',
-                        'Our selection of carefully curated fabrics are soft and easy to wear for extended periods.'
+                        cardText.comfortable
                     )}
                 </Grid>
             </Container>

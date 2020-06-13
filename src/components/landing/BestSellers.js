@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import { useMediaQuery } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 import DesignCard from '../order/DesignCard';
 
@@ -93,16 +96,44 @@ const bestSellers = [
 const useStyles = makeStyles((theme) => ({
     main: {
         width: '100%',
-        padding: theme.spacing(6, 0, 6),
     },
     root: {
         paddingTop: '24px',
-        paddingBottom: '24px',
+        // paddingBottom: '24px',
+    },
+    sectionTitle: {
+        marginBottom: 0,
+    },
+    buttonDiv: {
+        textAlign: 'center',
+        paddingTop: 24,
+    },
+    viewSelectionButton: {
+        color: 'white !important',
+        textDecoration: 'none',
     },
 }));
 
-function LandingCTA() {
+export default ({ queryStyles }) => {
     const classes = useStyles();
+    const mediaQuery600 = useMediaQuery('(min-width:600px)');
+
+    const viewEntireSelectionButton = useMemo(() => {
+        return mediaQuery600 ? (
+            ''
+        ) : (
+            <div className={classes.buttonDiv}>
+                <Button variant="contained" color="primary">
+                    <Link
+                        to="/selection"
+                        className={classes.viewSelectionButton}
+                    >
+                        View Entire Selection
+                    </Link>
+                </Button>
+            </div>
+        );
+    }, [mediaQuery600, classes]);
 
     const renderCategory = () => {
         return bestSellers.map((design, index) => {
@@ -111,7 +142,7 @@ function LandingCTA() {
     };
 
     return (
-        <div className={classes.main}>
+        <div className={classes.main} style={queryStyles.sectionPadding}>
             <Container maxWidth="sm">
                 <Typography
                     component="h2"
@@ -120,17 +151,17 @@ function LandingCTA() {
                     color="textPrimary"
                     gutterBottom
                     className={classes.sectionTitle}
+                    style={queryStyles.sectionTitle}
                 >
-                    Top Sellers
+                    Most Popular
                 </Typography>
             </Container>
             <Container className={classes.root}>
-                <Grid container spacing={3}>
+                <Grid container spacing={2}>
                     {renderCategory()}
                 </Grid>
+                {viewEntireSelectionButton}
             </Container>
         </div>
     );
-}
-
-export default LandingCTA;
+};

@@ -739,17 +739,17 @@ export const selection = {
         angled: true,
         tags: ['grey'],
     },
-    // ranch: {
-    //     type: 'Mask',
-    //     color: 'Ranch',
-    //     img: 'Ranch.jpg',
-    //     param: 'ranch',
-    //     price: maskPrice,
-    //     category: 'animal',
-    //     angled: true,
-    //
-    //     tags: ['grey'],
-    // },
+    ranch: {
+        type: 'Mask',
+        color: 'Ranch',
+        img: 'Ranch.jpg',
+        param: 'ranch',
+        price: maskPrice,
+        category: 'animal',
+        angled: true,
+
+        tags: ['grey'],
+    },
     violetredzebra: {
         type: 'Mask',
         color: 'Violet Red Zebra',
@@ -1037,17 +1037,6 @@ export const selection = {
         XLUnavailable: true,
         tags: ['red'],
     },
-    spring: {
-        type: 'Mask',
-        color: 'Spring',
-        img: 'Spring.jpg',
-        param: 'spring',
-        price: maskPrice,
-        category: 'floral',
-        angled: true,
-        // hot: true,
-        tags: ['pink', 'orange'],
-    },
     floralwhite: {
         type: 'Mask',
         color: 'Floral White',
@@ -1141,28 +1130,28 @@ export const selection = {
         angled: true,
         tags: ['lavender', 'violet'],
     },
-    // orangeplaid: {
-    //     type: 'Mask',
-    //     color: 'Orange Plaid',
-    //     img: 'OrangePlaid.jpg',
-    //     param: 'orangeplaid',
-    //     price: maskPrice,
-    //     category: 'floral',
-    //     angled: true,
-    //
-    //     tags: [],
-    // },
-    // rose: {
-    //     type: 'Mask',
-    //     color: 'Rose',
-    //     img: 'Rose.jpg',
-    //     param: 'rose',
-    //     price: maskPrice,
-    //     category: 'floral',
-    //     angled: true,
-    //
-    //     tags: ['red'],
-    // },
+    orangeplaid: {
+        type: 'Mask',
+        color: 'Orange Plaid',
+        img: 'OrangePlaid.jpg',
+        param: 'orangeplaid',
+        price: maskPrice,
+        category: 'floral',
+        angled: true,
+
+        tags: [],
+    },
+    rose: {
+        type: 'Mask',
+        color: 'Rose',
+        img: 'Rose.jpg',
+        param: 'rose',
+        price: maskPrice,
+        category: 'floral',
+        angled: true,
+
+        tags: ['red'],
+    },
     floralburgundy: {
         type: 'Mask',
         color: 'Floral Burgundy',
@@ -1183,17 +1172,17 @@ export const selection = {
         angled: true,
         tags: ['white', 'green'],
     },
-    // vines: {
-    //     type: 'Mask',
-    //     color: 'Vines',
-    //     img: 'Vines.jpg',
-    //     param: 'vines',
-    //     price: maskPrice,
-    //     category: 'floral',
-    //     angled: true,
-    //
-    //     tags: ['green'],
-    // },
+    vines: {
+        type: 'Mask',
+        color: 'Vines',
+        img: 'Vines.jpg',
+        param: 'vines',
+        price: maskPrice,
+        category: 'floral',
+        angled: true,
+
+        tags: ['green'],
+    },
     celeste: {
         type: 'Mask',
         color: 'Celeste',
@@ -1204,17 +1193,17 @@ export const selection = {
         angled: true,
         tags: ['blue', 'brown'],
     },
-    // holly: {
-    //     type: 'Mask',
-    //     color: 'Holly',
-    //     img: 'Holly.jpg',
-    //     param: 'holly',
-    //     price: maskPrice,
-    //     category: 'floral',
-    //     angled: true,
-    //
-    //     tags: ['pink', 'brown', 'burgundy'],
-    // },
+    holly: {
+        type: 'Mask',
+        color: 'Holly',
+        img: 'Holly.jpg',
+        param: 'holly',
+        price: maskPrice,
+        category: 'floral',
+        angled: true,
+
+        tags: ['pink', 'brown', 'burgundy'],
+    },
     //////////////
     // MEMORIAL //
     //////////////

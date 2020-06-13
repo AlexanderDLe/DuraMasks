@@ -2,141 +2,215 @@ import React, { useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useMediaQuery } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import GreenBG from '../../img/LandingPhotos/GreenBG.jpg';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
     root: {
+        position: 'relative',
+        overflow: 'hidden',
+    },
+    overlay: {
+        height: '100%',
+        width: '100%',
+        position: 'absolute',
         background: `url(${GreenBG})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-    },
-    overlay: {
-        position: 'relative',
-        height: '100%',
-        width: '100%',
-        backgroundColor: 'rgba(0,0,0,.25)',
+        padding: 0,
+        zIndex: -1,
     },
     container: {
+        zIndex: '100',
         width: '100%',
         height: '100%',
         color: 'white',
+        backgroundColor: 'white',
         display: 'flex',
         alignItems: 'center',
     },
-    textBox: { fontFamily: 'Open Sans' },
-    button: {
-        marginTop: 8,
+    logo: {
+        paddingBottom: 12,
+    },
+    textBox: {
+        width: '100%',
+        marginTop: 'auto',
+        fontFamily: 'Open Sans',
         backgroundColor: 'white',
+        padding: '12px 4px 0px 4px',
+        textAlign: 'center',
+    },
+    header: {
+        marginBottom: 0,
+    },
+    button: {
+        color: 'white',
         fontWeight: '500',
-        padding: '8px 32px 8px 32px',
+        margin: '16px 0px',
     },
     caption: {
-        fontWeight: '500',
+        marginBottom: 0,
     },
-    arrowPos: {
-        position: 'absolute',
-        bottom: '10px',
-        left: '50%',
-        color: 'white',
-    },
+    usa: {},
 });
 
-function SelectionHero() {
-    const navMediaQuery1980 = useMediaQuery('(min-width:1980px)');
+function SelectionHero({ queryStyles }) {
     const navMediaQuery980 = useMediaQuery('(min-width:980px)');
     const navMediaQuery535 = useMediaQuery('(min-width:535px)');
+    const navMediaQuery420 = useMediaQuery('(min-width:420px)');
+    const navMediaQuery340 = useMediaQuery('(min-width:340px)');
     const classes = useStyles();
 
     const landingBG = useMemo(() => {
-        const bgImg = navMediaQuery1980
-            ? require(`../../img/LandingPhotos/LandingPhotoLong.jpg`)
-            : navMediaQuery535
-            ? require(`../../img/LandingPhotos/LandingPhotoMedium.jpg`)
-            : require(`../../img/LandingPhotos/LandingPhotoSmall.jpg`);
+        const bgImg = navMediaQuery535
+            ? require(`../../img/LandingPhotos/LandingPhotoDesktop.jpg`)
+            : require(`../../img/LandingPhotos/LandingPhotoPhone.jpg`);
 
         return {
-            height: 'calc(100vh - 55px)',
+            height: 'calc(50vh)',
             background: `url(${bgImg}) center / auto 100% no-repeat`,
         };
-    }, [navMediaQuery535, navMediaQuery1980]);
+    }, [navMediaQuery535]);
+
+    const FacemaskIcon = useMemo(() => {
+        return navMediaQuery535
+            ? require(`../../img/LandingPhotos/FacemaskIcon1.jpg`)
+            : require(`../../img/LandingPhotos/FacemaskIcon2.jpg`);
+    }, [navMediaQuery535]);
 
     const textStyles = useMemo(() => {
         return navMediaQuery980
             ? {
                   header: {
-                      paddingTop: 100,
-                      fontSize: '3.5rem',
+                      fontSize: '2rem',
                   },
                   caption: {
-                      fontSize: '1.5rem',
+                      fontSize: '1rem',
                   },
                   button: {
-                      marginTop: 12,
-                  },
-                  arrow: {
-                      fontSize: '3rem',
+                      fontSize: '.85rem',
+                      padding: '8px 32px 8px 32px',
                   },
               }
             : navMediaQuery535
             ? {
                   header: {
-                      paddingTop: 150,
-                      fontSize: '3rem',
-                  },
-                  caption: {
-                      fontSize: '1.15rem',
-                  },
-                  arrow: {
-                      fontSize: '2.5rem',
-                  },
-              }
-            : {
-                  header: {
-                      paddingTop: 225,
-                      fontSize: '2.25rem',
+                      fontSize: '1.85rem',
                   },
                   caption: {
                       fontSize: '1rem',
                   },
-                  arrow: {
-                      fontSize: '2rem',
+                  button: {
+                      fontSize: '.85rem',
+                      padding: '6px 24px 6px 24px',
+                  },
+              }
+            : navMediaQuery420
+            ? {
+                  header: {
+                      fontSize: '1.5rem',
+                      fontWeight: 500,
+                  },
+                  caption: {
+                      fontSize: '1rem',
+                  },
+                  button: {
+                      fontSize: '.85rem',
+                      padding: '4px 16px 4px 16px',
+                  },
+              }
+            : navMediaQuery340
+            ? {
+                  header: {
+                      fontSize: '1.22rem',
+                      fontWeight: 500,
+                  },
+                  caption: {
+                      fontSize: '1rem',
+                  },
+                  button: {
+                      fontSize: '.8rem',
+                      padding: '4px 16px 4px 16px',
+                  },
+              }
+            : {
+                  header: {
+                      fontSize: '1.1rem',
+                      fontWeight: 500,
+                  },
+                  caption: {
+                      fontSize: '1rem',
+                  },
+                  button: {
+                      fontSize: '.8rem',
+                      padding: '4px 16px 4px 16px',
                   },
               };
-    }, [navMediaQuery535, navMediaQuery980]);
+    }, [
+        navMediaQuery340,
+        navMediaQuery420,
+        navMediaQuery535,
+        navMediaQuery980,
+    ]);
 
     return (
         <div className={classes.root}>
-            <div style={landingBG}>
-                <div className={classes.overlay}>
-                    <Container className={classes.container}>
-                        <div className={classes.textBox}>
-                            <div style={textStyles.space}></div>
-                            <h1 style={textStyles.header}>CA Facemasks</h1>
-                            <h2
-                                style={textStyles.caption}
-                                className={classes.caption}
-                            >
-                                Reusable. Multilayered. Comfortable.
-                            </h2>
-                            <Link to="/selection">
-                                <Button
-                                    variant="contained"
-                                    className={classes.button}
-                                >
-                                    Shop Now
-                                </Button>
-                            </Link>
-                        </div>
-                    </Container>
-                    <div className={classes.arrowPos}>
-                        <KeyboardArrowDownIcon
-                            style={textStyles.arrow}
-                            className="arrow bounce"
-                        />
-                    </div>
+            <div className={classes.overlay}></div>
+            <div style={landingBG}></div>
+            <div
+                className={classes.container}
+                style={queryStyles.sectionPadding}
+            >
+                <div className={classes.textBox}>
+                    <img
+                        className={classes.logo}
+                        src={FacemaskIcon}
+                        alt="Facemask Icon"
+                    />
+                    <Typography
+                        component="h2"
+                        variant="h4"
+                        align="center"
+                        color="textPrimary"
+                        gutterBottom
+                        className={classes.header}
+                        style={textStyles.header}
+                    >
+                        Reusable. Multilayered. Comfortable.
+                    </Typography>
+                    <Typography
+                        variant="caption"
+                        align="center"
+                        color="textSecondary"
+                        paragraph
+                        style={textStyles.caption}
+                        className={classes.caption}
+                    >
+                        <strong>100+</strong> Premium designs to keep yourself
+                        protected in style.
+                    </Typography>
+
+                    <Link to="/selection">
+                        <Button
+                            variant="contained"
+                            className={classes.button}
+                            style={textStyles.button}
+                            color="primary"
+                        >
+                            View Selection
+                        </Button>
+                    </Link>
+                    <Typography
+                        variant="caption"
+                        align="center"
+                        color="textSecondary"
+                        paragraph
+                        style={textStyles.caption}
+                        className={classes.usa}
+                    >
+                        Made in California, USA
+                    </Typography>
                 </div>
             </div>
         </div>

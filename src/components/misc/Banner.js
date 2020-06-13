@@ -27,32 +27,35 @@ const useStyles = makeStyles((theme) => ({
 
 function Banner() {
     const classes = useStyles();
-    const navMediaQuery = useMediaQuery('(min-width:330px)');
+    const navMediaQuery450 = useMediaQuery('(min-width:450px)');
     const navMediaQuery600 = useMediaQuery('(min-width:600px)');
-
-    const bannerHeader = useMemo(
-        () => ({
-            fontSize: navMediaQuery ? '1rem' : '.85rem',
-        }),
-        [navMediaQuery]
-    );
 
     const bannerStyle = useMemo(
         () => ({
             paddingTop: navMediaQuery600 ? 24 : 18,
-            height: navMediaQuery600 ? 85 : 70,
+            height: navMediaQuery600 ? 65 : 50,
         }),
         [navMediaQuery600]
     );
 
     return (
         <div className={classes.banner} style={bannerStyle}>
-            <img alt="Flag" className={classes.flag} src={Flag} />
+            {navMediaQuery450 ? (
+                <img alt="Flag" className={classes.flag} src={Flag} />
+            ) : (
+                ''
+            )}
             <div className={classes.textbox}>
-                <h5 style={bannerHeader}>Use Code 15OFF</h5>
-                <p>Get 15% Off 40$+ Orders</p>
+                {/* <h5 style={bannerHeader}>Use Code 15OFF</h5> */}
+                <p>
+                    Use Code <strong>15OFF</strong> And Get 15% Off 40$+ Orders
+                </p>
             </div>
-            <img alt="Flag" className={classes.flag} src={Flag} />
+            {navMediaQuery450 ? (
+                <img alt="Flag" className={classes.flag} src={Flag} />
+            ) : (
+                ''
+            )}
         </div>
     );
 }
