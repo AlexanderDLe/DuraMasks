@@ -121,7 +121,14 @@ const extractOrderData = (ordersToExtract) => {
     return extractedOrders;
 };
 
-const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
+const Cart = ({
+    orders,
+    removeOrder,
+    resetOrders,
+    amount,
+    mode,
+    logReactPixelPurchase,
+}) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -205,6 +212,10 @@ const Cart = ({ orders, removeOrder, resetOrders, amount, mode }) => {
             console.log(error);
         }
 
+        logReactPixelPurchase({
+            currency: 'USD',
+            value: amount,
+        });
         resetOrders();
         setCheckedOut(true);
     };

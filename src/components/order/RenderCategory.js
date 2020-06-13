@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 export default ({ categoryName, categoryItems, filterState }) => {
     const classes = useStyles();
 
+    console.log(categoryName, categoryItems);
     const [categoryOpen, setCategoryOpen] = useState(true);
     const [showMore, setShowMore] = useState(true);
 
@@ -66,7 +67,10 @@ export default ({ categoryName, categoryItems, filterState }) => {
         </div>
     );
 
-    if (filterState === categoryName || filterState === 'All') {
+    if (
+        (categoryItems.length > 0 && filterState === categoryName) ||
+        (categoryItems.length > 0 && filterState === 'All')
+    ) {
         return (
             <React.Fragment>
                 <div className={classes.category}>

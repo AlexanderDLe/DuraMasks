@@ -15,7 +15,15 @@ import Policies from './misc/Policies';
 import FAQ from './misc/FAQ';
 
 function Body(props) {
-    const { removeOrder, addOrder, orders, resetOrders, amount, mode } = props;
+    const {
+        removeOrder,
+        addOrder,
+        orders,
+        resetOrders,
+        amount,
+        mode,
+        logReactPixelPurchase,
+    } = props;
 
     return (
         <main className="body-class">
@@ -43,6 +51,7 @@ function Body(props) {
                             orders={orders}
                             resetOrders={resetOrders}
                             amount={amount}
+                            logReactPixelPurchase={logReactPixelPurchase}
                         />
                     )}
                 />

@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: theme.spacing(8),
     },
     gridItem: {
-        marginTop: 8,
-        marginBottom: 16,
+        marginTop: 4,
+        marginBottom: 8,
     },
     card: {
         height: '100%',
@@ -124,12 +124,12 @@ function Cards() {
             <div className="landing-cards-bg-overlay"></div>
             <Container className={classes.cardGrid} maxWidth="md">
                 <Grid container spacing={4}>
-                    {renderCard(ReusableWhite, 'Reusable', cardText.reusable)}
                     {renderCard(
                         LayersWhite,
                         'Multi-layered',
                         cardText.multilayered
                     )}
+                    {renderCard(ReusableWhite, 'Reusable', cardText.reusable)}
                     {renderCard(
                         ComfortWhite,
                         'Comfortable',

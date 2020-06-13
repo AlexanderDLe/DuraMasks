@@ -1,14 +1,23 @@
-import React, { useState, Suspense, lazy } from 'react';
+import React, { useEffect, useState, Suspense, lazy } from 'react';
 import '../styles/App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
-
+import ReactPixel from 'react-facebook-pixel';
 import Body from './Body';
 
 const Navbar = lazy(() => import('./Navbar'));
 const Footer = lazy(() => import('./Footer'));
 // const Snackbar = lazy(() => import('./Snackbar'));
 
+const options = {
+    autoConfig: true, // set pixel's autoConfig
+    debug: false, // enable logs
+};
+
 const App = () => {
+    useEffect(() => {
+        ReactPixel.init('562582894621208', options);
+    }, []);
+
     // const testOrder = [
     //     {
     //         type: 'Mask',
@@ -29,6 +38,10 @@ const App = () => {
     //         amount: '3',
     //     },
     // ];
+
+    const logReactPixelPurchase = (data) => {
+        ReactPixel.track('Purchase', data);
+    };
 
     const mode = 'production';
     const [orders, setOrders] = useState([]);
@@ -87,6 +100,7 @@ const App = () => {
                 removeOrder={removeOrder}
                 resetOrders={resetOrders}
                 amount={amount}
+                logReactPixelPurchase={logReactPixelPurchase}
             />
             <Suspense fallback={<div />}>
                 {/* <Snackbar
