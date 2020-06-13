@@ -20,8 +20,8 @@ import StarRateIcon from '@material-ui/icons/StarRate';
 const useStyles = makeStyles((theme) => ({
     testimonialSection: {
         backgroundColor: '#fff',
-        padding: theme.spacing(6, 0, 6),
-        paddingBottom: 0,
+        // padding: theme.spacing(6, 0, 6),
+        // paddingBottom: 0,
     },
     sectionTitle: {
         fontFamily: 'Open Sans',
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Carousel() {
+function Carousel({ queryStyles }) {
     const classes = useStyles();
 
     const navMediaQuery580 = useMediaQuery('(min-width:580px)');
@@ -103,7 +103,10 @@ function Carousel() {
     };
 
     return (
-        <div className={classes.testimonialSection}>
+        <div
+            className={classes.testimonialSection}
+            style={queryStyles.sectionPadding}
+        >
             <Typography
                 component="h2"
                 variant="h4"
@@ -111,6 +114,7 @@ function Carousel() {
                 color="textPrimary"
                 gutterBottom
                 className={classes.sectionTitle}
+                style={queryStyles.sectionTitle}
             >
                 Testimonials
             </Typography>
@@ -146,7 +150,7 @@ function Carousel() {
                             'Just got my mask in the mail today. Wow, very impressed with the quality. Thanks for making such a great mask.',
                             'Vicki Newell',
                             3,
-                            32
+                            48
                         )}
                     </Slider>
                     <ButtonBack className="slide-buttons">

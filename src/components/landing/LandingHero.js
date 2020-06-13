@@ -22,10 +22,10 @@ const useStyles = makeStyles({
         zIndex: -1,
     },
     container: {
+        padding: 8,
         zIndex: '100',
         width: '100%',
         height: '100%',
-        color: 'white',
         backgroundColor: 'white',
         display: 'flex',
         alignItems: 'center',
@@ -43,22 +43,28 @@ const useStyles = makeStyles({
     },
     header: {
         marginBottom: 0,
+        fontFamily: 'Open Sans',
     },
     button: {
         color: 'white',
         fontWeight: '500',
-        margin: '16px 0px',
+        margin: '24px 0px',
+        padding: '8px 32px 8px 32px',
     },
     caption: {
         marginBottom: 0,
     },
-    usa: {},
+    usa: {
+        fontSize: '.9rem',
+        marginBottom: 0,
+    },
 });
 
 function SelectionHero({ queryStyles }) {
     const navMediaQuery980 = useMediaQuery('(min-width:980px)');
     const navMediaQuery535 = useMediaQuery('(min-width:535px)');
     const navMediaQuery420 = useMediaQuery('(min-width:420px)');
+    const navMediaQuery370 = useMediaQuery('(min-width:370px)');
     const navMediaQuery340 = useMediaQuery('(min-width:340px)');
     const classes = useStyles();
 
@@ -69,6 +75,7 @@ function SelectionHero({ queryStyles }) {
 
         return {
             height: 'calc(50vh)',
+            maxHeight: 600,
             background: `url(${bgImg}) center / auto 100% no-repeat`,
         };
     }, [navMediaQuery535]);
@@ -88,67 +95,58 @@ function SelectionHero({ queryStyles }) {
                   caption: {
                       fontSize: '1rem',
                   },
-                  button: {
-                      fontSize: '.85rem',
-                      padding: '8px 32px 8px 32px',
-                  },
               }
             : navMediaQuery535
             ? {
                   header: {
-                      fontSize: '1.85rem',
+                      fontSize: '1.8rem',
                   },
                   caption: {
                       fontSize: '1rem',
-                  },
-                  button: {
-                      fontSize: '.85rem',
-                      padding: '6px 24px 6px 24px',
                   },
               }
             : navMediaQuery420
             ? {
                   header: {
-                      fontSize: '1.5rem',
+                      fontSize: '1.4rem',
                       fontWeight: 500,
                   },
                   caption: {
                       fontSize: '1rem',
                   },
-                  button: {
-                      fontSize: '.85rem',
-                      padding: '4px 16px 4px 16px',
+              }
+            : navMediaQuery370
+            ? {
+                  header: {
+                      fontSize: '1.2rem',
+                      fontWeight: 500,
+                  },
+                  caption: {
+                      fontSize: '1rem',
                   },
               }
             : navMediaQuery340
             ? {
                   header: {
-                      fontSize: '1.22rem',
-                      fontWeight: 500,
+                      fontSize: '1.12rem',
+                      fontWeight: 600,
                   },
                   caption: {
                       fontSize: '1rem',
-                  },
-                  button: {
-                      fontSize: '.8rem',
-                      padding: '4px 16px 4px 16px',
                   },
               }
             : {
                   header: {
-                      fontSize: '1.1rem',
-                      fontWeight: 500,
+                      fontSize: '1rem',
+                      fontWeight: 600,
                   },
                   caption: {
                       fontSize: '1rem',
                   },
-                  button: {
-                      fontSize: '.8rem',
-                      padding: '4px 16px 4px 16px',
-                  },
               };
     }, [
         navMediaQuery340,
+        navMediaQuery370,
         navMediaQuery420,
         navMediaQuery535,
         navMediaQuery980,
@@ -187,8 +185,8 @@ function SelectionHero({ queryStyles }) {
                         style={textStyles.caption}
                         className={classes.caption}
                     >
-                        <strong>100+</strong> Premium designs to keep yourself
-                        protected in style.
+                        100+ Premium designs to keep yourself protected in
+                        style.
                     </Typography>
 
                     <Link to="/selection">
@@ -206,7 +204,6 @@ function SelectionHero({ queryStyles }) {
                         align="center"
                         color="textSecondary"
                         paragraph
-                        style={textStyles.caption}
                         className={classes.usa}
                     >
                         Made in California, USA

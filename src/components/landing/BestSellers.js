@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { useMediaQuery } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -112,28 +111,30 @@ const useStyles = makeStyles((theme) => ({
         color: 'white !important',
         textDecoration: 'none',
     },
+    button: {
+        marginTop: 8,
+        padding: '8px 24px 8px 24px',
+    },
 }));
 
 export default ({ queryStyles }) => {
     const classes = useStyles();
-    const mediaQuery600 = useMediaQuery('(min-width:600px)');
 
     const viewEntireSelectionButton = useMemo(() => {
-        return mediaQuery600 ? (
-            ''
-        ) : (
+        return (
             <div className={classes.buttonDiv}>
-                <Button variant="contained" color="primary">
-                    <Link
-                        to="/selection"
-                        className={classes.viewSelectionButton}
+                <Link to="/selection" className={classes.viewSelectionButton}>
+                    <Button
+                        className={classes.button}
+                        variant="contained"
+                        color="primary"
                     >
                         View Entire Selection
-                    </Link>
-                </Button>
+                    </Button>
+                </Link>
             </div>
         );
-    }, [mediaQuery600, classes]);
+    }, [classes]);
 
     const renderCategory = () => {
         return bestSellers.map((design, index) => {
