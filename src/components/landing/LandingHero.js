@@ -34,12 +34,12 @@ function SelectionHero() {
     const landingImage = useMemo(() => {
         return navMediaQuery535
             ? {
-                  img1: require(`../../img/LandingPhotos/LandingTestPhoto3.jpg`),
-                  img2: require(`../../img/LandingPhotos/LandingTestPhoto4.jpg`),
+                  img1: require(`../../img/LandingPhotos/LandingPhoto_Desktop.jpg`),
+                  //   img2: require(`../../img/LandingPhotos/LandingTestPhoto4.jpg`),
               }
             : {
-                  img1: require(`../../img/LandingPhotos/LandingTestPhoto3_Phone.jpg`),
-                  img2: require(`../../img/LandingPhotos/LandingTestPhoto4_Phone.jpg`),
+                  img1: require(`../../img/LandingPhotos/LandingPhoto_Phone.jpg`),
+                  //   img2: require(`../../img/LandingPhotos/LandingTestPhoto4_Phone.jpg`),
               };
     }, [navMediaQuery535]);
 
@@ -60,7 +60,7 @@ function SelectionHero() {
             {/* <div style={landingBG}></div> */}
             <Carousel pause={false} active={index} onSelect={handleSelect}>
                 {renderCarouselItem(1, landingImage.img1)}
-                {renderCarouselItem(2, landingImage.img2)}
+                {/* {renderCarouselItem(2, landingImage.img2)} */}
             </Carousel>
         </div>
     );

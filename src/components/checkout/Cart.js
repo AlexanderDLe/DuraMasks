@@ -278,7 +278,7 @@ const Cart = ({
                 color="primary"
             >
                 <Link to="/selection" className={classes.link}>
-                    Back to Selection
+                    Mask Selection
                 </Link>
             </Button>
             {paypalError ? (

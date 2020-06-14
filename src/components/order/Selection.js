@@ -12,7 +12,7 @@ import { selection } from '../masks/MaskDesigns';
 import Search from './Search';
 import SelectionHero from './SelectionHero';
 import SelectionFilter from './SelectionFilter';
-import Banner from '../misc/Banner';
+// import Banner from '../misc/Banner';
 import RenderCategory from './RenderCategory';
 
 const useStyles = makeStyles((theme) => ({
@@ -233,7 +233,7 @@ function Selection() {
     return (
         <React.Fragment>
             <main className={classes.main}>
-                <Banner />
+                {/* <Banner /> */}
                 <SelectionHero />
                 <SelectionFilter filter={filter} setFilter={setFilter} />
                 <Container className={classes.root} style={selectionPadding}>

@@ -6,7 +6,7 @@ import Body from './Body';
 
 const Navbar = lazy(() => import('./Navbar'));
 const Footer = lazy(() => import('./Footer'));
-// const Snackbar = lazy(() => import('./Snackbar'));
+const Snackbar = lazy(() => import('./Snackbar'));
 
 const options = {
     autoConfig: true, // set pixel's autoConfig
@@ -14,10 +14,6 @@ const options = {
 };
 
 const App = () => {
-    useEffect(() => {
-        ReactPixel.init('562582894621208', options);
-    }, []);
-
     // const testOrder = [
     //     {
     //         type: 'Mask',
@@ -38,15 +34,20 @@ const App = () => {
     //         amount: '3',
     //     },
     // ];
-
-    const logReactPixelPurchase = (data) => {
-        ReactPixel.track('Purchase', data);
-    };
-
     const mode = 'production';
     const [orders, setOrders] = useState([]);
     const [amount, setAmount] = useState(0);
-    // const [snackbarOpen, setSnackbarOpen] = useState(true);
+    const [snackbarOpen, setSnackbarOpen] = useState(
+        mode === 'sandbox' ? true : false
+    );
+    useEffect(() => {
+        if (mode === 'sandbox') return;
+        ReactPixel.init('562582894621208', options);
+    }, []);
+    const logReactPixelPurchase = (data) => {
+        if (mode === 'sandbox') return;
+        ReactPixel.track('Purchase', data);
+    };
 
     // Order Functionality
     const addOrder = (data) => {
@@ -103,10 +104,10 @@ const App = () => {
                 logReactPixelPurchase={logReactPixelPurchase}
             />
             <Suspense fallback={<div />}>
-                {/* <Snackbar
+                <Snackbar
                     snackbarOpen={snackbarOpen}
                     onClose={() => setSnackbarOpen(false)}
-                /> */}
+                />
                 <Footer />
             </Suspense>
         </div>

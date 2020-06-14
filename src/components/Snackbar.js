@@ -39,7 +39,7 @@ function AppSnackbar({ snackbarOpen, onClose }) {
     const snackbarRoot = useMemo(() => {
         return navMediaQuery
             ? {
-                  width: '80%',
+                  width: 'auto',
                   maxWidth: 800,
                   margin: '0 auto',
               }
@@ -61,11 +61,14 @@ function AppSnackbar({ snackbarOpen, onClose }) {
         >
             <div className={classes.container}>
                 <ReportProblemOutlinedIcon className={classes.warning} />
-                <p className={classes.text} style={textSize}>
+                {/* <p className={classes.text} style={textSize}>
                     Due to the protests sweeping the nation, there is
                     anticipation of a massive second wave of new Covid-19 cases.
                     As a result, we highly recommend wearing face coverings to
                     help reduce the likelihood of infection.
+                </p> */}
+                <p className={classes.text} style={textSize}>
+                    Sandbox Mode
                 </p>
                 <CloseOutlinedIcon
                     onClick={onClose}

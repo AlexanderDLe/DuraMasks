@@ -32,7 +32,7 @@ function SelectionHero() {
         return (
             <Carousel.Item
                 style={{
-                    minHeight: navMediaQuery ? 450 : 300,
+                    minHeight: navMediaQuery ? 450 : 325,
                     background: `url(${bg_img}) no-repeat center`,
                 }}
                 className={`carousel-item carousel-image-${index}`}

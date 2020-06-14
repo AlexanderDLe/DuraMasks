@@ -103,6 +103,12 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: 0,
         fontFamily: 'Open Sans',
     },
+    goToCartLink: {
+        width: '100%',
+    },
+    addToCartButton: {
+        width: '100%',
+    },
 }));
 
 function Item({ match, addOrder }) {
@@ -276,16 +282,24 @@ function Item({ match, addOrder }) {
                 />
             )}
             <CardActions className={classes.itemActions}>
-                <Button size="small" color="primary">
-                    <Link to="/selection" className={classes.link}>
+                <Link to="/selection" className={classes.link}>
+                    <Button size="small" color="primary">
                         Mask Selection
-                    </Link>
-                </Button>
+                    </Button>
+                </Link>
+                <Link to="/cart" className={classes.link}>
+                    <Button size="small" color="primary">
+                        Go To Cart
+                    </Button>
+                </Link>
+            </CardActions>
+            <CardActions className={classes.itemActions}>
                 <Button
-                    onClick={handleAddItem()}
                     variant="contained"
-                    size="small"
+                    onClick={handleAddItem()}
+                    size="medium"
                     color="primary"
+                    className={classes.addToCartButton}
                 >
                     Add To Cart
                 </Button>
