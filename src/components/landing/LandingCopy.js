@@ -156,7 +156,7 @@ function SelectionHero({ queryStyles }) {
                         style={textStyles.caption}
                         className={classes.caption}
                     >
-                        100+ Premium designs to keep yourself protected in
+                        100+ Premium designs to keep yourself protected with
                         style.
                     </Typography>
 

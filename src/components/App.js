@@ -12,29 +12,29 @@ const options = {
     autoConfig: true, // set pixel's autoConfig
     debug: false, // enable logs
 };
+/* const testOrder = [
+    {
+        type: 'Mask',
+        color: 'Black Test',
+        param: 'black',
+        price: 12.5,
+        img: 'Black.jpg',
+        size: 'L',
+        amount: '1',
+    },
+    {
+        type: 'Mask',
+        color: 'White Test',
+        param: 'white',
+        price: 12.5,
+        img: 'White.jpg',
+        size: 'M',
+        amount: '3',
+    },
+]; */
 
 const App = () => {
-    // const testOrder = [
-    //     {
-    //         type: 'Mask',
-    //         color: 'Black Test',
-    //         param: 'black',
-    //         price: 12.5,
-    //         img: 'Black.jpg',
-    //         size: 'L',
-    //         amount: '1',
-    //     },
-    //     {
-    //         type: 'Mask',
-    //         color: 'White Test',
-    //         param: 'white',
-    //         price: 12.5,
-    //         img: 'White.jpg',
-    //         size: 'M',
-    //         amount: '3',
-    //     },
-    // ];
-    const mode = 'production';
+    const mode = 'sandbox';
     const [orders, setOrders] = useState([]);
     const [amount, setAmount] = useState(0);
     const [snackbarOpen, setSnackbarOpen] = useState(

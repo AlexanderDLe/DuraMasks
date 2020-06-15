@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Checkbox from '@material-ui/core/Checkbox';
 import { Grid } from '@material-ui/core';
-import DesignCard from './DesignCard';
 import Button from '@material-ui/core/Button';
+// import DesignCard from './DesignCard';
+
+const DesignCard = lazy(() => import('./DesignCard'));
 
 const useStyles = makeStyles((theme) => ({
     category: {
@@ -49,7 +51,11 @@ export default ({ categoryName, categoryItems, filterState }) => {
             itemsToShow = category;
         }
         return itemsToShow.map((design, index) => {
-            return <DesignCard design={design} key={index} />;
+            return (
+                <Suspense fallback={<div />}>
+                    <DesignCard design={design} key={index} />
+                </Suspense>
+            );
         });
     };
 

@@ -68,7 +68,9 @@ function AppSnackbar({ snackbarOpen, onClose }) {
                     help reduce the likelihood of infection.
                 </p> */}
                 <p className={classes.text} style={textSize}>
-                    Sandbox Mode
+                    <strong>DEV MODE:</strong> PayPal Checkout is in Sandbox
+                    Mode. Facebook Pixel is not initialized. Data will not be
+                    logged to databases. Set mode to "production" before build.
                 </p>
                 <CloseOutlinedIcon
                     onClick={onClose}
