@@ -3,6 +3,7 @@ import '../styles/App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import ReactPixel from 'react-facebook-pixel';
 import Body from './Body';
+import keys from '../config/keys';
 
 const Navbar = lazy(() => import('./Navbar'));
 const Footer = lazy(() => import('./Footer'));
@@ -42,7 +43,7 @@ const App = () => {
     );
     useEffect(() => {
         if (mode === 'sandbox') return;
-        ReactPixel.init('562582894621208', options);
+        ReactPixel.init(keys.fbPixelID, options);
     }, []);
     const logReactPixelPurchase = (data) => {
         if (mode === 'sandbox') return;

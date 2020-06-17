@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     itemRightColumn: {
         marginTop: 'auto',
         marginBottom: 18,
+        textAlign: 'right',
     },
     designText: {
         padding: 9,
