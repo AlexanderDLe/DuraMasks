@@ -38,6 +38,7 @@ const App = () => {
     const mode = 'production';
     const [orders, setOrders] = useState([]);
     const [amount, setAmount] = useState(0);
+    const [usedDiscountButton, setUsedDiscountButton] = useState(false);
     const [snackbarOpen, setSnackbarOpen] = useState(
         mode === 'sandbox' ? true : false
     );
@@ -103,6 +104,8 @@ const App = () => {
                 resetOrders={resetOrders}
                 amount={amount}
                 logReactPixelPurchase={logReactPixelPurchase}
+                usedDiscountButton={usedDiscountButton}
+                setUsedDiscountButton={setUsedDiscountButton}
             />
             <Suspense fallback={<div />}>
                 <Snackbar

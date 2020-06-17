@@ -23,6 +23,8 @@ function Body(props) {
         amount,
         mode,
         logReactPixelPurchase,
+        usedDiscountButton,
+        setUsedDiscountButton,
     } = props;
 
     return (
@@ -52,6 +54,8 @@ function Body(props) {
                             resetOrders={resetOrders}
                             amount={amount}
                             logReactPixelPurchase={logReactPixelPurchase}
+                            usedDiscountButton={usedDiscountButton}
+                            setUsedDiscountButton={setUsedDiscountButton}
                         />
                     )}
                 />

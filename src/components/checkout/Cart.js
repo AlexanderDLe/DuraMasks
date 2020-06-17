@@ -128,6 +128,8 @@ const Cart = ({
     amount,
     mode,
     logReactPixelPurchase,
+    usedDiscountButton,
+    setUsedDiscountButton,
 }) => {
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -253,6 +255,8 @@ const Cart = ({
                     discount={discount}
                     discountField={discountField}
                     setDiscountField={setDiscountField}
+                    usedDiscountButton={usedDiscountButton}
+                    setUsedDiscountButton={setUsedDiscountButton}
                 />
             </CardContent>
             <CartModal modalOpen={modalOpen} setModalOpen={setModalOpen} />

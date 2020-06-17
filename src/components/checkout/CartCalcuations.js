@@ -57,6 +57,8 @@ export default ({
     discountCode,
     discountField,
     setDiscountField,
+    usedDiscountButton,
+    setUsedDiscountButton,
 }) => {
     const classes = useStyles();
 
@@ -124,13 +126,16 @@ export default ({
                     <CheckIcon className={classes.check} style={checkStyle} />
                 </div>
             </div>
-            {subtotal < 40 ? (
+            {subtotal < 40 || usedDiscountButton ? (
                 <Button
                     className={classes.discountButton}
                     variant="contained"
                     color="primary"
                     size="small"
-                    onClick={() => setDiscountField('15OFF')}
+                    onClick={() => {
+                        setDiscountField('15OFF');
+                        setUsedDiscountButton(true);
+                    }}
                 >
                     Apply Discount Code
                 </Button>
