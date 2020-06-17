@@ -12,13 +12,13 @@ const maskPrice = 12.5;
 const bestSellers = [
     {
         type: 'Mask',
-        color: 'Midnight',
-        img: 'Midnight.jpg',
-        param: 'midnight',
+        color: 'Black',
+        img: 'Black.jpg',
+        param: 'black',
         price: maskPrice,
-        category: 'floral',
+        category: 'solid',
         angled: true,
-        tags: ['black', 'yellow', 'white'],
+        tags: [],
     },
     {
         type: 'Mask',
@@ -128,6 +128,7 @@ export default ({ queryStyles }) => {
                         className={classes.button}
                         variant="contained"
                         color="primary"
+                        size="medium"
                     >
                         View Entire Selection
                     </Button>

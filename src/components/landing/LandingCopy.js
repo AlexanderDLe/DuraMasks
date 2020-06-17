@@ -166,6 +166,7 @@ function SelectionHero({ queryStyles }) {
                             className={classes.button}
                             style={textStyles.button}
                             color="primary"
+                            size="medium"
                         >
                             View Selection
                         </Button>

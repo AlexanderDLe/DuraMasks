@@ -29,12 +29,12 @@ const options = {
         price: 12.5,
         img: 'White.jpg',
         size: 'M',
-        amount: '3',
+        amount: '2',
     },
 ]; */
 
 const App = () => {
-    const mode = 'sandbox';
+    const mode = 'production';
     const [orders, setOrders] = useState([]);
     const [amount, setAmount] = useState(0);
     const [snackbarOpen, setSnackbarOpen] = useState(

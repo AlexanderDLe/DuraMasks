@@ -118,14 +118,11 @@ function FAQ() {
                 contact@cafacemasks.com.
             </p>
             <div className={classes.buttonDiv}>
-                <Button variant="contained" color="primary">
-                    <Link
-                        to="/selection"
-                        className={classes.viewSelectionButton}
-                    >
+                <Link to="/selection" className={classes.viewSelectionButton}>
+                    <Button variant="contained" color="primary" size="medium">
                         View Selection
-                    </Link>
-                </Button>
+                    </Button>
+                </Link>
             </div>
         </Card>
     );

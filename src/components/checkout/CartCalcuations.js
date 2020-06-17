@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
+import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import CheckIcon from '@material-ui/icons/Check';
 import MoneyOffIcon from '@material-ui/icons/MoneyOff';
@@ -35,9 +36,15 @@ const useStyles = makeStyles((theme) => ({
         transition: 'all .33s',
     },
     discountCaption: {
-        fontSize: '.7rem',
+        display: 'block',
+        fontSize: '.75rem',
         color: 'rgba(255,0,0,0)',
         transition: 'all .33s',
+    },
+    discountButton: {
+        marginTop: 8,
+        marginRight: 8,
+        marginBottom: 8,
     },
 }));
 
@@ -98,7 +105,9 @@ export default ({
                 <TextField
                     margin="none"
                     size="small"
-                    onChange={(e) => setDiscountField(e.target.value)}
+                    onChange={(e) =>
+                        setDiscountField(e.target.value.toUpperCase())
+                    }
                     label="Discount Code"
                     value={discountField}
                     className={classes.discountField}
@@ -115,6 +124,19 @@ export default ({
                     <CheckIcon className={classes.check} style={checkStyle} />
                 </div>
             </div>
+            {subtotal < 40 ? (
+                <Button
+                    className={classes.discountButton}
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                    onClick={() => setDiscountField('15OFF')}
+                >
+                    Apply Discount Code
+                </Button>
+            ) : (
+                ''
+            )}
             <span
                 className={classes.discountCaption}
                 style={discountCaptionStyle}

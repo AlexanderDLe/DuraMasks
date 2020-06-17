@@ -22,8 +22,6 @@ import MaskOrderForm from './MaskOrderForm';
 import ElasticOrderForm from './ElasticOrderForm';
 import { selection } from '../masks/MaskDesigns';
 
-import WhatshotIcon from '@material-ui/icons/Whatshot';
-
 const useStyles = makeStyles((theme) => ({
     root: {
         position: 'relative',
@@ -233,14 +231,6 @@ function Item({ match, addOrder }) {
             className={classes.root}
             elevation={3}
         >
-            {data.hot ? (
-                <div className={classes.bestseller}>
-                    <WhatshotIcon />
-                    <p>Hot</p>
-                </div>
-            ) : (
-                ''
-            )}
             <CardContent className={classes.title}>
                 <Typography
                     className={classes.title}

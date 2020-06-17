@@ -1,6 +1,27 @@
 const maskPrice = 12.5;
 
 export const archive = {
+    // midnight: {
+    //     type: 'Mask',
+    //     color: 'Midnight',
+    //     img: 'Midnight.jpg',
+    //     param: 'midnight',
+    //     price: maskPrice,
+    //     category: 'floral',
+    //     angled: true,
+    //     // hot: true,
+    //     tags: ['black', 'yellow', 'white'],
+    // },
+    // river: {
+    //     type: 'Mask',
+    //     color: 'River',
+    //     img: 'River.jpg',
+    //     param: 'river',
+    //     price: maskPrice,
+    //     category: 'hawaiian',
+    //     angled: true,
+    //     tags: ['green', 'brown'],
+    // },
     // beach: {
     //     type: 'Mask',
     //     color: 'Beach',

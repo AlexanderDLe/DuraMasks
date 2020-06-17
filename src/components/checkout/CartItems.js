@@ -59,6 +59,7 @@ export default ({ orders, removeOrder }) => {
                                 src={require(`../../img/SmallMaskPhotos/${order.img}`)}
                                 alt="Facemask"
                                 className={classes.designImage}
+                                style={{ marginLeft: -28 }}
                             />
                         </Link>
                         <div className={classes.designText}>
@@ -69,7 +70,7 @@ export default ({ orders, removeOrder }) => {
                                     to={`/item/${order.param}`}
                                 >
                                     {order.amount}x {order.color}{' '}
-                                    {order.type === 'Mask' ? 'Design' : ''}
+                                    {/* {order.type === 'Mask' ? 'Design' : ''} */}
                                 </Link>
                             </Typography>
                             <Typography variant="caption" component="h2">
