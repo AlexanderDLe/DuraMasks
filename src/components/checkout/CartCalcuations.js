@@ -137,7 +137,7 @@ export default ({
                         setUsedDiscountButton(true);
                     }}
                 >
-                    Apply Discount Code
+                    Apply Discount Code 15OFF
                 </Button>
             ) : (
                 ''

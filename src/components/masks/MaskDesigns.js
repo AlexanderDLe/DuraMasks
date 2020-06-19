@@ -522,6 +522,16 @@ export const selection = {
         angled: true,
         tags: ['colorful'],
     },
+    stripe: {
+        type: 'Mask',
+        color: 'Stripe',
+        img: 'Stripe.jpg',
+        param: 'stripe',
+        price: maskPrice,
+        category: 'pattern',
+        angled: true,
+        tags: ['colorful'],
+    },
     menace: {
         type: 'Mask',
         color: 'Menace',
@@ -635,6 +645,16 @@ export const selection = {
         angled: true,
         tags: ['blue'],
     },
+    adorable: {
+        type: 'Mask',
+        color: 'Adorable',
+        img: 'Adorable.jpg',
+        param: 'adorable',
+        price: maskPrice,
+        category: 'animal',
+        angled: true,
+        tags: ['blue', 'cats'],
+    },
     dawg: {
         type: 'Mask',
         color: 'Dawg',
@@ -684,6 +704,16 @@ export const selection = {
         category: 'animal',
         angled: true,
         tags: ['white', 'black'],
+    },
+    flight: {
+        type: 'Mask',
+        color: 'Flight',
+        img: 'Flight.jpg',
+        param: 'flight',
+        price: maskPrice,
+        category: 'animal',
+        angled: true,
+        tags: ['white', 'grey'],
     },
     boyscout: {
         type: 'Mask',
@@ -943,6 +973,16 @@ export const selection = {
     ////////////
     // FLORAL //
     ////////////,
+    royal: {
+        type: 'Mask',
+        color: 'Royal',
+        img: 'Royal.jpg',
+        param: 'royal',
+        price: maskPrice,
+        category: 'floral',
+        angled: true,
+        tags: ['black', 'gold', 'yellow'],
+    },
     bouquet: {
         type: 'Mask',
         color: 'Bouquet',
@@ -1085,16 +1125,15 @@ export const selection = {
 
         tags: [],
     },
-    rose: {
+    aroma: {
         type: 'Mask',
-        color: 'Rose',
-        img: 'Rose.jpg',
-        param: 'rose',
+        color: 'Aroma',
+        img: 'Aroma.jpg',
+        param: 'aroma',
         price: maskPrice,
         category: 'floral',
         angled: true,
-
-        tags: ['red'],
+        tags: ['red', 'yellow'],
     },
     floralburgundy: {
         type: 'Mask',
@@ -1145,8 +1184,17 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
-
         tags: ['pink', 'brown', 'burgundy'],
+    },
+    fairytale: {
+        type: 'Mask',
+        color: 'Fairytale',
+        img: 'Fairytale.jpg',
+        param: 'fairytale',
+        price: maskPrice,
+        category: 'floral',
+        angled: true,
+        tags: ['blue', 'pink'],
     },
     //////////////
     // MEMORIAL //
