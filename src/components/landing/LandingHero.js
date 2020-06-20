@@ -19,7 +19,6 @@ const useStyles = makeStyles({
         alignItems: 'center',
     },
 });
-
 function SelectionHero() {
     const navMediaQuery = useMediaQuery('(min-width:900px)');
     const navMediaQuery535 = useMediaQuery('(min-width:535px)');
@@ -34,12 +33,10 @@ function SelectionHero() {
     const landingImage = useMemo(() => {
         return navMediaQuery535
             ? {
-                  img1: require(`../../img/LandingPhotos/LandingPhoto_Desktop.jpg`),
-                  //   img2: require(`../../img/LandingPhotos/LandingTestPhoto4.jpg`),
+                  img1: require(`../../img/LandingPhotos/LandingPhoto.jpg`),
               }
             : {
-                  img1: require(`../../img/LandingPhotos/LandingPhoto_Phone.jpg`),
-                  //   img2: require(`../../img/LandingPhotos/LandingTestPhoto4_Phone.jpg`),
+                  img1: require(`../../img/LandingPhotos/LandingPhoto.jpg`),
               };
     }, [navMediaQuery535]);
 
@@ -48,7 +45,7 @@ function SelectionHero() {
             <Carousel.Item
                 style={{
                     minHeight: navMediaQuery ? '50vh' : 300,
-                    background: `url(${bg_img}) center / auto 100% no-repeat`,
+                    background: `#f2b51f url(${bg_img}) center / auto 100% no-repeat`,
                 }}
                 className={`carousel-item carousel-image-${index}`}
             ></Carousel.Item>

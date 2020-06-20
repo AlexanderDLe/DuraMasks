@@ -1,6 +1,16 @@
 const maskPrice = 12.5;
 
 export const archive = {
+    // bloom: {
+    //     type: 'Mask',
+    //     color: 'Bloom',
+    //     img: 'Bloom.jpg',
+    //     param: 'bloom',
+    //     price: maskPrice,
+    //     category: 'hawaiian',
+    //     angled: true,
+    //     tags: ['orange', 'yellow'],
+    // },
     // midnight: {
     //     type: 'Mask',
     //     color: 'Midnight',

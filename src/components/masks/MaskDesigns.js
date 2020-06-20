@@ -890,16 +890,6 @@ export const selection = {
         angled: true,
         tags: ['black'],
     },
-    bloom: {
-        type: 'Mask',
-        color: 'Bloom',
-        img: 'Bloom.jpg',
-        param: 'bloom',
-        price: maskPrice,
-        category: 'hawaiian',
-        angled: true,
-        tags: ['orange', 'yellow'],
-    },
     canopy: {
         type: 'Mask',
         color: 'Canopy',

@@ -46,10 +46,8 @@ const useStyles = makeStyles({
 });
 
 function SelectionHero({ queryStyles }) {
-    const navMediaQuery980 = useMediaQuery('(min-width:980px)');
+    const navMediaQuery900 = useMediaQuery('(min-width:900px)');
     const navMediaQuery535 = useMediaQuery('(min-width:535px)');
-    const navMediaQuery420 = useMediaQuery('(min-width:420px)');
-    const navMediaQuery370 = useMediaQuery('(min-width:370px)');
     const navMediaQuery340 = useMediaQuery('(min-width:340px)');
     const classes = useStyles();
 
@@ -60,7 +58,7 @@ function SelectionHero({ queryStyles }) {
     }, [navMediaQuery535]);
 
     const textStyles = useMemo(() => {
-        return navMediaQuery980
+        return navMediaQuery900
             ? {
                   header: {
                       fontSize: '2rem',
@@ -72,27 +70,7 @@ function SelectionHero({ queryStyles }) {
             : navMediaQuery535
             ? {
                   header: {
-                      fontSize: '1.8rem',
-                  },
-                  caption: {
-                      fontSize: '1rem',
-                  },
-              }
-            : navMediaQuery420
-            ? {
-                  header: {
-                      fontSize: '1.4rem',
-                      fontWeight: 500,
-                  },
-                  caption: {
-                      fontSize: '1rem',
-                  },
-              }
-            : navMediaQuery370
-            ? {
-                  header: {
-                      fontSize: '1.235rem',
-                      fontWeight: 500,
+                      fontSize: '1.6rem',
                   },
                   caption: {
                       fontSize: '1rem',
@@ -101,8 +79,8 @@ function SelectionHero({ queryStyles }) {
             : navMediaQuery340
             ? {
                   header: {
-                      fontSize: '1.12rem',
-                      fontWeight: 600,
+                      fontSize: '1.6rem',
+                      fontWeight: 500,
                   },
                   caption: {
                       fontSize: '1rem',
@@ -110,20 +88,14 @@ function SelectionHero({ queryStyles }) {
               }
             : {
                   header: {
-                      fontSize: '1rem',
+                      fontSize: '1.45rem',
                       fontWeight: 600,
                   },
                   caption: {
                       fontSize: '1rem',
                   },
               };
-    }, [
-        navMediaQuery340,
-        navMediaQuery370,
-        navMediaQuery420,
-        navMediaQuery535,
-        navMediaQuery980,
-    ]);
+    }, [navMediaQuery340, navMediaQuery535, navMediaQuery900]);
 
     return (
         <div className={classes.root}>
@@ -146,7 +118,7 @@ function SelectionHero({ queryStyles }) {
                         className={classes.header}
                         style={textStyles.header}
                     >
-                        Reusable. Multilayered. Comfortable.
+                        Look Good. Be Protected.
                     </Typography>
                     <Typography
                         variant="caption"
