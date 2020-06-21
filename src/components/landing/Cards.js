@@ -76,8 +76,11 @@ function Cards() {
             ),
             reusable: (
                 <Typography className={classes.cardText} color="textSecondary">
-                    They are <strong>completely washable</strong>. We highly
-                    recommend hand-washing with soap then hanging to air dry.
+                    Each contain{' '}
+                    <strong>
+                        adjustable elastic ear bands and a metal nose clip
+                    </strong>{' '}
+                    so you can adjust for a comfortable fit.
                 </Typography>
             ),
             comfortable: (
@@ -129,7 +132,7 @@ function Cards() {
                         'Multi-layered',
                         cardText.multilayered
                     )}
-                    {renderCard(ReusableWhite, 'Reusable', cardText.reusable)}
+                    {renderCard(ReusableWhite, 'Adjustable', cardText.reusable)}
                     {renderCard(
                         ComfortWhite,
                         'Comfortable',

@@ -88,7 +88,7 @@ function SelectionHero({ queryStyles }) {
               }
             : {
                   header: {
-                      fontSize: '1.45rem',
+                      fontSize: '1.42rem',
                       fontWeight: 600,
                   },
                   caption: {
