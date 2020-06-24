@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     root: {
         marginTop: 60,
         width: '100%',
-        maxWidth: 350,
+        maxWidth: 400,
         borderBottom: '2px solid #3f51b5',
     },
     header: {
@@ -24,6 +24,11 @@ const useStyles = makeStyles({
     statItem: {
         display: 'flex',
         justifyContent: 'space-between',
+    },
+    button: {
+        borderWidth: '2px',
+        width: '33.3%',
+        border: 'none !important',
     },
 });
 
@@ -342,28 +347,18 @@ const Stats = () => {
                 {renderItem({ Color: 'Total', Total: total })}
             </CardContent>
             <Link to="/stats">
-                <Button
-                    color="primary"
-                    style={{
-                        borderTopLeftRadius: '0',
-                        width: '50%',
-                        border: 'none !important',
-                    }}
-                >
+                <Button color="primary" className={classes.button}>
                     Total
                 </Button>
             </Link>
             <Link to="/daily">
-                <Button
-                    color="primary"
-                    style={{
-                        borderWidth: '2px',
-                        borderTopRightRadius: '0',
-                        width: '50%',
-                        border: 'none !important',
-                    }}
-                >
+                <Button color="primary" className={classes.button}>
                     Daily
+                </Button>
+            </Link>
+            <Link to="/todo">
+                <Button color="primary" className={classes.button}>
+                    Todo
                 </Button>
             </Link>
         </Card>

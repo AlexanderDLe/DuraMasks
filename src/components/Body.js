@@ -11,6 +11,7 @@ import CustomItem from './order/CustomItem';
 import Pricing from './pricing/Pricing';
 import Stats from './stats/Stats';
 import Daily from './stats/Daily';
+import Todo from './stats/Todo';
 import Policies from './misc/Policies';
 import FAQ from './misc/FAQ';
 
@@ -35,6 +36,7 @@ function Body(props) {
                 <Route exact path="/selection" component={Selection} />
                 <Route exact path="/stats" component={Stats} />
                 <Route exact path="/daily" component={Daily} />
+                <Route exact path="/todo" component={Todo} />
                 <Route
                     exact
                     path="/item/:id"

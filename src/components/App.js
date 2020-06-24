@@ -35,7 +35,7 @@ const options = {
 ]; */
 
 const App = () => {
-    const mode = 'sandbox';
+    const mode = 'production';
     const [orders, setOrders] = useState([]);
     const [amount, setAmount] = useState(0);
     const [usedDiscountButton, setUsedDiscountButton] = useState(false);
@@ -44,7 +44,7 @@ const App = () => {
     );
     useEffect(() => {
         if (mode === 'sandbox') return;
-        ReactPixel.init(keys.fbPixelID, options);
+        ReactPixel.init(keys.pixelID, options);
     }, []);
     const logReactPixelPurchase = (data) => {
         if (mode === 'sandbox') return;

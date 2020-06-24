@@ -70,8 +70,8 @@ function Cards() {
             multilayered: (
                 <Typography className={classes.cardText} color="textSecondary">
                     Composed of <strong>4 layers</strong> of tightly-woven
-                    cotton and polyester tri-blend filters. We prioritize safety
-                    and health.
+                    cotton and polyester/rayon-blend filters. We prioritize
+                    safety and health.
                 </Typography>
             ),
             reusable: (

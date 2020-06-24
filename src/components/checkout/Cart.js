@@ -16,6 +16,7 @@ import CartCalculations from './CartCalcuations';
 import CartModal from './CartModal';
 
 import axios from 'axios';
+import createTrelloDescription from './createTrelloDescription';
 const API = keys.emailConfirmationAPI;
 const trelloAPI = keys.trelloAPI;
 const header = {
@@ -200,6 +201,9 @@ const Cart = ({
             name: cardName,
             pos: 'bottom',
             idLabels: setTrelloLabel(),
+            idCardSource: '5ef183a95443f525b947c506',
+            keepFromSource: 'checklists',
+            desc: createTrelloDescription(event),
         };
         console.log(newCard);
 
