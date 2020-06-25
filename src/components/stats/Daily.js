@@ -120,6 +120,7 @@ const Stats = () => {
                         // date: '2020-05-24',
                     },
                 });
+                console.log(response.data);
                 setDailyTotal(response.data.total ? response.data.total : 0);
                 setData(response.data.payload ? response.data.payload : []);
                 setTotals(calculateTotals(response.data.payload));
