@@ -185,18 +185,8 @@ function Selection() {
         return (
             <React.Fragment>
                 <RenderCategory
-                    categoryName={'Solid'}
-                    categoryItems={solid}
-                    filterState={filter}
-                />
-                <RenderCategory
                     categoryName={'Bandana'}
                     categoryItems={bandana}
-                    filterState={filter}
-                />
-                <RenderCategory
-                    categoryName={'Animal'}
-                    categoryItems={animal}
                     filterState={filter}
                 />
                 <RenderCategory
@@ -205,8 +195,18 @@ function Selection() {
                     filterState={filter}
                 />
                 <RenderCategory
+                    categoryName={'Animal'}
+                    categoryItems={animal}
+                    filterState={filter}
+                />
+                <RenderCategory
                     categoryName={'Pattern'}
                     categoryItems={pattern}
+                    filterState={filter}
+                />
+                <RenderCategory
+                    categoryName={'Solid'}
+                    categoryItems={solid}
                     filterState={filter}
                 />
                 <RenderCategory

@@ -32,6 +32,16 @@ const bestSellers = [
     },
     {
         type: 'Mask',
+        color: 'Elegant',
+        img: 'Elegant.jpg',
+        param: 'elegant',
+        price: maskPrice,
+        category: 'floral',
+        angled: true,
+        tags: ['black', 'gold', 'yellow'],
+    },
+    {
+        type: 'Mask',
         color: 'White Bandana',
         img: 'WhiteBandana.jpg',
         param: 'whitebandana',
@@ -69,16 +79,6 @@ const bestSellers = [
         category: 'pattern',
         angled: true,
         tags: ['blue'],
-    },
-    {
-        type: 'Mask',
-        color: 'Navy Blue',
-        img: 'NavyBlue.jpg',
-        param: 'navyblue',
-        price: maskPrice,
-        category: 'solid',
-        angled: true,
-        tags: [],
     },
     {
         type: 'Mask',

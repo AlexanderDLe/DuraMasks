@@ -69,11 +69,11 @@ function SelectionFilter({ filter, setFilter }) {
         return (
             <div className={classes.fullContainer}>
                 {renderFilterItem('All')}
-                {renderFilterItem('Solid')}
                 {renderFilterItem('Bandana')}
-                {renderFilterItem('Animal')}
                 {renderFilterItem('Floral')}
+                {renderFilterItem('Animal')}
                 {renderFilterItem('Pattern')}
+                {renderFilterItem('Solid')}
                 {renderFilterItem('Hawaiian')}
                 {renderFilterItem('Patriot')}
                 {renderFilterItem('Custom')}
