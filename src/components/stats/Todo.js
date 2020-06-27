@@ -13,11 +13,13 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Modal from '@material-ui/core/Modal';
 
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import TodoNum from './TodoNum';
+import TodoAdd from './TodoAdd';
+import TodoRow from './TodoRow';
 
 const useStyles = makeStyles({
     root: {
@@ -43,6 +45,25 @@ const useStyles = makeStyles({
         borderWidth: '2px',
         width: '33.3%',
         border: 'none !important',
+    },
+    modal: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '100%',
+        maxWidth: '1080px',
+        backgroundColor: 'white',
+        border: '2px solid #000',
+    },
+    innerModal: {
+        position: 'relative',
+        padding: 0,
+        margin: 0,
+    },
+    modalTitle: {
+        textAlign: 'center',
+        paddingBottom: 16,
     },
 });
 
@@ -71,10 +92,45 @@ const calculateTotals = (data) => {
     return totals;
 };
 
-const Stats = () => {
+export default () => {
     let [totals, setTotals] = useState({});
     let [data, setData] = useState([]);
     let [loading, setLoading] = useState(true);
+    let [modalOpen, setModalOpen] = useState(false);
+    let [modalImage, setModalImage] = useState('Black');
+
+    // Modal Stuff
+    const handleModalOpen = (design) => {
+        setModalImage(design);
+        setModalOpen(true);
+    };
+    const handleModalClose = () => {
+        setModalOpen(false);
+    };
+    const renderModalContent = () => {
+        const IMGFilename = modalImage.split(' ').join('');
+        return (
+            <div className={classes.modal}>
+                <div className={classes.innerModal}>
+                    <img
+                        src={require(`../../img/PostMaskPhotos/${IMGFilename}.jpg`)}
+                        alt="Mask"
+                        onClick={handleModalClose}
+                        style={{ width: '100%', padding: 0 }}
+                    />
+                    <Typography
+                        className={classes.modalTitle}
+                        variant="h4"
+                        component="h2"
+                    >
+                        {modalImage}
+                    </Typography>
+                </div>
+            </div>
+        );
+    };
+
+    console.log(data);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -96,7 +152,7 @@ const Stats = () => {
     }, []);
     const classes = useStyles();
 
-    const updateData = async (color, size, amount, action) => {
+    const updateNum = async (color, size, amount, action) => {
         let newData = data;
         if (action === 'add') {
             newData[color][size] += amount;
@@ -105,20 +161,56 @@ const Stats = () => {
             if (newData[color][size] - amount < 0) return;
             newData[color][size] -= amount;
             newData[color]['Total'] -= amount;
+            if (newData[color]['Total'] === 0) {
+                delete newData[color];
+            }
         }
         try {
             const event = {
                 color,
-                size,
-                amount,
-                action,
+                data: [
+                    {
+                        size,
+                        amount,
+                        action,
+                    },
+                ],
             };
             await axios.post(API, event, header);
+            setData(newData);
+            setTotals(calculateTotals(newData));
         } catch (error) {
             console.log(error);
         }
-        setData(newData);
-        setTotals(calculateTotals(newData));
+    };
+    const addItem = async (design, XL, L, M, S, XS, Total) => {
+        const addAction = (size, amount) => {
+            return {
+                size: size,
+                action: 'add',
+                amount: amount,
+            };
+        };
+        let newData = {
+            [design]: { Color: design, XL, L, M, S, XS, Total },
+            ...data,
+        };
+        let event = {
+            color: design,
+            data: [],
+        };
+        if (XL > 0) event.data.push(addAction('XL', XL));
+        if (L > 0) event.data.push(addAction('L', L));
+        if (M > 0) event.data.push(addAction('M', M));
+        if (S > 0) event.data.push(addAction('S', S));
+        if (XS > 0) event.data.push(addAction('XS', XS));
+        try {
+            await axios.post(API, event, header);
+            setData(newData);
+            setTotals(calculateTotals(newData));
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const renderTable = () => {
@@ -137,49 +229,17 @@ const Stats = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
+                        <TodoAdd addItem={addItem} />
                         {Object.keys(data).map((row) => {
                             if (data[row].Total === 0)
                                 return <TableRow key={data[row].Color} />;
                             return (
-                                <TableRow key={data[row].Color}>
-                                    <TableCell component="th" scope="row">
-                                        {data[row].Color}
-                                    </TableCell>
-                                    <TodoNum
-                                        updateData={updateData}
-                                        color={data[row].Color}
-                                        size="XL"
-                                        value={data[row].XL}
-                                    />
-                                    <TodoNum
-                                        updateData={updateData}
-                                        color={data[row].Color}
-                                        size="L"
-                                        value={data[row].L}
-                                    />
-                                    <TodoNum
-                                        updateData={updateData}
-                                        color={data[row].Color}
-                                        size="M"
-                                        value={data[row].M}
-                                    />
-                                    <TodoNum
-                                        updateData={updateData}
-                                        color={data[row].Color}
-                                        size="S"
-                                        value={data[row].S}
-                                    />
-                                    <TodoNum
-                                        updateData={updateData}
-                                        color={data[row].Color}
-                                        size="XS"
-                                        value={data[row].XS}
-                                    />
-
-                                    <TableCell align="center">
-                                        {data[row].Total}
-                                    </TableCell>
-                                </TableRow>
+                                <TodoRow
+                                    updateNum={updateNum}
+                                    data={data}
+                                    row={row}
+                                    handleModalOpen={handleModalOpen}
+                                />
                             );
                         })}
                         <TableRow>
@@ -209,7 +269,7 @@ const Stats = () => {
                     variant="h4"
                     component="h2"
                 >
-                    To Do (Under Construction)
+                    To Do
                 </Typography>
             </CardContent>
             {loading ? (
@@ -219,6 +279,7 @@ const Stats = () => {
             ) : (
                 renderTable()
             )}
+
             <Link to="/stats">
                 <Button color="primary" className={classes.button}>
                     Total
@@ -234,8 +295,14 @@ const Stats = () => {
                     Todo
                 </Button>
             </Link>
+            <Modal
+                open={modalOpen}
+                onClose={handleModalClose}
+                aria-labelledby="Mask Image"
+                aria-describedby="Modal to pop up facemask image."
+            >
+                {renderModalContent()}
+            </Modal>
         </Card>
     );
 };
-
-export default Stats;

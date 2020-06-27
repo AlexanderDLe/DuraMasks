@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     },
 });
 
-function TodoNum({ color, size, value, updateData }) {
+function TodoNum({ color, size, value, updateNum }) {
     const classes = useStyles();
 
     const [hovered, setHovered] = useState(false);
@@ -41,10 +41,10 @@ function TodoNum({ color, size, value, updateData }) {
     }, [hovered]);
 
     const handleRemoveButton = () => {
-        updateData(color, size, 1, 'remove');
+        updateNum(color, size, 1, 'remove');
     };
     const handleAddButton = () => {
-        updateData(color, size, 1, 'add');
+        updateNum(color, size, 1, 'add');
     };
 
     return (

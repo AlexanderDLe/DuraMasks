@@ -194,6 +194,16 @@ export const archive = {
     //     hot: false,
     //     tags: ['pink', 'orange', 'red'],
     // },
+    // swirl: {
+    //     type: 'Mask',
+    //     color: 'Swirl',
+    //     img: 'Swirl.jpg',
+    //     param: 'swirl',
+    //     price: maskPrice,
+    //     category: 'pattern',
+    //     angled: true,
+    //     tags: ['black'],
+    // },
     // royal: {
     //     type: 'Mask',
     //     color: 'Royal',

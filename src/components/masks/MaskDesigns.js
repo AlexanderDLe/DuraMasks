@@ -421,16 +421,6 @@ export const selection = {
         angled: true,
         tags: ['pink', 'yellow', 'bees'],
     },
-    swirl: {
-        type: 'Mask',
-        color: 'Swirl',
-        img: 'Swirl.jpg',
-        param: 'swirl',
-        price: maskPrice,
-        category: 'pattern',
-        angled: true,
-        tags: ['black'],
-    },
     skulls: {
         type: 'Mask',
         color: 'Skulls',
