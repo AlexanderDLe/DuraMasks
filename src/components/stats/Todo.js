@@ -21,6 +21,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import TodoAdd from './TodoAdd';
 import TodoRow from './TodoRow';
 
+import FallbackImage from '../../img/Logo.jpg';
+
 const useStyles = makeStyles({
     root: {
         marginTop: 60,
@@ -109,11 +111,21 @@ export default () => {
     };
     const renderModalContent = () => {
         const IMGFilename = modalImage.split(' ').join('');
+        let src;
+        try {
+            src = require(`../../img/PostMaskPhotos/${IMGFilename}.jpg`);
+        } catch (error) {
+            src = FallbackImage;
+        }
         return (
             <div className={classes.modal}>
                 <div className={classes.innerModal}>
                     <img
-                        src={require(`../../img/PostMaskPhotos/${IMGFilename}.jpg`)}
+                        src={src}
+                        onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = FallbackImage;
+                        }}
                         alt="Mask"
                         onClick={handleModalClose}
                         style={{ width: '100%', padding: 0 }}
@@ -176,9 +188,9 @@ export default () => {
                     },
                 ],
             };
-            await axios.post(API, event, header);
             setData(newData);
             setTotals(calculateTotals(newData));
+            await axios.post(API, event, header);
         } catch (error) {
             console.log(error);
         }
@@ -191,10 +203,18 @@ export default () => {
                 amount: amount,
             };
         };
-        let newData = {
-            [design]: { Color: design, XL, L, M, S, XS, Total },
-            ...data,
-        };
+        // If data already exists, add to object, otherwise create new
+        let newData = { ...data };
+        if (newData[design]) {
+            newData[design].XL += XL;
+            newData[design].L += L;
+            newData[design].M += M;
+            newData[design].S += S;
+            newData[design].XS += XS;
+            newData[design].Total += Total;
+        } else {
+            newData[design] = { Color: design, XL, L, M, S, XS, Total };
+        }
         let event = {
             color: design,
             data: [],
@@ -205,14 +225,41 @@ export default () => {
         if (S > 0) event.data.push(addAction('S', S));
         if (XS > 0) event.data.push(addAction('XS', XS));
         try {
-            await axios.post(API, event, header);
             setData(newData);
             setTotals(calculateTotals(newData));
+            await axios.post(API, event, header);
         } catch (error) {
             console.log(error);
         }
     };
+    const removeItem = async (design, XL, L, M, S, XS, Total) => {
+        const removeAction = (size, amount) => {
+            return {
+                size: size,
+                action: 'remove',
+                amount: amount,
+            };
+        };
+        let newData = data;
 
+        let event = {
+            color: design,
+            data: [],
+        };
+        if (XL > 0) event.data.push(removeAction('XL', XL));
+        if (L > 0) event.data.push(removeAction('L', L));
+        if (M > 0) event.data.push(removeAction('M', M));
+        if (S > 0) event.data.push(removeAction('S', S));
+        if (XS > 0) event.data.push(removeAction('XS', XS));
+        try {
+            delete newData[design];
+            setData(newData);
+            setTotals(calculateTotals(newData));
+            await axios.post(API, event, header);
+        } catch (error) {
+            console.log(error);
+        }
+    };
     const renderTable = () => {
         return (
             <TableContainer>
@@ -226,19 +273,27 @@ export default () => {
                             <TableCell align="center">S</TableCell>
                             <TableCell align="center">XS</TableCell>
                             <TableCell align="center">Total</TableCell>
+                            <TableCell align="center">Actions</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         <TodoAdd addItem={addItem} />
-                        {Object.keys(data).map((row) => {
+                        {Object.keys(data).map((row, index) => {
                             if (data[row].Total === 0)
-                                return <TableRow key={data[row].Color} />;
+                                return <TableRow key={index} />;
                             return (
                                 <TodoRow
+                                    key={index}
                                     updateNum={updateNum}
                                     data={data}
                                     row={row}
                                     handleModalOpen={handleModalOpen}
+                                    removeItem={removeItem}
+                                    rowBGColor={
+                                        index % 2 === 1
+                                            ? '#fff'
+                                            : 'rgb(245,245,245)'
+                                    }
                                 />
                             );
                         })}
@@ -254,6 +309,7 @@ export default () => {
                             <TableCell align="center">
                                 <strong>{totals.all}</strong>
                             </TableCell>
+                            <TableCell align="center"></TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>

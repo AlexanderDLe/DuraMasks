@@ -18,7 +18,6 @@ const useStyles = makeStyles({
         paddingLeft: 8,
         paddingRight: 8,
         color: 'rgba(0, 0, 0, 0.87) !important',
-        opacity: '1 !important',
     },
 });
 

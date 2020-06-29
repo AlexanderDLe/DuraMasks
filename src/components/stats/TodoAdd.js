@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import TextField from '@material-ui/core/TextField';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 
-import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 
 const useStyles = makeStyles({
@@ -19,14 +18,11 @@ const useStyles = makeStyles({
     addNum: {
         width: 50,
         paddingBottom: 8,
+        marginTop: 6,
     },
-    row: {
-        position: 'relative',
-    },
-    fab: {
-        position: 'absolute',
-        color: 'white',
-        marginTop: 8,
+    icon: {
+        fontSize: '1.75rem',
+        cursor: 'pointer',
     },
 });
 
@@ -38,6 +34,8 @@ export default ({ addItem }) => {
     const [M, setM] = useState(0);
     const [S, setS] = useState(0);
     const [XS, setXS] = useState(0);
+    const [mouseHover, setMouseHover] = useState(false);
+
     const total =
         parseInt(XL) + parseInt(L) + parseInt(M) + parseInt(S) + parseInt(XS);
 
@@ -59,13 +57,35 @@ export default ({ addItem }) => {
         }
     };
 
+    const handleEnterPressed = (event) => {
+        if (event.key === 'Enter') handleAddItem();
+    };
+
     const processNum = (num) => {
         return Math.ceil(Math.abs(num));
     };
 
+    const hoverStyles = useMemo(() => {
+        return {
+            row: {
+                backgroundColor: mouseHover ? '#e8f0ff' : 'white',
+                transition: 'all .3s',
+            },
+            add: {
+                color: mouseHover ? 'green' : 'rgba(0,0,0,.5)',
+                transition: 'all .3s',
+            },
+        };
+    }, [mouseHover]);
+
     const renderCell = (callback, size) => {
         return (
-            <TableCell className={classes.cell} align="center" scope="row">
+            <TableCell
+                onKeyPress={handleEnterPressed}
+                className={classes.cell}
+                align="center"
+                scope="row"
+            >
                 <TextField
                     onChange={callback}
                     value={size ? size : ''}
@@ -78,7 +98,13 @@ export default ({ addItem }) => {
     };
 
     return (
-        <TableRow className={classes.row}>
+        <TableRow
+            onMouseEnter={() => setMouseHover(true)}
+            onMouseLeave={() => setMouseHover(false)}
+            onKeyPress={handleEnterPressed}
+            className={classes.row}
+            style={hoverStyles.row}
+        >
             <TableCell className={classes.cell} scope="row">
                 <TextField
                     onChange={(e) => setDesign(e.target.value)}
@@ -94,17 +120,13 @@ export default ({ addItem }) => {
             <TableCell className={classes.cell} align="center" scope="row">
                 {total}
             </TableCell>
-            <td className={classes.fab}>
-                <Fab
-                    color="primary"
-                    variant="extended"
-                    size="medium"
-                    aria-label="add"
+            <TableCell align="center">
+                <AddIcon
+                    className={classes.icon}
                     onClick={handleAddItem}
-                >
-                    <AddIcon /> Add
-                </Fab>
-            </td>
+                    style={hoverStyles.add}
+                />
+            </TableCell>
         </TableRow>
     );
 };

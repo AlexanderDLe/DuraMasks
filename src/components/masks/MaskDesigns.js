@@ -321,16 +321,6 @@ export const selection = {
         angled: true,
         tags: ['red'],
     },
-    polk: {
-        type: 'Mask',
-        color: 'Polk',
-        img: 'Polk.jpg',
-        param: 'polk',
-        price: maskPrice,
-        category: 'pattern',
-        angled: true,
-        tags: ['white', 'brown', 'orange'],
-    },
     camouflage: {
         type: 'Mask',
         color: 'Camouflage',
@@ -1367,17 +1357,6 @@ export const selection = {
         category: 'floral',
         angled: true,
         tags: ['white', 'green'],
-    },
-    vines: {
-        type: 'Mask',
-        color: 'Vines',
-        img: 'Vines.jpg',
-        param: 'vines',
-        price: maskPrice,
-        category: 'floral',
-        angled: true,
-
-        tags: ['green'],
     },
     celeste: {
         type: 'Mask',
