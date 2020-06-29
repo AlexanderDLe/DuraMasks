@@ -928,16 +928,6 @@ export const selection = {
         angled: true,
         tags: ['bird', 'colorful'],
     },
-    owl: {
-        type: 'Mask',
-        color: 'Owl',
-        img: 'Owl.jpg',
-        param: 'owl',
-        price: maskPrice,
-        category: 'animal',
-        angled: true,
-        tags: ['brown'],
-    },
     llama: {
         type: 'Mask',
         color: 'Llama',
@@ -1122,7 +1112,6 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
-        XLUnavailable: true,
         tags: ['black', 'red'],
     },
     floralblue: {
@@ -1217,15 +1206,15 @@ export const selection = {
         angled: true,
         tags: [],
     },
-    fluorescent: {
+    bouquet: {
         type: 'Mask',
-        color: 'Fluorescent',
-        img: 'Fluorescent.jpg',
-        param: 'fluorescent',
+        color: 'Bouquet',
+        img: 'Bouquet.jpg',
+        param: 'bouquet',
         price: maskPrice,
         category: 'floral',
         angled: true,
-        tags: ['blue', 'pink', 'purple'],
+        tags: ['black', 'purple'],
     },
     sapphire: {
         type: 'Mask',

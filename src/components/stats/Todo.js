@@ -142,14 +142,12 @@ export default () => {
         );
     };
 
-    console.log(data);
-
     useEffect(() => {
         window.scrollTo(0, 0);
         async function fetchData() {
             try {
                 const response = await axios.get(API);
-                console.log(response);
+                // console.log(response);
                 setData(response.data ? response.data : []);
                 setTotals(calculateTotals(response.data));
                 setLoading(false);
@@ -225,6 +223,7 @@ export default () => {
         if (S > 0) event.data.push(addAction('S', S));
         if (XS > 0) event.data.push(addAction('XS', XS));
         try {
+            console.log('Item added');
             setData(newData);
             setTotals(calculateTotals(newData));
             await axios.post(API, event, header);

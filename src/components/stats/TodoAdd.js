@@ -4,8 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import AddIcon from '@material-ui/icons/Add';
+import { selection } from '../masks/MaskDesigns';
 
 const useStyles = makeStyles({
     cell: {
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
         paddingTop: 8,
     },
     addDesign: {
-        width: 150,
+        width: 160,
     },
     addNum: {
         width: 50,
@@ -35,6 +36,12 @@ export default ({ addItem }) => {
     const [S, setS] = useState(0);
     const [XS, setXS] = useState(0);
     const [mouseHover, setMouseHover] = useState(false);
+
+    const autocompleteOptions = useMemo(() => {
+        return Object.keys(selection).map((item) => {
+            return selection[item].color;
+        });
+    }, []);
 
     const total =
         parseInt(XL) + parseInt(L) + parseInt(M) + parseInt(S) + parseInt(XS);
@@ -97,20 +104,31 @@ export default ({ addItem }) => {
         );
     };
 
+    console.log(design);
+
     return (
         <TableRow
             onMouseEnter={() => setMouseHover(true)}
             onMouseLeave={() => setMouseHover(false)}
-            onKeyPress={handleEnterPressed}
             className={classes.row}
             style={hoverStyles.row}
         >
             <TableCell className={classes.cell} scope="row">
-                <TextField
-                    onChange={(e) => setDesign(e.target.value)}
-                    className={classes.addDesign}
-                    value={design}
+                <Autocomplete
+                    freeSolo
+                    options={autocompleteOptions}
+                    renderInput={(params) => (
+                        <TextField
+                            onKeyPress={handleEnterPressed}
+                            {...params}
+                            onChange={(e) => setDesign(e.target.value)}
+                            className={classes.addDesign}
+                            value={design}
+                        />
+                    )}
                 />
+                {/* <TextField
+                /> */}
             </TableCell>
             {renderCell((e) => setXL(processNum(e.target.value) | 0), XL)}
             {renderCell((e) => setL(processNum(e.target.value) | 0), L)}

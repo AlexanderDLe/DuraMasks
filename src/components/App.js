@@ -35,7 +35,7 @@ const options = {
 ]; */
 
 const App = () => {
-    const mode = 'production';
+    const mode = 'sandbox';
     const [orders, setOrders] = useState([]);
     const [amount, setAmount] = useState(0);
     const [usedDiscountButton, setUsedDiscountButton] = useState(false);
