@@ -1,17 +1,19 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-
 import Landing from './landing/Landing';
-// import Redirect from './landing/Redirect';
 import Selection from './order/Selection';
 import Item from './item/Item';
 import Cart from './checkout/Cart';
 import Success from './checkout/Success';
 import CustomItem from './order/CustomItem';
 import Pricing from './pricing/Pricing';
-import Stats from './stats/Stats';
-import Daily from './stats/Daily';
-import Todo from './stats/Todo';
+import Admin from './admin/Admin';
+import Total from './admin/Total';
+import Daily from './admin/Daily';
+import Wholesale from './admin/Wholesale';
+import CreateWholesaleOrder from './admin/wholesale/CreateWholesaleOrder';
+import WholesaleOrder from './admin/wholesale/WholesaleOrder';
+import Todo from './admin/Todo';
 import Policies from './misc/Policies';
 import FAQ from './misc/FAQ';
 
@@ -31,12 +33,24 @@ function Body(props) {
     return (
         <main className="body-class">
             <Switch>
-                {/* <Route exact path="/" component={Redirect} /> */}
                 <Route exact path="/" component={Landing} />
-                <Route exact path="/selection" component={Selection} />
-                <Route exact path="/stats" component={Stats} />
+                <Route exact path="/admin" component={Admin} />
                 <Route exact path="/daily" component={Daily} />
+                <Route exact path="/selection" component={Selection} />
+                <Route exact path="/total" component={Total} />
                 <Route exact path="/todo" component={Todo} />
+                <Route exact path="/wholesale" component={Wholesale} />
+                <Route
+                    exact
+                    path="/wholesale/create"
+                    component={CreateWholesaleOrder}
+                />
+                <Route exact path="/wholesale/:id" component={WholesaleOrder} />
+                {/* <Route
+                    exact
+                    path="/wholesale/:id"
+                    render={(props) => <WholesaleOrder {...props} />}
+                /> */}
                 <Route
                     exact
                     path="/item/:id"

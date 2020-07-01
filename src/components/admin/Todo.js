@@ -18,10 +18,11 @@ import Modal from '@material-ui/core/Modal';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import TodoAdd from './TodoAdd';
-import TodoRow from './TodoRow';
+import AddItem from './reusables/AddItem';
+import ItemRow from './reusables/ItemRow';
 
 import FallbackImage from '../../img/Logo.jpg';
+import BackToAdmin from './reusables/BackToAdmin';
 
 const useStyles = makeStyles({
     root: {
@@ -39,14 +40,14 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'space-between',
     },
-    dailyHeader: {
+    todoHeader: {
         display: 'flex',
         justifyContent: 'space-between',
     },
     button: {
         borderWidth: '2px',
-        width: '33.3%',
         border: 'none !important',
+        padding: 16,
     },
     modal: {
         position: 'absolute',
@@ -96,11 +97,12 @@ const calculateTotals = (data) => {
 
 export default () => {
     let [totals, setTotals] = useState({});
-    let [data, setData] = useState([]);
+    let [data, setData] = useState({});
     let [loading, setLoading] = useState(true);
     let [modalOpen, setModalOpen] = useState(false);
     let [modalImage, setModalImage] = useState('Black');
 
+    console.log(data);
     // Modal Stuff
     const handleModalOpen = (design) => {
         setModalImage(design);
@@ -217,11 +219,13 @@ export default () => {
             color: design,
             data: [],
         };
+
         if (XL > 0) event.data.push(addAction('XL', XL));
         if (L > 0) event.data.push(addAction('L', L));
         if (M > 0) event.data.push(addAction('M', M));
         if (S > 0) event.data.push(addAction('S', S));
         if (XS > 0) event.data.push(addAction('XS', XS));
+
         try {
             console.log('Item added');
             setData(newData);
@@ -276,12 +280,12 @@ export default () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        <TodoAdd addItem={addItem} />
+                        <AddItem addItem={addItem} />
                         {Object.keys(data).map((row, index) => {
                             if (data[row].Total === 0)
                                 return <TableRow key={index} />;
                             return (
-                                <TodoRow
+                                <ItemRow
                                     key={index}
                                     updateNum={updateNum}
                                     data={data}
@@ -318,12 +322,13 @@ export default () => {
 
     return (
         <Card className={classes.root} elevation={3}>
-            <CardContent className={classes.dailyHeader}>
+            <CardContent className={classes.todoHeader}>
                 <Typography
                     className={classes.header}
                     variant="h4"
                     component="h2"
                 >
+                    <BackToAdmin />
                     To Do
                 </Typography>
             </CardContent>
@@ -334,20 +339,9 @@ export default () => {
             ) : (
                 renderTable()
             )}
-
-            <Link to="/stats">
+            <Link to="/admin">
                 <Button color="primary" className={classes.button}>
-                    Total
-                </Button>
-            </Link>
-            <Link to="/daily">
-                <Button color="primary" className={classes.button}>
-                    Daily
-                </Button>
-            </Link>
-            <Link to="/todo">
-                <Button color="primary" className={classes.button}>
-                    Todo
+                    Admin
                 </Button>
             </Link>
             <Modal

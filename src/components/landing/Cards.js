@@ -110,12 +110,7 @@ function Cards() {
                         >
                             {cardTitle}
                         </Typography>
-                        <Typography
-                            className={classes.cardText}
-                            color="textSecondary"
-                        >
-                            {cardText}
-                        </Typography>
+                        {cardText}
                     </div>
                 </div>
             </Grid>

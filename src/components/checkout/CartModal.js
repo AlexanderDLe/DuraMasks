@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: 8,
     },
     okayButton: {
+        paddingTop: 8,
         color: '#93C9FF',
     },
 }));
@@ -47,7 +48,7 @@ function CartModal({ modalOpen, setModalOpen }) {
                 <div>Are you sure?</div>
                 <br />
                 The US has the highest number of total Covid-19 cases in the
-                world, at over 2 million.
+                world, at over 2.5 million and growing every day.
                 <br />
                 <Button
                     onClick={() => setModalOpen(false)}
@@ -55,7 +56,7 @@ function CartModal({ modalOpen, setModalOpen }) {
                     color="primary"
                     className={classes.okayButton}
                 >
-                    Okay
+                    Okay, I will choose to be safe.
                 </Button>
             </div>
         </Modal>

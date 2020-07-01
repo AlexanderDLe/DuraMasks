@@ -6,7 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import AddIcon from '@material-ui/icons/Add';
-import { selection } from '../masks/MaskDesigns';
+import { selection } from '../../masks/MaskDesigns';
 
 const useStyles = makeStyles({
     cell: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
         paddingTop: 8,
     },
     addDesign: {
-        width: 160,
+        width: 150,
     },
     addNum: {
         width: 50,
@@ -104,8 +104,6 @@ export default ({ addItem }) => {
         );
     };
 
-    console.log(design);
-
     return (
         <TableRow
             onMouseEnter={() => setMouseHover(true)}
@@ -114,21 +112,18 @@ export default ({ addItem }) => {
             style={hoverStyles.row}
         >
             <TableCell className={classes.cell} scope="row">
+                {/* Needed to use inputValue instead of just value
+                At least for this version of Autocomplete */}
                 <Autocomplete
                     freeSolo
                     options={autocompleteOptions}
+                    inputValue={design}
+                    onInputChange={(e, newValue) => setDesign(newValue)}
+                    onKeyPress={handleEnterPressed}
                     renderInput={(params) => (
-                        <TextField
-                            onKeyPress={handleEnterPressed}
-                            {...params}
-                            onChange={(e) => setDesign(e.target.value)}
-                            className={classes.addDesign}
-                            value={design}
-                        />
+                        <TextField {...params} className={classes.addDesign} />
                     )}
                 />
-                {/* <TextField
-                /> */}
             </TableCell>
             {renderCell((e) => setXL(processNum(e.target.value) | 0), XL)}
             {renderCell((e) => setL(processNum(e.target.value) | 0), L)}

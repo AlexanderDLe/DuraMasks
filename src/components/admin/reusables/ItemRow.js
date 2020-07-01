@@ -2,10 +2,11 @@ import React, { useState, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import TableRow from '@material-ui/core/TableRow';
-import TodoNum from './TodoNum';
+import ItemNum from './ItemNum';
 import TableCell from '@material-ui/core/TableCell';
 import ClearIcon from '@material-ui/icons/Clear';
-import FallbackImage from '../../img/Logo.jpg';
+import FallbackImage from '../../../img/Logo.jpg';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
     designName: {
@@ -24,9 +25,20 @@ const useStyles = makeStyles({
     test: {
         position: 'absolute',
     },
-    imgBox: {
-        marginTop: '-50px ',
+    box: {
+        backgroundColor: 'white',
+        transform: 'translateY(-25%)',
         boxShadow: '0px 5px 8px -5px #888888',
+    },
+    confirmationText: {
+        padding: 16,
+        margin: 0,
+    },
+    yesButton: {
+        width: '50%',
+    },
+    noButton: {
+        width: '50%',
     },
 });
 
@@ -40,6 +52,7 @@ function TodoRow({
 }) {
     const classes = useStyles();
     const [mouseHover, setMouseHover] = useState(false);
+    const [removeConfirmation, setRemoveConfirmation] = useState(false);
 
     const hoverStyles = useMemo(() => {
         return {
@@ -60,7 +73,7 @@ function TodoRow({
 
     const handleRemoveItem = () => {
         removeItem(
-            data[row].Color,
+            row,
             data[row].XL,
             data[row].L,
             data[row].M,
@@ -70,22 +83,47 @@ function TodoRow({
         );
     };
 
-    const renderImage = () => {
-        const IMGFilename = data[row].Color.split(' ').join('');
+    const handleConfirmRemoval = () => {
+        setRemoveConfirmation(false);
+        handleRemoveItem();
+    };
+
+    const renderHelper = () => {
+        const IMGFilename = row.split(' ').join('');
         let src;
         try {
-            src = require(`../../img/SmallMaskPhotos/${IMGFilename}.jpg`);
+            src = require(`../../../img/SmallMaskPhotos/${IMGFilename}.jpg`);
         } catch (error) {
             src = FallbackImage;
         }
         return (
-            <div className={classes.imgBox}>
-                <img
-                    className={classes.img}
-                    src={src}
-                    alt="Mask"
-                    style={{ width: '100%', padding: 0 }}
-                />
+            <div className={classes.box}>
+                {removeConfirmation ? (
+                    <div>
+                        <p className={classes.confirmationText}>
+                            Remove <strong>{row}</strong>?
+                        </p>
+                        <Button
+                            onClick={handleConfirmRemoval}
+                            className={classes.yesButton}
+                        >
+                            Yes
+                        </Button>
+                        <Button
+                            onClick={() => setRemoveConfirmation(false)}
+                            className={classes.noButton}
+                        >
+                            No
+                        </Button>
+                    </div>
+                ) : (
+                    <img
+                        className={classes.img}
+                        src={src}
+                        alt="Mask"
+                        style={{ width: '100%', padding: 0 }}
+                    />
+                )}
             </div>
         );
     };
@@ -93,47 +131,50 @@ function TodoRow({
     return (
         <TableRow
             onMouseEnter={() => setMouseHover(true)}
-            onMouseLeave={() => setMouseHover(false)}
+            onMouseLeave={() => {
+                setMouseHover(false);
+                setRemoveConfirmation(false);
+            }}
             className={classes.row}
-            key={data[row].Color}
+            key={row}
             style={hoverStyles.row}
         >
             <TableCell
                 className={classes.designName}
                 component="th"
                 scope="row"
-                onClick={() => handleModalOpen(data[row].Color)}
+                onClick={() => handleModalOpen(row)}
                 style={hoverStyles.design}
             >
-                {data[row].Color}
+                {row}
             </TableCell>
-            <TodoNum
+            <ItemNum
                 updateNum={updateNum}
-                color={data[row].Color}
+                color={row}
                 size="XL"
                 value={data[row].XL}
             />
-            <TodoNum
+            <ItemNum
                 updateNum={updateNum}
-                color={data[row].Color}
+                color={row}
                 size="L"
                 value={data[row].L}
             />
-            <TodoNum
+            <ItemNum
                 updateNum={updateNum}
-                color={data[row].Color}
+                color={row}
                 size="M"
                 value={data[row].M}
             />
-            <TodoNum
+            <ItemNum
                 updateNum={updateNum}
-                color={data[row].Color}
+                color={row}
                 size="S"
                 value={data[row].S}
             />
-            <TodoNum
+            <ItemNum
                 updateNum={updateNum}
-                color={data[row].Color}
+                color={row}
                 size="XS"
                 value={data[row].XS}
             />
@@ -142,10 +183,11 @@ function TodoRow({
                 <ClearIcon
                     className={classes.icon}
                     style={hoverStyles.icon}
-                    onClick={handleRemoveItem}
+                    // onClick={handleRemoveItem}
+                    onClick={() => setRemoveConfirmation(true)}
                 />
             </TableCell>
-            <td className={classes.test}>{mouseHover ? renderImage() : ''}</td>
+            <td className={classes.test}>{mouseHover ? renderHelper() : ''}</td>
         </TableRow>
     );
 }

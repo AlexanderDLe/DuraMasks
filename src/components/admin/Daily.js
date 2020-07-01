@@ -14,10 +14,12 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import moment from 'moment-timezone';
+// import TextField from '@material-ui/core/TextField';
 
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import BackToAdmin from './reusables/BackToAdmin';
 
 const useStyles = makeStyles({
     root: {
@@ -41,8 +43,21 @@ const useStyles = makeStyles({
     },
     button: {
         borderWidth: '2px',
-        width: '33.3%',
         border: 'none !important',
+        padding: 16,
+    },
+    fromDate: {
+        width: 150,
+    },
+    toDate: {
+        width: 150,
+    },
+    DateText: {
+        padding: 16,
+        position: 'relative',
+        top: '2px',
+        display: 'inline',
+        fontSize: '1.1rem',
     },
 });
 
@@ -117,10 +132,9 @@ const Stats = () => {
                 const response = await axios.get(API, {
                     params: {
                         date: calculateTimestamp(),
-                        // date: '2020-05-24',
                     },
                 });
-                console.log(response.data);
+                // console.log(response.data);
                 setDailyTotal(response.data.total ? response.data.total : 0);
                 setData(response.data.payload ? response.data.payload : []);
                 setTotals(calculateTotals(response.data.payload));
@@ -204,7 +218,8 @@ const Stats = () => {
                     variant="h4"
                     component="h2"
                 >
-                    Today's Orders
+                    <BackToAdmin />
+                    Daily
                 </Typography>
                 <Typography
                     className={classes.header}
@@ -214,6 +229,29 @@ const Stats = () => {
                     ${dailyTotal}
                 </Typography>
             </CardContent>
+            {/* <CardContent className={classes.dailyHeader}>
+                <div>
+                    <TextField
+                        id="date"
+                        type="date"
+                        defaultValue="2017-05-24"
+                        className={classes.fromDate}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                    <p className={classes.DateText}>To</p>
+                    <TextField
+                        id="date"
+                        type="date"
+                        defaultValue="2017-05-24"
+                        className={classes.toDate}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                </div>
+            </CardContent> */}
             {loading ? (
                 <div style={{ textAlign: 'center' }}>
                     <CircularProgress />
@@ -221,19 +259,9 @@ const Stats = () => {
             ) : (
                 renderTable()
             )}
-            <Link to="/stats">
+            <Link to="/admin">
                 <Button color="primary" className={classes.button}>
-                    Total
-                </Button>
-            </Link>
-            <Link to="/daily">
-                <Button color="primary" className={classes.button}>
-                    Daily
-                </Button>
-            </Link>
-            <Link to="/todo">
-                <Button color="primary" className={classes.button}>
-                    Todo
+                    Admin
                 </Button>
             </Link>
         </Card>
