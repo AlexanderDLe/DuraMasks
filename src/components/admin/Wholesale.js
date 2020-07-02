@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BackToAdmin from './reusables/BackToAdmin';
-import CheckIcon from '@material-ui/icons/Check';
+import WholesaleRow from './wholesale/WholesaleRow';
 
 const useStyles = makeStyles({
     root: {
@@ -58,6 +58,7 @@ const useStyles = makeStyles({
 });
 
 const API = keys.wholesalePutAPI;
+const deleteItemAPI = keys.wholesaleItemAPI;
 const header = {
     'Content-Type': 'application/json',
 };
@@ -100,6 +101,18 @@ export default () => {
         }
     };
 
+    const handleConfirmRemoval = async (ID) => {
+        try {
+            const newData = { ...data };
+            delete newData[ID];
+            const event = { data: { ID } };
+            setData(newData);
+            await axios.delete(deleteItemAPI, event, header);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     const renderTable = () => {
         return (
             <TableContainer>
@@ -111,40 +124,19 @@ export default () => {
                             </TableCell>
                             <TableCell align="center">Total</TableCell>
                             <TableCell align="center">Completed</TableCell>
+                            <TableCell align="center">Remove</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {Object.keys(data).map((key, index) => (
-                            <TableRow key={index}>
-                                <TableCell component="th" scope="row">
-                                    <Link
-                                        className={classes.link}
-                                        to={`/wholesale/${key}`}
-                                    >
-                                        {data[key].Title}
-                                    </Link>
-                                </TableCell>
-                                <TableCell
-                                    align="center"
-                                    component="th"
-                                    scope="row"
-                                >
-                                    {data[key].Total}
-                                </TableCell>
-                                <TableCell align="center">
-                                    <CheckIcon
-                                        onClick={() =>
-                                            handleUpdateCompleted(key)
-                                        }
-                                        className={classes.status}
-                                        style={{
-                                            color: data[key].Completed
-                                                ? '#55cc55'
-                                                : '#cccccc',
-                                        }}
-                                    />
-                                </TableCell>
-                            </TableRow>
+                        {Object.keys(data).map((id, index) => (
+                            <WholesaleRow
+                                key={index}
+                                index={index}
+                                id={id}
+                                data={data}
+                                handleUpdateCompleted={handleUpdateCompleted}
+                                handleConfirmRemoval={handleConfirmRemoval}
+                            />
                         ))}
                     </TableBody>
                 </Table>
