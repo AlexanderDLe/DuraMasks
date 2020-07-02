@@ -21,6 +21,7 @@ import ItemRow from '../reusables/ItemRow';
 import TextField from '@material-ui/core/TextField';
 
 import BackToAdmin from '../reusables/BackToAdmin';
+import Timestamper from '../../misc/Timestamper';
 
 const useStyles = makeStyles({
     root: {
@@ -54,6 +55,7 @@ const useStyles = makeStyles({
     caption: {
         fontSize: '.9rem',
         paddingLeft: 16,
+        color: 'rgba(0,0,0,.7)',
     },
 });
 
@@ -142,6 +144,7 @@ export default () => {
             id: Date.now().toString(),
             title: title,
             data: data,
+            timestamp: Timestamper().split('T').join(' ').slice(0, -6),
         };
         try {
             await axios.post(API, event, header);

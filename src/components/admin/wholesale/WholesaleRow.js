@@ -78,6 +78,9 @@ function WholesaleRow({
             <TableCell align="center" component="th" scope="row">
                 {data[id].Total}
             </TableCell>
+            <TableCell align="center" component="th" scope="row">
+                {data[id].Timestamp}
+            </TableCell>
             <TableCell align="center">
                 <CheckIcon
                     onClick={() => handleUpdateCompleted(id)}

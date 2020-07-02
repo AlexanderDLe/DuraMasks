@@ -23,6 +23,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import BackToAdmin from '../reusables/BackToAdmin';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import Timestamper from '../../misc/Timestamper';
 
 const useStyles = makeStyles({
     root: {
@@ -56,6 +57,7 @@ const useStyles = makeStyles({
     caption: {
         fontSize: '.9rem',
         paddingLeft: 16,
+        color: 'rgba(0,0,0,.7)',
     },
 });
 
@@ -95,6 +97,7 @@ export default ({ match }) => {
     const [loading, setLoading] = useState(true);
     const [title, setTitle] = useState('');
     const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [timestamp, setTimestamp] = useState('0');
 
     const classes = useStyles();
 
@@ -109,6 +112,8 @@ export default ({ match }) => {
                 });
                 console.log(response.data);
                 setTitle(response.data.Title);
+                setTimestamp(response.data.Timestamp);
+                delete response.data.Timestamp;
                 delete response.data.Title;
                 delete response.data.Completed;
                 delete response.data.ID;
@@ -173,10 +178,12 @@ export default ({ match }) => {
             action: 'Save',
             data: data,
             Total: totals.all,
+            timestamp: Timestamper().split('T').join(' ').slice(0, -6),
         };
+        setTimestamp(event.timestamp);
         try {
-            await axios.put(putItemAPI, event, header);
             setSnackbarOpen(true);
+            await axios.put(putItemAPI, event, header);
         } catch (error) {
             console.log(error);
         }
@@ -252,6 +259,7 @@ export default ({ match }) => {
             <p className={classes.caption}>
                 *To Do <strong>WILL NOT</strong> be updated upon Save.
             </p>
+            <p className={classes.caption}>Last updated on {timestamp}</p>
             {loading ? (
                 <div style={{ textAlign: 'center' }}>
                     <CircularProgress />

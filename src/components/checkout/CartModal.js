@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: 8,
     },
     okayButton: {
-        paddingTop: 8,
+        paddingTop: 16,
         color: '#93C9FF',
     },
 }));

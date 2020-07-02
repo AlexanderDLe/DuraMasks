@@ -1008,8 +1008,8 @@ export const selection = {
         param: 'sunset',
         price: maskPrice,
         category: 'hawaiian',
-        angled: true,
-        tags: ['pink', 'green'],
+        angled: false,
+        tags: ['yellow', 'orange'],
     },
     sky: {
         type: 'Mask',

@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     root: {
         marginTop: 60,
         width: '100%',
-        maxWidth: 500,
+        maxWidth: 700,
         borderBottom: '2px solid #3f51b5',
         padding: 8,
         paddingBottom: 0,
@@ -53,7 +53,7 @@ const useStyles = makeStyles({
         color: 'rgba(0,0,0,.87)',
     },
     title: {
-        width: '50%',
+        width: 'auto',
     },
 });
 
@@ -84,7 +84,6 @@ export default () => {
         fetchData();
     }, []);
     const classes = useStyles();
-    console.log(data);
 
     const handleUpdateCompleted = async (ID) => {
         try {
@@ -123,6 +122,7 @@ export default () => {
                                 Title
                             </TableCell>
                             <TableCell align="center">Total</TableCell>
+                            <TableCell align="center">Timestamp</TableCell>
                             <TableCell align="center">Completed</TableCell>
                             <TableCell align="center">Remove</TableCell>
                         </TableRow>
