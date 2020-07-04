@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function Landing() {
+export default () => {
     const classes = useStyles();
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -68,4 +68,4 @@ export default function Landing() {
             </Suspense>
         </main>
     );
-}
+};

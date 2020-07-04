@@ -52,9 +52,6 @@ const useStyles = makeStyles({
     link: {
         color: 'rgba(0,0,0,.87)',
     },
-    title: {
-        width: 'auto',
-    },
 });
 
 const API = keys.wholesalePutAPI;
@@ -118,13 +115,11 @@ export default () => {
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell className={classes.title}>
-                                Title
-                            </TableCell>
+                            <TableCell>Title</TableCell>
                             <TableCell align="center">Total</TableCell>
                             <TableCell align="center">Timestamp</TableCell>
                             <TableCell align="center">Completed</TableCell>
-                            <TableCell align="center">Remove</TableCell>
+                            <TableCell align="center">Delete</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

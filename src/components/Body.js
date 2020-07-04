@@ -13,6 +13,8 @@ import Daily from './admin/Daily';
 import Wholesale from './admin/Wholesale';
 import CreateWholesaleOrder from './admin/wholesale/CreateWholesaleOrder';
 import WholesaleOrder from './admin/wholesale/WholesaleOrder';
+import Seamstress from './admin/Seamstress';
+import SeamstressItems from './admin/seamstress/SeamstressItems';
 import Todo from './admin/Todo';
 import Policies from './misc/Policies';
 import FAQ from './misc/FAQ';
@@ -40,17 +42,18 @@ function Body(props) {
                 <Route exact path="/total" component={Total} />
                 <Route exact path="/todo" component={Todo} />
                 <Route exact path="/wholesale" component={Wholesale} />
+                <Route exact path="/seamstress" component={Seamstress} />
+                <Route
+                    exact
+                    path="/seamstress/:id"
+                    component={SeamstressItems}
+                />
                 <Route
                     exact
                     path="/wholesale/create"
                     component={CreateWholesaleOrder}
                 />
                 <Route exact path="/wholesale/:id" component={WholesaleOrder} />
-                {/* <Route
-                    exact
-                    path="/wholesale/:id"
-                    render={(props) => <WholesaleOrder {...props} />}
-                /> */}
                 <Route
                     exact
                     path="/item/:id"

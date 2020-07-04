@@ -77,7 +77,7 @@ const searchThroughSelection = (searchTerm) => {
     return selectionResults;
 };
 
-function Selection() {
+export default () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -246,6 +246,4 @@ function Selection() {
             </main>
         </React.Fragment>
     );
-}
-
-export default Selection;
+};

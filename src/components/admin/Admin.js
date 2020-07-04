@@ -75,6 +75,11 @@ export default () => {
                         Wholesale
                     </Button>
                 </Link>
+                {/* <Link className={classes.link} to="/seamstress">
+                    <Button color="primary" className={classes.button}>
+                        Seamstress
+                    </Button>
+                </Link> */}
                 <Link className={classes.link} to="/todo">
                     <Button color="primary" className={classes.button}>
                         Todo

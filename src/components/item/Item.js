@@ -109,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Item({ match, addOrder }) {
+export default ({ match, addOrder }) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -328,6 +328,4 @@ function Item({ match, addOrder }) {
             />
         </Card>
     );
-}
-
-export default Item;
+};

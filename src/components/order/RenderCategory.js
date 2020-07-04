@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 export default ({ categoryName, categoryItems, filterState }) => {
     const classes = useStyles();
 
-    console.log(categoryName, categoryItems);
+    // console.log(categoryName, categoryItems);
     const [categoryOpen, setCategoryOpen] = useState(true);
     const [showMore, setShowMore] = useState(true);
 
@@ -52,7 +52,7 @@ export default ({ categoryName, categoryItems, filterState }) => {
         }
         return itemsToShow.map((design, index) => {
             return (
-                <Suspense fallback={<div />}>
+                <Suspense key={index} fallback={<div />}>
                     <DesignCard design={design} key={index} />
                 </Suspense>
             );
