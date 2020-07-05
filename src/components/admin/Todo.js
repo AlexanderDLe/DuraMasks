@@ -23,22 +23,16 @@ import ItemRow from './reusables/ItemRow';
 
 import FallbackImage from '../../img/Logo.jpg';
 import BackToAdmin from './reusables/BackToAdmin';
+import Timestamper from '../misc/Timestamper';
 
 const useStyles = makeStyles({
     root: {
         marginTop: 60,
         width: '100%',
-        maxWidth: 850,
+        maxWidth: 860,
         borderBottom: '2px solid #3f51b5',
         padding: 8,
         paddingBottom: 0,
-    },
-    header: {
-        fontFamily: 'Open Sans',
-    },
-    statItem: {
-        display: 'flex',
-        justifyContent: 'space-between',
     },
     todoHeader: {
         display: 'flex',
@@ -68,6 +62,14 @@ const useStyles = makeStyles({
         textAlign: 'center',
         paddingBottom: 16,
     },
+    totals: {
+        fontSize: '1rem',
+    },
+    timestamp: {
+        fontSize: '1rem',
+        color: 'rgba(0,0,0,.6)',
+        marginTop: 8,
+    },
 });
 
 const API = keys.todoMasksAPI;
@@ -96,11 +98,12 @@ const calculateTotals = (data) => {
 };
 
 export default () => {
-    let [totals, setTotals] = useState({});
-    let [data, setData] = useState({});
-    let [loading, setLoading] = useState(true);
-    let [modalOpen, setModalOpen] = useState(false);
-    let [modalImage, setModalImage] = useState('Black');
+    const [totals, setTotals] = useState({});
+    const [data, setData] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [modalImage, setModalImage] = useState('Black');
+    const [timestamp, setTimestamp] = useState('');
 
     console.log(data);
     // Modal Stuff
@@ -152,6 +155,7 @@ export default () => {
                 // console.log(response);
                 setData(response.data ? response.data : []);
                 setTotals(calculateTotals(response.data));
+                setTimestamp(Timestamper().split('T').join(' ').slice(0, -9));
                 setLoading(false);
             } catch (error) {
                 console.log(error);
@@ -269,14 +273,51 @@ export default () => {
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Design</TableCell>
-                            <TableCell align="center">XL</TableCell>
-                            <TableCell align="center">L</TableCell>
-                            <TableCell align="center">M</TableCell>
-                            <TableCell align="center">S</TableCell>
-                            <TableCell align="center">XS</TableCell>
-                            <TableCell align="center">Total</TableCell>
-                            <TableCell align="center">Actions</TableCell>
+                            <TableCell className={classes.totals}>
+                                Design
+                            </TableCell>
+                            <TableCell
+                                className={classes.totals}
+                                align="center"
+                            >
+                                XL
+                            </TableCell>
+                            <TableCell
+                                className={classes.totals}
+                                align="center"
+                            >
+                                L
+                            </TableCell>
+                            <TableCell
+                                className={classes.totals}
+                                align="center"
+                            >
+                                M
+                            </TableCell>
+                            <TableCell
+                                className={classes.totals}
+                                align="center"
+                            >
+                                S
+                            </TableCell>
+                            <TableCell
+                                className={classes.totals}
+                                align="center"
+                            >
+                                XS
+                            </TableCell>
+                            <TableCell
+                                className={classes.totals}
+                                align="center"
+                            >
+                                Total
+                            </TableCell>
+                            <TableCell
+                                className={classes.totals}
+                                align="center"
+                            >
+                                Actions
+                            </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -301,15 +342,47 @@ export default () => {
                             );
                         })}
                         <TableRow>
-                            <TableCell component="th" scope="row">
+                            <TableCell
+                                className={classes.totals}
+                                component="th"
+                                scope="row"
+                            >
                                 <strong>All</strong>
                             </TableCell>
-                            <TableCell align="center">{totals.XL}</TableCell>
-                            <TableCell align="center">{totals.L}</TableCell>
-                            <TableCell align="center">{totals.M}</TableCell>
-                            <TableCell align="center">{totals.S}</TableCell>
-                            <TableCell align="center">{totals.XS}</TableCell>
-                            <TableCell align="center">
+                            <TableCell
+                                className={classes.totals}
+                                align="center"
+                            >
+                                {totals.XL}
+                            </TableCell>
+                            <TableCell
+                                className={classes.totals}
+                                align="center"
+                            >
+                                {totals.L}
+                            </TableCell>
+                            <TableCell
+                                className={classes.totals}
+                                align="center"
+                            >
+                                {totals.M}
+                            </TableCell>
+                            <TableCell
+                                className={classes.totals}
+                                align="center"
+                            >
+                                {totals.S}
+                            </TableCell>
+                            <TableCell
+                                className={classes.totals}
+                                align="center"
+                            >
+                                {totals.XS}
+                            </TableCell>
+                            <TableCell
+                                className={classes.totals}
+                                align="center"
+                            >
                                 <strong>{totals.all}</strong>
                             </TableCell>
                             <TableCell align="center"></TableCell>
@@ -331,6 +404,9 @@ export default () => {
                     <BackToAdmin />
                     To Do
                 </Typography>
+                <p className={classes.timestamp}>
+                    {!loading ? 'Retrieved data on ' : ''} {timestamp}
+                </p>
             </CardContent>
             {loading ? (
                 <div style={{ textAlign: 'center' }}>

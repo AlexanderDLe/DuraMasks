@@ -50,11 +50,20 @@ const useStyles = makeStyles({
     },
 });
 
-function DesignCard({ design }) {
+function DesignCard({ design, setYCoordinate }) {
     const classes = useStyles();
+
+    const handleLinkClick = () => {
+        if (setYCoordinate) setYCoordinate(window.pageYOffset);
+    };
+
     return (
         <Grid item xs={6} sm={4} md={3}>
-            <Link className={classes.designName} to={`/item/${design.param}`}>
+            <Link
+                onClick={handleLinkClick}
+                className={classes.designName}
+                to={`/item/${design.param}`}
+            >
                 <Card className={classes.root} elevation={1}>
                     <CardMedia
                         className={classes.media}

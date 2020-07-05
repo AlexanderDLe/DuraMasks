@@ -22,6 +22,7 @@ import TextField from '@material-ui/core/TextField';
 
 import BackToAdmin from '../reusables/BackToAdmin';
 import Timestamper from '../../misc/Timestamper';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const useStyles = makeStyles({
     root: {
@@ -91,6 +92,7 @@ export default () => {
     const [titleError, setTitleError] = useState(false);
     const [totalError, setTotalError] = useState(false);
     const [saved, setSaved] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const classes = useStyles();
 
@@ -140,6 +142,7 @@ export default () => {
     const handleSaveAndSubmit = async () => {
         if (!title) return setTitleError(true);
         if (!totals.all) return setTotalError(true);
+        setLoading(true);
         const event = {
             id: Date.now().toString(),
             title: title,
@@ -260,6 +263,7 @@ export default () => {
                     Save & Submit
                 </Button>
             </div>
+            {loading ? <LinearProgress /> : ''}
         </Card>
     );
 };

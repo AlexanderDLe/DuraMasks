@@ -77,10 +77,15 @@ const searchThroughSelection = (searchTerm) => {
     return selectionResults;
 };
 
-export default () => {
+export default ({
+    showMoreObj,
+    setShowMoreObj,
+    yCoordinate,
+    setYCoordinate,
+}) => {
     useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+        window.scrollTo(0, yCoordinate);
+    }, [yCoordinate]);
     const navMediaQuery = useMediaQuery('(min-width:900px)');
 
     const classes = useStyles();
@@ -148,10 +153,12 @@ export default () => {
                         <DesignCard
                             design={selection.blackelastic}
                             key={1000}
+                            setYCoordinate={setYCoordinate}
                         />
                         <DesignCard
                             design={selection.whiteelastic}
                             key={1001}
+                            setYCoordinate={setYCoordinate}
                         />
                     </React.Fragment>
                 );
@@ -188,36 +195,57 @@ export default () => {
                     categoryName={'Bandana'}
                     categoryItems={bandana}
                     filterState={filter}
+                    showMoreObj={showMoreObj}
+                    setShowMoreObj={setShowMoreObj}
+                    setYCoordinate={setYCoordinate}
                 />
                 <RenderCategory
                     categoryName={'Floral'}
                     categoryItems={floral}
                     filterState={filter}
+                    showMoreObj={showMoreObj}
+                    setShowMoreObj={setShowMoreObj}
+                    setYCoordinate={setYCoordinate}
                 />
                 <RenderCategory
                     categoryName={'Animal'}
                     categoryItems={animal}
                     filterState={filter}
+                    showMoreObj={showMoreObj}
+                    setShowMoreObj={setShowMoreObj}
+                    setYCoordinate={setYCoordinate}
                 />
                 <RenderCategory
                     categoryName={'Pattern'}
                     categoryItems={pattern}
                     filterState={filter}
+                    showMoreObj={showMoreObj}
+                    setShowMoreObj={setShowMoreObj}
+                    setYCoordinate={setYCoordinate}
                 />
                 <RenderCategory
                     categoryName={'Solid'}
                     categoryItems={solid}
                     filterState={filter}
+                    showMoreObj={showMoreObj}
+                    setShowMoreObj={setShowMoreObj}
+                    setYCoordinate={setYCoordinate}
                 />
                 <RenderCategory
                     categoryName={'Hawaiian'}
                     categoryItems={hawaiian}
                     filterState={filter}
+                    showMoreObj={showMoreObj}
+                    setShowMoreObj={setShowMoreObj}
+                    setYCoordinate={setYCoordinate}
                 />
                 <RenderCategory
                     categoryName={'Patriot'}
                     categoryItems={patriot}
                     filterState={filter}
+                    showMoreObj={showMoreObj}
+                    setShowMoreObj={setShowMoreObj}
+                    setYCoordinate={setYCoordinate}
                 />
                 {filter === 'All' || filter === 'Custom' ? renderCustom() : ''}
             </React.Fragment>

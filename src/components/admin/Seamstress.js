@@ -13,7 +13,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-// import TextField from '@material-ui/core/TextField';
 
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
@@ -105,9 +104,12 @@ export default () => {
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Name</TableCell>
-                            <TableCell align="center">Amount</TableCell>
-                            <TableCell align="center">Date</TableCell>
+                            <TableCell style={{ width: 20 }}>Status</TableCell>
+                            <TableCell align="center">Name</TableCell>
+                            <TableCell align="center">Description</TableCell>
+                            <TableCell style={{ width: 120 }} align="center">
+                                Date
+                            </TableCell>
                             <TableCell align="center">Actions</TableCell>
                         </TableRow>
                     </TableHead>
@@ -156,7 +158,7 @@ export default () => {
                         size="small"
                         className={classes.button}
                     >
-                        Create New
+                        Add New Seamstress
                     </Button>
                 </Link>
             </div>

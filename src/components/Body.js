@@ -30,6 +30,10 @@ function Body(props) {
         logReactPixelPurchase,
         usedDiscountButton,
         setUsedDiscountButton,
+        showMoreObj,
+        setShowMoreObj,
+        yCoordinate,
+        setYCoordinate,
     } = props;
 
     return (
@@ -38,7 +42,19 @@ function Body(props) {
                 <Route exact path="/" component={Landing} />
                 <Route exact path="/admin" component={Admin} />
                 <Route exact path="/daily" component={Daily} />
-                <Route exact path="/selection" component={Selection} />
+                <Route
+                    exact
+                    path="/selection"
+                    render={(props) => (
+                        <Selection
+                            {...props}
+                            showMoreObj={showMoreObj}
+                            setShowMoreObj={setShowMoreObj}
+                            yCoordinate={yCoordinate}
+                            setYCoordinate={setYCoordinate}
+                        />
+                    )}
+                />
                 <Route exact path="/total" component={Total} />
                 <Route exact path="/todo" component={Todo} />
                 <Route exact path="/wholesale" component={Wholesale} />

@@ -361,16 +361,6 @@ export const selection = {
         angled: true,
         tags: [],
     },
-    butterfly: {
-        type: 'Mask',
-        color: 'Butterfly',
-        img: 'Butterfly.jpg',
-        param: 'butterfly',
-        price: maskPrice,
-        category: 'pattern',
-        angled: true,
-        tags: ['black', 'purple', 'violet'],
-    },
     flow: {
         type: 'Mask',
         color: 'Flow',
@@ -391,11 +381,11 @@ export const selection = {
         angled: true,
         tags: ['purple', 'yellow'],
     },
-    swirl: {
+    canvas: {
         type: 'Mask',
-        color: 'Swirl',
-        img: 'Swirl.jpg',
-        param: 'swirl',
+        color: 'Canvas',
+        img: 'Canvas.jpg',
+        param: 'canvas',
         price: maskPrice,
         category: 'pattern',
         angled: true,
@@ -813,7 +803,6 @@ export const selection = {
         price: maskPrice,
         category: 'animal',
         angled: true,
-        XLUnavailable: true,
         tags: ['dog', 'black'],
     },
     woof: {
@@ -1273,16 +1262,6 @@ export const selection = {
         angled: true,
         tags: ['black', 'gold', 'yellow'],
     },
-    lovely: {
-        type: 'Mask',
-        color: 'Lovely',
-        img: 'Lovely.jpg',
-        param: 'lovely',
-        price: maskPrice,
-        category: 'floral',
-        angled: true,
-        tags: ['black', 'red'],
-    },
     floralblue: {
         type: 'Mask',
         color: 'Floral Blue',
@@ -1412,7 +1391,6 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
-        XLUnavailable: true,
         tags: ['black', 'red'],
     },
     meadow: {
@@ -1423,7 +1401,6 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
-        XLUnavailable: true,
         tags: ['yellow', 'orange', 'blue'],
     },
     cultivate: {
@@ -1434,7 +1411,6 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
-        XLUnavailable: true,
         tags: ['black', 'orange', 'red'],
     },
     sunshine: {
@@ -1445,7 +1421,6 @@ export const selection = {
         price: maskPrice,
         category: 'floral',
         angled: true,
-        XLUnavailable: true,
         tags: ['white', 'blue', 'yellow', 'red'],
     },
     floralwhite: {

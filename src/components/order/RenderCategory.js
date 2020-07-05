@@ -36,16 +36,30 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default ({ categoryName, categoryItems, filterState }) => {
+export default ({
+    categoryName,
+    categoryItems,
+    filterState,
+    showMoreObj,
+    setShowMoreObj,
+    setYCoordinate,
+}) => {
     const classes = useStyles();
 
     // console.log(categoryName, categoryItems);
     const [categoryOpen, setCategoryOpen] = useState(true);
-    const [showMore, setShowMore] = useState(true);
+
+    // console.log(showMoreObj);
+
+    const handleShowMoreButtonClick = () => {
+        const newShowMoreObj = { ...showMoreObj };
+        newShowMoreObj[categoryName] = !newShowMoreObj[categoryName];
+        setShowMoreObj(newShowMoreObj);
+    };
 
     const renderCategory = (category) => {
         let itemsToShow;
-        if (showMore) {
+        if (showMoreObj[categoryName]) {
             itemsToShow = category.slice(0, 8);
         } else {
             itemsToShow = category;
@@ -53,7 +67,11 @@ export default ({ categoryName, categoryItems, filterState }) => {
         return itemsToShow.map((design, index) => {
             return (
                 <Suspense key={index} fallback={<div />}>
-                    <DesignCard design={design} key={index} />
+                    <DesignCard
+                        design={design}
+                        key={index}
+                        setYCoordinate={setYCoordinate}
+                    />
                 </Suspense>
             );
         });
@@ -65,7 +83,7 @@ export default ({ categoryName, categoryItems, filterState }) => {
                 className={classes.showMoreButton}
                 // variant="contained"
                 size="medium"
-                onClick={() => setShowMore(!showMore)}
+                onClick={handleShowMoreButtonClick}
                 elevation={0}
             >
                 Show More
@@ -99,7 +117,9 @@ export default ({ categoryName, categoryItems, filterState }) => {
                 <Grid container spacing={2}>
                     {categoryOpen ? renderCategory(categoryItems) : ''}
                 </Grid>
-                {showMore && categoryOpen && categoryItems.length > 8
+                {showMoreObj[categoryName] &&
+                categoryOpen &&
+                categoryItems.length > 8
                     ? showMoreButton
                     : ''}
             </React.Fragment>

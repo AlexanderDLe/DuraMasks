@@ -34,11 +34,24 @@ const options = {
     },
 ]; */
 
+const defaultShowMoreObject = {
+    Bandana: true,
+    Floral: true,
+    Animal: true,
+    Pattern: true,
+    Solid: true,
+    Hawaiian: true,
+    Patriot: true,
+};
+
 const App = () => {
     const mode = 'production';
     const [orders, setOrders] = useState([]);
     const [amount, setAmount] = useState(0);
     const [usedDiscountButton, setUsedDiscountButton] = useState(false);
+    const [showMoreObj, setShowMoreObj] = useState(defaultShowMoreObject);
+    const [yCoordinate, setYCoordinate] = useState(0);
+
     const [snackbarOpen, setSnackbarOpen] = useState(
         mode === 'sandbox' ? true : false
     );
@@ -106,6 +119,10 @@ const App = () => {
                 logReactPixelPurchase={logReactPixelPurchase}
                 usedDiscountButton={usedDiscountButton}
                 setUsedDiscountButton={setUsedDiscountButton}
+                showMoreObj={showMoreObj}
+                setShowMoreObj={setShowMoreObj}
+                yCoordinate={yCoordinate}
+                setYCoordinate={setYCoordinate}
             />
             <Suspense fallback={<div />}>
                 <Snackbar

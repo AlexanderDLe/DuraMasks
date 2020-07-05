@@ -14,6 +14,7 @@ const useStyles = makeStyles({
         transition: 'all .25s',
     },
     num: {
+        fontSize: '1rem',
         display: 'inline',
         paddingLeft: 8,
         paddingRight: 8,

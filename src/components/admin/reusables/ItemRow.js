@@ -6,11 +6,12 @@ import ItemNum from './ItemNum';
 import TableCell from '@material-ui/core/TableCell';
 import ClearIcon from '@material-ui/icons/Clear';
 import FallbackImage from '../../../img/Logo.jpg';
-import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
     designName: {
         cursor: 'pointer',
+        fontSize: '1rem',
+        fontWeight: 500,
     },
     row: {
         position: 'relative',
@@ -25,9 +26,14 @@ const useStyles = makeStyles({
     test: {
         position: 'absolute',
     },
-    box: {
+    imgBox: {
         backgroundColor: 'white',
         transform: 'translateY(-25%)',
+        boxShadow: '0px 5px 8px -5px #888888',
+    },
+    confirmationBox: {
+        backgroundColor: 'white',
+        transform: 'translateY(10%)',
         boxShadow: '0px 5px 8px -5px #888888',
     },
     confirmationText: {
@@ -39,6 +45,9 @@ const useStyles = makeStyles({
     },
     noButton: {
         width: '50%',
+    },
+    total: {
+        fontSize: '1rem',
     },
 });
 
@@ -71,21 +80,21 @@ function TodoRow({
         };
     }, [mouseHover, rowBGColor]);
 
-    const handleRemoveItem = () => {
-        removeItem(
-            row,
-            data[row].XL,
-            data[row].L,
-            data[row].M,
-            data[row].S,
-            data[row].XS,
-            data[row].Total
-        );
-    };
-
-    const handleConfirmRemoval = () => {
-        setRemoveConfirmation(false);
-        handleRemoveItem();
+    const handleRemoveClick = () => {
+        if (removeConfirmation) {
+            setRemoveConfirmation(false);
+            removeItem(
+                row,
+                data[row].XL,
+                data[row].L,
+                data[row].M,
+                data[row].S,
+                data[row].XS,
+                data[row].Total
+            );
+        } else {
+            setRemoveConfirmation(true);
+        }
     };
 
     const renderHelper = () => {
@@ -97,32 +106,24 @@ function TodoRow({
             src = FallbackImage;
         }
         return (
-            <div className={classes.box}>
+            <div>
                 {removeConfirmation ? (
-                    <div>
-                        <p className={classes.confirmationText}>
-                            Remove <strong>{row}</strong>?
-                        </p>
-                        <Button
-                            onClick={handleConfirmRemoval}
-                            className={classes.yesButton}
-                        >
-                            Yes
-                        </Button>
-                        <Button
-                            onClick={() => setRemoveConfirmation(false)}
-                            className={classes.noButton}
-                        >
-                            No
-                        </Button>
+                    <div className={classes.confirmationBox}>
+                        <div>
+                            <p className={classes.confirmationText}>
+                                Remove <strong>{row}</strong>?
+                            </p>
+                        </div>
                     </div>
                 ) : (
-                    <img
-                        className={classes.img}
-                        src={src}
-                        alt="Mask"
-                        style={{ width: '100%', padding: 0 }}
-                    />
+                    <div className={classes.imgBox}>
+                        <img
+                            className={classes.img}
+                            src={src}
+                            alt="Mask"
+                            style={{ width: '100%', padding: 0 }}
+                        />
+                    </div>
                 )}
             </div>
         );
@@ -178,13 +179,14 @@ function TodoRow({
                 size="XS"
                 value={data[row].XS}
             />
-            <TableCell align="center">{data[row].Total}</TableCell>
+            <TableCell className={classes.total} align="center">
+                {data[row].Total}
+            </TableCell>
             <TableCell align="center">
                 <ClearIcon
                     className={classes.icon}
                     style={hoverStyles.icon}
-                    // onClick={handleRemoveItem}
-                    onClick={() => setRemoveConfirmation(true)}
+                    onClick={() => handleRemoveClick()}
                 />
             </TableCell>
             <td className={classes.test}>{mouseHover ? renderHelper() : ''}</td>

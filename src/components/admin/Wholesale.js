@@ -123,16 +123,21 @@ export default () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {Object.keys(data).map((id, index) => (
-                            <WholesaleRow
-                                key={index}
-                                index={index}
-                                id={id}
-                                data={data}
-                                handleUpdateCompleted={handleUpdateCompleted}
-                                handleConfirmRemoval={handleConfirmRemoval}
-                            />
-                        ))}
+                        {Object.keys(data)
+                            .sort()
+                            .reverse()
+                            .map((id, index) => (
+                                <WholesaleRow
+                                    key={index}
+                                    index={index}
+                                    id={id}
+                                    data={data}
+                                    handleUpdateCompleted={
+                                        handleUpdateCompleted
+                                    }
+                                    handleConfirmRemoval={handleConfirmRemoval}
+                                />
+                            ))}
                     </TableBody>
                 </Table>
             </TableContainer>

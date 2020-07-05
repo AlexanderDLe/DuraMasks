@@ -22,7 +22,6 @@ const useStyles = makeStyles({
     confirmBox: {
         padding: 16,
         paddingBottom: 0,
-        // marginLeft: 8,
         backgroundColor: 'white',
         transform: 'translateY(-25%)',
         boxShadow: '0px 5px 8px -5px #888888',
