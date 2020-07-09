@@ -50,6 +50,10 @@ function FAQ() {
         <Card className={classes.root} elevation={3}>
             <h2>Frequently Asked Questions</h2>
             <hr />
+            <h5 className={classes.question}>
+                Do your masks have labels/tags?
+            </h5>
+            <p>We no longer place labels or tags on our masks.</p>
             <h5 className={classes.question}>Are these masks washable?</h5>
             <p>
                 Yes, we recommend hand washing with cold water & soap then
@@ -64,11 +68,11 @@ function FAQ() {
             </p>
             <h5 className={classes.question}>Is there a discount available?</h5>
             <p>
-                Yes, there is a 15% discount for $40+ orders. Simply use code
-                15OFF in the cart to apply.
+                Yes, there is a 15% discount for $45+ subtotal orders. Simply
+                use code 15OFF in the cart to apply.
             </p>
             <h5 className={classes.question}>How long will delivery take?</h5>
-            <p>Delivery will typically be within 5-9 business days.</p>
+            <p>Delivery will typically be within 7-14 business days.</p>
             <h5 className={classes.question}>
                 What are these masks made of? How many layers?
             </h5>
@@ -87,11 +91,17 @@ function FAQ() {
                 can retie these bands if you wish to adjust for better fitting.
             </p>
 
-            <h5 className={classes.question}>Is there a nose clip?</h5>
-            <p>Yes, each mask comes with an adjustable metal nose clip wire.</p>
+            <h5 className={classes.question}>Is there a nosepiece?</h5>
+            <p>
+                Yes, each mask comes with an adjustable/bendable metal nose wire
+                that you can use to adjust for a comfortable fit.
+            </p>
 
             <h5 className={classes.question}>Where are these masks made?</h5>
-            <p>All masks are made in Anaheim, California, USA.</p>
+            <p>
+                All masks are produced and shipped from Anaheim, California,
+                USA.
+            </p>
 
             <h5 className={classes.question}>
                 How do you know what size to get?

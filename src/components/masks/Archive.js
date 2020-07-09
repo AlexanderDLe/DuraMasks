@@ -182,15 +182,15 @@ export const archive = {
     //     angled: true,
     //     tags: ['blue', 'pink', 'purple'],
     // },
-    // floret: {
+    // paradise: {
     //     type: 'Mask',
-    //     color: 'Floret',
-    //     img: 'Floret.jpg',
-    //     param: 'floret',
+    //     color: 'Paradise',
+    //     img: 'Paradise.jpg',
+    //     param: 'paradise',
     //     price: maskPrice,
-    //     category: 'floral',
+    //     category: 'hawaiian',
     //     angled: true,
-    //     tags: ['green', 'pink', 'purple'],
+    //     tags: ['blue'],
     // },
     // royalty: {
     //     type: 'Mask',
@@ -273,6 +273,16 @@ export const archive = {
     //     category: 'floral',
     //     angled: true,
     //     tags: ['black', 'gold', 'yellow'],
+    // },
+    // navygrey: {
+    //     type: 'Mask',
+    //     color: 'Navy Grey',
+    //     img: 'NavyGrey.jpg',
+    //     param: 'navygrey',
+    //     price: maskPrice,
+    //     category: 'solid',
+    //     angled: true,
+    //     tags: ['blue'],
     // },
     // pineapple: {
     //     type: 'Mask',

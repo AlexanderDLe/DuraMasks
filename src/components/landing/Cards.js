@@ -78,7 +78,7 @@ function Cards() {
                 <Typography className={classes.cardText} color="textSecondary">
                     Each contain{' '}
                     <strong>
-                        adjustable elastic ear bands and a metal nose clip
+                        adjustable elastic ear bands and a metal nosepiece
                     </strong>{' '}
                     so you can adjust for a comfortable fit.
                 </Typography>

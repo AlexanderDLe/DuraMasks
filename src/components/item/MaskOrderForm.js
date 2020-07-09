@@ -191,8 +191,8 @@ function MaskOrderForm({
                     }}
                 >
                     Each mask comes with adjustable elastic ear bands, an
-                    adjustable metal nose clip wire, and 4 layers for protection
-                    and stability.
+                    adjustable metal nosepiece, and 4 layers for protection and
+                    stability.
                     <br />
                     <br />
                     Disclaimer: Some mask designs may vary depending on cut.

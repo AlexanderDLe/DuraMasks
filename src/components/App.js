@@ -51,6 +51,7 @@ const App = () => {
     const [usedDiscountButton, setUsedDiscountButton] = useState(false);
     const [showMoreObj, setShowMoreObj] = useState(defaultShowMoreObject);
     const [yCoordinate, setYCoordinate] = useState(0);
+    const [authenticated, setAuthenticated] = useState(false);
 
     const [snackbarOpen, setSnackbarOpen] = useState(
         mode === 'sandbox' ? true : false
@@ -123,6 +124,8 @@ const App = () => {
                 setShowMoreObj={setShowMoreObj}
                 yCoordinate={yCoordinate}
                 setYCoordinate={setYCoordinate}
+                authenticated={authenticated}
+                setAuthenticated={setAuthenticated}
             />
             <Suspense fallback={<div />}>
                 <Snackbar

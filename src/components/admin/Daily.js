@@ -16,7 +16,7 @@ import TableRow from '@material-ui/core/TableRow';
 import moment from 'moment-timezone';
 // import TextField from '@material-ui/core/TextField';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BackToAdmin from './reusables/BackToAdmin';
@@ -32,10 +32,6 @@ const useStyles = makeStyles({
     },
     header: {
         fontFamily: 'Open Sans',
-    },
-    statItem: {
-        display: 'flex',
-        justifyContent: 'space-between',
     },
     dailyHeader: {
         display: 'flex',
@@ -119,7 +115,7 @@ const calculateTotals = (data) => {
     return totals;
 };
 
-const Stats = () => {
+export default () => {
     let [dailyTotal, setDailyTotal] = useState(0);
     let [totals, setTotals] = useState({});
     let [data, setData] = useState([]);
@@ -147,7 +143,7 @@ const Stats = () => {
                 setLoading(false);
             }
         }
-        fetchData();
+        if (localStorage.getItem('Authenticated')) fetchData();
     }, []);
     const classes = useStyles();
     const renderTable = () => {
@@ -210,6 +206,8 @@ const Stats = () => {
         );
     };
 
+    if (!localStorage.getItem('Authenticated')) return <Redirect to="/login" />;
+
     return (
         <Card className={classes.root} elevation={3}>
             <CardContent className={classes.dailyHeader}>
@@ -267,5 +265,3 @@ const Stats = () => {
         </Card>
     );
 };
-
-export default Stats;

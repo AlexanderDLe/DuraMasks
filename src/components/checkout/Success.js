@@ -49,7 +49,7 @@ const Success = () => {
             </CardContent>
 
             <CardContent style={{ paddingTop: 0, paddingBottom: 20 }}>
-                Your order was successful.
+                Your order was successful. You will receive an Order Confirmation to the email you provided.
             </CardContent>
             <CardActions className={classes.itemActions}>
                 <Button

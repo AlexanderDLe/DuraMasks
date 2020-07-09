@@ -8,6 +8,7 @@ import Success from './checkout/Success';
 import CustomItem from './order/CustomItem';
 import Pricing from './pricing/Pricing';
 import Admin from './admin/Admin';
+import Login from './admin/Login';
 import Total from './admin/Total';
 import Daily from './admin/Daily';
 import Wholesale from './admin/Wholesale';
@@ -34,14 +35,37 @@ function Body(props) {
         setShowMoreObj,
         yCoordinate,
         setYCoordinate,
+        authenticated,
+        setAuthenticated,
     } = props;
 
     return (
         <main className="body-class">
             <Switch>
                 <Route exact path="/" component={Landing} />
-                <Route exact path="/admin" component={Admin} />
+                <Route
+                    exact
+                    path="/admin"
+                    render={(props) => (
+                        <Admin
+                            {...props}
+                            authenticated={authenticated}
+                            setAuthenticated={setAuthenticated}
+                        />
+                    )}
+                />
                 <Route exact path="/daily" component={Daily} />
+                <Route
+                    exact
+                    path="/login"
+                    render={(props) => (
+                        <Login
+                            {...props}
+                            authenticated={authenticated}
+                            setAuthenticated={setAuthenticated}
+                        />
+                    )}
+                />
                 <Route
                     exact
                     path="/selection"

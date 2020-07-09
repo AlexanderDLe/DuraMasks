@@ -28,6 +28,7 @@ const client = {
 };
 const currency = 'USD';
 const discountCode = '15OFF';
+const discountThreshold = 45;
 const shippingFee = 0;
 
 const useStyles = makeStyles((theme) => ({
@@ -143,6 +144,7 @@ const Cart = ({
     const [discountField, setDiscountField] = useState('');
     const navMediaQuery600 = useMediaQuery('(min-width:600px)');
 
+    console.log(discountField);
     // Cart Root Styles
     const cartRootStyles = useMemo(() => {
         let marginTop = navMediaQuery600 ? 40 : 16;
@@ -155,13 +157,21 @@ const Cart = ({
         return calculateSubtotal(orders);
     }, [orders]);
     const discount = useMemo(() => {
-        return discountField === discountCode && subtotal > 40
+        return discountField.toUpperCase() === discountCode &&
+            subtotal >= discountThreshold
             ? Math.ceil(subtotal * 0.15 * 100) / 100
             : 0;
     }, [subtotal, discountField]);
-    const total = useMemo(() => {
+    const pretaxTotal = useMemo(() => {
         return ((subtotal + shippingFee - discount) * 100) / 100;
     }, [subtotal, discount]);
+    const tax = useMemo(() => {
+        return Math.round(pretaxTotal * 0.07 * 100) / 100;
+    }, [pretaxTotal]);
+
+    const total = useMemo(() => {
+        return Math.round((pretaxTotal + tax) * 100) / 100;
+    }, [pretaxTotal, tax]);
 
     console.log(total);
 
@@ -254,11 +264,13 @@ const Cart = ({
                     amount={amount}
                     subtotal={subtotal}
                     total={total}
+                    tax={tax}
                     shippingFee={shippingFee}
                     discountCode={discountCode}
                     discount={discount}
                     discountField={discountField}
                     setDiscountField={setDiscountField}
+                    discountThreshold={discountThreshold}
                     usedDiscountButton={usedDiscountButton}
                     setUsedDiscountButton={setUsedDiscountButton}
                 />

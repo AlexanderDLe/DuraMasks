@@ -15,7 +15,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Modal from '@material-ui/core/Modal';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import AddItem from './reusables/AddItem';
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     root: {
         marginTop: 60,
         width: '100%',
-        maxWidth: 860,
+        maxWidth: 900,
         borderBottom: '2px solid #3f51b5',
         padding: 8,
         paddingBottom: 0,
@@ -164,7 +164,7 @@ export default () => {
                 setLoading(false);
             }
         }
-        fetchData();
+        if (localStorage.getItem('Authenticated')) fetchData();
     }, []);
     const classes = useStyles();
 
@@ -392,6 +392,8 @@ export default () => {
             </TableContainer>
         );
     };
+
+    if (!localStorage.getItem('Authenticated')) return <Redirect to="/login" />;
 
     return (
         <Card className={classes.root} elevation={3}>

@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     root: {
         marginTop: 60,
         width: '100%',
-        maxWidth: 850,
+        maxWidth: 900,
         borderBottom: '2px solid #3f51b5',
         padding: 8,
         paddingBottom: 0,

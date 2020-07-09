@@ -7,7 +7,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BackToAdmin from './reusables/BackToAdmin';
@@ -300,10 +300,10 @@ const Stats = () => {
                 setLoading(false);
             }
         }
-        fetchData();
+        if (localStorage.getItem('Authenticated')) fetchData();
     }, []);
     const classes = useStyles();
-    console.log(stats, setStats);
+    // console.log(stats, setStats);
 
     const renderItem = (item, index) => {
         return (
@@ -323,6 +323,8 @@ const Stats = () => {
             return renderItem(stat, index);
         });
     };
+
+    if (!localStorage.getItem('Authenticated')) return <Redirect to="/login" />;
 
     return (
         <Card className={classes.root} elevation={3}>

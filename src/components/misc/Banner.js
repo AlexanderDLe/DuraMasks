@@ -48,7 +48,7 @@ function Banner() {
             <div className={classes.textbox}>
                 {/* <h5 style={bannerHeader}>Use Code 15OFF</h5> */}
                 <p>
-                    Use Code <strong>15OFF</strong> And Get 15% Off 40$+ Orders
+                    Use Code <strong>15OFF</strong> And Get 15% Off 45$+ Orders
                 </p>
             </div>
             {navMediaQuery450 ? (

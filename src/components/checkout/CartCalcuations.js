@@ -46,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 8,
         marginBottom: 8,
     },
+    taxField: {
+        marginBottom: 0,
+    },
 }));
 
 export default ({
@@ -55,7 +58,9 @@ export default ({
     shippingFee,
     discount,
     discountCode,
+    tax,
     discountField,
+    discountThreshold,
     setDiscountField,
     usedDiscountButton,
     setUsedDiscountButton,
@@ -63,21 +68,21 @@ export default ({
     const classes = useStyles();
 
     const discountCaptionStyle = useMemo(() => {
-        return discountField === discountCode && subtotal < 40
+        return discountField === discountCode && subtotal < discountThreshold
             ? {
                   color: 'rgba(255,0,0,.7)',
               }
             : {};
-    }, [subtotal, discountCode, discountField]);
+    }, [subtotal, discountCode, discountField, discountThreshold]);
     const checkStyle = useMemo(() => {
-        return discountField === discountCode && subtotal > 40
+        return discountField === discountCode && subtotal > discountThreshold
             ? {
                   marginLeft: 8,
                   fontSize: '1rem',
                   transform: 'scale(1.25)',
               }
             : {};
-    }, [subtotal, discountCode, discountField]);
+    }, [subtotal, discountCode, discountField, discountThreshold]);
 
     if (amount === 0)
         return <div style={{ paddingBottom: 8 }}>Your cart is empty</div>;
@@ -98,7 +103,7 @@ export default ({
                     </span>
                     <br />
                     <span className={classes.caption}>
-                        Delivery will be between 5-9 business days.
+                        Delivery will be between 7-14 business days.
                     </span>
                 </p>
                 <p>${shippingFee}</p>
@@ -107,9 +112,9 @@ export default ({
                 <TextField
                     margin="none"
                     size="small"
-                    onChange={(e) =>
-                        setDiscountField(e.target.value.toUpperCase())
-                    }
+                    onChange={(e) => {
+                        setDiscountField(e.target.value.toUpperCase());
+                    }}
                     label="Discount Code"
                     value={discountField}
                     className={classes.discountField}
@@ -126,7 +131,7 @@ export default ({
                     <CheckIcon className={classes.check} style={checkStyle} />
                 </div>
             </div>
-            {subtotal < 40 || usedDiscountButton ? (
+            {subtotal < discountThreshold || usedDiscountButton ? (
                 <Button
                     className={classes.discountButton}
                     variant="contained"
@@ -146,8 +151,17 @@ export default ({
                 className={classes.discountCaption}
                 style={discountCaptionStyle}
             >
-                Discount is limited to $40+ orders.
+                Discount is limited to $45+ subtotal orders.
             </span>
+            <div
+                className={classes.cartCalculation}
+                style={{ marginBottom: 0 }}
+            >
+                <div style={{ paddingTop: 4 }}>
+                    <p className={classes.taxField}>Tax</p>
+                </div>
+                <p className={classes.taxField}>${tax}</p>
+            </div>
             <hr
                 style={{
                     border: 'none',
