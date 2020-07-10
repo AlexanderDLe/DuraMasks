@@ -93,13 +93,15 @@ export default ({ authenticated, setAuthenticated }) => {
                     </Button>
                 </Link>
                 <hr />
-                <Button
-                    color="primary"
-                    className={classes.button}
-                    onClick={handleLogoutSubmit}
-                >
-                    Logout
-                </Button>
+                <Link to="/login">
+                    <Button
+                        color="primary"
+                        className={classes.button}
+                        onClick={handleLogoutSubmit}
+                    >
+                        Logout
+                    </Button>
+                </Link>
             </CardContent>
         </Card>
     );

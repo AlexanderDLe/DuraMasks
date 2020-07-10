@@ -152,6 +152,7 @@ const Cart = ({
     }, [navMediaQuery600]);
 
     // Checkout Configuration
+    const itemAmount = amount;
     const env = mode;
     const subtotal = useMemo(() => {
         return calculateSubtotal(orders);
@@ -200,13 +201,18 @@ const Cart = ({
             amount,
             timestamp,
             mode,
+            subtotal,
+            discount,
+            tax,
         };
 
         console.log('Details: ', details);
         console.log('Data: ', data);
         console.log('Event: ', event);
 
-        const cardName = `${address.recipient_name} - ${orderID.slice(0, 3)}`;
+        const cardName = `${
+            address.recipient_name
+        } (${itemAmount}) - ${orderID.slice(0, 3)}`;
         const newCard = {
             name: cardName,
             pos: 'bottom',
