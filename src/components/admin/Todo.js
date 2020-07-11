@@ -25,6 +25,8 @@ import FallbackImage from '../../img/Logo.jpg';
 import BackToAdmin from './reusables/BackToAdmin';
 import Timestamper from '../misc/Timestamper';
 
+import TodoHistory from './todo/TodoHistory';
+
 const useStyles = makeStyles({
     root: {
         marginTop: 60,
@@ -70,6 +72,13 @@ const useStyles = makeStyles({
         color: 'rgba(0,0,0,.6)',
         marginTop: 8,
     },
+    showMoreDiv: {
+        textAlign: 'center',
+        marginTop: 16,
+    },
+    showMoreButton: {
+        borderRadius: 3,
+    },
 });
 
 const API = keys.todoMasksAPI;
@@ -104,8 +113,9 @@ export default () => {
     const [modalOpen, setModalOpen] = useState(false);
     const [modalImage, setModalImage] = useState('Black');
     const [timestamp, setTimestamp] = useState('');
+    const [historyArr, setHistoryArr] = useState([]);
+    const [showHistory, setShowHistory] = useState(false);
 
-    console.log(data);
     // Modal Stuff
     const handleModalOpen = (design) => {
         setModalImage(design);
@@ -152,7 +162,6 @@ export default () => {
         async function fetchData() {
             try {
                 const response = await axios.get(API);
-                // console.log(response);
                 setData(response.data ? response.data : []);
                 setTotals(calculateTotals(response.data));
                 setTimestamp(Timestamper().split('T').join(' ').slice(0, -9));
@@ -170,6 +179,13 @@ export default () => {
 
     const updateNum = async (color, size, amount, action) => {
         let newData = data;
+        const updateHistoryEntry = () => {
+            let str = '';
+            if (action === 'add') str += 'Added 1 ';
+            if (action === 'remove') str += 'Removed 1 ';
+            str += `${size} ${color}`;
+            return str;
+        };
         if (action === 'add') {
             newData[color][size] += amount;
             newData[color]['Total'] += amount;
@@ -194,6 +210,12 @@ export default () => {
             };
             setData(newData);
             setTotals(calculateTotals(newData));
+            const newHistoryArr = [...historyArr];
+            newHistoryArr.unshift({
+                text: updateHistoryEntry(),
+                timestamp: Timestamper().split('T').join(' ').slice(0, -6),
+            });
+            setHistoryArr(newHistoryArr);
             await axios.post(API, event, header);
         } catch (error) {
             console.log(error);
@@ -206,6 +228,15 @@ export default () => {
                 action: 'add',
                 amount: amount,
             };
+        };
+        const addHistoryEntry = () => {
+            let str = `Added ${design}: `;
+            if (XL) str += `+${XL} XL. `;
+            if (L) str += `+${L} L. `;
+            if (M) str += `+${M} M. `;
+            if (S) str += `+${S} S. `;
+            if (XS) str += `+${XS} XS. `;
+            return str;
         };
         // If data already exists, add to object, otherwise create new
         let newData = { ...data };
@@ -234,6 +265,12 @@ export default () => {
             console.log('Item added');
             setData(newData);
             setTotals(calculateTotals(newData));
+            const newHistoryArr = [...historyArr];
+            newHistoryArr.unshift({
+                text: addHistoryEntry(),
+                timestamp: Timestamper().split('T').join(' ').slice(0, -6),
+            });
+            setHistoryArr(newHistoryArr);
             await axios.post(API, event, header);
         } catch (error) {
             console.log(error);
@@ -246,6 +283,15 @@ export default () => {
                 action: 'remove',
                 amount: amount,
             };
+        };
+        const removeHistoryEntry = () => {
+            let str = `Removed ${design}: `;
+            if (XL) str += `-${XL} XL. `;
+            if (L) str += `-${L} L. `;
+            if (M) str += `-${M} M. `;
+            if (S) str += `-${S} S. `;
+            if (XS) str += `-${XS} XS. `;
+            return str;
         };
         let newData = data;
 
@@ -262,6 +308,12 @@ export default () => {
             delete newData[design];
             setData(newData);
             setTotals(calculateTotals(newData));
+            const newHistoryArr = [...historyArr];
+            newHistoryArr.unshift({
+                text: removeHistoryEntry(),
+                timestamp: Timestamper().split('T').join(' ').slice(0, -6),
+            });
+            setHistoryArr(newHistoryArr);
             await axios.post(API, event, header);
         } catch (error) {
             console.log(error);
@@ -396,40 +448,54 @@ export default () => {
     if (!localStorage.getItem('Authenticated')) return <Redirect to="/login" />;
 
     return (
-        <Card className={classes.root} elevation={3}>
-            <CardContent className={classes.todoHeader}>
-                <Typography
-                    className={classes.header}
-                    variant="h4"
-                    component="h2"
+        <React.Fragment>
+            <Card className={classes.root} elevation={3}>
+                <CardContent className={classes.todoHeader}>
+                    <Typography
+                        className={classes.header}
+                        variant="h4"
+                        component="h2"
+                    >
+                        <BackToAdmin />
+                        To Do
+                    </Typography>
+                    <p className={classes.timestamp}>
+                        {!loading ? 'Retrieved data on ' : ''} {timestamp}
+                    </p>
+                </CardContent>
+                {loading ? (
+                    <div style={{ textAlign: 'center' }}>
+                        <CircularProgress />
+                    </div>
+                ) : (
+                    renderTable()
+                )}
+                <Link to="/admin">
+                    <Button color="primary" className={classes.button}>
+                        Admin
+                    </Button>
+                </Link>
+                <Modal
+                    open={modalOpen}
+                    onClose={handleModalClose}
+                    aria-labelledby="Mask Image"
+                    aria-describedby="Modal to pop up facemask image."
                 >
-                    <BackToAdmin />
-                    To Do
-                </Typography>
-                <p className={classes.timestamp}>
-                    {!loading ? 'Retrieved data on ' : ''} {timestamp}
-                </p>
-            </CardContent>
-            {loading ? (
-                <div style={{ textAlign: 'center' }}>
-                    <CircularProgress />
-                </div>
-            ) : (
-                renderTable()
-            )}
-            <Link to="/admin">
-                <Button color="primary" className={classes.button}>
-                    Admin
+                    {renderModalContent()}
+                </Modal>
+            </Card>
+            {showHistory ? <TodoHistory historyArr={historyArr} /> : ''}
+            <div className={classes.showMoreDiv}>
+                <Button
+                    className={classes.showMoreButton}
+                    size="medium"
+                    onClick={() => setShowHistory(!showHistory)}
+                    elevation={0}
+                >
+                    {showHistory ? 'Hide ' : 'Show '}
+                    History
                 </Button>
-            </Link>
-            <Modal
-                open={modalOpen}
-                onClose={handleModalClose}
-                aria-labelledby="Mask Image"
-                aria-describedby="Modal to pop up facemask image."
-            >
-                {renderModalContent()}
-            </Modal>
-        </Card>
+            </div>
+        </React.Fragment>
     );
 };

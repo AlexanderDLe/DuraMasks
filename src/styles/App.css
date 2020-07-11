@@ -9,6 +9,7 @@
 .body-class {
     min-height: calc(100vh - 116px);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-top: 56px;
