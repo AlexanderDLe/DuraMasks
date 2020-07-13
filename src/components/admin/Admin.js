@@ -82,11 +82,11 @@ export default ({ authenticated, setAuthenticated }) => {
                         Wholesale
                     </Button>
                 </Link>
-                {/* <Link className={classes.link} to="/seamstress">
+                <Link className={classes.link} to="/designs">
                     <Button color="primary" className={classes.button}>
-                        Seamstress
+                        Designs
                     </Button>
-                </Link> */}
+                </Link>
                 <Link className={classes.link} to="/todo">
                     <Button color="primary" className={classes.button}>
                         Todo

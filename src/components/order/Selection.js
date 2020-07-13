@@ -1,19 +1,14 @@
 import React, { useEffect, useState, useMemo } from 'react';
+import keys from '../../config/keys';
+import axios from 'axios';
+
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
 import { useMediaQuery } from '@material-ui/core';
 
-import Checkbox from '@material-ui/core/Checkbox';
-import DesignCard from './DesignCard';
-import CustomCard from './CustomCard';
 import { selection } from '../masks/MaskDesigns';
-import Search from './Search';
 import SelectionHero from './SelectionHero';
 import SelectionFilter from './SelectionFilter';
-// import Banner from '../misc/Banner';
-import RenderCategory from './RenderCategory';
+import SelectionContainer from './SelectionContainer';
 
 const useStyles = makeStyles((theme) => ({
     main: {
@@ -52,9 +47,12 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'space-between',
     },
+    LoadingDiv: {
+        height: '100vh',
+    },
 }));
 
-const searchThroughSelection = (searchTerm) => {
+const searchThroughSelection = (selection, searchTerm) => {
     let selectionResults = [];
     Object.keys(selection).forEach((key) => {
         if (searchTerm === '') return selectionResults.push(selection[key]);
@@ -77,19 +75,37 @@ const searchThroughSelection = (searchTerm) => {
     return selectionResults;
 };
 
+const API = keys.designsAPI;
+
 export default ({
     showMoreObj,
     setShowMoreObj,
     yCoordinate,
     setYCoordinate,
 }) => {
+    // const [selection, setSelection] = useState(MaskDesigns);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
-        window.scrollTo(0, yCoordinate);
+        async function process() {
+            try {
+                let response = await axios.get(API);
+                Object.keys(response.data).forEach((key) => {
+                    if (!response.data[key]) {
+                        delete selection[key];
+                    }
+                });
+                console.log(response.data);
+                setLoading(false);
+            } catch (error) {
+                console.log(error);
+                setLoading(false);
+            }
+        }
+        process();
     }, [yCoordinate]);
     const navMediaQuery = useMediaQuery('(min-width:900px)');
 
     const classes = useStyles();
-
     const [filter, setFilter] = useState('All');
     const [customOpen, setCustomOpen] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
@@ -135,121 +151,12 @@ export default ({
         });
     };
 
-    const searchResults = searchThroughSelection(searchTerm);
+    const searchResults = searchThroughSelection(selection, searchTerm);
     sortCategories(searchResults);
 
     // Search
     const handleSearchTermChange = (e) => {
         setSearchTerm(e.target.value);
-    };
-
-    // Render
-    const renderDesigns = () => {
-        const renderCustom = () => {
-            const renderCustomItems = () => {
-                return (
-                    <React.Fragment>
-                        <CustomCard />
-                        <DesignCard
-                            design={selection.blackelastic}
-                            key={1000}
-                            setYCoordinate={setYCoordinate}
-                        />
-                        <DesignCard
-                            design={selection.whiteelastic}
-                            key={1001}
-                            setYCoordinate={setYCoordinate}
-                        />
-                    </React.Fragment>
-                );
-            };
-            return (
-                <React.Fragment>
-                    <div className={classes.category}>
-                        <Checkbox
-                            onClick={() => setCustomOpen(!customOpen)}
-                            checked={customOpen}
-                            color="default"
-                            className={classes.checkbox}
-                            size="small"
-                        />
-                        <Typography
-                            onClick={() => setCustomOpen(!customOpen)}
-                            variant="h4"
-                            component="h2"
-                            className={classes.categoryTitle}
-                        >
-                            Custom
-                        </Typography>
-                    </div>
-                    <Grid container spacing={2}>
-                        {customOpen ? renderCustomItems() : ''}
-                    </Grid>
-                </React.Fragment>
-            );
-        };
-
-        return (
-            <React.Fragment>
-                <RenderCategory
-                    categoryName={'Bandana'}
-                    categoryItems={bandana}
-                    filterState={filter}
-                    showMoreObj={showMoreObj}
-                    setShowMoreObj={setShowMoreObj}
-                    setYCoordinate={setYCoordinate}
-                />
-                <RenderCategory
-                    categoryName={'Floral'}
-                    categoryItems={floral}
-                    filterState={filter}
-                    showMoreObj={showMoreObj}
-                    setShowMoreObj={setShowMoreObj}
-                    setYCoordinate={setYCoordinate}
-                />
-                <RenderCategory
-                    categoryName={'Animal'}
-                    categoryItems={animal}
-                    filterState={filter}
-                    showMoreObj={showMoreObj}
-                    setShowMoreObj={setShowMoreObj}
-                    setYCoordinate={setYCoordinate}
-                />
-                <RenderCategory
-                    categoryName={'Pattern'}
-                    categoryItems={pattern}
-                    filterState={filter}
-                    showMoreObj={showMoreObj}
-                    setShowMoreObj={setShowMoreObj}
-                    setYCoordinate={setYCoordinate}
-                />
-                <RenderCategory
-                    categoryName={'Solid'}
-                    categoryItems={solid}
-                    filterState={filter}
-                    showMoreObj={showMoreObj}
-                    setShowMoreObj={setShowMoreObj}
-                    setYCoordinate={setYCoordinate}
-                />
-                <RenderCategory
-                    categoryName={'Hawaiian'}
-                    categoryItems={hawaiian}
-                    filterState={filter}
-                    showMoreObj={showMoreObj}
-                    setShowMoreObj={setShowMoreObj}
-                    setYCoordinate={setYCoordinate}
-                />
-                <RenderCategory
-                    categoryName={'Patriot'}
-                    categoryItems={patriot}
-                    filterState={filter}
-                    showMoreObj={showMoreObj}
-                    setShowMoreObj={setShowMoreObj}
-                    setYCoordinate={setYCoordinate}
-                />
-                {filter === 'All' || filter === 'Custom' ? renderCustom() : ''}
-            </React.Fragment>
-        );
     };
 
     const selectionPadding = useMemo(() => {
@@ -261,16 +168,31 @@ export default ({
     return (
         <React.Fragment>
             <main className={classes.main}>
-                {/* <Banner /> */}
                 <SelectionHero />
                 <SelectionFilter filter={filter} setFilter={setFilter} />
-                <Container className={classes.root} style={selectionPadding}>
-                    <Search
+                {loading ? (
+                    <div className={classes.LoadingDiv}>Loading...</div>
+                ) : (
+                    <SelectionContainer
+                        selectionPadding={selectionPadding}
                         searchTerm={searchTerm}
                         handleSearchTermChange={handleSearchTermChange}
+                        showMoreObj={showMoreObj}
+                        setShowMoreObj={setShowMoreObj}
+                        yCoordinate={yCoordinate}
+                        setYCoordinate={setYCoordinate}
+                        filter={filter}
+                        solid={solid}
+                        patriot={patriot}
+                        bandana={bandana}
+                        pattern={pattern}
+                        animal={animal}
+                        hawaiian={hawaiian}
+                        floral={floral}
+                        customOpen={customOpen}
+                        setCustomOpen={setCustomOpen}
                     />
-                    {renderDesigns()}
-                </Container>
+                )}
             </main>
         </React.Fragment>
     );

@@ -11,6 +11,7 @@ import Admin from './admin/Admin';
 import Login from './admin/Login';
 import Total from './admin/Total';
 import Daily from './admin/Daily';
+import Designs from './admin/Designs';
 import Wholesale from './admin/Wholesale';
 import CreateWholesaleOrder from './admin/wholesale/CreateWholesaleOrder';
 import WholesaleOrder from './admin/wholesale/WholesaleOrder';
@@ -55,6 +56,7 @@ function Body(props) {
                     )}
                 />
                 <Route exact path="/daily" component={Daily} />
+                <Route exact path="/designs" component={Designs} />
                 <Route
                     exact
                     path="/login"
