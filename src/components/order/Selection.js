@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { useMediaQuery } from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { selection } from '../masks/MaskDesigns';
 import SelectionHero from './SelectionHero';
@@ -48,7 +49,10 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-between',
     },
     LoadingDiv: {
-        height: '100vh',
+        height: 'calc(100vh)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 }));
 
@@ -85,16 +89,13 @@ export default ({
 }) => {
     // const [selection, setSelection] = useState(MaskDesigns);
     const [loading, setLoading] = useState(true);
+    const [designAvailability, setDesignAvailability] = useState({});
     useEffect(() => {
         async function process() {
             try {
                 let response = await axios.get(API);
-                Object.keys(response.data).forEach((key) => {
-                    if (!response.data[key]) {
-                        delete selection[key];
-                    }
-                });
                 console.log(response.data);
+                setDesignAvailability(response.data);
                 setLoading(false);
             } catch (error) {
                 console.log(error);
@@ -122,6 +123,7 @@ export default ({
     // Categorization
     const sortCategories = (selectionToSort) => {
         selectionToSort.forEach((item) => {
+            if (!designAvailability[item.param]) return;
             let category = item.category;
             switch (category) {
                 case 'solid':
@@ -171,7 +173,9 @@ export default ({
                 <SelectionHero />
                 <SelectionFilter filter={filter} setFilter={setFilter} />
                 {loading ? (
-                    <div className={classes.LoadingDiv}>Loading...</div>
+                    <div className={classes.LoadingDiv}>
+                        <CircularProgress />
+                    </div>
                 ) : (
                     <SelectionContainer
                         selectionPadding={selectionPadding}

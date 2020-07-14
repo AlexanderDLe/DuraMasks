@@ -12,7 +12,6 @@ import { Link, Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BackToAdmin from './reusables/BackToAdmin';
-
 import DesignItem from './design/DesignItem';
 
 const useStyles = makeStyles({
@@ -83,9 +82,11 @@ export default () => {
     };
 
     const renderData = () => {
-        return Object.keys(selection).map((item, index) => {
-            return renderItem(item, index);
-        });
+        return Object.keys(selection)
+            .sort()
+            .map((item, index) => {
+                return renderItem(item, index);
+            });
     };
 
     if (!localStorage.getItem('Authenticated')) return <Redirect to="/login" />;

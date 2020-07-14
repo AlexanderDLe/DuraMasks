@@ -19,7 +19,7 @@ import { Link, Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import AddItem from './reusables/AddItem';
-import ItemRow from './reusables/ItemRow';
+import TodoRow from './reusables/TodoRow';
 
 import FallbackImage from '../../img/Logo.jpg';
 import BackToAdmin from './reusables/BackToAdmin';
@@ -82,6 +82,7 @@ const useStyles = makeStyles({
 });
 
 const API = keys.todoMasksAPI;
+const designAPI = keys.designsAPI;
 const header = {
     'Content-Type': 'application/json',
 };
@@ -109,6 +110,7 @@ const calculateTotals = (data) => {
 export default () => {
     const [totals, setTotals] = useState({});
     const [data, setData] = useState({});
+    const [designAvailability, setDesignAvailability] = useState({});
     const [loading, setLoading] = useState(true);
     const [modalOpen, setModalOpen] = useState(false);
     const [modalImage, setModalImage] = useState('Black');
@@ -162,6 +164,10 @@ export default () => {
         async function fetchData() {
             try {
                 const response = await axios.get(API);
+                const designResponse = await axios.get(designAPI);
+                setDesignAvailability(designResponse.data);
+                console.log(designResponse.data);
+                console.log(response.data);
                 setData(response.data ? response.data : []);
                 setTotals(calculateTotals(response.data));
                 setTimestamp(Timestamper().split('T').join(' ').slice(0, -9));
@@ -176,6 +182,20 @@ export default () => {
         if (localStorage.getItem('Authenticated')) fetchData();
     }, []);
     const classes = useStyles();
+
+    const toggleDesign = async (design) => {
+        console.log('ey');
+        if (designAvailability[design] === undefined) return;
+        try {
+            // const newDesignAvailability = { ...designAvailability };
+            // newDesignAvailability.design = !newDesignAvailability.design;
+            // setData(newDesignAvailability);
+            // console.log(newDesignAvailability);
+            await axios.post(designAPI, { design }, header);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     const updateNum = async (color, size, amount, action) => {
         let newData = data;
@@ -320,6 +340,13 @@ export default () => {
         }
     };
     const renderTable = () => {
+        const renderTableCell = (name) => {
+            return (
+                <TableCell className={classes.totals} align="center">
+                    {name}
+                </TableCell>
+            );
+        };
         return (
             <TableContainer>
                 <Table className={classes.table} aria-label="simple table">
@@ -328,57 +355,23 @@ export default () => {
                             <TableCell className={classes.totals}>
                                 Design
                             </TableCell>
-                            <TableCell
-                                className={classes.totals}
-                                align="center"
-                            >
-                                XL
-                            </TableCell>
-                            <TableCell
-                                className={classes.totals}
-                                align="center"
-                            >
-                                L
-                            </TableCell>
-                            <TableCell
-                                className={classes.totals}
-                                align="center"
-                            >
-                                M
-                            </TableCell>
-                            <TableCell
-                                className={classes.totals}
-                                align="center"
-                            >
-                                S
-                            </TableCell>
-                            <TableCell
-                                className={classes.totals}
-                                align="center"
-                            >
-                                XS
-                            </TableCell>
-                            <TableCell
-                                className={classes.totals}
-                                align="center"
-                            >
-                                Total
-                            </TableCell>
-                            <TableCell
-                                className={classes.totals}
-                                align="center"
-                            >
-                                Actions
-                            </TableCell>
+                            {renderTableCell('XL')}
+                            {renderTableCell('L')}
+                            {renderTableCell('M')}
+                            {renderTableCell('S')}
+                            {renderTableCell('XS')}
+                            {renderTableCell('Total')}
+                            {renderTableCell('Actions')}
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         <AddItem addItem={addItem} />
                         {Object.keys(data).map((row, index) => {
+                            let str = row.split(' ').join('').toLowerCase();
                             if (data[row].Total === 0)
                                 return <TableRow key={index} />;
                             return (
-                                <ItemRow
+                                <TodoRow
                                     key={index}
                                     updateNum={updateNum}
                                     data={data}
@@ -389,6 +382,11 @@ export default () => {
                                         index % 2 === 1
                                             ? '#fff'
                                             : 'rgb(245,245,245)'
+                                    }
+                                    availability={designAvailability[str]}
+                                    toggleDesign={toggleDesign}
+                                    disabled={
+                                        designAvailability[str] === undefined
                                     }
                                 />
                             );
