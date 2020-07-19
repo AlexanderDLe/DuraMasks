@@ -17,6 +17,8 @@ import CartModal from './CartModal';
 
 import axios from 'axios';
 import createTrelloDescription from './createTrelloDescription';
+import createTrelloLabel from './createTrelloLabel';
+
 const API = keys.emailConfirmationAPI;
 const trelloAPI = keys.trelloAPI;
 const header = {
@@ -85,23 +87,6 @@ const calculateTimestamp = (time) => {
     return timestamp;
 };
 
-const setTrelloLabel = () => {
-    const timestamp = moment().tz('America/Los_Angeles').format().toString();
-    const date = moment(timestamp.slice(0, 10));
-    const dow = date.day();
-
-    const labels = {
-        0: '5ebdcdfa50359740d35f8bf1',
-        1: '5eb0d04b526baa3fdb30aedd',
-        2: '5eb0d025cc223e226dc80988',
-        3: '5eaf0c1c7669b22549987151',
-        4: '5eaf0c1c7669b22549987154',
-        5: '5eaf0c1c7669b22549987155',
-        6: '5eaf0c1c7669b22549987156',
-    };
-    return [labels[dow]];
-};
-
 const calculateSubtotal = (orders) => {
     let subtotal = 0;
     for (let order of orders) {
@@ -143,13 +128,6 @@ const Cart = ({
     const [modalOpen, setModalOpen] = React.useState(false);
     const [discountField, setDiscountField] = useState('');
     const navMediaQuery600 = useMediaQuery('(min-width:600px)');
-
-    console.log(discountField);
-    // Cart Root Styles
-    const cartRootStyles = useMemo(() => {
-        let marginTop = navMediaQuery600 ? 40 : 16;
-        return { marginTop };
-    }, [navMediaQuery600]);
 
     // Checkout Configuration
     const itemAmount = amount;
@@ -216,7 +194,7 @@ const Cart = ({
         const newCard = {
             name: cardName,
             pos: 'bottom',
-            idLabels: setTrelloLabel(),
+            idLabels: createTrelloLabel(),
             idCardSource: '5ef183a95443f525b947c506',
             keepFromSource: 'checklists',
             desc: createTrelloDescription(event),
@@ -249,6 +227,12 @@ const Cart = ({
         console.log('There was an error', err);
         setPaypalError(true);
     };
+
+    // Cart Root Styles
+    const cartRootStyles = useMemo(() => {
+        let marginTop = navMediaQuery600 ? 40 : 16;
+        return { marginTop };
+    }, [navMediaQuery600]);
 
     if (checkedOut) return <Redirect to="/success" />;
 

@@ -31,12 +31,7 @@ export default ({ historyArr }) => {
         };
 
         return (
-            <ListItem
-                style={rowBGColor}
-                className={classes.item}
-                // style={style}
-                key={index}
-            >
+            <ListItem style={rowBGColor} className={classes.item} key={index}>
                 <TodoHistoryItem data={historyArr[index]} index={index} />
             </ListItem>
         );

@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import keys from '../../config/keys';
+import axios from 'axios';
 
 import { useMediaQuery } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -21,6 +23,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import MaskOrderForm from './MaskOrderForm';
 import ElasticOrderForm from './ElasticOrderForm';
 import { selection } from '../masks/MaskDesigns';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -109,16 +112,15 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default ({ match, addOrder }) => {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+const API = keys.designsAPI;
 
+export default ({ match, addOrder }) => {
     const navMediaQuery = useMediaQuery('(min-width:420px)');
     const navMediaQuery600 = useMediaQuery('(min-width:600px)');
 
     const classes = useStyles();
     const data = selection[match.params.id];
+    console.log(data);
 
     const defaultSize = data.type === 'Mask' ? 'L' : '200 Yards';
 
@@ -129,6 +131,28 @@ export default ({ match, addOrder }) => {
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [messageInfo, setMessageInfo] = useState(undefined);
     const [angledState, setAngledState] = useState('PostMaskPhotos');
+    const [avail, setAvail] = useState(true);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        async function fetchData() {
+            try {
+                const response = await axios.get(API);
+                const availability = response.data[data.param]
+                    ? response.data[data.param]
+                    : false;
+                console.log(response.data[data]);
+                setAvail(availability);
+                setLoading(false);
+            } catch (error) {
+                console.log(error);
+                setAvail(false);
+                setLoading(false);
+            }
+        }
+        fetchData();
+    }, [data]);
 
     // Mask Order Configuration
     const handleChange = (event) => {
@@ -231,69 +255,92 @@ export default ({ match, addOrder }) => {
             className={classes.root}
             elevation={3}
         >
-            <CardContent className={classes.title}>
-                <Typography
-                    className={classes.title}
-                    gutterBottom
-                    variant="h4"
-                    component="h2"
+            {loading ? (
+                <div
+                    style={{
+                        textAlign: 'center',
+                        padding: 100,
+                    }}
                 >
-                    {data.color}
-                </Typography>
-            </CardContent>
-            <CardMedia
-                className={navMediaQuery ? classes.media : classes.smallMedia}
-                image={require(`../../img/PostMaskPhotos/${data.img}`)}
-                title={data.color}
-                onClick={handleModalOpen}
-                style={{ cursor: 'pointer' }}
-            />
-            {data.type === 'Mask' ? (
-                <MaskOrderForm
-                    handleChange={handleChange}
-                    amount={amount}
-                    size={size}
-                    navMediaQuery={navMediaQuery}
-                    handleAmountChange={handleAmountChange}
-                    price={data.price}
-                    XLUnavailable={data.XLUnavailable ? true : false}
-                    incrementAmount={incrementAmount}
-                    decrementAmount={decrementAmount}
-                />
+                    <CircularProgress />
+                </div>
             ) : (
-                <ElasticOrderForm
-                    handleChange={handleChange}
-                    amount={amount}
-                    size={size}
-                    navMediaQuery={navMediaQuery}
-                    handleAmountChange={handleAmountChange}
-                    incrementAmount={incrementAmount}
-                    decrementAmount={decrementAmount}
-                />
+                <React.Fragment>
+                    <CardContent className={classes.title}>
+                        <Typography
+                            className={classes.title}
+                            gutterBottom
+                            variant="h4"
+                            component="h2"
+                        >
+                            {data.color}
+                        </Typography>
+                    </CardContent>
+                    <CardMedia
+                        className={
+                            navMediaQuery ? classes.media : classes.smallMedia
+                        }
+                        image={require(`../../img/PostMaskPhotos/${data.img}`)}
+                        title={data.color}
+                        onClick={handleModalOpen}
+                        style={{ cursor: 'pointer' }}
+                    />
+                    {!avail ? (
+                        <div style={{ textAlign: 'center' }}>
+                            Sorry, this design is no longer available.
+                        </div>
+                    ) : data.type === 'Mask' ? (
+                        <MaskOrderForm
+                            handleChange={handleChange}
+                            amount={amount}
+                            size={size}
+                            navMediaQuery={navMediaQuery}
+                            handleAmountChange={handleAmountChange}
+                            price={data.price}
+                            XLUnavailable={data.XLUnavailable ? true : false}
+                            incrementAmount={incrementAmount}
+                            decrementAmount={decrementAmount}
+                        />
+                    ) : (
+                        <ElasticOrderForm
+                            handleChange={handleChange}
+                            amount={amount}
+                            size={size}
+                            navMediaQuery={navMediaQuery}
+                            handleAmountChange={handleAmountChange}
+                            incrementAmount={incrementAmount}
+                            decrementAmount={decrementAmount}
+                        />
+                    )}
+                    <CardActions className={classes.itemActions}>
+                        <Link to="/selection" className={classes.link}>
+                            <Button size="small" color="primary">
+                                Mask Selection
+                            </Button>
+                        </Link>
+                        <Link to="/cart" className={classes.link}>
+                            <Button size="small" color="primary">
+                                Go To Cart
+                            </Button>
+                        </Link>
+                    </CardActions>
+                    {avail ? (
+                        <CardActions className={classes.itemActions}>
+                            <Button
+                                variant="contained"
+                                onClick={handleAddItem()}
+                                size="medium"
+                                color="primary"
+                                className={classes.addToCartButton}
+                            >
+                                Add To Cart
+                            </Button>
+                        </CardActions>
+                    ) : (
+                        ''
+                    )}
+                </React.Fragment>
             )}
-            <CardActions className={classes.itemActions}>
-                <Link to="/selection" className={classes.link}>
-                    <Button size="small" color="primary">
-                        Mask Selection
-                    </Button>
-                </Link>
-                <Link to="/cart" className={classes.link}>
-                    <Button size="small" color="primary">
-                        Go To Cart
-                    </Button>
-                </Link>
-            </CardActions>
-            <CardActions className={classes.itemActions}>
-                <Button
-                    variant="contained"
-                    onClick={handleAddItem()}
-                    size="medium"
-                    color="primary"
-                    className={classes.addToCartButton}
-                >
-                    Add To Cart
-                </Button>
-            </CardActions>
             <Modal
                 open={modalOpen}
                 onClose={handleModalClose}

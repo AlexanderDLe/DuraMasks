@@ -183,7 +183,7 @@ export default () => {
     }, []);
     const classes = useStyles();
 
-    const toggleDesign = async (design) => {
+    const toggleDesign = async (design, bool) => {
         console.log('ey');
         if (designAvailability[design] === undefined) return;
         try {
@@ -191,7 +191,7 @@ export default () => {
             // newDesignAvailability.design = !newDesignAvailability.design;
             // setData(newDesignAvailability);
             // console.log(newDesignAvailability);
-            await axios.post(designAPI, { design }, header);
+            await axios.post(designAPI, { design, bool }, header);
         } catch (error) {
             console.log(error);
         }
@@ -372,7 +372,7 @@ export default () => {
                                 return <TableRow key={index} />;
                             return (
                                 <TodoRow
-                                    key={index}
+                                    key={row}
                                     updateNum={updateNum}
                                     data={data}
                                     row={row}

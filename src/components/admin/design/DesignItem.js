@@ -26,8 +26,9 @@ export default ({ color, item, toggleDesign, bool }) => {
             <Switch
                 checked={checked}
                 onChange={() => {
+                    const initialCheck = checked;
                     setChecked(!checked);
-                    toggleDesign(item);
+                    toggleDesign(item, !initialCheck);
                 }}
                 color="primary"
                 name="checkedB"

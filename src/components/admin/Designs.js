@@ -41,6 +41,8 @@ export default () => {
     let [data, setData] = useState({});
     let [loading, setLoading] = useState(true);
 
+    console.log(data);
+
     useEffect(() => {
         window.scrollTo(0, 0);
         async function fetchData() {
@@ -57,13 +59,13 @@ export default () => {
         if (localStorage.getItem('Authenticated')) fetchData();
     }, []);
 
-    const toggleDesign = async (design) => {
+    const toggleDesign = async (design, bool) => {
         try {
             const newData = { ...data };
             newData.design = !newData.design;
             setData(newData);
             console.log(newData);
-            await axios.post(API, { design }, header);
+            await axios.post(API, { design, bool }, header);
         } catch (error) {
             console.log(error);
         }

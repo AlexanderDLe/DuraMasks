@@ -71,6 +71,7 @@ function TodoRow({
     const [mouseHover, setMouseHover] = useState(false);
     const [removeConfirmation, setRemoveConfirmation] = useState(false);
     const [avail, setAvail] = useState(availability);
+    console.log('Rerender: ', avail);
 
     const hoverStyles = useMemo(() => {
         return {
@@ -139,6 +140,12 @@ function TodoRow({
         );
     };
 
+    const handleSwitchChange = async () => {
+        const initialAvail = avail;
+        setAvail(!avail);
+        toggleDesign(row.split(' ').join('').toLowerCase(), !initialAvail);
+    };
+
     return (
         <TableRow
             onMouseEnter={() => setMouseHover(true)}
@@ -157,10 +164,7 @@ function TodoRow({
                 style={hoverStyles.design}
             >
                 <Switch
-                    onChange={() => {
-                        if (!disabled) setAvail(!avail);
-                        toggleDesign(row.split(' ').join('').toLowerCase());
-                    }}
+                    onChange={() => handleSwitchChange()}
                     className={classes.switch}
                     size="small"
                     checked={avail}

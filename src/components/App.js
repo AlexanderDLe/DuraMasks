@@ -32,8 +32,8 @@ const options = {
         size: 'M',
         amount: '2',
     },
-]; */
-
+];
+ */
 const defaultShowMoreObject = {
     Bandana: true,
     Floral: true,
