@@ -51,18 +51,21 @@ function FAQ() {
             <h2>Frequently Asked Questions</h2>
             <hr />
             <h5 className={classes.question}>
-                Do your masks have labels/tags?
+                What are these masks made of? How many layers?
             </h5>
-            <p>We no longer place labels or tags on our masks.</p>
+            <p>
+                There are 4 layers of different materials that work together to
+                filter particles in the air. These materials include cotton, a
+                non-woven polyester blend, and nylon. In particular, studies
+                have shown nylon to be a very effective material in blocking
+                droplets.
+            </p>
             <h5 className={classes.question}>Are these masks washable?</h5>
             <p>
                 Yes, we recommend hand washing with cold water & soap then
                 hanging to air dry. Avoid using hot water or a dryer as the
                 prolonged heat may shrink certain fabric. You may use an iron to
                 smoothen any following wrinkles.
-                <br />
-                <br />
-                Machine wash & dry at your own risk.
             </p>
             <h5 className={classes.question}>How much do these masks cost?</h5>
             <p>
@@ -77,21 +80,17 @@ function FAQ() {
             <h5 className={classes.question}>How long will delivery take?</h5>
             <p>Delivery will typically be within 7-14 business days.</p>
             <h5 className={classes.question}>
-                What are these masks made of? How many layers?
-            </h5>
-            <p>
-                These masks are composed of tightly-woven cotton and a non-woven
-                polyester blend to ensure thickness and protection. There are a
-                total layers of 4 layers for each mask.
-            </p>
-            <h5 className={classes.question}>
                 Do these masks come with elastic? How long are they? Are they
                 adjustable?
             </h5>
             <p>
                 Yes, each mask comes with two elastic bands - one for looping
-                around each ear. Each of the bands are 10 inches in length. You
-                can retie these bands if you wish to adjust for better fitting.
+                around each ear. Each of the bands are 10 inches in length.
+                <br />
+                <br />
+                To adjust, you can rotate the bands until the knot is revealed
+                outside of the side pockets - you may then retie these bands for
+                the most comfortable fit.
             </p>
 
             <h5 className={classes.question}>Is there a nosepiece?</h5>

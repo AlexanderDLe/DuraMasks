@@ -92,13 +92,13 @@ const bestSellers = [
     },
     {
         type: 'Mask',
-        color: 'Hula',
-        img: 'Hula.jpg',
-        param: 'hula',
+        color: 'Infinity',
+        img: 'Infinity.jpg',
+        param: 'infinity',
         price: maskPrice,
-        category: 'hawaiian',
-        angled: false,
-        tags: ['pink', 'red', 'green'],
+        category: 'bandana',
+        angled: true,
+        tags: ['white'],
     },
     {
         type: 'Mask',
@@ -112,13 +112,13 @@ const bestSellers = [
     },
     {
         type: 'Mask',
-        color: 'Evening',
-        img: 'Evening.jpg',
-        param: 'evening',
+        color: 'Growth',
+        img: 'Growth.jpg',
+        param: 'growth',
         price: maskPrice,
-        category: 'pattern',
+        category: 'floral',
         angled: true,
-        tags: ['orange', 'brown'],
+        tags: ['green', 'blue'],
     },
 ];
 

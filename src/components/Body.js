@@ -2,7 +2,9 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Landing from './landing/Landing';
 import Selection from './order/Selection';
+import AllDesigns from './order/alldesigns/AllDesigns';
 import Item from './item/Item';
+import AllItem from './order/alldesigns/AllItem';
 import Cart from './checkout/Cart';
 import Success from './checkout/Success';
 import CustomItem from './order/CustomItem';
@@ -81,6 +83,19 @@ function Body(props) {
                         />
                     )}
                 />
+                <Route
+                    exact
+                    path="/all"
+                    render={(props) => (
+                        <AllDesigns
+                            {...props}
+                            showMoreObj={showMoreObj}
+                            setShowMoreObj={setShowMoreObj}
+                            yCoordinate={yCoordinate}
+                            setYCoordinate={setYCoordinate}
+                        />
+                    )}
+                />
                 <Route exact path="/total" component={Total} />
                 <Route exact path="/todo" component={Todo} />
                 <Route exact path="/wholesale" component={Wholesale} />
@@ -100,6 +115,13 @@ function Body(props) {
                     exact
                     path="/item/:id"
                     render={(props) => <Item {...props} addOrder={addOrder} />}
+                />
+                <Route
+                    exact
+                    path="/all/:id"
+                    render={(props) => (
+                        <AllItem {...props} addOrder={addOrder} />
+                    )}
                 />
                 <Route exact path="/custom" component={CustomItem} />
                 <Route exact path="/pricing" component={Pricing} />

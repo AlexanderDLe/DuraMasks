@@ -162,16 +162,6 @@ export const archive = {
     //     angled: true,
     //     tags: ['black', 'orange'],
     // },
-    // cultivate: {
-    //     type: 'Mask',
-    //     color: 'Cultivate',
-    //     img: 'Cultivate.jpg',
-    //     param: 'cultivate',
-    //     price: maskPrice,
-    //     category: 'floral',
-    //     angled: true,
-    //     tags: ['black', 'orange', 'red'],
-    // },
     // cherries: {
     //     type: 'Mask',
     //     color: 'Cherries',
@@ -281,16 +271,6 @@ export const archive = {
     //     category: 'pattern',
     //     angled: true,
     //     tags: ['black', 'purple', 'violet'],
-    // },
-    // lovely: {
-    //     type: 'Mask',
-    //     color: 'Lovely',
-    //     img: 'Lovely.jpg',
-    //     param: 'lovely',
-    //     price: maskPrice,
-    //     category: 'floral',
-    //     angled: true,
-    //     tags: ['black', 'red'],
     // },
     // fluorescent: {
     //     type: 'Mask',

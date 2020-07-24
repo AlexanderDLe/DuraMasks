@@ -211,7 +211,7 @@ export default ({ match }) => {
                                 return <TableRow key={index} />;
                             return (
                                 <ItemRow
-                                    key={index}
+                                    key={row}
                                     updateNum={updateNum}
                                     data={data}
                                     row={row}
