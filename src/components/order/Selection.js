@@ -90,6 +90,9 @@ export default ({
     // const [selection, setSelection] = useState(MaskDesigns);
     const [loading, setLoading] = useState(true);
     const [designAvailability, setDesignAvailability] = useState({});
+    // Don't show hero if on internet explorer
+    var isIE = /*@cc_on!@*/ false || !!document.documentMode;
+    var isFirefox = typeof InstallTrigger !== 'undefined';
     useEffect(() => {
         async function process() {
             try {
@@ -170,7 +173,7 @@ export default ({
     return (
         <React.Fragment>
             <main className={classes.main}>
-                <SelectionHero />
+                {isIE || isFirefox ? '' : <SelectionHero />}
                 <SelectionFilter filter={filter} setFilter={setFilter} />
                 {loading ? (
                     <div className={classes.LoadingDiv}>

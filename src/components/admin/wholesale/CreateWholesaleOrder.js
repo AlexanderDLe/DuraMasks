@@ -255,13 +255,17 @@ export default () => {
                 ) : (
                     ''
                 )}
-                <Button
-                    onClick={handleSaveAndSubmit}
-                    color="primary"
-                    className={classes.button}
-                >
-                    Save & Submit
-                </Button>
+                {loading ? (
+                    ''
+                ) : (
+                    <Button
+                        onClick={handleSaveAndSubmit}
+                        color="primary"
+                        className={classes.button}
+                    >
+                        Save & Submit
+                    </Button>
+                )}
             </div>
             {loading ? <LinearProgress /> : ''}
         </Card>

@@ -103,7 +103,7 @@ export default ({
                     </span>
                     <br />
                     <span className={classes.caption}>
-                        Delivery will be between 7-14 business days.
+                        Delivery will be between 5-9 business days.
                     </span>
                 </p>
                 <p>${shippingFee}</p>

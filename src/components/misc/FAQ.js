@@ -55,10 +55,12 @@ function FAQ() {
             </h5>
             <p>
                 There are 4 layers of different materials that work together to
-                filter particles in the air. These materials include cotton, a
-                non-woven polyester blend, and nylon. In particular, studies
-                have shown nylon to be a very effective material in blocking
-                droplets.
+                filter particles in the air. These materials include
+                tightly-woven cotton and a non-woven rayon & polyester blend.
+                <br />
+                <br />
+                Studies have shown that a mix of different materials helps
+                filter particles in the air. We prioritize safety and health.
             </p>
             <h5 className={classes.question}>Are these masks washable?</h5>
             <p>
@@ -78,7 +80,7 @@ function FAQ() {
                 use code 15OFF in the cart to apply.
             </p>
             <h5 className={classes.question}>How long will delivery take?</h5>
-            <p>Delivery will typically be within 7-14 business days.</p>
+            <p>Delivery will typically be within 5-9 business days.</p>
             <h5 className={classes.question}>
                 Do these masks come with elastic? How long are they? Are they
                 adjustable?

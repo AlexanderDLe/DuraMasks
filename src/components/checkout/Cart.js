@@ -293,7 +293,9 @@ const Cart = ({
             </Button>
             {paypalError ? (
                 <div className={classes.paypalError}>
-                    Sorry, there was an error.
+                    Sorry, there was an error. There may have been an issue with
+                    your payment information or the PayPal servers. Please make
+                    sure you are using the Google Chrome web browser.
                 </div>
             ) : (
                 ''
