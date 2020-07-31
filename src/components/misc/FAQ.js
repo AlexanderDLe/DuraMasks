@@ -122,7 +122,9 @@ function FAQ() {
             <h5 className={classes.question}>How many designs do you have?</h5>
             <p>
                 We have over 100 designs and counting. We're constantly
-                increasing our options so you may find what you like!
+                increasing our options so you may find what you like! On the
+                flip side, certain popular designs may eventually run out and
+                become unavailable so get them while you can!
             </p>
             <h5 className={classes.question}>
                 How can I get in contact with you?
