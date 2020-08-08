@@ -8,6 +8,7 @@ import moment from 'moment-timezone';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
@@ -76,6 +77,11 @@ const useStyles = makeStyles((theme) => ({
         width: 65,
         marginBottom: 8,
     },
+    itemActions: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        margin: '0px 8px',
+    },
 }));
 
 const calculateTimestamp = (time) => {
@@ -108,6 +114,9 @@ const extractOrderData = (ordersToExtract) => {
     return extractedOrders;
 };
 
+const CART = 'CART';
+const CHECKOUT = 'CHECKOUT';
+
 const Cart = ({
     orders,
     removeOrder,
@@ -123,6 +132,7 @@ const Cart = ({
     }, []);
 
     const classes = useStyles();
+    const [checkoutMode, setCheckoutMode] = useState(CART);
     const [paypalError, setPaypalError] = useState(false);
     const [checkedOut, setCheckedOut] = useState(false);
     const [modalOpen, setModalOpen] = React.useState(false);
@@ -234,6 +244,58 @@ const Cart = ({
         return { marginTop };
     }, [navMediaQuery600]);
 
+    // Cart Actions
+    const renderCartActions = () => {
+        if (checkoutMode === CART) {
+            return (
+                <CardActions className={classes.itemActions}>
+                    <Link to="/selection" className={classes.link}>
+                        <Button size="small" color="primary">
+                            Mask Selection
+                        </Button>
+                    </Link>
+                    <Button
+                        onClick={() => setCheckoutMode(CHECKOUT)}
+                        size="small"
+                        color="primary"
+                    >
+                        Checkout
+                    </Button>
+                </CardActions>
+            );
+        } else if (checkoutMode === CHECKOUT) {
+            return (
+                <CardActions className={classes.itemActions}>
+                    <Button
+                        onClick={() => setCheckoutMode(CART)}
+                        size="small"
+                        color="primary"
+                    >
+                        Back To Cart
+                    </Button>
+                </CardActions>
+            );
+        }
+    };
+
+    // PayPal Checkout Button
+    const renderPayPalButton = () => {
+        if (amount === 0 || checkoutMode === CART) return;
+        return (
+            <div style={{ padding: '0px 16px' }}>
+                <PayPalButton
+                    currency={currency}
+                    amount={total}
+                    onSuccess={onSuccess}
+                    onError={onError}
+                    catchError={onError}
+                    options={{ clientId: client[env] }}
+                    onCancel={onCancel}
+                />
+            </div>
+        );
+    };
+
     if (checkedOut) return <Redirect to="/success" />;
 
     return (
@@ -244,13 +306,18 @@ const Cart = ({
                     variant="h4"
                     component="h2"
                 >
-                    Cart
+                    {checkoutMode === CART ? 'Cart' : 'Checkout'}
                 </Typography>
             </CardContent>
 
             <CardContent>
-                <CartItems orders={orders} removeOrder={removeOrder} />
+                <CartItems
+                    checkoutMode={checkoutMode}
+                    orders={orders}
+                    removeOrder={removeOrder}
+                />
                 <CartCalculations
+                    checkoutMode={checkoutMode}
                     amount={amount}
                     subtotal={subtotal}
                     total={total}
@@ -267,35 +334,12 @@ const Cart = ({
             </CardContent>
             <CartModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
 
-            {amount === 0 ? (
-                ''
-            ) : (
-                <div style={{ padding: '0px 16px' }}>
-                    <PayPalButton
-                        currency={currency}
-                        amount={total}
-                        onSuccess={onSuccess}
-                        onError={onError}
-                        catchError={onError}
-                        options={{ clientId: client[env] }}
-                        onCancel={onCancel}
-                    />
-                </div>
-            )}
-            <Button
-                className={classes.backToSelectionButton}
-                size="small"
-                color="primary"
-            >
-                <Link to="/selection" className={classes.link}>
-                    Mask Selection
-                </Link>
-            </Button>
+            {renderPayPalButton()}
+            {renderCartActions()}
             {paypalError ? (
                 <div className={classes.paypalError}>
                     Sorry, there was an error. There may have been an issue with
-                    your payment information or the PayPal servers. Please make
-                    sure you are using the Google Chrome web browser.
+                    your payment information or the PayPal servers.
                 </div>
             ) : (
                 ''

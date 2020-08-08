@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default ({
+    checkoutMode,
     amount,
     subtotal,
     total,
@@ -84,6 +85,81 @@ export default ({
             : {};
     }, [subtotal, discountCode, discountField, discountThreshold]);
 
+    const renderDiscountFields = () => {
+        if (checkoutMode === 'CART') {
+            return (
+                <React.Fragment>
+                    <div className={classes.cartCalculation}>
+                        <TextField
+                            margin="none"
+                            size="small"
+                            onChange={(e) => {
+                                setDiscountField(e.target.value.toUpperCase());
+                            }}
+                            label="Discount Code"
+                            value={discountField}
+                            className={classes.discountField}
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <MoneyOffIcon />
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                        <div className={classes.promoBox}>
+                            -${discount}
+                            <CheckIcon
+                                className={classes.check}
+                                style={checkStyle}
+                            />
+                        </div>
+                    </div>
+                    {subtotal < discountThreshold || usedDiscountButton ? (
+                        <Button
+                            className={classes.discountButton}
+                            variant="contained"
+                            color="primary"
+                            size="small"
+                            onClick={() => {
+                                setDiscountField('15OFF');
+                                setUsedDiscountButton(true);
+                            }}
+                        >
+                            Apply Discount Code 15OFF
+                        </Button>
+                    ) : (
+                        ''
+                    )}
+                    <span
+                        className={classes.discountCaption}
+                        style={discountCaptionStyle}
+                    >
+                        Discount is limited to $45+ subtotal orders.
+                    </span>
+                </React.Fragment>
+            );
+        } else if (checkoutMode === 'CHECKOUT') {
+            return (
+                <div
+                    className={classes.cartCalculation}
+                    style={{ paddingBottom: 8 }}
+                >
+                    <div style={{ paddingTop: 4 }}>
+                        <p className={classes.taxField}>Discount</p>
+                    </div>
+                    <div className={classes.promoBox}>
+                        -${discount}
+                        <CheckIcon
+                            className={classes.check}
+                            style={checkStyle}
+                        />
+                    </div>
+                </div>
+            );
+        }
+    };
+
     if (amount === 0)
         return <div style={{ paddingBottom: 8 }}>Your cart is empty</div>;
     return (
@@ -108,51 +184,7 @@ export default ({
                 </p>
                 <p>${shippingFee}</p>
             </div>
-            <div className={classes.cartCalculation}>
-                <TextField
-                    margin="none"
-                    size="small"
-                    onChange={(e) => {
-                        setDiscountField(e.target.value.toUpperCase());
-                    }}
-                    label="Discount Code"
-                    value={discountField}
-                    className={classes.discountField}
-                    InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <MoneyOffIcon />
-                            </InputAdornment>
-                        ),
-                    }}
-                />
-                <div className={classes.promoBox}>
-                    -${discount}
-                    <CheckIcon className={classes.check} style={checkStyle} />
-                </div>
-            </div>
-            {subtotal < discountThreshold || usedDiscountButton ? (
-                <Button
-                    className={classes.discountButton}
-                    variant="contained"
-                    color="primary"
-                    size="small"
-                    onClick={() => {
-                        setDiscountField('15OFF');
-                        setUsedDiscountButton(true);
-                    }}
-                >
-                    Apply Discount Code 15OFF
-                </Button>
-            ) : (
-                ''
-            )}
-            <span
-                className={classes.discountCaption}
-                style={discountCaptionStyle}
-            >
-                Discount is limited to $45+ subtotal orders.
-            </span>
+            {renderDiscountFields()}
             <div
                 className={classes.cartCalculation}
                 style={{ marginBottom: 0 }}

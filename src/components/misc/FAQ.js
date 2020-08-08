@@ -64,10 +64,10 @@ function FAQ() {
             </p>
             <h5 className={classes.question}>Are these masks washable?</h5>
             <p>
-                Yes, we recommend hand washing with cold water & soap then
-                hanging to air dry. Avoid using hot water or a dryer as the
-                prolonged heat may shrink certain fabric. You may use an iron to
-                smoothen any following wrinkles.
+                Yes, we recommend washing with cold water & soap then hanging to
+                air dry. Avoid using hot water or a dryer as the prolonged heat
+                may shrink certain fabric. You may use an iron to smoothen any
+                following wrinkles.
             </p>
             <h5 className={classes.question}>How much do these masks cost?</h5>
             <p>

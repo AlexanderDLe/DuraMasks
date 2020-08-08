@@ -32,12 +32,16 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: 18,
         textAlign: 'right',
     },
+    itemRightColumnCheckout: {
+        marginTop: '10px',
+        marginBottom: 'auto',
+    },
     designText: {
         padding: 9,
     },
 }));
 
-export default ({ orders, removeOrder }) => {
+export default ({ checkoutMode, orders, removeOrder }) => {
     const classes = useStyles();
     const navMediaQuery = useMediaQuery('(min-width:600px)');
 
@@ -49,6 +53,28 @@ export default ({ orders, removeOrder }) => {
             fontSize: size,
         };
     }, [navMediaQuery]);
+
+    const renderRightColumn = (orderData) => {
+        if (checkoutMode === 'CART') {
+            return (
+                <p className={classes.itemRightColumn}>
+                    ${orderData.price * orderData.amount} <br />{' '}
+                    <span
+                        className={classes.removeButton}
+                        onClick={() => removeOrder(orderData)}
+                    >
+                        Remove
+                    </span>
+                </p>
+            );
+        } else if (checkoutMode === 'CHECKOUT') {
+            return (
+                <p className={classes.itemRightColumnCheckout}>
+                    ${orderData.price * orderData.amount} <br />{' '}
+                </p>
+            );
+        }
+    };
 
     return (
         <React.Fragment>
@@ -79,15 +105,7 @@ export default ({ orders, removeOrder }) => {
                             </Typography>
                         </div>
                     </div>
-                    <p className={classes.itemRightColumn}>
-                        ${order.price * order.amount} <br />{' '}
-                        <span
-                            className={classes.removeButton}
-                            onClick={() => removeOrder(order)}
-                        >
-                            Remove
-                        </span>
-                    </p>
+                    {renderRightColumn(order)}
                 </div>
             ))}
         </React.Fragment>

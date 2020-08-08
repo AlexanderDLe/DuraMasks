@@ -128,8 +128,10 @@ export default () => {
                 const response = await axios.get(API, {
                     params: {
                         date: calculateTimestamp(),
+                        // date: '2020-08-03',
                     },
                 });
+                // console.log(calculateTimestamp());
                 // console.log(response.data);
                 setDailyTotal(response.data.total ? response.data.total : 0);
                 setData(response.data.payload ? response.data.payload : []);
@@ -162,31 +164,35 @@ export default () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {data.map((row) => (
-                            <TableRow key={row.Color}>
-                                <TableCell component="th" scope="row">
-                                    {row.Color}
-                                </TableCell>
-                                <TableCell align="right">
-                                    {row.XL ? row.XL : ''}
-                                </TableCell>
-                                <TableCell align="right">
-                                    {row.L ? row.L : ''}
-                                </TableCell>
-                                <TableCell align="right">
-                                    {row.M ? row.M : ''}
-                                </TableCell>
-                                <TableCell align="right">
-                                    {row.S ? row.S : ''}
-                                </TableCell>
-                                <TableCell align="right">
-                                    {row.XS ? row.XS : ''}
-                                </TableCell>
-                                <TableCell align="center">
-                                    {row.Total}
-                                </TableCell>
-                            </TableRow>
-                        ))}
+                        {data
+                            .sort((a, b) =>
+                                parseInt(a.Total) <= parseInt(b.Total) ? 1 : -1
+                            )
+                            .map((row) => (
+                                <TableRow key={row.Color}>
+                                    <TableCell component="th" scope="row">
+                                        {row.Color}
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        {row.XL ? row.XL : ''}
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        {row.L ? row.L : ''}
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        {row.M ? row.M : ''}
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        {row.S ? row.S : ''}
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        {row.XS ? row.XS : ''}
+                                    </TableCell>
+                                    <TableCell align="center">
+                                        {row.Total}
+                                    </TableCell>
+                                </TableRow>
+                            ))}
                         <TableRow>
                             <TableCell component="th" scope="row">
                                 <strong>All</strong>
