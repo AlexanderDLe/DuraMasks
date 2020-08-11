@@ -48,7 +48,7 @@ function CartModal({ modalOpen, setModalOpen }) {
                 <div>Are you sure?</div>
                 <br />
                 The US has the highest number of total Covid-19 cases in the
-                world, at over 4.5 million and growing every day.
+                world, at over 5 million and growing every day.
                 <br />
                 <Button
                     onClick={() => setModalOpen(false)}

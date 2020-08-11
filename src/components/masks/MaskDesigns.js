@@ -171,7 +171,7 @@ export const selection = {
         param: 'beige',
         price: maskPrice,
         category: 'solid',
-        angled: false,
+        angled: true,
         tags: ['orange', 'brown'],
     },
     //////////////
@@ -569,6 +569,16 @@ export const selection = {
         category: 'pattern',
         angled: true,
         tags: [],
+    },
+    kota: {
+        type: 'Mask',
+        color: 'Kota',
+        img: 'Kota.jpg',
+        param: 'kota',
+        price: maskPrice,
+        category: 'pattern',
+        angled: true,
+        tags: ['green'],
     },
     evening: {
         type: 'Mask',
@@ -1562,7 +1572,7 @@ export const selection = {
         param: 'cobra',
         price: maskPrice,
         category: 'animal',
-        angled: false,
+        angled: true,
         tags: ['animal', 'orange', 'brown'],
     },
     snakeskin: {
@@ -1572,7 +1582,7 @@ export const selection = {
         param: 'snakeskin',
         price: maskPrice,
         category: 'animal',
-        angled: false,
+        angled: true,
         tags: ['animal', 'orange', 'brown'],
     },
     play: {
@@ -1602,7 +1612,7 @@ export const selection = {
         param: 'owls',
         price: maskPrice,
         category: 'animal',
-        angled: false,
+        angled: true,
         tags: ['brown'],
     },
     owlies: {
@@ -1612,7 +1622,7 @@ export const selection = {
         param: 'owlies',
         price: maskPrice,
         category: 'animal',
-        angled: false,
+        angled: true,
         tags: ['grey'],
     },
     madagascar: {
@@ -1710,6 +1720,16 @@ export const selection = {
         color: 'Arctic',
         img: 'Arctic.jpg',
         param: 'arctic',
+        price: maskPrice,
+        category: 'animal',
+        angled: true,
+        tags: ['blue'],
+    },
+    seahorse: {
+        type: 'Mask',
+        color: 'Seahorse',
+        img: 'Seahorse.jpg',
+        param: 'seahorse',
         price: maskPrice,
         category: 'animal',
         angled: true,
