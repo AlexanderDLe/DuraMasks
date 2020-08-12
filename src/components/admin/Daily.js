@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import keys from '../../config/keys';
 import axios from 'axios';
 
@@ -14,7 +14,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import moment from 'moment-timezone';
-// import TextField from '@material-ui/core/TextField';
+import TextField from '@material-ui/core/TextField';
 
 import { Link, Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
@@ -33,6 +33,10 @@ const useStyles = makeStyles({
     header: {
         fontFamily: 'Open Sans',
     },
+    totalNum: {
+        fontFamily: 'Open Sans',
+        // fontSize: '1.3rem',
+    },
     dailyHeader: {
         display: 'flex',
         justifyContent: 'space-between',
@@ -43,10 +47,10 @@ const useStyles = makeStyles({
         padding: 16,
     },
     fromDate: {
-        width: 150,
+        width: 140,
     },
     toDate: {
-        width: 150,
+        width: 140,
     },
     DateText: {
         padding: 16,
@@ -54,6 +58,12 @@ const useStyles = makeStyles({
         top: '2px',
         display: 'inline',
         fontSize: '1.1rem',
+    },
+    dateRangeBox: {
+        paddingBottom: 32,
+    },
+    totalBox: {
+        paddingBottom: 0,
     },
 });
 
@@ -63,7 +73,7 @@ const calculateTimestamp = () => {
     return date;
 };
 
-const API = keys.dailyMasksAPI;
+const API = keys.dailiesMasksAPI;
 
 // let testData = [
 //     {
@@ -115,26 +125,50 @@ const calculateTotals = (data) => {
     return totals;
 };
 
+const fillDateRange = (fromDate, toDate) => {
+    console.log('From: ', fromDate);
+    console.log('To: ', toDate);
+    var dateArray = [];
+    var currentDate = moment(fromDate);
+    toDate = moment(toDate);
+    while (currentDate <= toDate) {
+        dateArray.push(moment(currentDate).format('YYYY-MM-DD'));
+        currentDate = moment(currentDate).add(1, 'days');
+    }
+    let dateString = '';
+    dateArray.forEach((date) => (dateString = dateString + date + ','));
+    return dateString;
+};
+
 export default () => {
-    let [dailyTotal, setDailyTotal] = useState(0);
-    let [totals, setTotals] = useState({});
-    let [data, setData] = useState([]);
-    let [loading, setLoading] = useState(true);
+    const [dailyTotal, setDailyTotal] = useState(0);
+    const [totals, setTotals] = useState({});
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [fromDate, setFromDate] = useState(calculateTimestamp());
+    const [toDate, setToDate] = useState(calculateTimestamp());
+    const dateRange = useMemo(() => {
+        return fillDateRange(fromDate, toDate);
+    }, [fromDate, toDate]);
+    console.log(dateRange);
+
+    const classes = useStyles();
 
     useEffect(() => {
         window.scrollTo(0, 0);
         async function fetchData() {
             try {
+                setLoading(true);
+                console.log('Date Range', dateRange);
                 const response = await axios.get(API, {
                     params: {
-                        date: calculateTimestamp(),
-                        // date: '2020-08-03',
+                        dates: dateRange,
                     },
                 });
-                // console.log(calculateTimestamp());
-                // console.log(response.data);
+                console.log(response);
                 setDailyTotal(response.data.total ? response.data.total : 0);
                 setData(response.data.payload ? response.data.payload : []);
+                console.log(response.data.payload);
                 setTotals(calculateTotals(response.data.payload));
                 setLoading(false);
             } catch (error) {
@@ -146,8 +180,16 @@ export default () => {
             }
         }
         if (localStorage.getItem('Authenticated')) fetchData();
-    }, []);
-    const classes = useStyles();
+    }, [dateRange]);
+
+    // Date Range Changes
+    const onFromDateChange = (e) => {
+        setFromDate(e.target.value);
+    };
+    const onToDateChange = (e) => {
+        setToDate(e.target.value);
+    };
+
     const renderTable = () => {
         return (
             <TableContainer>
@@ -155,11 +197,11 @@ export default () => {
                     <TableHead>
                         <TableRow>
                             <TableCell>Design</TableCell>
-                            <TableCell align="right">XL</TableCell>
-                            <TableCell align="right">L</TableCell>
-                            <TableCell align="right">M</TableCell>
-                            <TableCell align="right">S</TableCell>
-                            <TableCell align="right">XS</TableCell>
+                            <TableCell align="center">XL</TableCell>
+                            <TableCell align="center">L</TableCell>
+                            <TableCell align="center">M</TableCell>
+                            <TableCell align="center">S</TableCell>
+                            <TableCell align="center">XS</TableCell>
                             <TableCell>Total</TableCell>
                         </TableRow>
                     </TableHead>
@@ -173,19 +215,19 @@ export default () => {
                                     <TableCell component="th" scope="row">
                                         {row.Color}
                                     </TableCell>
-                                    <TableCell align="right">
+                                    <TableCell align="center">
                                         {row.XL ? row.XL : ''}
                                     </TableCell>
-                                    <TableCell align="right">
+                                    <TableCell align="center">
                                         {row.L ? row.L : ''}
                                     </TableCell>
-                                    <TableCell align="right">
+                                    <TableCell align="center">
                                         {row.M ? row.M : ''}
                                     </TableCell>
-                                    <TableCell align="right">
+                                    <TableCell align="center">
                                         {row.S ? row.S : ''}
                                     </TableCell>
-                                    <TableCell align="right">
+                                    <TableCell align="center">
                                         {row.XS ? row.XS : ''}
                                     </TableCell>
                                     <TableCell align="center">
@@ -197,11 +239,11 @@ export default () => {
                             <TableCell component="th" scope="row">
                                 <strong>All</strong>
                             </TableCell>
-                            <TableCell align="right">{totals.XL}</TableCell>
-                            <TableCell align="right">{totals.L}</TableCell>
-                            <TableCell align="right">{totals.M}</TableCell>
-                            <TableCell align="right">{totals.S}</TableCell>
-                            <TableCell align="right">{totals.XS}</TableCell>
+                            <TableCell align="center">{totals.XL}</TableCell>
+                            <TableCell align="center">{totals.L}</TableCell>
+                            <TableCell align="center">{totals.M}</TableCell>
+                            <TableCell align="center">{totals.S}</TableCell>
+                            <TableCell align="center">{totals.XS}</TableCell>
                             <TableCell align="center">
                                 <strong>{totals.all}</strong>
                             </TableCell>
@@ -225,21 +267,24 @@ export default () => {
                     <BackToAdmin />
                     Daily
                 </Typography>
+            </CardContent>
+            <CardContent className={classes.totalBox}>
                 <Typography
-                    className={classes.header}
-                    variant="h4"
+                    className={classes.totalNum}
+                    variant="h5"
                     component="h2"
                 >
-                    ${dailyTotal}
+                    Total: ${Math.round(dailyTotal * 100) / 100}
                 </Typography>
             </CardContent>
-            {/* <CardContent className={classes.dailyHeader}>
+            <CardContent className={classes.dateRangeBox}>
                 <div>
                     <TextField
                         id="date"
                         type="date"
-                        defaultValue="2017-05-24"
+                        defaultValue={fromDate}
                         className={classes.fromDate}
+                        onChange={(e) => onFromDateChange(e)}
                         InputLabelProps={{
                             shrink: true,
                         }}
@@ -248,14 +293,15 @@ export default () => {
                     <TextField
                         id="date"
                         type="date"
-                        defaultValue="2017-05-24"
+                        defaultValue={toDate}
                         className={classes.toDate}
+                        onChange={(e) => onToDateChange(e)}
                         InputLabelProps={{
                             shrink: true,
                         }}
                     />
                 </div>
-            </CardContent> */}
+            </CardContent>
             {loading ? (
                 <div style={{ textAlign: 'center' }}>
                     <CircularProgress />

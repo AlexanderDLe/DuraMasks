@@ -83,6 +83,7 @@ const useStyles = makeStyles({
 
 const API = keys.todoMasksAPI;
 const designAPI = keys.designsAPI;
+const historyAPI = keys.todoHistoryAPI;
 const header = {
     'Content-Type': 'application/json',
 };
@@ -165,16 +166,20 @@ export default () => {
             try {
                 const response = await axios.get(API);
                 const designResponse = await axios.get(designAPI);
+                const historyResponse = await axios.get(historyAPI);
                 setDesignAvailability(designResponse.data);
                 console.log(designResponse.data);
                 console.log(response.data);
+                console.log(historyResponse.data);
                 setData(response.data ? response.data : []);
+                setHistoryArr(historyResponse.data.history);
                 setTotals(calculateTotals(response.data));
                 setTimestamp(Timestamper().split('T').join(' ').slice(0, -9));
                 setLoading(false);
             } catch (error) {
                 console.log(error);
                 setData([]);
+                setHistoryArr([]);
                 setTotals({});
                 setLoading(false);
             }
@@ -201,9 +206,8 @@ export default () => {
         let newData = data;
         const updateHistoryEntry = () => {
             let str = '';
-            if (action === 'add') str += 'Added 1 ';
-            if (action === 'remove') str += 'Removed 1 ';
-            str += `${size} ${color}`;
+            if (action === 'add') str += `Added ${color}: +1 ${size}.`;
+            if (action === 'remove') str += `Removed ${color}: -1 ${size}.`;
             return str;
         };
         if (action === 'add') {
@@ -227,6 +231,7 @@ export default () => {
                         action,
                     },
                 ],
+                timestamp: Timestamper().split('T').join(' ').slice(0, -6),
             };
             setData(newData);
             setTotals(calculateTotals(newData));
@@ -235,6 +240,7 @@ export default () => {
                 text: updateHistoryEntry(),
                 timestamp: Timestamper().split('T').join(' ').slice(0, -6),
             });
+            if (newHistoryArr.length > 15) newHistoryArr.pop();
             setHistoryArr(newHistoryArr);
             await axios.post(API, event, header);
         } catch (error) {
@@ -273,6 +279,7 @@ export default () => {
         let event = {
             color: design,
             data: [],
+            timestamp: Timestamper().split('T').join(' ').slice(0, -6),
         };
 
         if (XL > 0) event.data.push(addAction('XL', XL));
@@ -290,6 +297,7 @@ export default () => {
                 text: addHistoryEntry(),
                 timestamp: Timestamper().split('T').join(' ').slice(0, -6),
             });
+            if (newHistoryArr.length > 15) newHistoryArr.pop();
             setHistoryArr(newHistoryArr);
             await axios.post(API, event, header);
         } catch (error) {
@@ -318,6 +326,7 @@ export default () => {
         let event = {
             color: design,
             data: [],
+            timestamp: Timestamper().split('T').join(' ').slice(0, -6),
         };
         if (XL > 0) event.data.push(removeAction('XL', XL));
         if (L > 0) event.data.push(removeAction('L', L));
@@ -333,6 +342,7 @@ export default () => {
                 text: removeHistoryEntry(),
                 timestamp: Timestamper().split('T').join(' ').slice(0, -6),
             });
+            if (newHistoryArr.length > 15) newHistoryArr.pop();
             setHistoryArr(newHistoryArr);
             await axios.post(API, event, header);
         } catch (error) {

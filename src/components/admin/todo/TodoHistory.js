@@ -41,10 +41,10 @@ export default ({ historyArr }) => {
         <Card className={classes.root} elevation={3}>
             <FixedSizeList
                 className={classes.historyBox}
-                height={165}
+                height={580}
                 width={'100%'}
                 itemSize={35}
-                itemCount={historyArr.length}
+                itemCount={historyArr ? historyArr.length : 0}
             >
                 {renderRow}
             </FixedSizeList>

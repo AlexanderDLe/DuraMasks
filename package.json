@@ -13,6 +13,7 @@
         "moment-timezone": "^0.5.31",
         "paypal-checkout": "^4.0.315",
         "pure-react-carousel": "^1.27.1",
+        "qs": "^6.9.4",
         "react": "^16.13.1",
         "react-app-polyfill": "^1.0.6",
         "react-bootstrap": "^1.0.1",
@@ -21,7 +22,7 @@
         "react-lazyload": "^2.6.9",
         "react-paypal-button-v2": "^2.6.2",
         "react-router-dom": "^5.2.0",
-        "react-scripts": "3.4.1",
+        "react-scripts": "^3.4.2",
         "react-window": "^1.8.5"
     },
     "scripts": {
