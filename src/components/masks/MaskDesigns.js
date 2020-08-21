@@ -2301,6 +2301,16 @@ export const selection = {
         angled: true,
         tags: [],
     },
+    bubbly: {
+        type: 'Mask',
+        color: 'Bubbly',
+        img: 'Bubbly.jpg',
+        param: 'bubbly',
+        price: maskPrice,
+        category: 'floral',
+        angled: true,
+        tags: ['pink'],
+    },
     pleasantries: {
         type: 'Mask',
         color: 'Pleasantries',

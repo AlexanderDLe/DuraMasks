@@ -14,17 +14,14 @@ function SelectionHero() {
     const selectionImage = useMemo(() => {
         return {
             dotted: navMediaQuery
-                ? require(`../../img/SelectionCarouselImages/Desktop_Dotted.jpg`)
-                : require(`../../img/SelectionCarouselImages/Phone_Dotted2.jpg`),
+                ? require(`../../img/SelectionCarouselImages/SelfieImage.jpg`)
+                : require(`../../img/SelectionCarouselImages/Phone_SelfieImage.jpg`),
             hawaiian: navMediaQuery
-                ? require(`../../img/SelectionCarouselImages/Desktop_Hawaiian.jpg`)
-                : require(`../../img/SelectionCarouselImages/Phone_Hawaiian2.jpg`),
+                ? require(`../../img/SelectionCarouselImages/SelfieImage2.jpg`)
+                : require(`../../img/SelectionCarouselImages/Phone_SelfieImage2.jpg`),
             bandana: navMediaQuery
-                ? require(`../../img/SelectionCarouselImages/Desktop_Bandana.jpg`)
-                : require(`../../img/SelectionCarouselImages/Phone_Bandana2.jpg`),
-            patriot: navMediaQuery
-                ? require(`../../img/SelectionCarouselImages/Desktop_Patriot.jpg`)
-                : require(`../../img/SelectionCarouselImages/Phone_Patriot2.jpg`),
+                ? require(`../../img/SelectionCarouselImages/SelfieImage3.jpg`)
+                : require(`../../img/SelectionCarouselImages/Phone_SelfieImage3.jpg`),
         };
     }, [navMediaQuery]);
 
@@ -45,7 +42,6 @@ function SelectionHero() {
             {renderCarouselItem(1, selectionImage.dotted)}
             {renderCarouselItem(2, selectionImage.hawaiian)}
             {renderCarouselItem(3, selectionImage.bandana)}
-            {renderCarouselItem(4, selectionImage.patriot)}
         </Carousel>
     );
 }
