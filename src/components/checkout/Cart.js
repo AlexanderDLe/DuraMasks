@@ -317,6 +317,7 @@ const Cart = ({
                     removeOrder={removeOrder}
                 />
                 <CartCalculations
+                    orders={orders}
                     checkoutMode={checkoutMode}
                     amount={amount}
                     subtotal={subtotal}

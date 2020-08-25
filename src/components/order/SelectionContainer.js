@@ -70,6 +70,7 @@ function SelectionContainer({
     animal,
     hawaiian,
     floral,
+    shield,
     customOpen,
     setCustomOpen,
 }) {
@@ -178,6 +179,14 @@ function SelectionContainer({
                 <RenderCategory
                     categoryName={'Patriot'}
                     categoryItems={patriot}
+                    filterState={filter}
+                    showMoreObj={showMoreObj}
+                    setShowMoreObj={setShowMoreObj}
+                    setYCoordinate={setYCoordinate}
+                />
+                <RenderCategory
+                    categoryName={'Shield'}
+                    categoryItems={shield}
                     filterState={filter}
                     showMoreObj={showMoreObj}
                     setShowMoreObj={setShowMoreObj}

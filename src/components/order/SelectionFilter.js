@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#37474f',
     },
     container: {
-        maxWidth: 680,
+        maxWidth: 700,
         display: 'flex',
         justifyContent: 'center',
     },
@@ -76,6 +76,7 @@ function SelectionFilter({ filter, setFilter }) {
                 {renderFilterItem('Solid')}
                 {renderFilterItem('Hawaiian')}
                 {renderFilterItem('Patriot')}
+                {renderFilterItem('Shield')}
                 {renderFilterItem('Custom')}
             </div>
         );

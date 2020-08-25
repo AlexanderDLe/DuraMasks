@@ -22,6 +22,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import MaskOrderForm from './MaskOrderForm';
 import ElasticOrderForm from './ElasticOrderForm';
+import ShieldOrderForm from './ShieldOrderForm';
 import { selection } from '../masks/MaskDesigns';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -122,7 +123,13 @@ export default ({ match, addOrder }) => {
     const data = selection[match.params.id];
     console.log(data);
 
-    const defaultSize = data.type === 'Mask' ? 'L' : '200 Yards';
+    const defaultSize =
+        data.type === 'Mask'
+            ? 'L'
+            : data.type === 'Elastic'
+            ? '200 Yards'
+            : '1x';
+    console.log(defaultSize);
 
     const [size, setSize] = React.useState(defaultSize);
     const [amount, setAmount] = React.useState(1);
@@ -166,6 +173,7 @@ export default ({ match, addOrder }) => {
         let price = 0;
         if (data.type === 'Mask') price = data.price;
         if (data.type === 'Elastic') price = data.price[size];
+        if (data.type === 'Shield') price = data.price[size];
         addOrder({
             type: data.type,
             color: data.color,
@@ -301,8 +309,18 @@ export default ({ match, addOrder }) => {
                             incrementAmount={incrementAmount}
                             decrementAmount={decrementAmount}
                         />
-                    ) : (
+                    ) : data.type === 'Elastic' ? (
                         <ElasticOrderForm
+                            handleChange={handleChange}
+                            amount={amount}
+                            size={size}
+                            navMediaQuery={navMediaQuery}
+                            handleAmountChange={handleAmountChange}
+                            incrementAmount={incrementAmount}
+                            decrementAmount={decrementAmount}
+                        />
+                    ) : (
+                        <ShieldOrderForm
                             handleChange={handleChange}
                             amount={amount}
                             size={size}

@@ -474,14 +474,4 @@ export const archive = {
     //     angled: true,
     //     tags: ['green'],
     // },
-    // polk: {
-    //     type: 'Mask',
-    //     color: 'Polk',
-    //     img: 'Polk.jpg',
-    //     param: 'polk',
-    //     price: maskPrice,
-    //     category: 'pattern',
-    //     angled: true,
-    //     tags: ['white', 'brown', 'orange'],
-    // },
 };

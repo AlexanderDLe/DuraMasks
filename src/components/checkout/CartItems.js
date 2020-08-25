@@ -101,7 +101,8 @@ export default ({ checkoutMode, orders, removeOrder }) => {
                                 </Link>
                             </Typography>
                             <Typography variant="caption" component="h2">
-                                Size {order.size}
+                                {order.type === 'Shield' ? 'Amount' : 'Size'}{' '}
+                                {order.size}
                             </Typography>
                         </div>
                     </div>

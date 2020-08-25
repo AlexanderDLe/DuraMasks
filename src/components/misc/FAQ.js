@@ -127,6 +127,10 @@ function FAQ() {
                 become unavailable so get them while you can!
             </p>
             <h5 className={classes.question}>
+                Where are the face shields made?
+            </h5>
+            <p>All masks are made in USA but face shields are made in China.</p>
+            <h5 className={classes.question}>
                 How can I get in contact with you?
             </h5>
             <p>

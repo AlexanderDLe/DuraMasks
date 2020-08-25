@@ -13,6 +13,7 @@ const options = {
     autoConfig: true, // set pixel's autoConfig
     debug: false, // enable logs
 };
+
 /* const testOrder = [
     {
         type: 'Mask',
@@ -32,8 +33,8 @@ const options = {
         size: 'M',
         amount: '2',
     },
-];
- */
+]; */
+
 const defaultShowMoreObject = {
     Bandana: true,
     Floral: true,
@@ -42,6 +43,7 @@ const defaultShowMoreObject = {
     Solid: true,
     Hawaiian: true,
     Patriot: true,
+    Shield: true,
 };
 
 const App = () => {
