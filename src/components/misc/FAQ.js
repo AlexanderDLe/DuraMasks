@@ -90,9 +90,8 @@ function FAQ() {
                 around each ear. Each of the bands are 10 inches in length.
                 <br />
                 <br />
-                To adjust, you can rotate the bands until the knot is revealed
-                outside of the side pockets - you may then retie these bands for
-                the most comfortable fit.
+                Each elastic band comes with a plastic adjuster that you can use
+                to adjust for a comfortable fit!
             </p>
 
             <h5 className={classes.question}>Is there a nosepiece?</h5>
