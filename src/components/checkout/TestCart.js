@@ -2,11 +2,9 @@ import React, { useEffect, useState, useMemo } from 'react';
 import keys from '../../config/keys';
 import { Link, Redirect } from 'react-router-dom';
 import { useMediaQuery } from '@material-ui/core';
-import moment from 'moment-timezone';
-import { PayPalButton } from 'react-paypal-button-v2';
-import Timestamper from '../misc/Timestamper';
 import ReactPinterestTag from 'react-pinterest-tag';
 import OmniPayment from './OmniPayment';
+import PayPalPayment from './PayPalPayment';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -14,8 +12,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-// import Radio from '@material-ui/core/Radio';
-// import FormLabel from '@material-ui/core/FormLabel';
+import Radio from '@material-ui/core/Radio';
+import FormLabel from '@material-ui/core/FormLabel';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 import CartItems from './CartItems';
@@ -26,10 +24,6 @@ import axios from 'axios';
 import createTrelloDescription from './functions/createTrelloDescription';
 import createTrelloLabel from './functions/createTrelloLabel';
 
-const client = {
-    sandbox: keys.paypalSandboxID,
-    production: keys.paypalProductionID,
-};
 const API = keys.emailConfirmationAPI;
 const trelloAPI = keys.trelloAPI;
 const header = {
@@ -104,32 +98,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const calculateTimestamp = (time) => {
-    let timestamp = time;
-    console.log(timestamp);
-    timestamp = moment(timestamp).tz('America/Los_Angeles').format().toString();
-    timestamp = timestamp.split('T').join(' ');
-    timestamp = timestamp.slice(0, timestamp.length - 9) + ' PT';
-    return timestamp;
-};
 const calculateSubtotal = (orders) => {
     let subtotal = 0;
     for (let order of orders) {
         subtotal += order.price * order.amount;
     }
     return subtotal;
-};
-const extractOrderData = (ordersToExtract) => {
-    let extractedOrders = [];
-    for (let order of ordersToExtract) {
-        extractedOrders.push({
-            color: order.color,
-            price: order.price,
-            size: order.size,
-            amount: order.amount,
-        });
-    }
-    return extractedOrders;
 };
 
 const CART = 'CART';
@@ -150,7 +124,7 @@ const Cart = ({
     }, []);
 
     const classes = useStyles();
-    const [checkoutMode, setCheckoutMode] = useState(CART);
+    const [checkoutMode, setCheckoutMode] = useState(CHECKOUT);
     const [paymentError, setPaymentError] = useState({
         errorFound: false,
         errorMsg: '',
@@ -158,14 +132,13 @@ const Cart = ({
     const [checkedOut, setCheckedOut] = useState(false);
     const [modalOpen, setModalOpen] = React.useState(false);
     const [discountField, setDiscountField] = useState('');
-    const [paymentOption] = useState('PayPal');
+    const [paymentOption, setPaymentOption] = useState('FM');
     const [loading, setLoading] = useState(false);
     const navMediaQuery600 = useMediaQuery('(min-width:600px)');
     const [isPayButtonDisabled, setIsPayButtonDisabled] = useState(true);
 
     // Checkout Configuration
     const itemAmount = amount;
-    const env = mode;
     const subtotal = useMemo(() => {
         return calculateSubtotal(orders);
     }, [orders]);
@@ -230,55 +203,6 @@ const Cart = ({
         setCheckedOut(true);
     };
 
-    // PAYPAL Functionality
-    const onSuccess = async (details, data) => {
-        const info = details.purchase_units[0];
-        const address = {
-            recipient_name: info.shipping.name.full_name,
-            line1: info.shipping.address.address_line_1,
-            line2: info.shipping.address.address_line_2,
-            city: info.shipping.address.admin_area_2,
-            state: info.shipping.address.admin_area_1,
-            postal_code: info.shipping.address.postal_code,
-            country_code: info.shipping.address.country_code,
-        };
-        const email = details.payer.email_address;
-        const orderID = data.orderID;
-        const amount = info.amount.value;
-        let timestamp = calculateTimestamp(details.create_time);
-        let timestamp2 =
-            Timestamper().split('T').join(' ').slice(0, -9) + ' PT';
-
-        console.log(timestamp, ' vs ', timestamp2);
-        let orderData = extractOrderData(orders);
-        const event = {
-            orders: orderData,
-            address,
-            email,
-            orderID,
-            amount,
-            timestamp,
-            mode,
-            subtotal,
-            discount,
-            tax,
-        };
-
-        console.log('Event: ', event);
-        makeAPICalls(event);
-    };
-    const onCancel = (data) => {
-        setModalOpen(true);
-        console.log('The payment was canceled', data);
-    };
-    const onError = (err) => {
-        console.log('There was an error', err);
-        setPaymentError({
-            errorFound: true,
-            errorMsg:
-                'Sorry, there was an error. There may have been an issue with your payment information or the payment servers.',
-        });
-    };
     // Cart Root Styles
     const cartRootStyles = useMemo(() => {
         let marginTop = navMediaQuery600 ? 40 : 16;
@@ -318,9 +242,7 @@ const Cart = ({
             );
         }
     };
-    /////////////
-    // PAYMENT //
-    /////////////
+
     const renderCheckout = () => {
         if (amount === 0 || checkoutMode === CART) return;
         const renderPaymentOption = () => {
@@ -342,21 +264,24 @@ const Cart = ({
                 );
             } else if (paymentOption === 'PayPal') {
                 return (
-                    <PayPalButton
+                    <PayPalPayment
                         currency={currency}
-                        amount={total}
-                        onSuccess={onSuccess}
-                        onError={onError}
-                        catchError={onError}
-                        options={{ clientId: client[env] }}
-                        onCancel={onCancel}
+                        total={total}
+                        orders={orders}
+                        discount={discount}
+                        tax={tax}
+                        makeAPICalls={makeAPICalls}
+                        mode={mode}
+                        subtotal={subtotal}
+                        setPaymentError={setPaymentError}
+                        setModalOpen={setModalOpen}
                     />
                 );
             }
         };
         return (
             <CardContent className={classes.paymentBox}>
-                {/* <FormLabel
+                <FormLabel
                     component="legend"
                     className={classes.paymentMethodTitle}
                 >
@@ -376,7 +301,7 @@ const Cart = ({
                     />{' '}
                     PayPal
                     <br />
-                </div> */}
+                </div>
                 {renderPaymentOption()}
             </CardContent>
         );
@@ -394,7 +319,6 @@ const Cart = ({
                     {checkoutMode === CART ? 'Cart' : 'Checkout'}
                 </Typography>
             </CardContent>
-
             <CardContent>
                 <CartItems
                     checkoutMode={checkoutMode}

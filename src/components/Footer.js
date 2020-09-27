@@ -38,6 +38,10 @@ function Copyright() {
                 {' '}
                 | PayPal AUP
             </a>
+            <Link to="/testcart" className={classes.footerLink}>
+                {' '}
+                | Test Cart
+            </Link>
         </Typography>
     );
 }

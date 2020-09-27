@@ -6,6 +6,7 @@ import AllDesigns from './order/alldesigns/AllDesigns';
 import Item from './item/Item';
 import AllItem from './order/alldesigns/AllItem';
 import Cart from './checkout/Cart';
+import TestCart from './checkout/TestCart';
 import Success from './checkout/Success';
 import CustomItem from './order/CustomItem';
 import Pricing from './pricing/Pricing';
@@ -122,6 +123,23 @@ function Body(props) {
                     path="/cart"
                     render={() => (
                         <Cart
+                            {...props}
+                            mode={mode}
+                            removeOrder={removeOrder}
+                            orders={orders}
+                            resetOrders={resetOrders}
+                            amount={amount}
+                            logReactPixelPurchase={logReactPixelPurchase}
+                            usedDiscountButton={usedDiscountButton}
+                            setUsedDiscountButton={setUsedDiscountButton}
+                        />
+                    )}
+                />
+                <Route
+                    exact
+                    path="/testcart"
+                    render={() => (
+                        <TestCart
                             {...props}
                             mode={mode}
                             removeOrder={removeOrder}

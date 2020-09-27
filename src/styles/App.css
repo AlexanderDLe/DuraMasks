@@ -41,3 +41,120 @@
 .carousel-control-next-icon {
     opacity: 0 !important;
 }
+
+/* FORM FIELD */
+
+.field {
+    width: 100%;
+    /* font-size: 15px; */
+    font-size: 20px;
+    margin-top: 24px;
+    position: relative;
+    padding: 10px;
+    padding-top: 10px;
+    height: 45px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+.field::-webkit-input-placeholder {
+    color: #cfd7e0;
+}
+.field::-moz-placeholder {
+    color: #cfd7e0;
+}
+/* CARD STUFF */
+.card-number {
+    padding-top: 0px;
+    background-color: white !important;
+}
+.input-outline-none {
+    width: 100% !important;
+}
+#number-form {
+    width: 100% !important;
+}
+
+.card-cvv {
+    width: 50%;
+    margin-right: 8px;
+    padding-top: 0px;
+    background-color: white !important;
+}
+.card-number::before {
+    content: 'Card Number';
+}
+.card-cvv::before {
+    content: 'CVV';
+}
+.cvvexp {
+    margin-top: -10px;
+    display: flex;
+    padding-top: 0px;
+}
+.exp {
+    width: 25%;
+}
+
+.mm,
+.yyyy {
+    position: relative;
+}
+
+.billingField {
+    margin-top: -8px;
+}
+/* PSEUDO CONTENT */
+.card-number::before {
+    content: 'Card Number';
+}
+.card-cvv::before {
+    content: 'CVV';
+}
+.mm::before {
+    content: 'MM';
+}
+.yyyy::before {
+    content: 'YYYY';
+}
+.name-group {
+    display: flex;
+}
+
+.card-number::before,
+.card-cvv::before,
+.yyyy::before {
+    position: absolute;
+    font-size: 0.8rem;
+    bottom: 35px;
+    padding: 2px;
+    left: 2px;
+    background: white;
+    z-index: 9;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+input,
+.input-outline-none,
+input:-internal-autofill-selected,
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    background-color: white !important;
+    box-shadow: 0 0 0px 1000px #ffffff inset !important;
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+}

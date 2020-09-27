@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import keys from '../../config/keys';
 import axios from 'axios';
+import ReactPinterestTag from 'react-pinterest-tag';
 
 import { useMediaQuery } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -186,6 +187,13 @@ export default ({ match, addOrder }) => {
         queueRef.current.push({
             message: `Added ${amount} item(s) to cart`,
             key: new Date().getTime(),
+        });
+
+        // Pinterest Event
+        ReactPinterestTag.track('addtocart', {
+            value: price * amount,
+            order_quantity: amount,
+            currency: 'USD',
         });
 
         if (snackbarOpen) {

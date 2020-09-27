@@ -4,6 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import ReactPixel from 'react-facebook-pixel';
 import Body from './Body';
 import keys from '../config/keys';
+import ReactPinterestTag from 'react-pinterest-tag';
 
 const Navbar = lazy(() => import('./Navbar'));
 const Footer = lazy(() => import('./Footer'));
@@ -14,7 +15,7 @@ const options = {
     debug: false, // enable logs
 };
 
-/* const testOrder = [
+const testOrder = [
     {
         type: 'Mask',
         color: 'Black Test',
@@ -33,7 +34,7 @@ const options = {
         size: 'M',
         amount: '2',
     },
-]; */
+];
 
 const defaultShowMoreObject = {
     Bandana: true,
@@ -48,8 +49,10 @@ const defaultShowMoreObject = {
 
 const App = () => {
     const mode = 'production';
-    const [orders, setOrders] = useState([]);
-    const [amount, setAmount] = useState(0);
+    const [orders, setOrders] = useState(
+        mode === 'production' ? [] : testOrder
+    );
+    const [amount, setAmount] = useState(mode === 'production' ? 0 : 3);
     const [usedDiscountButton, setUsedDiscountButton] = useState(false);
     const [showMoreObj, setShowMoreObj] = useState(defaultShowMoreObject);
     const [yCoordinate, setYCoordinate] = useState(0);
@@ -60,7 +63,10 @@ const App = () => {
     );
     useEffect(() => {
         if (mode === 'sandbox') return;
+        // FACEBOOK PIXEL
         ReactPixel.init(keys.pixelID, options);
+        // PINTEREST TAG
+        ReactPinterestTag.init(keys.pinterestID);
     }, []);
     const logReactPixelPurchase = (data) => {
         if (mode === 'sandbox') return;
